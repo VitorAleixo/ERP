@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVisProdutos));
             this.label1 = new System.Windows.Forms.Label();
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UM_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preco_Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLegendas = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
@@ -43,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(232, 12);
+            this.label1.Location = new System.Drawing.Point(224, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(256, 25);
             this.label1.TabIndex = 5;
@@ -56,10 +57,10 @@
             this.grdGerenciamento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdGerenciamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdGerenciamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.NomeProduto,
-            this.UM,
-            this.Preco});
+            this.Codigo_Produto,
+            this.Nome_Produto,
+            this.UM_Produto,
+            this.Preco_Produto});
             this.grdGerenciamento.Location = new System.Drawing.Point(12, 40);
             this.grdGerenciamento.Name = "grdGerenciamento";
             this.grdGerenciamento.ReadOnly = true;
@@ -69,33 +70,46 @@
             this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
             this.grdGerenciamento.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.grdGerenciamento_PreviewKeyDown);
             // 
-            // Codigo
+            // Codigo_Produto
             // 
-            this.Codigo.DataPropertyName = "Codigo";
-            this.Codigo.HeaderText = "Código do Produto";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
+            this.Codigo_Produto.DataPropertyName = "Codigo_Produto";
+            this.Codigo_Produto.HeaderText = "Código do Produto";
+            this.Codigo_Produto.Name = "Codigo_Produto";
+            this.Codigo_Produto.ReadOnly = true;
             // 
-            // NomeProduto
+            // Nome_Produto
             // 
-            this.NomeProduto.DataPropertyName = "NomeProduto";
-            this.NomeProduto.HeaderText = "Nome do Produto";
-            this.NomeProduto.Name = "NomeProduto";
-            this.NomeProduto.ReadOnly = true;
+            this.Nome_Produto.DataPropertyName = "Nome_Produto";
+            this.Nome_Produto.HeaderText = "Nome do Produto";
+            this.Nome_Produto.Name = "Nome_Produto";
+            this.Nome_Produto.ReadOnly = true;
             // 
-            // UM
+            // UM_Produto
             // 
-            this.UM.DataPropertyName = "UM";
-            this.UM.HeaderText = "Unidade de Medida";
-            this.UM.Name = "UM";
-            this.UM.ReadOnly = true;
+            this.UM_Produto.DataPropertyName = "UM_Produto";
+            this.UM_Produto.HeaderText = "Unidade de Medida";
+            this.UM_Produto.Name = "UM_Produto";
+            this.UM_Produto.ReadOnly = true;
             // 
-            // Preco
+            // Preco_Produto
             // 
-            this.Preco.DataPropertyName = "Preco";
-            this.Preco.HeaderText = "Preço";
-            this.Preco.Name = "Preco";
-            this.Preco.ReadOnly = true;
+            this.Preco_Produto.DataPropertyName = "Preco_Produto";
+            this.Preco_Produto.HeaderText = "Preço";
+            this.Preco_Produto.Name = "Preco_Produto";
+            this.Preco_Produto.ReadOnly = true;
+            // 
+            // btnLegendas
+            // 
+            this.btnLegendas.Image = global::WindowsFormsApp3.Properties.Resources.btnLegendas;
+            this.btnLegendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLegendas.Location = new System.Drawing.Point(12, 345);
+            this.btnLegendas.Name = "btnLegendas";
+            this.btnLegendas.Size = new System.Drawing.Size(75, 23);
+            this.btnLegendas.TabIndex = 3;
+            this.btnLegendas.Text = "Legendas";
+            this.btnLegendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLegendas.UseVisualStyleBackColor = true;
+            this.btnLegendas.Click += new System.EventHandler(this.btnLegendas_Click);
             // 
             // btnSair
             // 
@@ -104,7 +118,7 @@
             this.btnSair.Location = new System.Drawing.Point(636, 345);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(56, 23);
-            this.btnSair.TabIndex = 3;
+            this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -115,6 +129,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 381);
+            this.Controls.Add(this.btnLegendas);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grdGerenciamento);
             this.Controls.Add(this.btnSair);
@@ -137,9 +152,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView grdGerenciamento;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomeProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo_Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome_Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UM_Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preco_Produto;
+        private System.Windows.Forms.Button btnLegendas;
     }
 }

@@ -68,7 +68,7 @@
             this.btnGerenciamento.Location = new System.Drawing.Point(6, 129);
             this.btnGerenciamento.Name = "btnGerenciamento";
             this.btnGerenciamento.Size = new System.Drawing.Size(216, 57);
-            this.btnGerenciamento.TabIndex = 3;
+            this.btnGerenciamento.TabIndex = 6;
             this.btnGerenciamento.Text = "Gerenciamento de Estoque";
             this.btnGerenciamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGerenciamento.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             this.btnCadastroForn.Location = new System.Drawing.Point(312, 19);
             this.btnCadastroForn.Name = "btnCadastroForn";
             this.btnCadastroForn.Size = new System.Drawing.Size(216, 57);
-            this.btnCadastroForn.TabIndex = 2;
+            this.btnCadastroForn.TabIndex = 3;
             this.btnCadastroForn.Text = "Cadastro de Fornecedores";
             this.btnCadastroForn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCadastroForn.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             this.btnCadastroProd.Location = new System.Drawing.Point(6, 19);
             this.btnCadastroProd.Name = "btnCadastroProd";
             this.btnCadastroProd.Size = new System.Drawing.Size(216, 57);
-            this.btnCadastroProd.TabIndex = 1;
+            this.btnCadastroProd.TabIndex = 2;
             this.btnCadastroProd.Text = "Cadastro de Produtos";
             this.btnCadastroProd.UseVisualStyleBackColor = true;
             this.btnCadastroProd.Click += new System.EventHandler(this.btnCadastroProd_Click);
@@ -121,7 +121,7 @@
             this.btnAdministrador.Location = new System.Drawing.Point(394, 8);
             this.btnAdministrador.Name = "btnAdministrador";
             this.btnAdministrador.Size = new System.Drawing.Size(152, 26);
-            this.btnAdministrador.TabIndex = 3;
+            this.btnAdministrador.TabIndex = 1;
             this.btnAdministrador.Text = "Administradores";
             this.btnAdministrador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdministrador.UseVisualStyleBackColor = true;
@@ -182,7 +182,7 @@
             this.btnLogoff.Location = new System.Drawing.Point(496, 425);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(62, 23);
-            this.btnLogoff.TabIndex = 8;
+            this.btnLogoff.TabIndex = 7;
             this.btnLogoff.Text = "Logoff";
             this.btnLogoff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogoff.UseVisualStyleBackColor = true;

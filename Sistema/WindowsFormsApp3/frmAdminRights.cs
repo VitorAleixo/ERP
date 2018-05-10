@@ -37,5 +37,10 @@ namespace WindowsFormsApp3
         {
             new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
+
+        private void btnVisUsuarios_Click(object sender, EventArgs e)
+        {
+            new frmVisUsuarios { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
     }
 }

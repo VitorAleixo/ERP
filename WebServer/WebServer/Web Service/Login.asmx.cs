@@ -9,6 +9,8 @@ using MySql;
 using MySql.Data.MySqlClient;
 using System.Collections;
 using System.Xml.Serialization;
+using System.Data.SqlClient;
+using static WebServer.AppCode.BuscaProduto;
 
 namespace WebServer.Web_Service
 {
@@ -137,35 +139,45 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
-        public List<BuscaProduto> RetornaProduto()
+        public BuscaProduto.ListaProduto RetornaProduto()
         {
-            var lst = BuscaProduto.RetornarProduto();
-            // List<BuscaProduto> lista = new List<BuscaProduto>();   
+            BuscaProduto produto = new BuscaProduto();
 
-            //  foreach (var item in lst)
-            // {
-            //     lista.Add(item);
-            //  }
-           
-            return lst;
+            BuscaProduto.Program.RetornarProduto();
+
+            return BuscaProduto.Program.list;
+
         }
 
         [WebMethod]
-        public string RetornaFornecedor()
+        public BuscaFornecedor.ListaFornecedor RetornaFornecedor()
         {
-            return "";
+            BuscaFornecedor fornecedor = new BuscaFornecedor();
+
+            BuscaFornecedor.Program.RetornarFornecedor();
+
+            return BuscaFornecedor.Program.list; 
         }
 
         [WebMethod]
-        public string RetornaEstoque()
+        public BuscaEstoque.ListaEstoque RetornaEstoque()
         {
-            return "";
+            BuscaEstoque estoque = new BuscaEstoque();
+
+            BuscaEstoque.Program.RetornarEstoque();
+
+            return BuscaEstoque.Program.list;
         }
 
         [WebMethod]
-        public List<BuscaCliente> RetornaCliente()
+        public BuscaUsuario.ListaUsuario RetornaUsuario()
         {
-            return BuscaCliente.lista;
+            BuscaUsuario Usuario = new BuscaUsuario();
+
+            BuscaUsuario.Program.RetornarUsuario();
+
+            return BuscaUsuario.Program.list;
         }
     }
 }
+

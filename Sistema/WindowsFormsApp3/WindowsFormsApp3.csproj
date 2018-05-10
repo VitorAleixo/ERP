@@ -85,6 +85,30 @@
     <Compile Include="frmGerenciamentoEstoque.Designer.cs">
       <DependentUpon>frmGerenciamentoEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLegendaEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaEstoque.Designer.cs">
+      <DependentUpon>frmLegendaEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegendaFornecedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaFornecedores.Designer.cs">
+      <DependentUpon>frmLegendaFornecedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegendaProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaProdutos.Designer.cs">
+      <DependentUpon>frmLegendaProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegendaUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaUsuarios.Designer.cs">
+      <DependentUpon>frmLegendaUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +133,12 @@
     <Compile Include="frmVisProdutos.Designer.cs">
       <DependentUpon>frmVisProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVisUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisUsuarios.Designer.cs">
+      <DependentUpon>frmVisUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web References\localhost\Reference.cs">
@@ -131,6 +161,18 @@
     <EmbeddedResource Include="frmGerenciamentoEstoque.resx">
       <DependentUpon>frmGerenciamentoEstoque.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaEstoque.resx">
+      <DependentUpon>frmLegendaEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaFornecedores.resx">
+      <DependentUpon>frmLegendaFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaProdutos.resx">
+      <DependentUpon>frmLegendaProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaUsuarios.resx">
+      <DependentUpon>frmLegendaUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVisProdutos.resx">
       <DependentUpon>frmVisProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisUsuarios.resx">
+      <DependentUpon>frmVisUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -295,16 +340,22 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\localhost\BuscaCliente.datasource">
+    <None Include="Web References\localhost\Estoque.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\localhost\BuscaProduto.datasource">
+    <None Include="Web References\localhost\Fornecedor.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\Login.wsdl" />
+    <None Include="Web References\localhost\Produto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\Usuario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -373,6 +424,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnUsuário.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnLegendas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -34,7 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVisUsuarios = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +57,7 @@
             this.btnCadastroUser.Location = new System.Drawing.Point(6, 19);
             this.btnCadastroUser.Name = "btnCadastroUser";
             this.btnCadastroUser.Size = new System.Drawing.Size(216, 57);
-            this.btnCadastroUser.TabIndex = 3;
+            this.btnCadastroUser.TabIndex = 1;
             this.btnCadastroUser.Text = "Cadastro de Usuários";
             this.btnCadastroUser.UseVisualStyleBackColor = true;
             this.btnCadastroUser.Click += new System.EventHandler(this.btnCadastroUser_Click);
@@ -79,7 +79,7 @@
             this.btnSair.Location = new System.Drawing.Point(420, 327);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(56, 23);
-            this.btnSair.TabIndex = 1;
+            this.btnSair.TabIndex = 3;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnVisUsuarios);
             this.groupBox2.Location = new System.Drawing.Point(13, 136);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(463, 93);
@@ -95,17 +95,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Visualização";
             // 
-            // button1
+            // btnVisUsuarios
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.button1.Image = global::WindowsFormsApp3.Properties.Resources.btnUsuário;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(6, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(216, 57);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Visualizar Usuarios";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnVisUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnVisUsuarios.Image = global::WindowsFormsApp3.Properties.Resources.btnUsuário;
+            this.btnVisUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisUsuarios.Location = new System.Drawing.Point(6, 19);
+            this.btnVisUsuarios.Name = "btnVisUsuarios";
+            this.btnVisUsuarios.Size = new System.Drawing.Size(216, 57);
+            this.btnVisUsuarios.TabIndex = 2;
+            this.btnVisUsuarios.Text = "Visualizar Usuarios";
+            this.btnVisUsuarios.UseVisualStyleBackColor = true;
+            this.btnVisUsuarios.Click += new System.EventHandler(this.btnVisUsuarios_Click);
             // 
             // frmAdminRights
             // 
@@ -137,6 +138,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCadastroUser;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVisUsuarios;
     }
 }

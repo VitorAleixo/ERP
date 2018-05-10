@@ -24,7 +24,7 @@ namespace WebServer.AppCode
                 con = new SqlConnection(connectionString);
                 con.Open();
 
-                comando = "SELECT Departamento FROM Cliente WHERE Usuario = '" + Usuario + "';";
+                comando = "SELECT Departamento FROM Usuario WHERE Usuario = '" + Usuario + "';";
                 command = new SqlCommand(comando, con);
                 rdr = command.ExecuteReader();
 

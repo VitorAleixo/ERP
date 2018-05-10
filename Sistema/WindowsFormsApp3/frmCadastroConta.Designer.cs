@@ -55,7 +55,7 @@
             this.btnGravar.Location = new System.Drawing.Point(325, 172);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(64, 23);
-            this.btnGravar.TabIndex = 5;
+            this.btnGravar.TabIndex = 8;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             this.btnSair.Location = new System.Drawing.Point(395, 172);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(64, 23);
-            this.btnSair.TabIndex = 6;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(192, 20);
-            this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.TabIndex = 5;
             // 
             // txtSenha
             // 
@@ -98,7 +98,7 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(192, 20);
-            this.txtSenha.TabIndex = 2;
+            this.txtSenha.TabIndex = 6;
             // 
             // txtSenhaConfirmacao
             // 
@@ -106,7 +106,7 @@
             this.txtSenhaConfirmacao.Name = "txtSenhaConfirmacao";
             this.txtSenhaConfirmacao.PasswordChar = '*';
             this.txtSenhaConfirmacao.Size = new System.Drawing.Size(192, 20);
-            this.txtSenhaConfirmacao.TabIndex = 3;
+            this.txtSenhaConfirmacao.TabIndex = 7;
             // 
             // label2
             // 
@@ -160,7 +160,7 @@
             this.cmbDepartamento.Location = new System.Drawing.Point(17, 130);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(192, 21);
-            this.cmbDepartamento.TabIndex = 32;
+            this.cmbDepartamento.TabIndex = 3;
             this.cmbDepartamento.SelectedValueChanged += new System.EventHandler(this.cmbDepartamento_SelectedValueChanged);
             // 
             // label5
@@ -187,7 +187,7 @@
             this.txtNome.MaxLength = 20;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(192, 20);
-            this.txtNome.TabIndex = 34;
+            this.txtNome.TabIndex = 1;
             // 
             // label7
             // 
@@ -204,7 +204,7 @@
             this.txtFuncao.MaxLength = 20;
             this.txtFuncao.Name = "txtFuncao";
             this.txtFuncao.Size = new System.Drawing.Size(192, 20);
-            this.txtFuncao.TabIndex = 36;
+            this.txtFuncao.TabIndex = 2;
             // 
             // txtDepartamento
             // 
@@ -212,7 +212,7 @@
             this.txtDepartamento.Location = new System.Drawing.Point(17, 172);
             this.txtDepartamento.Name = "txtDepartamento";
             this.txtDepartamento.Size = new System.Drawing.Size(192, 20);
-            this.txtDepartamento.TabIndex = 40;
+            this.txtDepartamento.TabIndex = 4;
             // 
             // label8
             // 

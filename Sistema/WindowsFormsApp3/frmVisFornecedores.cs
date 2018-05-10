@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
@@ -46,7 +47,48 @@ namespace WindowsFormsApp3
         //Cores na Grid
         private void grdGerenciamento_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            try
+            {
+                foreach (DataGridViewRow row in grdGerenciamento.Rows)
+                {
+                    string RowType = row.Cells[1].Value.ToString();
 
+                    if (RowType.Length == 14)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType.Length == 18)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType.Length == 0)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Salmon;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void frmVisFornecedores_Load(object sender, EventArgs e)
+        {
+            localhost.Login buscaFornecedor = new localhost.Login();
+
+            grdGerenciamento.AutoGenerateColumns = false;
+            grdGerenciamento.DataSource = null;
+            grdGerenciamento.DataSource = buscaFornecedor.RetornaFornecedor();
+            grdGerenciamento.Show();
+        }
+
+        private void btnLegendas_Click(object sender, EventArgs e)
+        {
+            new frmLegendaFornecedores { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace WebServer.AppCode
                 con = new SqlConnection(connectionString);
                 con.Open();
 
-                comando = "SELECT Senha FROM Cliente WHERE Usuario = '" + Usuario + "';";
+                comando = "SELECT Senha FROM Usuario WHERE Usuario = '" + Usuario + "';";
                 command = new SqlCommand(comando, con);
                 rdr = command.ExecuteReader();
 

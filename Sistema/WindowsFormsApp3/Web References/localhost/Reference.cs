@@ -45,7 +45,7 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback RetornaEstoqueOperationCompleted;
         
-        private System.Threading.SendOrPostCallback RetornaClienteOperationCompleted;
+        private System.Threading.SendOrPostCallback RetornaUsuarioOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -110,7 +110,7 @@ namespace WindowsFormsApp3.localhost {
         public event RetornaEstoqueCompletedEventHandler RetornaEstoqueCompleted;
         
         /// <remarks/>
-        public event RetornaClienteCompletedEventHandler RetornaClienteCompleted;
+        public event RetornaUsuarioCompletedEventHandler RetornaUsuarioCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginSistema", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -307,9 +307,11 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaProduto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public BuscaProduto[] RetornaProduto() {
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaProduto", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("PRODUTO", IsNullable=false)]
+        public Produto[] RetornaProduto() {
             object[] results = this.Invoke("RetornaProduto", new object[0]);
-            return ((BuscaProduto[])(results[0]));
+            return ((Produto[])(results[0]));
         }
         
         /// <remarks/>
@@ -334,9 +336,11 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaFornecedor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string RetornaFornecedor() {
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaFornecedor", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("FORNECEDOR", IsNullable=false)]
+        public Fornecedor[] RetornaFornecedor() {
             object[] results = this.Invoke("RetornaFornecedor", new object[0]);
-            return ((string)(results[0]));
+            return ((Fornecedor[])(results[0]));
         }
         
         /// <remarks/>
@@ -361,9 +365,11 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaEstoque", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public string RetornaEstoque() {
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaEstoque", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("ESTOQUE", IsNullable=false)]
+        public Estoque[] RetornaEstoque() {
             object[] results = this.Invoke("RetornaEstoque", new object[0]);
-            return ((string)(results[0]));
+            return ((Estoque[])(results[0]));
         }
         
         /// <remarks/>
@@ -387,29 +393,31 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public BuscaCliente[] RetornaCliente() {
-            object[] results = this.Invoke("RetornaCliente", new object[0]);
-            return ((BuscaCliente[])(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaUsuario", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("USUARIO", IsNullable=false)]
+        public Usuario[] RetornaUsuario() {
+            object[] results = this.Invoke("RetornaUsuario", new object[0]);
+            return ((Usuario[])(results[0]));
         }
         
         /// <remarks/>
-        public void RetornaClienteAsync() {
-            this.RetornaClienteAsync(null);
+        public void RetornaUsuarioAsync() {
+            this.RetornaUsuarioAsync(null);
         }
         
         /// <remarks/>
-        public void RetornaClienteAsync(object userState) {
-            if ((this.RetornaClienteOperationCompleted == null)) {
-                this.RetornaClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaClienteOperationCompleted);
+        public void RetornaUsuarioAsync(object userState) {
+            if ((this.RetornaUsuarioOperationCompleted == null)) {
+                this.RetornaUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaUsuarioOperationCompleted);
             }
-            this.InvokeAsync("RetornaCliente", new object[0], this.RetornaClienteOperationCompleted, userState);
+            this.InvokeAsync("RetornaUsuario", new object[0], this.RetornaUsuarioOperationCompleted, userState);
         }
         
-        private void OnRetornaClienteOperationCompleted(object arg) {
-            if ((this.RetornaClienteCompleted != null)) {
+        private void OnRetornaUsuarioOperationCompleted(object arg) {
+            if ((this.RetornaUsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RetornaClienteCompleted(this, new RetornaClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.RetornaUsuarioCompleted(this, new RetornaUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -438,7 +446,55 @@ namespace WindowsFormsApp3.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class BuscaProduto {
+    public partial class Produto {
+        
+        private string codigo_ProdutoField;
+        
+        private string nome_ProdutoField;
+        
+        private string uM_ProdutoField;
+        
+        private double preco_ProdutoField;
+        
+        /// <remarks/>
+        public string Codigo_Produto {
+            get {
+                return this.codigo_ProdutoField;
+            }
+            set {
+                this.codigo_ProdutoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nome_Produto {
+            get {
+                return this.nome_ProdutoField;
+            }
+            set {
+                this.nome_ProdutoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UM_Produto {
+            get {
+                return this.uM_ProdutoField;
+            }
+            set {
+                this.uM_ProdutoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double Preco_Produto {
+            get {
+                return this.preco_ProdutoField;
+            }
+            set {
+                this.preco_ProdutoField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -447,7 +503,229 @@ namespace WindowsFormsApp3.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
-    public partial class BuscaCliente {
+    public partial class Usuario {
+        
+        private string nomeField;
+        
+        private string funcaoField;
+        
+        private string departamentoField;
+        
+        private string userField;
+        
+        private string dataCriacaoField;
+        
+        /// <remarks/>
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Funcao {
+            get {
+                return this.funcaoField;
+            }
+            set {
+                this.funcaoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Departamento {
+            get {
+                return this.departamentoField;
+            }
+            set {
+                this.departamentoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string User {
+            get {
+                return this.userField;
+            }
+            set {
+                this.userField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DataCriacao {
+            get {
+                return this.dataCriacaoField;
+            }
+            set {
+                this.dataCriacaoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Estoque {
+        
+        private string codigoProdutoField;
+        
+        private string nomeField;
+        
+        private double qtdEstoqueField;
+        
+        private double qtdMaximaField;
+        
+        private double qtdMinimaField;
+        
+        private string umField;
+        
+        /// <remarks/>
+        public string CodigoProduto {
+            get {
+                return this.codigoProdutoField;
+            }
+            set {
+                this.codigoProdutoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double QtdEstoque {
+            get {
+                return this.qtdEstoqueField;
+            }
+            set {
+                this.qtdEstoqueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double QtdMaxima {
+            get {
+                return this.qtdMaximaField;
+            }
+            set {
+                this.qtdMaximaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double QtdMinima {
+            get {
+                return this.qtdMinimaField;
+            }
+            set {
+                this.qtdMinimaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UM {
+            get {
+                return this.umField;
+            }
+            set {
+                this.umField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Fornecedor {
+        
+        private string nomeField;
+        
+        private string cPFField;
+        
+        private string estadoField;
+        
+        private string cEPField;
+        
+        private string telefoneField;
+        
+        private string emailField;
+        
+        /// <remarks/>
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CPF {
+            get {
+                return this.cPFField;
+            }
+            set {
+                this.cPFField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Estado {
+            get {
+                return this.estadoField;
+            }
+            set {
+                this.estadoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CEP {
+            get {
+                return this.cEPField;
+            }
+            set {
+                this.cEPField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Telefone {
+            get {
+                return this.telefoneField;
+            }
+            set {
+                this.telefoneField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -598,10 +876,10 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
-        public BuscaProduto[] Result {
+        public Produto[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((BuscaProduto[])(this.results[0]));
+                return ((Produto[])(this.results[0]));
             }
         }
     }
@@ -624,10 +902,10 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
-        public string Result {
+        public Fornecedor[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((Fornecedor[])(this.results[0]));
             }
         }
     }
@@ -650,36 +928,36 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
-        public string Result {
+        public Estoque[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((Estoque[])(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
-    public delegate void RetornaClienteCompletedEventHandler(object sender, RetornaClienteCompletedEventArgs e);
+    public delegate void RetornaUsuarioCompletedEventHandler(object sender, RetornaUsuarioCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class RetornaClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class RetornaUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal RetornaClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal RetornaUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public BuscaCliente[] Result {
+        public Usuario[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((BuscaCliente[])(this.results[0]));
+                return ((Usuario[])(this.results[0]));
             }
         }
     }

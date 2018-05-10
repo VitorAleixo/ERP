@@ -102,52 +102,97 @@
       <s:element name="RetornaProdutoResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RetornaProdutoResult" type="tns:ArrayOfBuscaProduto" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaProduto" nillable="true" type="tns:ListaProduto" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:complexType name="ArrayOfBuscaProduto">
+      <s:complexType name="ListaProduto">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="BuscaProduto" nillable="true" type="tns:BuscaProduto" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PRODUTO" type="tns:Produto" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="BuscaProduto" />
+      <s:complexType name="Produto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Codigo_Produto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome_Produto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UM_Produto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Preco_Produto" type="s:double" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="RetornaFornecedor">
         <s:complexType />
       </s:element>
       <s:element name="RetornaFornecedorResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RetornaFornecedorResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaFornecedor" nillable="true" type="tns:ListaFornecedor" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ListaFornecedor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FORNECEDOR" type="tns:Fornecedor" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Fornecedor">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CPF" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CEP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="RetornaEstoque">
         <s:complexType />
       </s:element>
       <s:element name="RetornaEstoqueResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RetornaEstoqueResult" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaEstoque" nillable="true" type="tns:ListaEstoque" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="RetornaCliente">
-        <s:complexType />
-      </s:element>
-      <s:element name="RetornaClienteResponse">
-        <s:complexType>
-          <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="RetornaClienteResult" type="tns:ArrayOfBuscaCliente" />
-          </s:sequence>
-        </s:complexType>
-      </s:element>
-      <s:complexType name="ArrayOfBuscaCliente">
+      <s:complexType name="ListaEstoque">
         <s:sequence>
-          <s:element minOccurs="0" maxOccurs="unbounded" name="BuscaCliente" nillable="true" type="tns:BuscaCliente" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ESTOQUE" type="tns:Estoque" />
         </s:sequence>
       </s:complexType>
-      <s:complexType name="BuscaCliente" />
+      <s:complexType name="Estoque">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CodigoProduto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="UM" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RetornaUsuario">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetornaUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaUsuario" nillable="true" type="tns:ListaUsuario" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ListaUsuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="USUARIO" type="tns:Usuario" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Usuario">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Funcao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataCriacao" type="s:string" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="LoginSistemaSoapIn">
@@ -198,11 +243,11 @@
   <wsdl:message name="RetornaEstoqueSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaEstoqueResponse" />
   </wsdl:message>
-  <wsdl:message name="RetornaClienteSoapIn">
-    <wsdl:part name="parameters" element="tns:RetornaCliente" />
+  <wsdl:message name="RetornaUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaUsuario" />
   </wsdl:message>
-  <wsdl:message name="RetornaClienteSoapOut">
-    <wsdl:part name="parameters" element="tns:RetornaClienteResponse" />
+  <wsdl:message name="RetornaUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaUsuarioResponse" />
   </wsdl:message>
   <wsdl:portType name="LoginSoap">
     <wsdl:operation name="LoginSistema">
@@ -237,9 +282,9 @@
       <wsdl:input message="tns:RetornaEstoqueSoapIn" />
       <wsdl:output message="tns:RetornaEstoqueSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="RetornaCliente">
-      <wsdl:input message="tns:RetornaClienteSoapIn" />
-      <wsdl:output message="tns:RetornaClienteSoapOut" />
+    <wsdl:operation name="RetornaUsuario">
+      <wsdl:input message="tns:RetornaUsuarioSoapIn" />
+      <wsdl:output message="tns:RetornaUsuarioSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LoginSoap" type="tns:LoginSoap">
@@ -316,8 +361,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RetornaCliente">
-      <soap:operation soapAction="http://tempuri.org/RetornaCliente" style="document" />
+    <wsdl:operation name="RetornaUsuario">
+      <soap:operation soapAction="http://tempuri.org/RetornaUsuario" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -400,8 +445,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="RetornaCliente">
-      <soap12:operation soapAction="http://tempuri.org/RetornaCliente" style="document" />
+    <wsdl:operation name="RetornaUsuario">
+      <soap12:operation soapAction="http://tempuri.org/RetornaUsuario" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

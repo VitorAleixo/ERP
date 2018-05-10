@@ -32,5 +32,55 @@ namespace WindowsFormsApp3
         {
             this.Close();
         }
+
+        private void frmGerenciamentoEstoque_Load(object sender, EventArgs e)
+        {
+            localhost.Login buscaEstoque = new localhost.Login();
+
+            grdGerenciamento.AutoGenerateColumns = false;
+            grdGerenciamento.DataSource = null;
+            grdGerenciamento.DataSource = buscaEstoque.RetornaEstoque();
+            grdGerenciamento.Show();
+        }
+
+        private void grdGerenciamento_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in grdGerenciamento.Rows)
+                {
+                    var QtdEstoque = Convert.ToInt32(row.Cells[2].Value);
+                    var QTdMaxima = Convert.ToInt32(row.Cells[3].Value);
+                    var QtdMinima = Convert.ToInt32(row.Cells[4].Value);
+
+
+                    if (QtdEstoque < QtdMinima)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Salmon;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (QtdEstoque > QtdMinima)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (QtdEstoque == QtdMinima)
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnLegendas_Click(object sender, EventArgs e)
+        {
+            new frmLegendaEstoque { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
     }
 }
+

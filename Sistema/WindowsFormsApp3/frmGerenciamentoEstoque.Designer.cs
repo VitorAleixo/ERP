@@ -30,13 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerenciamentoEstoque));
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdMaxima = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSair = new System.Windows.Forms.Button();
+            this.btnLegendas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,30 +49,32 @@
             this.grdGerenciamento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.grdGerenciamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdGerenciamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.NomeProduto,
+            this.CodigoProduto,
+            this.Nome,
             this.QtdEstoque,
             this.QtdMaxima,
-            this.QtdMinima});
+            this.QtdMinima,
+            this.UM});
             this.grdGerenciamento.Location = new System.Drawing.Point(12, 43);
             this.grdGerenciamento.Name = "grdGerenciamento";
             this.grdGerenciamento.ReadOnly = true;
             this.grdGerenciamento.Size = new System.Drawing.Size(680, 299);
             this.grdGerenciamento.TabIndex = 1;
+            this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
             // 
-            // Codigo
+            // CodigoProduto
             // 
-            this.Codigo.DataPropertyName = "Codigo";
-            this.Codigo.HeaderText = "Código do Produto";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
+            this.CodigoProduto.DataPropertyName = "CodigoProduto";
+            this.CodigoProduto.HeaderText = "Código do Produto";
+            this.CodigoProduto.Name = "CodigoProduto";
+            this.CodigoProduto.ReadOnly = true;
             // 
-            // NomeProduto
+            // Nome
             // 
-            this.NomeProduto.DataPropertyName = "NomeProduto";
-            this.NomeProduto.HeaderText = "Nome do Produto";
-            this.NomeProduto.Name = "NomeProduto";
-            this.NomeProduto.ReadOnly = true;
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome do Produto";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
             // 
             // QtdEstoque
             // 
@@ -92,6 +96,13 @@
             this.QtdMinima.HeaderText = "Quantidade Minima";
             this.QtdMinima.Name = "QtdMinima";
             this.QtdMinima.ReadOnly = true;
+            // 
+            // UM
+            // 
+            this.UM.DataPropertyName = "UM";
+            this.UM.HeaderText = "Unidade de Medida";
+            this.UM.Name = "UM";
+            this.UM.ReadOnly = true;
             // 
             // label1
             // 
@@ -116,11 +127,25 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // btnLegendas
+            // 
+            this.btnLegendas.Image = global::WindowsFormsApp3.Properties.Resources.btnLegendas;
+            this.btnLegendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLegendas.Location = new System.Drawing.Point(12, 348);
+            this.btnLegendas.Name = "btnLegendas";
+            this.btnLegendas.Size = new System.Drawing.Size(75, 23);
+            this.btnLegendas.TabIndex = 4;
+            this.btnLegendas.Text = "Legendas";
+            this.btnLegendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLegendas.UseVisualStyleBackColor = true;
+            this.btnLegendas.Click += new System.EventHandler(this.btnLegendas_Click);
+            // 
             // frmGerenciamentoEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 381);
+            this.Controls.Add(this.btnLegendas);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.grdGerenciamento);
             this.Controls.Add(this.btnSair);
@@ -131,6 +156,7 @@
             this.Name = "frmGerenciamentoEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Gerenciamento";
+            this.Load += new System.EventHandler(this.frmGerenciamentoEstoque_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -142,10 +168,12 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.DataGridView grdGerenciamento;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomeProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtdEstoque;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtdMaxima;
         private System.Windows.Forms.DataGridViewTextBoxColumn QtdMinima;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UM;
+        private System.Windows.Forms.Button btnLegendas;
     }
 }
