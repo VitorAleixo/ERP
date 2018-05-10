@@ -39,8 +39,6 @@ namespace WebServer.Web_Service
 
             if (login.valor == 1)
             {
-                login.LimparStatus();
-                login.SetStatus(Usuario);
                 return true;
             }
             else
@@ -125,5 +123,15 @@ namespace WebServer.Web_Service
 
         }
 
+
+        [WebMethod]
+        public string RetornaSetor(
+                  string Usuario)
+        {
+            frmPrincipal principal = new frmPrincipal();
+            principal.BuscaSetor(Usuario);
+
+            return principal.Setor;
+        }
     }
 }

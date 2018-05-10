@@ -150,6 +150,7 @@
     <Compile Include="AppCode\CadastroProduto.cs" />
     <Compile Include="AppCode\CadastroUsuario.cs" />
     <Compile Include="AppCode\Criptografia.cs" />
+    <Compile Include="AppCode\frmPrincipal.cs" />
     <Compile Include="AppCode\LoginUsuario.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
@@ -62,6 +63,7 @@ namespace WindowsFormsApp3
                     if (login.LoginSistema(usuario, senha))
                     {
                         validar = true;
+                        SessaoSistema.NomeUsuario = usuario;
                         MessageBox.Show("Autenticado no Sistema!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
 

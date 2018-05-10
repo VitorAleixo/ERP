@@ -44,9 +44,17 @@ namespace WindowsFormsApp3
         {
             new frmCadastroFornecedor { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
-        private void btnCadastroCliente_Click(object sender, EventArgs e)
+        private void btnAdministrador_Click(object sender, EventArgs e)
         {
-            new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+            if (lblSetor.Text == "Setor: ADMIN")
+            {
+                MessageBox.Show("Olá Administrador!", "Confirmação", MessageBoxButtons.OK);
+                new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Você não tem Permissão para acessar!", "Confirmação", MessageBoxButtons.OK);
+            }
         }
 
         private void btnGerenciamento_Click(object sender, EventArgs e)
@@ -68,12 +76,24 @@ namespace WindowsFormsApp3
         {
             MessageBox.Show("Bem Vindo: " + SessaoSistema.NomeUsuario + "!", "Confirmacão", MessageBoxButtons.OK);
             lblNomeUsuario.Text = "Usuário: " + SessaoSistema.NomeUsuario;
+
+            localhost.Login login = new localhost.Login();
+            string usuario = SessaoSistema.NomeUsuario;
+            string setor = login.RetornaSetor(usuario);
+
+            lblSetor.Text = "Setor: " + login.RetornaSetor(usuario) ;
+
+            if (lblSetor.Text == "Setor: ADMIN")
+            {
+                btnAdministrador.Visible = true;
+                btnAdministrador.Enabled = true;
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+            lblData.Text = "Data: " + DateTime.Now.ToString("dd/MM/yyyy");
+            lblHora.Text = "Hora: " + DateTime.Now.ToString("HH:mm:ss");
         }
 
        

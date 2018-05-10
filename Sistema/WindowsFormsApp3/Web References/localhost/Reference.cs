@@ -37,6 +37,8 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback CadastroProdutoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RetornaSetorOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -86,6 +88,9 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         public event CadastroProdutoCompletedEventHandler CadastroProdutoCompleted;
+        
+        /// <remarks/>
+        public event RetornaSetorCompletedEventHandler RetornaSetorCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginSistema", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -252,6 +257,35 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaSetor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string RetornaSetor(string Usuario) {
+            object[] results = this.Invoke("RetornaSetor", new object[] {
+                        Usuario});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaSetorAsync(string Usuario) {
+            this.RetornaSetorAsync(Usuario, null);
+        }
+        
+        /// <remarks/>
+        public void RetornaSetorAsync(string Usuario, object userState) {
+            if ((this.RetornaSetorOperationCompleted == null)) {
+                this.RetornaSetorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaSetorOperationCompleted);
+            }
+            this.InvokeAsync("RetornaSetor", new object[] {
+                        Usuario}, this.RetornaSetorOperationCompleted, userState);
+        }
+        
+        private void OnRetornaSetorOperationCompleted(object arg) {
+            if ((this.RetornaSetorCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaSetorCompleted(this, new RetornaSetorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -370,6 +404,32 @@ namespace WindowsFormsApp3.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaSetorCompletedEventHandler(object sender, RetornaSetorCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaSetorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaSetorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
