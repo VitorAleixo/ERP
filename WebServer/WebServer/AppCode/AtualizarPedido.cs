@@ -64,6 +64,57 @@ namespace WebServer.AppCode
             }
         }
 
+        public void AtualizarGerar(int IdPedido)
+        {
+            try
+            {
+                con = ConnectionFactory.getConnection();
+                con.Open();
+
+                cmd = new SqlCommand("UPDATE Pedido SET Status = 'GERADO' WHERE IdPedido = @IdPedido ", con);
+
+                cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    valor = 1;
+                }
+                else
+                {
+                    valor = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                try
+                {
+                    if (con != null)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+
+                try
+                {
+                    if (cmd != null)
+                    {
+                        cmd.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+            }
+        }
+
         public void Aprovar(int IdPedido)
         {
             try

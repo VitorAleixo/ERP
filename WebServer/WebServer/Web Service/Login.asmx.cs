@@ -227,6 +227,23 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
+        public bool AtualizarGerar(
+                  int IdPedido
+                  )
+        {
+            AtualizarPedido atualizar = new AtualizarPedido();
+            atualizar.AtualizarGerar(IdPedido);
+            if (atualizar.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
         public bool Aprovar(
                   int IdPedido
                   )

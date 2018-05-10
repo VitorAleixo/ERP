@@ -37,6 +37,9 @@ namespace WebServer.AppCode
             [XmlElement("Tipo")]
             public String Tipo { get; set; }
 
+            [XmlElement("Status")]
+            public String Status { get; set; }
+
         }
 
         public static class Program
@@ -56,7 +59,7 @@ namespace WebServer.AppCode
                     con = ConnectionFactory.getConnection();
                     con.Open();
 
-                    comando = "SELECT IdPedido, Solicitante, Urgencia, DataCriacao, Tipo FROM Pedido WHERE Status = 'APROVADO' ORDER BY Urgencia DESC;";
+                    comando = "SELECT IdPedido, Solicitante, Urgencia, DataCriacao, Tipo, Status FROM Pedido WHERE Status = 'APROVADO' OR Status = 'GERADO' ORDER BY Status;";
 
                     XmlSerializer ser = new XmlSerializer(typeof(ListaSolicitacoes));
                     list = new ListaSolicitacoes();
@@ -76,6 +79,7 @@ namespace WebServer.AppCode
                                     Urgencia = rdr.GetString(2),
                                     DataCriacao = rdr.GetDateTime(3).ToString("dd/MM/yyyy"),
                                     Tipo = rdr.GetString(4),
+                                    Status = rdr.GetString(5)
                                 });
                             }
                         }

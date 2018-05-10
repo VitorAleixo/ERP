@@ -30,14 +30,15 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerarSolicitacao));
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.Solicitante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Urgencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCriacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSolicCompra = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnLegendas = new System.Windows.Forms.Button();
+            this.Solicitante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Urgencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataCriacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,41 +52,14 @@
             this.Solicitante,
             this.Urgencia,
             this.DataCriacao,
-            this.Tipo});
+            this.Tipo,
+            this.Status});
             this.grdGerenciamento.Location = new System.Drawing.Point(12, 37);
             this.grdGerenciamento.Name = "grdGerenciamento";
             this.grdGerenciamento.ReadOnly = true;
             this.grdGerenciamento.Size = new System.Drawing.Size(705, 309);
             this.grdGerenciamento.TabIndex = 3;
             this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
-            // 
-            // Solicitante
-            // 
-            this.Solicitante.DataPropertyName = "Solicitante";
-            this.Solicitante.HeaderText = "Solicitante";
-            this.Solicitante.Name = "Solicitante";
-            this.Solicitante.ReadOnly = true;
-            // 
-            // Urgencia
-            // 
-            this.Urgencia.DataPropertyName = "Urgencia";
-            this.Urgencia.HeaderText = "Urgencia";
-            this.Urgencia.Name = "Urgencia";
-            this.Urgencia.ReadOnly = true;
-            // 
-            // DataCriacao
-            // 
-            this.DataCriacao.DataPropertyName = "DataCriacao";
-            this.DataCriacao.HeaderText = "DataCriacao";
-            this.DataCriacao.Name = "DataCriacao";
-            this.DataCriacao.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
             // 
             // label1
             // 
@@ -136,6 +110,41 @@
             this.btnLegendas.UseVisualStyleBackColor = true;
             this.btnLegendas.Click += new System.EventHandler(this.btnLegendas_Click);
             // 
+            // Solicitante
+            // 
+            this.Solicitante.DataPropertyName = "Solicitante";
+            this.Solicitante.HeaderText = "Solicitante";
+            this.Solicitante.Name = "Solicitante";
+            this.Solicitante.ReadOnly = true;
+            // 
+            // Urgencia
+            // 
+            this.Urgencia.DataPropertyName = "Urgencia";
+            this.Urgencia.HeaderText = "Urgencia";
+            this.Urgencia.Name = "Urgencia";
+            this.Urgencia.ReadOnly = true;
+            // 
+            // DataCriacao
+            // 
+            this.DataCriacao.DataPropertyName = "DataCriacao";
+            this.DataCriacao.HeaderText = "DataCriacao";
+            this.DataCriacao.Name = "DataCriacao";
+            this.DataCriacao.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
             // frmGerarSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,12 +173,13 @@
 
         public System.Windows.Forms.DataGridView grdGerenciamento;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSolicCompra;
+        private System.Windows.Forms.Button btnLegendas;
         private System.Windows.Forms.DataGridViewTextBoxColumn Solicitante;
         private System.Windows.Forms.DataGridViewTextBoxColumn Urgencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCriacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSolicCompra;
-        private System.Windows.Forms.Button btnLegendas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

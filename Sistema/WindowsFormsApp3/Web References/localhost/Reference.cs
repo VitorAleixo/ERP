@@ -49,6 +49,8 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback AtualizarOperationCompleted;
         
+        private System.Threading.SendOrPostCallback AtualizarGerarOperationCompleted;
+        
         private System.Threading.SendOrPostCallback AprovarOperationCompleted;
         
         private System.Threading.SendOrPostCallback ReprovarOperationCompleted;
@@ -148,6 +150,9 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         public event AtualizarCompletedEventHandler AtualizarCompleted;
+        
+        /// <remarks/>
+        public event AtualizarGerarCompletedEventHandler AtualizarGerarCompleted;
         
         /// <remarks/>
         public event AprovarCompletedEventHandler AprovarCompleted;
@@ -578,6 +583,35 @@ namespace WindowsFormsApp3.localhost {
             if ((this.AtualizarCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AtualizarCompleted(this, new AtualizarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AtualizarGerar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AtualizarGerar(int IdPedido) {
+            object[] results = this.Invoke("AtualizarGerar", new object[] {
+                        IdPedido});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AtualizarGerarAsync(int IdPedido) {
+            this.AtualizarGerarAsync(IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizarGerarAsync(int IdPedido, object userState) {
+            if ((this.AtualizarGerarOperationCompleted == null)) {
+                this.AtualizarGerarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizarGerarOperationCompleted);
+            }
+            this.InvokeAsync("AtualizarGerar", new object[] {
+                        IdPedido}, this.AtualizarGerarOperationCompleted, userState);
+        }
+        
+        private void OnAtualizarGerarOperationCompleted(object arg) {
+            if ((this.AtualizarGerarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizarGerarCompleted(this, new AtualizarGerarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1661,6 +1695,8 @@ namespace WindowsFormsApp3.localhost {
         
         private string tipoField;
         
+        private string statusField;
+        
         /// <remarks/>
         public int IdPedido {
             get {
@@ -1708,6 +1744,16 @@ namespace WindowsFormsApp3.localhost {
             }
             set {
                 this.tipoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
             }
         }
     }
@@ -2076,6 +2122,32 @@ namespace WindowsFormsApp3.localhost {
         private object[] results;
         
         internal AtualizarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void AtualizarGerarCompletedEventHandler(object sender, AtualizarGerarCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AtualizarGerarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AtualizarGerarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

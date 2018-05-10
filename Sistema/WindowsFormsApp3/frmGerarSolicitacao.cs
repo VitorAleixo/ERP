@@ -54,21 +54,16 @@ namespace WindowsFormsApp3
             {
                 foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
-                    string RowType = row.Cells[1].Value.ToString();
+                    string RowType = row.Cells[4].Value.ToString();
 
-                    if (RowType == "Nivel 1 - Normal")
-                    {
-                        row.DefaultCellStyle.BackColor = Color.LightGreen;
-                        row.DefaultCellStyle.ForeColor = Color.Black;
-                    }
-                    else if (RowType == "Nivel 2 - Mediana")
+                    if (RowType == "APROVADO")
                     {
                         row.DefaultCellStyle.BackColor = Color.Yellow;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
-                    else if (RowType == "Nivel 3 - Urgente")
+                    else if (RowType == "GERADO")
                     {
-                        row.DefaultCellStyle.BackColor = Color.Salmon;
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
                 }
@@ -86,11 +81,38 @@ namespace WindowsFormsApp3
 
         private void btnSolicCompra_Click(object sender, EventArgs e)
         {
-            //GERA RELATORIO
-            //IF RELATORIO GERADO
-            //UPDATE PARA PEDIDO GERADO
-            //MENSAGEM
-            //CARREGAGRID
+            try
+            {
+                var obj = (localhost.Solicitacoes)grdGerenciamento.CurrentRow.DataBoundItem;
+                localhost.Login pedido = new localhost.Login();
+
+                frmSolicitacaoRelatorio relatorioSolicitacao = new frmSolicitacaoRelatorio();
+                relatorioSolicitacao.Pedido = obj.IdPedido;
+                if (obj.Status == "GERADO")
+                {         
+                        relatorioSolicitacao.Show();
+                        CarregarGrid();
+                }
+                else if (obj.Status == "APROVADO")
+                {
+                DialogResult dialogResult = MessageBox.Show("Você quer aprovar esta Solicitação de Compra?", "Confirmação", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    pedido.AtualizarGerar(obj.IdPedido);
+                    relatorioSolicitacao.Show();
+                    CarregarGrid();
+                }
+                }
+                else
+                {
+                    MessageBox.Show("Pedido não entra nesta área!","Erro", MessageBoxButtons.OK);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
