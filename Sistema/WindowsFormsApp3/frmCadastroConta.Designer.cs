@@ -35,18 +35,24 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.txtSenhaConfirmacao = new System.Windows.Forms.TextBox();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.cmbDepartamento = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtFuncao = new System.Windows.Forms.TextBox();
+            this.txtDepartamento = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnGravar
             // 
             this.btnGravar.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
             this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGravar.Location = new System.Drawing.Point(17, 219);
+            this.btnGravar.Location = new System.Drawing.Point(325, 172);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(64, 23);
             this.btnGravar.TabIndex = 5;
@@ -59,7 +65,7 @@
             // 
             this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(145, 219);
+            this.btnSair.Location = new System.Drawing.Point(395, 172);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(64, 23);
             this.btnSair.TabIndex = 6;
@@ -80,7 +86,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(17, 53);
+            this.txtUsuario.Location = new System.Drawing.Point(267, 52);
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(192, 20);
@@ -88,7 +94,7 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(17, 93);
+            this.txtSenha.Location = new System.Drawing.Point(267, 91);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(192, 20);
@@ -96,24 +102,16 @@
             // 
             // txtSenhaConfirmacao
             // 
-            this.txtSenhaConfirmacao.Location = new System.Drawing.Point(17, 136);
+            this.txtSenhaConfirmacao.Location = new System.Drawing.Point(267, 130);
             this.txtSenhaConfirmacao.Name = "txtSenhaConfirmacao";
             this.txtSenhaConfirmacao.PasswordChar = '*';
             this.txtSenhaConfirmacao.Size = new System.Drawing.Size(192, 20);
             this.txtSenhaConfirmacao.TabIndex = 3;
             // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(17, 179);
-            this.txtEmail.MaxLength = 50;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(192, 20);
-            this.txtEmail.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 37);
+            this.label2.Location = new System.Drawing.Point(264, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 29;
@@ -122,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 77);
+            this.label3.Location = new System.Drawing.Point(264, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 30;
@@ -131,31 +129,117 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 120);
+            this.label4.Location = new System.Drawing.Point(264, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 13);
             this.label4.TabIndex = 31;
             this.label4.Text = "Confirmar Senha";
             // 
+            // cmbDepartamento
+            // 
+            this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDepartamento.FormattingEnabled = true;
+            this.cmbDepartamento.Items.AddRange(new object[] {
+            "ADMINISTRATIVO",
+            "ALMOXARIFADO",
+            "COMPRAS",
+            "COMERCIAL",
+            "COMEX",
+            "CUSTO",
+            "DIRETORIA",
+            "ENGENHARIA",
+            "MARKETING",
+            "FINANCEIRO",
+            "PCP",
+            "PRODUÇÃO",
+            "QUALIDADE",
+            "R.H.",
+            "SEG. DO TRABALHO",
+            "T.I.",
+            "OUTROS"});
+            this.cmbDepartamento.Location = new System.Drawing.Point(17, 130);
+            this.cmbDepartamento.Name = "cmbDepartamento";
+            this.cmbDepartamento.Size = new System.Drawing.Size(192, 21);
+            this.cmbDepartamento.TabIndex = 32;
+            this.cmbDepartamento.SelectedValueChanged += new System.EventHandler(this.cmbDepartamento_SelectedValueChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 163);
+            this.label5.Location = new System.Drawing.Point(14, 114);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "Email";
+            this.label5.Size = new System.Drawing.Size(74, 13);
+            this.label5.TabIndex = 33;
+            this.label5.Text = "Departamento";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(82, 13);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Nome Completo";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(17, 52);
+            this.txtNome.MaxLength = 20;
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(192, 20);
+            this.txtNome.TabIndex = 34;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 37;
+            this.label7.Text = "Função";
+            // 
+            // txtFuncao
+            // 
+            this.txtFuncao.Location = new System.Drawing.Point(17, 91);
+            this.txtFuncao.MaxLength = 20;
+            this.txtFuncao.Name = "txtFuncao";
+            this.txtFuncao.Size = new System.Drawing.Size(192, 20);
+            this.txtFuncao.TabIndex = 36;
+            // 
+            // txtDepartamento
+            // 
+            this.txtDepartamento.Enabled = false;
+            this.txtDepartamento.Location = new System.Drawing.Point(17, 172);
+            this.txtDepartamento.Name = "txtDepartamento";
+            this.txtDepartamento.PasswordChar = '*';
+            this.txtDepartamento.Size = new System.Drawing.Size(192, 20);
+            this.txtDepartamento.TabIndex = 40;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 156);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 13);
+            this.label8.TabIndex = 41;
+            this.label8.Text = "Informe o Departamento";
             // 
             // frmCadastroConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(225, 254);
+            this.ClientSize = new System.Drawing.Size(472, 207);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtDepartamento);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.txtFuncao);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbDepartamento);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtSenhaConfirmacao);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtUsuario);
@@ -168,7 +252,7 @@
             this.MinimizeBox = false;
             this.Name = "frmCadastroConta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sistema de Estoque";
+            this.Text = "Sistema de Gerenciamento";
             this.Load += new System.EventHandler(this.frmCadastroConta_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,10 +267,16 @@
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.TextBox txtSenhaConfirmacao;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbDepartamento;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtNome;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtFuncao;
+        private System.Windows.Forms.TextBox txtDepartamento;
+        private System.Windows.Forms.Label label8;
     }
 }

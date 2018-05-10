@@ -124,7 +124,7 @@
             this.MinimizeBox = false;
             this.Name = "frmVisProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sistema de Estoque";
+            this.Text = "Sistema de Gerenciamento";
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

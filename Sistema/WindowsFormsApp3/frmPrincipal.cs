@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
@@ -36,11 +37,16 @@ namespace WindowsFormsApp3
         private void btnCadastroProd_Click(object sender, EventArgs e)
         {
             new frmCadastroProduto { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+          
         }
 
         private void btnCadastroForn_Click(object sender, EventArgs e)
         {
             new frmCadastroFornecedor { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
+        private void btnCadastroCliente_Click(object sender, EventArgs e)
+        {
+            new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void btnGerenciamento_Click(object sender, EventArgs e)
@@ -57,5 +63,19 @@ namespace WindowsFormsApp3
         {
             new frmVisFornecedores { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bem Vindo: " + SessaoSistema.NomeUsuario + "!", "Confirmacão", MessageBoxButtons.OK);
+            lblNomeUsuario.Text = "Usuário: " + SessaoSistema.NomeUsuario;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblData.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            lblHora.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+       
     }
 }

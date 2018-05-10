@@ -95,10 +95,5 @@ namespace WindowsFormsApp3
                 btnLogin.PerformClick();
             }
         }
-
-        private void lblNovaConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
-        }
     }
 }

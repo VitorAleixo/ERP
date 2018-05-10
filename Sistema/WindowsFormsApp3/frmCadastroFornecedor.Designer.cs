@@ -446,7 +446,7 @@
             this.MinimizeBox = false;
             this.Name = "frmCadastroFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Sistema de Estoque";
+            this.Text = "Sistema de Gerenciamento";
             this.Load += new System.EventHandler(this.frmCadastroFornecedor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

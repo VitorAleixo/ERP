@@ -80,15 +80,15 @@ namespace WebServer.Web_Service
 
         [WebMethod]
         public bool CadastroUsuario(
-                    string Usuario
-                  , string Senha 
-                  , string Email 
-                  , DateTime DataCriacao 
-                  , string TipoConta
-                  , int Status)
+                     string Nome
+                , string Funcao
+                , string Departamento
+                , string Usuario
+                , string Senha
+                , DateTime DataCriacao)
         {
             CadastroUsuario cadastroUser = new CadastroUsuario();
-            cadastroUser.GravarUsuario(Usuario, Senha, Email, DataCriacao, TipoConta, Status);
+            cadastroUser.GravarUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
 
             if (cadastroUser.valor == 1)
             {

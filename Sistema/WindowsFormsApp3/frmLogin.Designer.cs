@@ -33,7 +33,6 @@
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblNovaConta = new System.Windows.Forms.LinkLabel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -79,17 +78,6 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Usuário:";
             // 
-            // lblNovaConta
-            // 
-            this.lblNovaConta.AutoSize = true;
-            this.lblNovaConta.Location = new System.Drawing.Point(60, 165);
-            this.lblNovaConta.Name = "lblNovaConta";
-            this.lblNovaConta.Size = new System.Drawing.Size(120, 13);
-            this.lblNovaConta.TabIndex = 14;
-            this.lblNovaConta.TabStop = true;
-            this.lblNovaConta.Text = "Não possui uma Conta?";
-            this.lblNovaConta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblNovaConta_LinkClicked);
-            // 
             // btnLogin
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -125,7 +113,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(234, 254);
-            this.Controls.Add(this.lblNovaConta);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.btnLogin);
@@ -138,7 +125,7 @@
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login - Sistema de Estoque";
+            this.Text = "Login - Sistema de Gerenciamento";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,7 +139,6 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel lblNovaConta;
     }
 }
 

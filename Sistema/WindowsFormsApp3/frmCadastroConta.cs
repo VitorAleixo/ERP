@@ -42,11 +42,14 @@ namespace WindowsFormsApp3
 
         void LimparCampos()
         {
-
+            txtNome.Text = "";
+            txtFuncao.Text = "";
+            txtDepartamento.Text = "";
+            cmbDepartamento.SelectedIndex = -1;
             txtUsuario.Text = "";
             txtSenha.Text = "";
             txtSenhaConfirmacao.Text = "";
-            txtEmail.Text = "";
+          
         }
 
 
@@ -54,7 +57,7 @@ namespace WindowsFormsApp3
         {
             try
             {
-                if (txtEmail.Text == "" || txtSenha.Text == "" || txtUsuario.Text == "" || txtSenhaConfirmacao.Text == "")
+                if (txtNome.Text == "" || txtSenha.Text == "" || txtUsuario.Text == "" || txtSenhaConfirmacao.Text == "" || txtFuncao.Text == "" || cmbDepartamento.SelectedIndex == -1)
                 {
                     MessageBox.Show("OOPS! Tem algum dado faltando!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -62,17 +65,23 @@ namespace WindowsFormsApp3
                 {
                     localhost.Login cadastroUsuario = new localhost.Login();
 
+                   
+                    string Nome = txtNome.Text;
+                    string Funcao = txtFuncao.Text;
+                    string Departamento = cmbDepartamento.SelectedItem.ToString();
                     string Usuario = txtUsuario.Text;
                     string Senha = txtSenha.Text;
                     string SenhaConfirmacao = txtSenhaConfirmacao.Text;
-                    string Email = txtEmail.Text;
+
+                    if (cmbDepartamento.SelectedItem.ToString() == "OUTROS")
+                    {
+                          Departamento = txtDepartamento.Text;
+                    }
                     DateTime DataCriacao = DateTime.Now;
-                    string TipoConta = "Usuario";
-                    int Status = 0;
 
                     if (Senha == SenhaConfirmacao)
                     {
-                        if (cadastroUsuario.CadastroUsuario(Usuario, Senha, Email, DataCriacao, TipoConta, Status))
+                        if (cadastroUsuario.CadastroUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao))
                         {
                             DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!", "Usuário", MessageBoxButtons.OK);
                             this.Close();
@@ -91,6 +100,15 @@ namespace WindowsFormsApp3
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbDepartamento_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbDepartamento.SelectedItem.ToString() == "OUTROS")
+            {
+                txtDepartamento.Text = "";
+                txtDepartamento.Enabled = true;
             }
         }
     }
