@@ -63,7 +63,7 @@
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.txtBairro = new System.Windows.Forms.TextBox();
             this.txtEndereco = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnGravar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -246,6 +246,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(86, 32);
+            this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(347, 20);
             this.txtNome.TabIndex = 1;
@@ -280,7 +281,7 @@
             this.txtTelefone2.Mask = "+00 (00) 00000-0000";
             this.txtTelefone2.Name = "txtTelefone2";
             this.txtTelefone2.Size = new System.Drawing.Size(179, 20);
-            this.txtTelefone2.TabIndex = 19;
+            this.txtTelefone2.TabIndex = 14;
             // 
             // txtTelefone1
             // 
@@ -288,11 +289,12 @@
             this.txtTelefone1.Mask = "+00 (00) 00000-0000";
             this.txtTelefone1.Name = "txtTelefone1";
             this.txtTelefone1.Size = new System.Drawing.Size(179, 20);
-            this.txtTelefone1.TabIndex = 18;
+            this.txtTelefone1.TabIndex = 13;
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(401, 45);
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(258, 20);
             this.txtEmail.TabIndex = 15;
@@ -347,6 +349,7 @@
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(573, 150);
+            this.txtNumero.MaxLength = 10;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(156, 20);
             this.txtNumero.TabIndex = 12;
@@ -354,6 +357,7 @@
             // txtComplemento2
             // 
             this.txtComplemento2.Location = new System.Drawing.Point(13, 150);
+            this.txtComplemento2.MaxLength = 1000;
             this.txtComplemento2.Name = "txtComplemento2";
             this.txtComplemento2.Size = new System.Drawing.Size(544, 20);
             this.txtComplemento2.TabIndex = 11;
@@ -361,6 +365,7 @@
             // txtEstado
             // 
             this.txtEstado.Location = new System.Drawing.Point(573, 98);
+            this.txtEstado.MaxLength = 30;
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(156, 20);
             this.txtEstado.TabIndex = 10;
@@ -368,6 +373,7 @@
             // txtComplemento
             // 
             this.txtComplemento.Location = new System.Drawing.Point(176, 98);
+            this.txtComplemento.MaxLength = 1000;
             this.txtComplemento.Name = "txtComplemento";
             this.txtComplemento.Size = new System.Drawing.Size(381, 20);
             this.txtComplemento.TabIndex = 9;
@@ -375,6 +381,7 @@
             // txtCidade
             // 
             this.txtCidade.Location = new System.Drawing.Point(13, 98);
+            this.txtCidade.MaxLength = 30;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(146, 20);
             this.txtCidade.TabIndex = 8;
@@ -382,6 +389,7 @@
             // txtBairro
             // 
             this.txtBairro.Location = new System.Drawing.Point(573, 42);
+            this.txtBairro.MaxLength = 30;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(156, 20);
             this.txtBairro.TabIndex = 7;
@@ -389,21 +397,23 @@
             // txtEndereco
             // 
             this.txtEndereco.Location = new System.Drawing.Point(176, 42);
+            this.txtEndereco.MaxLength = 50;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(381, 20);
             this.txtEndereco.TabIndex = 6;
             // 
-            // button1
+            // btnGravar
             // 
-            this.button1.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(683, 328);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Gravar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGravar.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGravar.Location = new System.Drawing.Point(683, 328);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(64, 23);
+            this.btnGravar.TabIndex = 16;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnSair
             // 
@@ -426,7 +436,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSair);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -463,7 +473,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;

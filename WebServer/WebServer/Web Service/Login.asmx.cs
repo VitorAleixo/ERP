@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using WebServer.AppCode;
+using MySql;
+using MySql.Data.MySqlClient;
 
 namespace WebServer.Web_Service
 {
@@ -23,12 +25,19 @@ namespace WebServer.Web_Service
     {
 
         [WebMethod]
-        public bool LoginSistema(string usuario, string senha)
+        public bool LoginSistema(
+                  string Usuario
+                , string Senha)
         {
             Criptografia c = new Criptografia();
-            string senhaCriptografada = c.SHA256(senha);
+            string senhaCriptografada = c.SHA256(Senha);
 
-            if (usuario == "vitor" && senhaCriptografada == "8f7957e71c2b39d1ee8d93cf9eaf44b09f7cd207711f5c0273951b358713efda")
+            LoginUsuario login = new LoginUsuario();
+
+            login.Logar(Usuario, senhaCriptografada);
+           
+
+            if (login.valor == 1)
             {
                 return true;
             }
@@ -36,6 +45,36 @@ namespace WebServer.Web_Service
             {
                 return false;
             }
+        }
+
+        [WebMethod]
+        public bool CadastroFornecedor(
+                  string Nome 
+                , string CPF 
+                , string CEP 
+                , string Endereco 
+                , string Bairro 
+                , string Cidade 
+                , string Complemento 
+                , string Estado 
+                , string Complemento2 
+                , string Numero
+                , string Telefone
+                , string Telefone2 
+                , string EMAIL )
+        {
+            CadastroFornecedor cadastroForn = new CadastroFornecedor();
+            cadastroForn.GravarFornecedor(Nome,CPF,CEP,Endereco,Bairro,Cidade,Complemento,Estado,Complemento2,Numero,Telefone,Telefone2,EMAIL);
+
+            if (cadastroForn.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 
