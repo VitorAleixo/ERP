@@ -10,9 +10,7 @@ namespace WebServer.AppCode
     public class CadastroProduto
     {
         public int valor { get; set; } = 0;
-        private SqlCommand command = null;
-        private SqlCommand command2 = null;
-        private SqlCommand cmdo = null;
+        private SqlCommand cmd = null;
         private SqlConnection con = null;
         private SqlDataReader rdr = null;
 
@@ -31,7 +29,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
                 int IdProduto = 0;
-                SqlCommand cmd = new SqlCommand("SELECT CodigoProduto FROM Produto WHERE CodigoProduto = @Cod;", con);
+                cmd = new SqlCommand("SELECT CodigoProduto FROM Produto WHERE CodigoProduto = @Cod;", con);
 
                 cmd.Parameters.AddWithValue("@Cod", CodigoProduto);
 
@@ -46,15 +44,15 @@ namespace WebServer.AppCode
                 {
                     rdr.Close();
 
-                    SqlCommand comando = new SqlCommand("INSERT INTO Produto(CodigoProduto, Nome, UnidadeMedida, Tipo)" +
+                    cmd = new SqlCommand("INSERT INTO Produto(CodigoProduto, Nome, UnidadeMedida, Tipo)" +
                         "VALUES (@Cod, @Nome,  @UnidadeMedida, @Tipo); SELECT @@IDENTITY", con);
 
-                    comando.Parameters.AddWithValue("@Cod", CodigoProduto);
-                    comando.Parameters.AddWithValue("@Nome", Nome);
-                    comando.Parameters.AddWithValue("@UnidadeMedida", UnidadeMedida);
-                    comando.Parameters.AddWithValue("@Tipo", Tipo);
+                    cmd.Parameters.AddWithValue("@Cod", CodigoProduto);
+                    cmd.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@UnidadeMedida", UnidadeMedida);
+                    cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
-                    IdProduto = Convert.ToInt32(comando.ExecuteScalar());
+                    IdProduto = Convert.ToInt32(cmd.ExecuteScalar());
 
                 }
                 return IdProduto;
@@ -76,34 +74,11 @@ namespace WebServer.AppCode
                 {
                     throw new Exception(ex.ToString());
                 }
-
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
-                }
-                try
-                {
-                    if (command2 != null)
-                    {
-                        command2.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
-                }
-                try
-                {
-                    if (cmdo != null)
-                    {
-                        cmdo.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)
@@ -134,7 +109,7 @@ namespace WebServer.AppCode
             {
                 con = ConnectionFactory.getConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Estoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque) VALUES " +
+                cmd = new SqlCommand("INSERT INTO Estoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque) VALUES " +
                 "(@IdProduto, @QtdMinima, @QtdMaxima, @QtdEstoque);", con);
 
 
@@ -173,31 +148,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
-                }
-                try
-                {
-                    if (command2 != null)
-                    {
-                        command2.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
-                }
-                try
-                {
-                    if (cmdo != null)
-                    {
-                        cmdo.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

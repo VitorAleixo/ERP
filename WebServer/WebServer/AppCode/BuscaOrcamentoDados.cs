@@ -43,8 +43,7 @@ namespace WebServer.AppCode
 
             private static SqlConnection con = null;
             private static SqlDataReader rdr = null;
-            private static string comando = null;
-            private static SqlCommand command = null;
+            private static SqlCommand cmd = null;
             public static ListaOrcamentoDados list { get; set; }
 
 
@@ -55,14 +54,14 @@ namespace WebServer.AppCode
                     con = ConnectionFactory.getConnection();
                     con.Open();
 
-                    SqlCommand comando = new SqlCommand("SELECT Cod, Nome, UnidadeMedida, Solicitar FROM PedidoItem WHERE IdPedido = @IdPedido;", con);
-                    comando.Parameters.AddWithValue("@IdPedido", IdPedido);
+                    cmd = new SqlCommand("SELECT Cod, Nome, UnidadeMedida, Solicitar FROM PedidoItem WHERE IdPedido = @IdPedido;", con);
+                    cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
 
                     XmlSerializer ser = new XmlSerializer(typeof(ListaOrcamentoDados));
                     list = new ListaOrcamentoDados();
 
                   
-                        using (var rdr = comando.ExecuteReader())
+                        using (var rdr = cmd.ExecuteReader())
                         {
                             while (rdr.Read())
                             {
@@ -75,8 +74,6 @@ namespace WebServer.AppCode
                                 });
                             }
                         }
-                        comando.Dispose();
-
                     return list;
 
                 }
@@ -111,9 +108,9 @@ namespace WebServer.AppCode
                     }
                     try
                     {
-                        if (command != null)
+                        if (cmd != null)
                         {
-                            command.Dispose();
+                            cmd.Dispose();
                         }
                     }
                     catch (Exception ex)

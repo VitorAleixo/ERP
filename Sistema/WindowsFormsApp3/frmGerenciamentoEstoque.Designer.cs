@@ -128,11 +128,11 @@
             this.btnSolicCompra.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSolicCompra.Image = global::WindowsFormsApp3.Properties.Resources.btnSolCompra16;
             this.btnSolicCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSolicCompra.Location = new System.Drawing.Point(494, 348);
+            this.btnSolicCompra.Location = new System.Drawing.Point(512, 348);
             this.btnSolicCompra.Name = "btnSolicCompra";
-            this.btnSolicCompra.Size = new System.Drawing.Size(136, 23);
+            this.btnSolicCompra.Size = new System.Drawing.Size(118, 23);
             this.btnSolicCompra.TabIndex = 5;
-            this.btnSolicCompra.Text = "Solicitação de Compra";
+            this.btnSolicCompra.Text = "Pedido de Compra";
             this.btnSolicCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSolicCompra.UseVisualStyleBackColor = true;
             this.btnSolicCompra.Click += new System.EventHandler(this.btnSolicCompra_Click);

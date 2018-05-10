@@ -10,7 +10,7 @@ namespace WebServer.AppCode
     {
 
         public int valor { get; set; } = 0;
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlConnection con = null;
 
         public void Atualizar(int IdPedido)
@@ -20,7 +20,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Pedido SET Status = 'ORCAMENTO' WHERE IdPedido = @IdPedido ", con);
+                cmd = new SqlCommand("UPDATE Pedido SET Status = 'ORCAMENTO' WHERE IdPedido = @IdPedido ", con);
 
                 cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
                 if (cmd.ExecuteNonQuery() == 1)
@@ -52,9 +52,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)
@@ -71,7 +71,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Pedido SET Status = 'APROVADO' WHERE IdPedido = @IdPedido ", con);
+                cmd = new SqlCommand("UPDATE Pedido SET Status = 'APROVADO' WHERE IdPedido = @IdPedido ", con);
 
                 cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
                 if (cmd.ExecuteNonQuery() == 1)
@@ -103,9 +103,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)
@@ -122,7 +122,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Pedido SET Status = 'REPROVADO' WHERE IdPedido = @IdPedido ", con);
+                cmd = new SqlCommand("UPDATE Pedido SET Status = 'REPROVADO' WHERE IdPedido = @IdPedido ", con);
 
                 cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
                 if (cmd.ExecuteNonQuery() == 1)
@@ -154,9 +154,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

@@ -102,7 +102,6 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\Window
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmCadastroProduto.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmGerenciamentoEstoque.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLogin.resources
-C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipal.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmVisFornecedores.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmVisProdutos.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Properties.Resources.resources
@@ -119,7 +118,6 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\Window
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipalCompras.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipalAlmoxarife.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipalGerencia.resources
-C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmSolicitacaoCompra.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLegendaSolicitacao.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmGerarOrcamento.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLegendaSolic.resources
@@ -128,3 +126,5 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\Window
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmAprovaOrcamento.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLegendaGerencia.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmOrcamento.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmGerarSolicitacao.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPedidoCompra.resources

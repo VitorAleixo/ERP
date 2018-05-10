@@ -9,7 +9,7 @@ namespace WebServer.AppCode
     public class BuscaDepartamento
     {
 
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlDataReader rdr = null;
         private SqlConnection con = null;
 
@@ -22,7 +22,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT Departamento FROM Usuario WHERE Usuario = @Usuario;", con);
+                cmd = new SqlCommand("SELECT Departamento FROM Usuario WHERE Usuario = @Usuario;", con);
 
                 cmd.Parameters.AddWithValue("@Usuario", Usuario);
 
@@ -68,9 +68,9 @@ namespace WebServer.AppCode
                 }
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

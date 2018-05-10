@@ -12,9 +12,9 @@ using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
-    public partial class frmSolicitacaoCompra : Form
+    public partial class frmPedidoCompra : Form
     {
-        public frmSolicitacaoCompra()
+        public frmPedidoCompra()
         {
             InitializeComponent();
         }

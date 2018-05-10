@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroFornecedor));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -80,19 +79,10 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Cadastrar / Editar Fornecedores";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Código";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(445, 16);
+            this.label3.Location = new System.Drawing.Point(445, 17);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 13);
             this.label3.TabIndex = 4;
@@ -101,7 +91,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(83, 16);
+            this.label4.Location = new System.Drawing.Point(10, 17);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 13);
             this.label4.TabIndex = 5;
@@ -211,8 +201,6 @@
             this.groupBox1.Controls.Add(this.txtCPF);
             this.groupBox1.Controls.Add(this.cmbCPF);
             this.groupBox1.Controls.Add(this.txtNome);
-            this.groupBox1.Controls.Add(this.txtId);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
@@ -224,7 +212,7 @@
             // 
             // txtCPF
             // 
-            this.txtCPF.Location = new System.Drawing.Point(555, 32);
+            this.txtCPF.Location = new System.Drawing.Point(555, 33);
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(174, 20);
             this.txtCPF.TabIndex = 3;
@@ -237,7 +225,7 @@
             "NÃO POSSUI",
             "CPF",
             "CNPJ"});
-            this.cmbCPF.Location = new System.Drawing.Point(448, 32);
+            this.cmbCPF.Location = new System.Drawing.Point(448, 33);
             this.cmbCPF.Name = "cmbCPF";
             this.cmbCPF.Size = new System.Drawing.Size(100, 21);
             this.cmbCPF.TabIndex = 2;
@@ -245,20 +233,20 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(86, 32);
+            this.txtNome.Location = new System.Drawing.Point(13, 33);
             this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(347, 20);
+            this.txtNome.Size = new System.Drawing.Size(429, 20);
             this.txtNome.TabIndex = 1;
             // 
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(13, 32);
+            this.txtId.Location = new System.Drawing.Point(25, 9);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(46, 20);
             this.txtId.TabIndex = 0;
-            this.txtId.Text = "0";
+            this.txtId.Visible = false;
             // 
             // groupBox2
             // 
@@ -437,6 +425,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSair);
@@ -463,7 +452,6 @@
 
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;

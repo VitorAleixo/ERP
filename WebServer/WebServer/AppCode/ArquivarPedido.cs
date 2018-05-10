@@ -9,7 +9,7 @@ namespace WebServer.AppCode
     public class ArquivarPedido
     {
         public int valor { get; set; } = 0;
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlConnection con = null;
 
         public void Arquivar(int IdPedido)
@@ -19,7 +19,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE Pedido SET Status = 'ARQUIVADO' WHERE IdPedido = @IdPedido ", con);
+                cmd = new SqlCommand("UPDATE Pedido SET Status = 'ARQUIVADO' WHERE IdPedido = @IdPedido ", con);
 
                 cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
                 if (cmd.ExecuteNonQuery() == 1)
@@ -51,9 +51,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

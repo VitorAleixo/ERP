@@ -84,8 +84,12 @@ namespace WindowsFormsApp3
 
                 if (aprovacao.Reprovar(Convert.ToInt32(txtIdPedido.Text)) == true)
                 {
-                    MessageBox.Show("O Orçamento foi Reprovado!", "Confirmação", MessageBoxButtons.OK);
-                    this.Close();
+                    DialogResult dialogResult = MessageBox.Show("Tem certeza que quer reprovar esse orçamento?", "Confirmação", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        MessageBox.Show("O Orçamento foi Reprovado!", "Confirmação", MessageBoxButtons.OK);
+                        this.Close();
+                    }
                 }
                 else
                 {

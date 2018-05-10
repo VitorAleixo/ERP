@@ -316,6 +316,15 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
+        public BuscaSolicitacaoDeCompra.ListaSolicitacoes RetornaSolicitacaoDeCompra()
+        {
+            BuscaSolicitacaoDeCompra.Program.RetornaSolicitacoes();
+
+            return BuscaSolicitacaoDeCompra.Program.list;
+
+        }
+
+        [WebMethod]
         public BuscaFornecedor.ListaFornecedor RetornaFornecedor()
         {
             BuscaFornecedor.Program.RetornarFornecedor();

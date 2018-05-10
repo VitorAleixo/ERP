@@ -17,7 +17,7 @@ namespace WebServer.AppCode
 
         private SqlConnection con = null;
         private SqlDataReader rdr = null;
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
 
         public void Logar(string Usuario, string Senha)
         {
@@ -26,7 +26,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT Senha FROM Usuario WHERE Usuario = @Usuario;", con);
+                cmd = new SqlCommand("SELECT Senha FROM Usuario WHERE Usuario = @Usuario;", con);
 
                 cmd.Parameters.AddWithValue("@Usuario", Usuario);
 
@@ -50,9 +50,6 @@ namespace WebServer.AppCode
 
 
             }
-            //    comando = "SELECT Senha FROM Usuario WHERE Usuario = '" + Usuario + "';";
-            //command = new SqlCommand(comando, con);
-            //rdr = command.ExecuteReader();  
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
@@ -83,9 +80,9 @@ namespace WebServer.AppCode
                 }
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

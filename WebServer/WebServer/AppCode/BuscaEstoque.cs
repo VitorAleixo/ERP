@@ -47,8 +47,7 @@ namespace WebServer.AppCode
         {
             private static SqlConnection con = null;
             private static SqlDataReader rdr = null;
-            private static string comando = null;
-            private static SqlCommand command = null;
+            private static SqlCommand cmd = null;
             public static ListaEstoque list { get; set; }
 
 
@@ -58,16 +57,16 @@ namespace WebServer.AppCode
                 con.Open();
                 try
                 {
-                    SqlCommand comando = new SqlCommand("SELECT CodigoProduto, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida,Tipo " +
+                    SqlCommand cmd = new SqlCommand("SELECT CodigoProduto, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida,Tipo " +
                         "FROM Produto INNER JOIN Estoque " +
                         "on Produto.IdProduto = Estoque.IdProduto WHERE Tipo = @Tipo;", con);
-                    comando.Parameters.AddWithValue("@Tipo", Tipo);
+                    cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
 
                     XmlSerializer ser = new XmlSerializer(typeof(ListaEstoque));
                     list = new ListaEstoque();
 
-                    using (var rdr = comando.ExecuteReader())
+                    using (var rdr = cmd.ExecuteReader())
                     {
                         while (rdr.Read())
                         {
@@ -83,7 +82,6 @@ namespace WebServer.AppCode
                             });
                         }
                     }
-                    comando.Dispose();
                     return list;
                 }
                 catch (Exception ex)
@@ -117,9 +115,9 @@ namespace WebServer.AppCode
                     }
                     try
                     {
-                        if (command != null)
+                        if (cmd != null)
                         {
-                            command.Dispose();
+                            cmd.Dispose();
                         }
                     }
                     catch (Exception ex)

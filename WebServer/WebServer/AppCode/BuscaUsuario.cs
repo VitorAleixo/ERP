@@ -47,7 +47,7 @@ namespace WebServer.AppCode
             private static SqlConnection con = null;
             private static SqlDataReader rdr = null;
             private static string comando = null;
-            private static SqlCommand command = null;
+            private static SqlCommand cmd = null;
             public static ListaUsuario list { get; set; }
 
 
@@ -81,8 +81,6 @@ namespace WebServer.AppCode
                                 });
                             }
                         }
-                        cmd.Dispose();
-
                     }
 
                     return list;
@@ -119,9 +117,9 @@ namespace WebServer.AppCode
                     }
                     try
                     {
-                        if (command != null)
+                        if (cmd != null)
                         {
-                            command.Dispose();
+                            cmd.Dispose();
                         }
                     }
                     catch (Exception ex)

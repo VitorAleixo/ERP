@@ -156,6 +156,7 @@
     <Compile Include="AppCode\BuscaOrcamentos.cs" />
     <Compile Include="AppCode\BuscaProduto.cs" />
     <Compile Include="AppCode\BuscaSolicitacao.cs" />
+    <Compile Include="AppCode\BuscaSolicitacaoDeCompra.cs" />
     <Compile Include="AppCode\BuscaSolicitacaoItem.cs" />
     <Compile Include="AppCode\BuscaUsuario.cs" />
     <Compile Include="AppCode\BuscaVendedor.cs" />

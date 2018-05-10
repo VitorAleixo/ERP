@@ -25,7 +25,7 @@ namespace WebServer.AppCode
                 int IdPedido = 0;
                 con = ConnectionFactory.getConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Pedido(Solicitante, Urgencia, Motivo, DataCriacao, Status, Tipo) VALUES " +
+                cmd = new SqlCommand("INSERT INTO Pedido(Solicitante, Urgencia, Motivo, DataCriacao, Status, Tipo) VALUES " +
                 "(@Solicitante, @Urgencia, @Motivo, GETDATE(), @Status, @Tipo ); SELECT @@IDENTITY;", con);
 
                 cmd.Parameters.AddWithValue("@Solicitante", Solicitante);
@@ -84,7 +84,7 @@ namespace WebServer.AppCode
             {
                 con = ConnectionFactory.getConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO PedidoItem(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida , Solicitar, IdPedido) VALUES " +
+                cmd = new SqlCommand("INSERT INTO PedidoItem(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida , Solicitar, IdPedido) VALUES " +
                 "(@Cod, @Nome, @QtdEstoque, @QtdMinima, @QtdMaxima, @UnidadeMedida, @Solicitar, @IdPedido );", con);
 
                 cmd.Parameters.AddWithValue("@Cod", Cod);

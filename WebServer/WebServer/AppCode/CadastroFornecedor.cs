@@ -10,7 +10,7 @@ namespace WebServer.AppCode
     public class CadastroFornecedor
     {
         public int valor { get; set; } = 0;
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlConnection con = null;
 
         public void GravarFornecedor(
@@ -33,7 +33,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Fornecedor(Nome, CPF, CEP, Endereco, Bairro, Cidade, Complemento, Estado, Complemento2, Numero, Telefone, Telefone2, EMAIL) VALUES " +
+                cmd = new SqlCommand("INSERT INTO Fornecedor(Nome, CPF, CEP, Endereco, Bairro, Cidade, Complemento, Estado, Complemento2, Numero, Telefone, Telefone2, EMAIL) VALUES " +
                     "(@Nome, @CPF, @CEP, @Endereco, @Bairro, @Cidade, @Complemento, @Estado, @Complemento2, @Numero, @Telefone, @Telefone2, @EMAIL );", con);
 
                 cmd.Parameters.AddWithValue("@Nome", Nome);
@@ -80,9 +80,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

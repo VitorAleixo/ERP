@@ -11,12 +11,9 @@ namespace WebServer.AppCode
     {
         private string senhaCriptografada = null;
         private SqlConnection con = null;
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlDataReader rdr = null;
-        private SqlCommand cmdo = null;
         public int valor { get; set; } = 0;
-        SqlCommand comando2 = null;
-        SqlCommand comando3 = null;
 
         public int GravarUsuario(
                   string Nome
@@ -35,7 +32,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT Usuario FROM Usuario WHERE Usuario = @Usuario ;", con);
+                cmd = new SqlCommand("SELECT Usuario FROM Usuario WHERE Usuario = @Usuario ;", con);
 
                 cmd.Parameters.AddWithValue("@Usuario", Usuario);
 
@@ -49,15 +46,15 @@ namespace WebServer.AppCode
                 else
                 {
                     rdr.Close();
-                    SqlCommand comando = new SqlCommand("INSERT INTO Usuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao)" +
+                    cmd = new SqlCommand("INSERT INTO Usuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao)" +
                     "VALUES (@Nome,@Funcao,@Departamento,@Usuario,@Senha, GETDATE()); SELECT @@IDENTITY", con);
-                    comando.Parameters.AddWithValue("@Nome", Nome);
-                    comando.Parameters.AddWithValue("@Funcao", Funcao);
-                    comando.Parameters.AddWithValue("@Departamento", Departamento);
-                    comando.Parameters.AddWithValue("@Usuario", Usuario);
-                    comando.Parameters.AddWithValue("@Senha", senhaCriptografada);
+                    cmd.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@Funcao", Funcao);
+                    cmd.Parameters.AddWithValue("@Departamento", Departamento);
+                    cmd.Parameters.AddWithValue("@Usuario", Usuario);
+                    cmd.Parameters.AddWithValue("@Senha", senhaCriptografada);
 
-                    IdUsuario = Convert.ToInt32(comando.ExecuteScalar());
+                    IdUsuario = Convert.ToInt32(cmd.ExecuteScalar());
 
                 }
                 return IdUsuario;
@@ -82,20 +79,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
-                }
-                try
-                {
-                    if (cmdo != null)
-                    {
-                        cmdo.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)
@@ -124,13 +110,13 @@ namespace WebServer.AppCode
                 valor = 0;
                 if (Departamento == "ADMIN")
                 {
-                    SqlCommand comando2 = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
+                    cmd = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
                      "VALUES (@IdUsuario,@Nome, 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK'); ", con);
 
-                    comando2.Parameters.AddWithValue("@IdUsuario", IdUsuario);
-                    comando2.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                    cmd.Parameters.AddWithValue("@Nome", Nome);
 
-                    if (comando2.ExecuteNonQuery() == 1)
+                    if (cmd.ExecuteNonQuery() == 1)
                     {
                         valor = 1;
                     }
@@ -143,13 +129,13 @@ namespace WebServer.AppCode
                 }
                 else
                 {
-                    SqlCommand comando3 = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, " + Departamento + ")" +
+                    cmd = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, " + Departamento + ")" +
                      "VALUES (@IdUsuario,@Nome, 'OK');", con);
 
-                    comando3.Parameters.AddWithValue("@Nome", Nome);
-                    comando3.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                    cmd.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@IdUsuario", IdUsuario);
 
-                    if (comando3.ExecuteNonQuery() == 1)
+                    if (cmd.ExecuteNonQuery() == 1)
                     {
                         valor = 1;
                     }
@@ -179,20 +165,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (comando2 != null)
+                    if (cmd != null)
                     {
-                        comando2.Dispose();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception(ex.ToString());
-                }
-                try
-                {
-                    if (comando3 != null)
-                    {
-                        cmdo.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

@@ -159,12 +159,6 @@
     <Compile Include="frmPreencherOrcamento.Designer.cs">
       <DependentUpon>frmPreencherOrcamento.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPrincipal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPrincipal.Designer.cs">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmPrincipalAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,11 +189,11 @@
     <Compile Include="frmSelecionarTipo.Designer.cs">
       <DependentUpon>frmSelecionarTipo.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmSolicitacaoCompra.cs">
+    <Compile Include="frmPedidoCompra.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmSolicitacaoCompra.Designer.cs">
-      <DependentUpon>frmSolicitacaoCompra.cs</DependentUpon>
+    <Compile Include="frmPedidoCompra.Designer.cs">
+      <DependentUpon>frmPedidoCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="frmVisFornecedores.cs">
       <SubType>Form</SubType>
@@ -283,9 +277,6 @@
     <EmbeddedResource Include="frmPreencherOrcamento.resx">
       <DependentUpon>frmPreencherOrcamento.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPrincipal.resx">
-      <DependentUpon>frmPrincipal.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipalAdmin.resx">
       <DependentUpon>frmPrincipalAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,8 +292,8 @@
     <EmbeddedResource Include="frmSelecionarTipo.resx">
       <DependentUpon>frmSelecionarTipo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmSolicitacaoCompra.resx">
-      <DependentUpon>frmSolicitacaoCompra.cs</DependentUpon>
+    <EmbeddedResource Include="frmPedidoCompra.resx">
+      <DependentUpon>frmPedidoCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVisFornecedores.resx">
       <DependentUpon>frmVisFornecedores.cs</DependentUpon>
@@ -497,6 +488,9 @@
     <None Include="Web References\localhost\SolicitacaoItem.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\localhost\Solicitacoes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\localhost\TipoCombo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -606,6 +600,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnSair32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGerarSolicitacaoDeCompra.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

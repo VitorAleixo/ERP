@@ -45,7 +45,6 @@
             this.txtObservacoes = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.txtDataEmissao = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
@@ -139,10 +138,11 @@
             // txtIdPedido
             // 
             this.txtIdPedido.Enabled = false;
-            this.txtIdPedido.Location = new System.Drawing.Point(6, 39);
+            this.txtIdPedido.Location = new System.Drawing.Point(157, 435);
             this.txtIdPedido.Name = "txtIdPedido";
             this.txtIdPedido.Size = new System.Drawing.Size(37, 20);
             this.txtIdPedido.TabIndex = 1;
+            this.txtIdPedido.Visible = false;
             // 
             // groupBox1
             // 
@@ -152,8 +152,6 @@
             this.groupBox1.Controls.Add(this.txtObservacoes);
             this.groupBox1.Controls.Add(this.txtTipo);
             this.groupBox1.Controls.Add(this.txtDataEmissao);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtIdPedido);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(333, 150);
@@ -173,7 +171,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(49, 23);
+            this.label3.Location = new System.Drawing.Point(6, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 11;
@@ -200,9 +198,9 @@
             // txtTipo
             // 
             this.txtTipo.Enabled = false;
-            this.txtTipo.Location = new System.Drawing.Point(49, 39);
+            this.txtTipo.Location = new System.Drawing.Point(6, 39);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(133, 20);
+            this.txtTipo.Size = new System.Drawing.Size(176, 20);
             this.txtTipo.TabIndex = 2;
             // 
             // txtDataEmissao
@@ -212,15 +210,6 @@
             this.txtDataEmissao.Name = "txtDataEmissao";
             this.txtDataEmissao.Size = new System.Drawing.Size(130, 20);
             this.txtDataEmissao.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Pedido";
             // 
             // groupBox2
             // 
@@ -391,6 +380,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grdGerenciamento);
+            this.Controls.Add(this.txtIdPedido);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -405,6 +395,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -419,7 +410,6 @@
         private System.Windows.Forms.TextBox txtObservacoes;
         public System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.TextBox txtDataEmissao;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtValorTotal;

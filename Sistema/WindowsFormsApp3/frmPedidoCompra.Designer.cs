@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApp3
 {
-    partial class frmSolicitacaoCompra
+    partial class frmPedidoCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSolicitacaoCompra));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidoCompra));
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
             this.CodigoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -192,11 +192,11 @@
             // 
             this.btnGrSolic.Image = global::WindowsFormsApp3.Properties.Resources.btnSolCompra16;
             this.btnGrSolic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGrSolic.Location = new System.Drawing.Point(486, 374);
+            this.btnGrSolic.Location = new System.Drawing.Point(504, 374);
             this.btnGrSolic.Name = "btnGrSolic";
-            this.btnGrSolic.Size = new System.Drawing.Size(169, 23);
+            this.btnGrSolic.Size = new System.Drawing.Size(151, 23);
             this.btnGrSolic.TabIndex = 7;
-            this.btnGrSolic.Text = "Gerar Solicitação de Compra";
+            this.btnGrSolic.Text = "Gerar Pedido de Compra";
             this.btnGrSolic.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGrSolic.UseVisualStyleBackColor = true;
             this.btnGrSolic.Click += new System.EventHandler(this.btnGrSolic_Click);
@@ -214,7 +214,7 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // frmSolicitacaoCompra
+            // frmPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -233,9 +233,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmSolicitacaoCompra";
+            this.Name = "frmPedidoCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Solicitação de Compra";
+            this.Text = "Pedido de Compra";
             this.Load += new System.EventHandler(this.frmSolicitacaoCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).EndInit();
             this.ResumeLayout(false);

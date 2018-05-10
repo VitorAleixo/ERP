@@ -63,6 +63,8 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback RetornaOrcamentoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RetornaSolicitacaoDeCompraOperationCompleted;
+        
         private System.Threading.SendOrPostCallback RetornaFornecedorOperationCompleted;
         
         private System.Threading.SendOrPostCallback RetornaDadosOrcamentoOperationCompleted;
@@ -167,6 +169,9 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         public event RetornaOrcamentoCompletedEventHandler RetornaOrcamentoCompleted;
+        
+        /// <remarks/>
+        public event RetornaSolicitacaoDeCompraCompletedEventHandler RetornaSolicitacaoDeCompraCompleted;
         
         /// <remarks/>
         public event RetornaFornecedorCompletedEventHandler RetornaFornecedorCompleted;
@@ -776,6 +781,35 @@ namespace WindowsFormsApp3.localhost {
             if ((this.RetornaOrcamentoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RetornaOrcamentoCompleted(this, new RetornaOrcamentoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaSolicitacaoDeCompra", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaSolicitacoes", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("SOLICITACOES", IsNullable=false)]
+        public Solicitacoes[] RetornaSolicitacaoDeCompra() {
+            object[] results = this.Invoke("RetornaSolicitacaoDeCompra", new object[0]);
+            return ((Solicitacoes[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaSolicitacaoDeCompraAsync() {
+            this.RetornaSolicitacaoDeCompraAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaSolicitacaoDeCompraAsync(object userState) {
+            if ((this.RetornaSolicitacaoDeCompraOperationCompleted == null)) {
+                this.RetornaSolicitacaoDeCompraOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaSolicitacaoDeCompraOperationCompleted);
+            }
+            this.InvokeAsync("RetornaSolicitacaoDeCompra", new object[0], this.RetornaSolicitacaoDeCompraOperationCompleted, userState);
+        }
+        
+        private void OnRetornaSolicitacaoDeCompraOperationCompleted(object arg) {
+            if ((this.RetornaSolicitacaoDeCompraCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaSolicitacaoDeCompraCompleted(this, new RetornaSolicitacaoDeCompraCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1615,6 +1649,75 @@ namespace WindowsFormsApp3.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Solicitacoes {
+        
+        private int idPedidoField;
+        
+        private string solicitanteField;
+        
+        private string urgenciaField;
+        
+        private string dataCriacaoField;
+        
+        private string tipoField;
+        
+        /// <remarks/>
+        public int IdPedido {
+            get {
+                return this.idPedidoField;
+            }
+            set {
+                this.idPedidoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Solicitante {
+            get {
+                return this.solicitanteField;
+            }
+            set {
+                this.solicitanteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Urgencia {
+            get {
+                return this.urgenciaField;
+            }
+            set {
+                this.urgenciaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DataCriacao {
+            get {
+                return this.dataCriacaoField;
+            }
+            set {
+                this.dataCriacaoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Tipo {
+            get {
+                return this.tipoField;
+            }
+            set {
+                this.tipoField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Orcamento {
         
         private int pedidoField;
@@ -2164,6 +2267,32 @@ namespace WindowsFormsApp3.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Orcamento[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaSolicitacaoDeCompraCompletedEventHandler(object sender, RetornaSolicitacaoDeCompraCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaSolicitacaoDeCompraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaSolicitacaoDeCompraCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Solicitacoes[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Solicitacoes[])(this.results[0]));
             }
         }
     }

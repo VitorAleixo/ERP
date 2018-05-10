@@ -9,7 +9,7 @@ namespace WebServer.AppCode
     public class CadastrarOrcamento
     {
         public int valor { get; set; } = 0;
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlConnection con = null;
 
         public void GravarOrcamento(
@@ -28,7 +28,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO Orcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens) VALUES " +
+                cmd = new SqlCommand("INSERT INTO Orcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens) VALUES " +
                     "(@IdPedido, @Tipo, GETDATE(), @Observacoes, @Vendedor, @PrazoEntrega, @CondicaoPag, @ValorTotal, @QtdItens);", con);
 
                 cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
@@ -70,9 +70,9 @@ namespace WebServer.AppCode
 
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

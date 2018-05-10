@@ -8,7 +8,7 @@ namespace WebServer.AppCode
 {
     public class BuscaVendedor
     {
-        private SqlCommand command = null;
+        private SqlCommand cmd = null;
         private SqlDataReader rdr = null;
         private SqlConnection con = null;
 
@@ -21,7 +21,7 @@ namespace WebServer.AppCode
                 con = ConnectionFactory.getConnection();
                 con.Open();
 
-                SqlCommand cmd = new SqlCommand("SELECT Nome FROM Fornecedor WHERE IdFornecedor = @IdVendedor;", con);
+                cmd = new SqlCommand("SELECT Nome FROM Fornecedor WHERE IdFornecedor = @IdVendedor;", con);
 
                 cmd.Parameters.AddWithValue("@IdVendedor", IdVendedor);
 
@@ -67,9 +67,9 @@ namespace WebServer.AppCode
                 }
                 try
                 {
-                    if (command != null)
+                    if (cmd != null)
                     {
-                        command.Dispose();
+                        cmd.Dispose();
                     }
                 }
                 catch (Exception ex)

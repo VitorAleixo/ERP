@@ -1,65 +1,65 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.IO;
 using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
 
 namespace WebServer.AppCode
 {
-
     [Serializable]
-    public class BuscaProduto
+    public class BuscaSolicitacaoDeCompra
     {
-        [XmlRoot("BuscaProduto")]
-        public class ListaProduto
+        [XmlRoot("BuscaSolicitacoes")]
+        public class ListaSolicitacoes
         {
-            public ListaProduto() { Items = new List<Produto>(); }
-            [XmlElement("PRODUTO")]
-            public List<Produto> Items { get; set; }
+            public ListaSolicitacoes() { Items = new List<Solicitacoes>(); }
+            [XmlElement("SOLICITACOES")]
+            public List<Solicitacoes> Items { get; set; }
 
 
 
         }
-        public class Produto
+        public class Solicitacoes
         {
-            [XmlElement("Codigo_Produto")]
-            public String Codigo { get; set; }
+            [XmlElement("IdPedido")]
+            public int IdPedido { get; set; }
 
-            [XmlElement("Nome_Produto")]
-            public String Nome { get; set; }
+            [XmlElement("Solicitante")]
+            public String Solicitante { get; set; }
 
-            [XmlElement("UM_Produto")]
-            public String UnidadeMedida { get; set; }
+            [XmlElement("Urgencia")]
+            public String Urgencia { get; set; }
 
-            [XmlElement("Preco_Produto")]
-            public Double Preco { get; set; }
+            [XmlElement("DataCriacao")]
+            public String DataCriacao { get; set; }
 
+            [XmlElement("Tipo")]
+            public String Tipo { get; set; }
 
         }
 
         public static class Program
         {
+
             private static SqlConnection con = null;
             private static SqlDataReader rdr = null;
             private static string comando = null;
             private static SqlCommand cmd = null;
-            public static ListaProduto list { get; set; }
+            public static ListaSolicitacoes list { get; set; }
 
 
-            public static ListaProduto RetornarProduto()
+            public static ListaSolicitacoes RetornaSolicitacoes()
             {
                 try
                 {
                     con = ConnectionFactory.getConnection();
                     con.Open();
 
-                    comando = "SELECT CodigoProduto, Nome, UnidadeMedida, Preco FROM Produto ORDER BY UnidadeMedida;";
+                    comando = "SELECT IdPedido, Solicitante, Urgencia, DataCriacao, Tipo FROM Pedido WHERE Status = 'APROVADO' ORDER BY Urgencia DESC;";
 
-                    XmlSerializer ser = new XmlSerializer(typeof(ListaProduto));
-                    list = new ListaProduto();
+                    XmlSerializer ser = new XmlSerializer(typeof(ListaSolicitacoes));
+                    list = new ListaSolicitacoes();
 
                     using (var cmd = con.CreateCommand())
                     {
@@ -69,12 +69,13 @@ namespace WebServer.AppCode
                         {
                             while (rdr.Read())
                             {
-                                list.Items.Add(new Produto
+                                list.Items.Add(new Solicitacoes
                                 {
-                                    Codigo = rdr.GetString(0),
-                                    Nome = rdr.GetString(1),
-                                    UnidadeMedida = rdr.GetString(2),
-                                    Preco = rdr.GetDouble(3),
+                                    IdPedido = rdr.GetInt32(0),
+                                    Solicitante = rdr.GetString(1),
+                                    Urgencia = rdr.GetString(2),
+                                    DataCriacao = rdr.GetDateTime(3).ToString("dd/MM/yyyy"),
+                                    Tipo = rdr.GetString(4),
                                 });
                             }
                         }
@@ -125,7 +126,6 @@ namespace WebServer.AppCode
                     }
                 }
             }
-
         }
     }
 }

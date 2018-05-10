@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp3.Resources
+﻿namespace WindowsFormsApp3
 {
     partial class frmGerarSolicitacao
     {
@@ -30,12 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerarSolicitacao));
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.btnSair = new System.Windows.Forms.Button();
             this.Solicitante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Urgencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCriacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSolicCompra = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnLegendas = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,19 +57,7 @@
             this.grdGerenciamento.ReadOnly = true;
             this.grdGerenciamento.Size = new System.Drawing.Size(705, 309);
             this.grdGerenciamento.TabIndex = 3;
-            // 
-            // btnSair
-            // 
-            this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(660, 352);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(56, 23);
-            this.btnSair.TabIndex = 4;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
             // 
             // Solicitante
             // 
@@ -107,11 +97,52 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Solicitações de Compra";
             // 
+            // btnSolicCompra
+            // 
+            this.btnSolicCompra.Image = global::WindowsFormsApp3.Properties.Resources.btnGerarSolicitacaoDeCompra;
+            this.btnSolicCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSolicCompra.Location = new System.Drawing.Point(486, 352);
+            this.btnSolicCompra.Name = "btnSolicCompra";
+            this.btnSolicCompra.Size = new System.Drawing.Size(168, 23);
+            this.btnSolicCompra.TabIndex = 21;
+            this.btnSolicCompra.Text = "Gerar Solicitação de Compra";
+            this.btnSolicCompra.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSolicCompra.UseVisualStyleBackColor = true;
+            this.btnSolicCompra.Click += new System.EventHandler(this.btnSolicCompra_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(660, 352);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(56, 23);
+            this.btnSair.TabIndex = 4;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnLegendas
+            // 
+            this.btnLegendas.Image = global::WindowsFormsApp3.Properties.Resources.btnLegendas;
+            this.btnLegendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLegendas.Location = new System.Drawing.Point(12, 352);
+            this.btnLegendas.Name = "btnLegendas";
+            this.btnLegendas.Size = new System.Drawing.Size(75, 23);
+            this.btnLegendas.TabIndex = 22;
+            this.btnLegendas.Text = "Legendas";
+            this.btnLegendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLegendas.UseVisualStyleBackColor = true;
+            this.btnLegendas.Click += new System.EventHandler(this.btnLegendas_Click);
+            // 
             // frmGerarSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 380);
+            this.Controls.Add(this.btnLegendas);
+            this.Controls.Add(this.btnSolicCompra);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.grdGerenciamento);
@@ -122,6 +153,7 @@
             this.Name = "frmGerarSolicitacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gerar Solicitação de Compras";
+            this.Load += new System.EventHandler(this.frmGerarSolicitacao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -137,5 +169,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCriacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnSolicCompra;
+        private System.Windows.Forms.Button btnLegendas;
     }
 }

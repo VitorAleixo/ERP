@@ -39,7 +39,6 @@
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCod = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -67,7 +66,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(147, 25);
+            this.label2.Location = new System.Drawing.Point(13, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 13);
             this.label2.TabIndex = 19;
@@ -76,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(280, 25);
+            this.label3.Location = new System.Drawing.Point(146, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 20;
@@ -113,8 +112,6 @@
             // 
             this.groupBox1.Controls.Add(this.txtTipo);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.txtId);
-            this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.txtCod);
             this.groupBox1.Controls.Add(this.label2);
@@ -128,7 +125,7 @@
             // 
             // txtTipo
             // 
-            this.txtTipo.Location = new System.Drawing.Point(485, 41);
+            this.txtTipo.Location = new System.Drawing.Point(483, 32);
             this.txtTipo.MaxLength = 50;
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(150, 20);
@@ -137,7 +134,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(482, 25);
+            this.label10.Location = new System.Drawing.Point(480, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 13);
             this.label10.TabIndex = 28;
@@ -146,31 +143,23 @@
             // txtId
             // 
             this.txtId.Enabled = false;
-            this.txtId.Location = new System.Drawing.Point(14, 41);
+            this.txtId.Location = new System.Drawing.Point(161, 9);
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(118, 20);
+            this.txtId.Size = new System.Drawing.Size(31, 20);
             this.txtId.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 25);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 13);
-            this.label8.TabIndex = 26;
-            this.label8.Text = "Identificador";
+            this.txtId.Visible = false;
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(283, 41);
+            this.txtNome.Location = new System.Drawing.Point(149, 32);
             this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(186, 20);
+            this.txtNome.Size = new System.Drawing.Size(328, 20);
             this.txtNome.TabIndex = 3;
             // 
             // txtCod
             // 
-            this.txtCod.Location = new System.Drawing.Point(150, 41);
+            this.txtCod.Location = new System.Drawing.Point(16, 32);
             this.txtCod.MaxLength = 10;
             this.txtCod.Name = "txtCod";
             this.txtCod.Size = new System.Drawing.Size(115, 20);
@@ -275,6 +264,7 @@
             this.ClientSize = new System.Drawing.Size(664, 235);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnSair);
@@ -306,7 +296,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtCod;
         private System.Windows.Forms.GroupBox groupBox2;

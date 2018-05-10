@@ -127,7 +127,7 @@ namespace WindowsFormsApp3
             {
                 if (MessageBox.Show("Confirma os itens selecionados?\n" + i + " Itens selecionados.", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    new frmSolicitacaoCompra { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+                    new frmPedidoCompra { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
                 }
             }
         }
