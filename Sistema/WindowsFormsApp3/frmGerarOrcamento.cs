@@ -38,7 +38,7 @@ namespace WindowsFormsApp3
             new frmLegendaSolic { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
-        private void CarregarGrid()
+        public void CarregarGrid()
         {
             localhost.Login buscaSolicitacao = new localhost.Login();
 
@@ -82,6 +82,17 @@ namespace WindowsFormsApp3
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnGerarOrcamento_Click(object sender, EventArgs e)
+        {
+            var obj = (localhost.Solicitacao)grdGerenciamento.CurrentRow.DataBoundItem;
+
+            frmPreencherOrcamento frmPreencher = new frmPreencherOrcamento();
+            frmPreencher.txtIdPedido.Text = obj.IdPedido.ToString();
+            frmPreencher.txtTipo.Text = obj.Tipo.ToString();
+            frmPreencher.ShowDialog();
+            CarregarGrid();
         }
     }
 }

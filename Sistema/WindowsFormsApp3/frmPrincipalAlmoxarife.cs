@@ -64,7 +64,7 @@ namespace WindowsFormsApp3
 
         private void btnGerenciamento_Click(object sender, EventArgs e)
         {
-            new frmGerenciamentoEstoque { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+            new frmSelecionarTipo { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
     }
 }

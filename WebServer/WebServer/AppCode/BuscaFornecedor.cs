@@ -75,12 +75,12 @@ namespace WebServer.AppCode
                                 list.Items.Add(new Fornecedor
                                 {
 
-                                   Nome = rdr.GetString(0),
-                                   CPF = rdr.GetString(1),
-                                   CEP = rdr.GetString(2),                         
-                                   Estado = rdr.GetString(3),                                                      
-                                   Telefone = rdr.GetString(4),
-                                   Email = rdr.GetString(5)
+                                    Nome = rdr.GetString(0),
+                                    CPF = rdr.GetString(1),
+                                    CEP = rdr.GetString(2),
+                                    Estado = rdr.GetString(3),
+                                    Telefone = rdr.GetString(4),
+                                    Email = rdr.GetString(5)
                                 });
                             }
                         }

@@ -19,6 +19,17 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -39,51 +50,56 @@ namespace WindowsFormsApp3
 
         private void btnGrSolic_Click(object sender, EventArgs e)
         {
-            localhost.Login solicitacao = new localhost.Login();
-            string Solicitante = txtSolicitante.Text;
-            string Urgencia = cmbUrgencia.SelectedItem.ToString();
-            string Motivo = txtMotivo.Text;
-            bool Gravar = false;
-            bool GravarItem = false;
-
-            if (Urgencia == "" || Urgencia == null || Motivo == "" || Motivo == null || Solicitante == "" || Solicitante == null)
+            DialogResult dialogResult = MessageBox.Show("Gerar uma Solicitação de Compra?", "Confirmação", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Algum dado está faltando!", "Confirmação", MessageBoxButtons.OK);
-            }
-            else
-            {     
+                localhost.Login solicitacao = new localhost.Login();
+                string Solicitante = txtSolicitante.Text;
+                string Urgencia = cmbUrgencia.SelectedItem.ToString();
+                string Motivo = txtMotivo.Text;
+                string Tipo = BuscarTipo.BuscaTipo;
+                bool Gravar = false;
+                bool GravarItem = false;
 
-                int IdPedido = solicitacao.GerarPedido(Solicitante, Urgencia, Motivo);
-
-                if (IdPedido > 0)
+                if (Urgencia == "" || Urgencia == null || Motivo == "" || Motivo == null || Solicitante == "" || Solicitante == null)
                 {
-                    Gravar = true;
-
-                    foreach (DataGridViewRow row in grdGerenciamento.Rows)
-                    {
-                        string Cod = row.Cells[0].Value.ToString();
-                        string Nome = row.Cells[1].Value.ToString();
-                        string UnidadeMedida = row.Cells[2].Value.ToString();
-                        double QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
-                        double QtdMinima = Convert.ToDouble(row.Cells[4].Value);
-                        double QtdMaxima = Convert.ToDouble(row.Cells[5].Value);
-                        double Solicitar = Convert.ToDouble(row.Cells[6].Value);
-
-                        if (solicitacao.GerarPedidoItem(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido))
-                        {
-                            GravarItem = true;
-                        }
-                    }
-                }
-
-                if (Gravar == true && GravarItem == true)
-                {
-                    MessageBox.Show("Pedido de Compra realizado com Sucesso!", "Confirmação", MessageBoxButtons.OK);
-                    this.Close();
+                    MessageBox.Show("Algum dado está faltando!", "Confirmação", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show("Ocorreu um Erro!", "Confirmação", MessageBoxButtons.OK);
+
+                    int IdPedido = solicitacao.GerarPedido(Solicitante, Urgencia, Motivo, Tipo);
+
+                    if (IdPedido > 0)
+                    {
+                        Gravar = true;
+
+                        foreach (DataGridViewRow row in grdGerenciamento.Rows)
+                        {
+                            string Cod = row.Cells[0].Value.ToString();
+                            string Nome = row.Cells[1].Value.ToString();
+                            string UnidadeMedida = row.Cells[2].Value.ToString();
+                            double QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
+                            double QtdMinima = Convert.ToDouble(row.Cells[4].Value);
+                            double QtdMaxima = Convert.ToDouble(row.Cells[5].Value);
+                            double Solicitar = Convert.ToDouble(row.Cells[6].Value);
+
+                            if (solicitacao.GerarPedidoItem(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido))
+                            {
+                                GravarItem = true;
+                            }
+                        }
+                    }
+
+                    if (Gravar == true && GravarItem == true)
+                    {
+                        MessageBox.Show("Pedido de Compra realizado com Sucesso!", "Confirmação", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um Erro!", "Confirmação", MessageBoxButtons.OK);
+                    }
                 }
             }
         }

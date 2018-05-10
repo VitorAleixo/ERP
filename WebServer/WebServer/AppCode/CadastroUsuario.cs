@@ -198,7 +198,7 @@ namespace WebServer.AppCode
                 catch (Exception ex)
                 {
                     throw new Exception(ex.ToString());
-                }        
+                }
             }
         }
     }

@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipalGerencia));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPedCompra = new System.Windows.Forms.Button();
+            this.btnOrcamentos = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.barraStatus = new System.Windows.Forms.StatusStrip();
             this.lblSetor = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnPedCompra);
+            this.groupBox1.Controls.Add(this.btnOrcamentos);
             this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(526, 100);
@@ -52,16 +52,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pedidos";
             // 
-            // btnPedCompra
+            // btnOrcamentos
             // 
-            this.btnPedCompra.Image = global::WindowsFormsApp3.Properties.Resources.btnPedidoCompra;
-            this.btnPedCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPedCompra.Location = new System.Drawing.Point(6, 19);
-            this.btnPedCompra.Name = "btnPedCompra";
-            this.btnPedCompra.Size = new System.Drawing.Size(216, 57);
-            this.btnPedCompra.TabIndex = 1;
-            this.btnPedCompra.Text = "Orçamentos";
-            this.btnPedCompra.UseVisualStyleBackColor = true;
+            this.btnOrcamentos.Image = global::WindowsFormsApp3.Properties.Resources.btnPedidoCompra;
+            this.btnOrcamentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrcamentos.Location = new System.Drawing.Point(6, 19);
+            this.btnOrcamentos.Name = "btnOrcamentos";
+            this.btnOrcamentos.Size = new System.Drawing.Size(216, 57);
+            this.btnOrcamentos.TabIndex = 1;
+            this.btnOrcamentos.Text = "Orçamentos";
+            this.btnOrcamentos.UseVisualStyleBackColor = true;
+            this.btnOrcamentos.Click += new System.EventHandler(this.btnOrcamentos_Click);
             // 
             // timer1
             // 
@@ -159,7 +160,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnPedCompra;
+        private System.Windows.Forms.Button btnOrcamentos;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.StatusStrip barraStatus;
         private System.Windows.Forms.Label lblSetor;

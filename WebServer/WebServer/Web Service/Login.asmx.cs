@@ -90,7 +90,7 @@ namespace WebServer.Web_Service
                 , DateTime DataCriacao)
         {
             CadastroUsuario cadastroUser = new CadastroUsuario();
-           return cadastroUser.GravarUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
+            return cadastroUser.GravarUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
 
         }
 
@@ -117,15 +117,15 @@ namespace WebServer.Web_Service
         public int CadastroProduto(
                    string CodigoProduto
                  , string Nome
-                 , float Preco
                  , string UnidadeMedida
                  , float QtdMinima
                  , float QtdMaxima
-                 , float QtdEstoque)
+                 , float QtdEstoque
+                 , string Tipo)
 
         {
             CadastroProduto cadastroProd = new CadastroProduto();
-            return cadastroProd.GravarProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque);
+            return cadastroProd.GravarProduto(CodigoProduto, Nome, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, Tipo);
 
         }
 
@@ -152,64 +152,14 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
-        public string RetornaSetor(
-                  string Usuario)
-        {
-            BuscaDepartamento principal = new BuscaDepartamento();
-            principal.BuscaSetor(Usuario);
-
-            return principal.Setor;
-        }
-
-        [WebMethod]
-        public BuscaProduto.ListaProduto RetornaProduto()
-        {
-            BuscaProduto.Program.RetornarProduto();
-
-            return BuscaProduto.Program.list;
-
-        }
-
-        [WebMethod]
-        public BuscaFornecedor.ListaFornecedor RetornaFornecedor()
-        {
-            BuscaFornecedor.Program.RetornarFornecedor();
-
-            return BuscaFornecedor.Program.list;
-        }
-
-        [WebMethod]
-        public BuscaEstoque.ListaEstoque RetornaEstoque()
-        {
-            BuscaEstoque.Program.RetornarEstoque();
-
-            return BuscaEstoque.Program.list;
-        }
-
-        [WebMethod]
-        public BuscaUsuario.ListaUsuario RetornaUsuario()
-        {
-            BuscaUsuario.Program.RetornarUsuario();
-
-            return BuscaUsuario.Program.list;
-        }
-
-        [WebMethod]
-        public BuscaSolicitacao.ListaSolicitacao RetornarSolicitacao()
-        {
-            BuscaSolicitacao.Program.RetornaSolicitacao();
-
-            return BuscaSolicitacao.Program.list;
-        }
-
-        [WebMethod]
         public int GerarPedido(
                    string Solicitante
                  , string Urgencia
-                 , string Motivo)
+                 , string Motivo
+                 , string Tipo)
         {
             CadastroGerarPedido gerarpedido = new CadastroGerarPedido();
-            return gerarpedido.GravarPedido(Solicitante, Urgencia, Motivo);
+            return gerarpedido.GravarPedido(Solicitante, Urgencia, Motivo, Tipo);
         }
 
         [WebMethod]
@@ -233,6 +183,152 @@ namespace WebServer.Web_Service
             {
                 return false;
             }
+        }
+
+        [WebMethod]
+        public bool GravarOrcamento(
+                      int IdPedido
+                    , string Tipo 
+                    , string DataEmissao
+                    , string Observacoes
+                    , string Vendedor
+                    , string PrazoEntrega
+                    , string CondicaoPag
+                    , double ValorTotal
+                    , int QtdItens)
+        {
+            CadastrarOrcamento gravarOrcamento = new CadastrarOrcamento();
+            gravarOrcamento.GravarOrcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens);
+            if (gravarOrcamento.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool Atualizar(
+                   int IdPedido
+                   )
+        {
+            AtualizarPedido atualizar = new AtualizarPedido();
+            atualizar.Atualizar(IdPedido);
+            if (atualizar.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool Arquivar(
+                    int IdPedido
+                    )
+        {
+            ArquivarPedido arquivar = new ArquivarPedido();
+            arquivar.Arquivar(IdPedido);
+            if (arquivar.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public string RetornaSetor(
+                  string Usuario)
+        {
+            BuscaDepartamento principal = new BuscaDepartamento();
+            principal.BuscaSetor(Usuario);
+
+            return principal.Setor;
+        }
+
+        [WebMethod]
+        public BuscaProduto.ListaProduto RetornaProduto()
+        {
+            BuscaProduto.Program.RetornarProduto();
+
+            return BuscaProduto.Program.list;
+
+        }
+
+        [WebMethod]
+        public BuscaOrcamentos.ListaOrcamento RetornaOrcamento()
+        {
+            BuscaOrcamentos.Program.RetornaOrcamento();
+
+            return BuscaOrcamentos.Program.list;
+
+        }
+
+        [WebMethod]
+        public BuscaFornecedor.ListaFornecedor RetornaFornecedor()
+        {
+            BuscaFornecedor.Program.RetornarFornecedor();
+
+            return BuscaFornecedor.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaEstoque.ListaEstoque RetornaEstoque(string Tipo)
+        {
+            BuscaEstoque.Program.RetornarEstoque(Tipo);
+
+            return BuscaEstoque.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaUsuario.ListaUsuario RetornaUsuario()
+        {
+            BuscaUsuario.Program.RetornarUsuario();
+
+            return BuscaUsuario.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaSolicitacao.ListaSolicitacao RetornarSolicitacao()
+        {
+            BuscaSolicitacao.Program.RetornaSolicitacao();
+
+            return BuscaSolicitacao.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaCombos.ListaFornecedorCombo RetornaComboFornecedor()
+        {
+            BuscaCombos.Program.RetornarComboFornecedor();
+
+
+            return BuscaCombos.Program.list;
+        }
+
+
+        [WebMethod]
+        public BuscaComboTipo.ListaTipoCombo RetornaComboTipo()
+        {
+            BuscaComboTipo.Program.RetornaComboTipo();
+
+
+            return BuscaComboTipo.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaSolicitacaoItem.ListaSolicitacaoItem RetornaSolicitacaoItem(int IdPedido)
+        {
+            BuscaSolicitacaoItem.Program.RetornaSolicitacaoItem(IdPedido);
+
+
+            return BuscaSolicitacaoItem.Program.list;
         }
     }
 }

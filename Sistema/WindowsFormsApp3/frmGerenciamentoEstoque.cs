@@ -40,10 +40,10 @@ namespace WindowsFormsApp3
         {
             localhost.Login buscaEstoque = new localhost.Login();
 
-
+            string Tipo = BuscarTipo.BuscaTipo.ToString();
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;
-            grdGerenciamento.DataSource = buscaEstoque.RetornaEstoque();
+            grdGerenciamento.DataSource = buscaEstoque.RetornaEstoque(Tipo);
             grdGerenciamento.Show();
 
             txtNumeroProdutos.Text = grdGerenciamento.RowCount.ToString();

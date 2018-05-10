@@ -10,10 +10,8 @@ namespace WebServer.AppCode
     public class CadastroFornecedor
     {
         public int valor { get; set; } = 0;
-        private string comando = null;
         private SqlCommand command = null;
         private SqlConnection con = null;
-        private SqlParameter param = null;
 
         public void GravarFornecedor(
                   string Nome
@@ -51,7 +49,7 @@ namespace WebServer.AppCode
                 cmd.Parameters.AddWithValue("@Telefone", Telefone);
                 cmd.Parameters.AddWithValue("@Telefone2", Telefone2);
                 cmd.Parameters.AddWithValue("@EMAIL", EMAIL);
-                
+
 
                 if (cmd.ExecuteNonQuery() == 1)
                 {

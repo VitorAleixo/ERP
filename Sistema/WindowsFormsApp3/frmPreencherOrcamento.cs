@@ -37,12 +37,13 @@ namespace WindowsFormsApp3
         {
             try
             {
+                int i = 0;
                 foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
-
+                    i = i + 1;
                     var QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
-                    var QtdMinima = Convert.ToDouble(row.Cells[4].Value);
-                    var QtdMaxima = Convert.ToDouble(row.Cells[5].Value);
+                    var QtdMaxima = Convert.ToDouble(row.Cells[4].Value);
+                    var QtdMinima = Convert.ToDouble(row.Cells[5].Value);
                     var Solicitar = Convert.ToDouble(row.Cells[6].Value);
 
                     if (Solicitar == 0)
@@ -65,8 +66,8 @@ namespace WindowsFormsApp3
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
-
                 }
+                txtQuantidade.Text = i.ToString();
             }
             catch (Exception ex)
             {
@@ -74,18 +75,90 @@ namespace WindowsFormsApp3
             }
         }
 
+        private void CarregarGrid()
+        {
+            localhost.Login buscaSolicitacaoItem = new localhost.Login();
+
+            int IdPedido = Convert.ToInt32(txtIdPedido.Text);
+
+            grdGerenciamento.AutoGenerateColumns = false;
+            grdGerenciamento.DataSource = null;
+            grdGerenciamento.DataSource = buscaSolicitacaoItem.RetornaSolicitacaoItem(IdPedido);
+            grdGerenciamento.Show();
+        }
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Você tem certeza que quer excluir esta Solicitação de Compra?", "Confirmação", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                localhost.Login deletarSolicitacao = new localhost.Login();
 
+                int IdPedido = Convert.ToInt32(txtIdPedido.Text);
+
+                if (deletarSolicitacao.Arquivar(IdPedido) == true)
+                {
+                  MessageBox.Show("Solicitação Excluída com Sucesso!", "Confirmação", MessageBoxButtons.OK);
+                    this.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("Solicitação não pode ser Excluída!", "Confirmação", MessageBoxButtons.OK);
+                }
             }
         }
 
         private void btnLegendas_Click(object sender, EventArgs e)
         {
             new frmLegendaEstoque { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
+
+        private void frmPreencherOrcamento_Load(object sender, EventArgs e)
+        {
+            txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
+
+            localhost.Login buscaFornecedor = new localhost.Login();
+            cmbVendedor.DisplayMember = "Nome";
+            cmbVendedor.ValueMember = "Id";
+            cmbVendedor.DataSource = buscaFornecedor.RetornaComboFornecedor();
+            CarregarGrid();
+        }
+
+        private void btnGerar_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Gerar Orçamento deste Pedido?", "Confirmação", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                int IdPedido = Convert.ToInt32(txtIdPedido.Text);
+                string Tipo = txtTipo.Text;
+                string DataEmissao = txtDataEmissao.Text;
+                string Observacoes = txtObservacoes.Text;
+                string Vendedor = cmbVendedor.SelectedValue.ToString();
+                string PrazoEntrega = txtPrazo.Text;
+                string CondicaoPag = txtCondicaoPag.Text;
+                double ValorTotal = Convert.ToDouble(txtValorTotal.Text);
+                int QtdItens = Convert.ToInt32(txtQuantidade.Text);
+
+                localhost.Login gravarOrcamento = new localhost.Login();
+
+                if (gravarOrcamento.GravarOrcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens) == true)
+                {
+                    if (gravarOrcamento.Atualizar(IdPedido) == true)
+                    {
+                        MessageBox.Show("Orçamento Gravado!!", "Confirmação", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao atualizar Orçamento!!", "Confirmação", MessageBoxButtons.OK);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possível gravar Orçamento!!", "Confirmação", MessageBoxButtons.OK);
+                }
+            }
         }
     }   
 }

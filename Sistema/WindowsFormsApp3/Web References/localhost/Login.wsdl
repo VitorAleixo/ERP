@@ -83,11 +83,11 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="CodigoProduto" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="Preco" type="s:float" />
             <s:element minOccurs="0" maxOccurs="1" name="UnidadeMedida" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:float" />
             <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:float" />
             <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:float" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -112,6 +112,94 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="CadastroProdutoEstoqueResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Solicitante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Urgencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GerarPedidoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedidoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeMedida" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Solicitar" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedidoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GerarPedidoItemResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GravarOrcamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DataEmissao" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Observacoes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Vendedor" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrazoEntrega" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CondicaoPag" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ValorTotal" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdItens" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GravarOrcamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GravarOrcamentoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Atualizar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AtualizarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Arquivar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ArquivarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ArquivarResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -152,6 +240,31 @@
           <s:element minOccurs="1" maxOccurs="1" name="Preco_Produto" type="s:double" />
         </s:sequence>
       </s:complexType>
+      <s:element name="RetornaOrcamento">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetornaOrcamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaOrcamentos" nillable="true" type="tns:ListaOrcamento" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ListaOrcamento">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ORCAMENTO" type="tns:Orcamento" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Orcamento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Pedido" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataEmissao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CondicaoPag" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTotal" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdItens" type="s:int" />
+        </s:sequence>
+      </s:complexType>
       <s:element name="RetornaFornecedor">
         <s:complexType />
       </s:element>
@@ -178,7 +291,11 @@
         </s:sequence>
       </s:complexType>
       <s:element name="RetornaEstoque">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:element name="RetornaEstoqueResponse">
         <s:complexType>
@@ -243,49 +360,85 @@
       </s:complexType>
       <s:complexType name="Solicitacao">
         <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Solicitante" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Urgencia" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="DataCriacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
         </s:sequence>
       </s:complexType>
-      <s:element name="GerarPedido">
+      <s:element name="RetornaComboFornecedor">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetornaComboFornecedorResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Solicitante" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Urgencia" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaComboFornecedor" nillable="true" type="tns:ListaFornecedorCombo" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GerarPedidoResponse">
+      <s:complexType name="ListaFornecedorCombo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FORNECEDOR" type="tns:FornecedorCombo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FornecedorCombo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RetornaComboTipo">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetornaComboTipoResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GerarPedidoResult" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaComboTipo" nillable="true" type="tns:ListaTipoCombo" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GerarPedidoItem">
+      <s:complexType name="ListaTipoCombo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TIPO" type="tns:TipoCombo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoCombo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RetornaSolicitacaoItem">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="0" maxOccurs="1" name="Cod" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:double" />
-            <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:double" />
-            <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:double" />
-            <s:element minOccurs="0" maxOccurs="1" name="UnidadeMedida" type="s:string" />
-            <s:element minOccurs="1" maxOccurs="1" name="Solicitar" type="s:double" />
             <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="GerarPedidoItemResponse">
+      <s:element name="RetornaSolicitacaoItemResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="GerarPedidoItemResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaSolicitacaoItem" nillable="true" type="tns:ListaSolicitacaoItem" />
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:complexType name="ListaSolicitacaoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ITEMSOLICITACAO" type="tns:SolicitacaoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SolicitacaoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeMedida" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Solicitar" type="s:double" />
+        </s:sequence>
+      </s:complexType>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="LoginSistemaSoapIn">
@@ -324,6 +477,36 @@
   <wsdl:message name="CadastroProdutoEstoqueSoapOut">
     <wsdl:part name="parameters" element="tns:CadastroProdutoEstoqueResponse" />
   </wsdl:message>
+  <wsdl:message name="GerarPedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:GerarPedido" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:GerarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GerarPedidoItem" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GerarPedidoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GravarOrcamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:GravarOrcamento" />
+  </wsdl:message>
+  <wsdl:message name="GravarOrcamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:GravarOrcamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AtualizarSoapIn">
+    <wsdl:part name="parameters" element="tns:Atualizar" />
+  </wsdl:message>
+  <wsdl:message name="AtualizarSoapOut">
+    <wsdl:part name="parameters" element="tns:AtualizarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ArquivarSoapIn">
+    <wsdl:part name="parameters" element="tns:Arquivar" />
+  </wsdl:message>
+  <wsdl:message name="ArquivarSoapOut">
+    <wsdl:part name="parameters" element="tns:ArquivarResponse" />
+  </wsdl:message>
   <wsdl:message name="RetornaSetorSoapIn">
     <wsdl:part name="parameters" element="tns:RetornaSetor" />
   </wsdl:message>
@@ -335,6 +518,12 @@
   </wsdl:message>
   <wsdl:message name="RetornaProdutoSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaProdutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaOrcamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaOrcamento" />
+  </wsdl:message>
+  <wsdl:message name="RetornaOrcamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaOrcamentoResponse" />
   </wsdl:message>
   <wsdl:message name="RetornaFornecedorSoapIn">
     <wsdl:part name="parameters" element="tns:RetornaFornecedor" />
@@ -360,17 +549,23 @@
   <wsdl:message name="RetornarSolicitacaoSoapOut">
     <wsdl:part name="parameters" element="tns:RetornarSolicitacaoResponse" />
   </wsdl:message>
-  <wsdl:message name="GerarPedidoSoapIn">
-    <wsdl:part name="parameters" element="tns:GerarPedido" />
+  <wsdl:message name="RetornaComboFornecedorSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaComboFornecedor" />
   </wsdl:message>
-  <wsdl:message name="GerarPedidoSoapOut">
-    <wsdl:part name="parameters" element="tns:GerarPedidoResponse" />
+  <wsdl:message name="RetornaComboFornecedorSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaComboFornecedorResponse" />
   </wsdl:message>
-  <wsdl:message name="GerarPedidoItemSoapIn">
-    <wsdl:part name="parameters" element="tns:GerarPedidoItem" />
+  <wsdl:message name="RetornaComboTipoSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaComboTipo" />
   </wsdl:message>
-  <wsdl:message name="GerarPedidoItemSoapOut">
-    <wsdl:part name="parameters" element="tns:GerarPedidoItemResponse" />
+  <wsdl:message name="RetornaComboTipoSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaComboTipoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaSolicitacaoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaSolicitacaoItem" />
+  </wsdl:message>
+  <wsdl:message name="RetornaSolicitacaoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaSolicitacaoItemResponse" />
   </wsdl:message>
   <wsdl:portType name="LoginSoap">
     <wsdl:operation name="LoginSistema">
@@ -397,6 +592,26 @@
       <wsdl:input message="tns:CadastroProdutoEstoqueSoapIn" />
       <wsdl:output message="tns:CadastroProdutoEstoqueSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="GerarPedido">
+      <wsdl:input message="tns:GerarPedidoSoapIn" />
+      <wsdl:output message="tns:GerarPedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedidoItem">
+      <wsdl:input message="tns:GerarPedidoItemSoapIn" />
+      <wsdl:output message="tns:GerarPedidoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GravarOrcamento">
+      <wsdl:input message="tns:GravarOrcamentoSoapIn" />
+      <wsdl:output message="tns:GravarOrcamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Atualizar">
+      <wsdl:input message="tns:AtualizarSoapIn" />
+      <wsdl:output message="tns:AtualizarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Arquivar">
+      <wsdl:input message="tns:ArquivarSoapIn" />
+      <wsdl:output message="tns:ArquivarSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="RetornaSetor">
       <wsdl:input message="tns:RetornaSetorSoapIn" />
       <wsdl:output message="tns:RetornaSetorSoapOut" />
@@ -404,6 +619,10 @@
     <wsdl:operation name="RetornaProduto">
       <wsdl:input message="tns:RetornaProdutoSoapIn" />
       <wsdl:output message="tns:RetornaProdutoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaOrcamento">
+      <wsdl:input message="tns:RetornaOrcamentoSoapIn" />
+      <wsdl:output message="tns:RetornaOrcamentoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetornaFornecedor">
       <wsdl:input message="tns:RetornaFornecedorSoapIn" />
@@ -421,13 +640,17 @@
       <wsdl:input message="tns:RetornarSolicitacaoSoapIn" />
       <wsdl:output message="tns:RetornarSolicitacaoSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GerarPedido">
-      <wsdl:input message="tns:GerarPedidoSoapIn" />
-      <wsdl:output message="tns:GerarPedidoSoapOut" />
+    <wsdl:operation name="RetornaComboFornecedor">
+      <wsdl:input message="tns:RetornaComboFornecedorSoapIn" />
+      <wsdl:output message="tns:RetornaComboFornecedorSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="GerarPedidoItem">
-      <wsdl:input message="tns:GerarPedidoItemSoapIn" />
-      <wsdl:output message="tns:GerarPedidoItemSoapOut" />
+    <wsdl:operation name="RetornaComboTipo">
+      <wsdl:input message="tns:RetornaComboTipoSoapIn" />
+      <wsdl:output message="tns:RetornaComboTipoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaSolicitacaoItem">
+      <wsdl:input message="tns:RetornaSolicitacaoItemSoapIn" />
+      <wsdl:output message="tns:RetornaSolicitacaoItemSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LoginSoap" type="tns:LoginSoap">
@@ -486,6 +709,51 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GerarPedido">
+      <soap:operation soapAction="http://tempuri.org/GerarPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedidoItem">
+      <soap:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GravarOrcamento">
+      <soap:operation soapAction="http://tempuri.org/GravarOrcamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualizar">
+      <soap:operation soapAction="http://tempuri.org/Atualizar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Arquivar">
+      <soap:operation soapAction="http://tempuri.org/Arquivar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RetornaSetor">
       <soap:operation soapAction="http://tempuri.org/RetornaSetor" style="document" />
       <wsdl:input>
@@ -497,6 +765,15 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaProduto">
       <soap:operation soapAction="http://tempuri.org/RetornaProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaOrcamento">
+      <soap:operation soapAction="http://tempuri.org/RetornaOrcamento" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -540,8 +817,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GerarPedido">
-      <soap:operation soapAction="http://tempuri.org/GerarPedido" style="document" />
+    <wsdl:operation name="RetornaComboFornecedor">
+      <soap:operation soapAction="http://tempuri.org/RetornaComboFornecedor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -549,8 +826,17 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GerarPedidoItem">
-      <soap:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+    <wsdl:operation name="RetornaComboTipo">
+      <soap:operation soapAction="http://tempuri.org/RetornaComboTipo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaSolicitacaoItem">
+      <soap:operation soapAction="http://tempuri.org/RetornaSolicitacaoItem" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -615,6 +901,51 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GerarPedido">
+      <soap12:operation soapAction="http://tempuri.org/GerarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedidoItem">
+      <soap12:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GravarOrcamento">
+      <soap12:operation soapAction="http://tempuri.org/GravarOrcamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Atualizar">
+      <soap12:operation soapAction="http://tempuri.org/Atualizar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Arquivar">
+      <soap12:operation soapAction="http://tempuri.org/Arquivar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="RetornaSetor">
       <soap12:operation soapAction="http://tempuri.org/RetornaSetor" style="document" />
       <wsdl:input>
@@ -626,6 +957,15 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaProduto">
       <soap12:operation soapAction="http://tempuri.org/RetornaProduto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaOrcamento">
+      <soap12:operation soapAction="http://tempuri.org/RetornaOrcamento" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -669,8 +1009,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GerarPedido">
-      <soap12:operation soapAction="http://tempuri.org/GerarPedido" style="document" />
+    <wsdl:operation name="RetornaComboFornecedor">
+      <soap12:operation soapAction="http://tempuri.org/RetornaComboFornecedor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -678,8 +1018,17 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GerarPedidoItem">
-      <soap12:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+    <wsdl:operation name="RetornaComboTipo">
+      <soap12:operation soapAction="http://tempuri.org/RetornaComboTipo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaSolicitacaoItem">
+      <soap12:operation soapAction="http://tempuri.org/RetornaSolicitacaoItem" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

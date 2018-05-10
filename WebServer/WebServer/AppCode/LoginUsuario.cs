@@ -32,27 +32,27 @@ namespace WebServer.AppCode
 
                 rdr = cmd.ExecuteReader();
 
-                    if (rdr.Read())
+                if (rdr.Read())
+                {
+                    if (Senha == rdr["Senha"].ToString())
                     {
-                        if (Senha == rdr["Senha"].ToString())
-                        {
-                            valor = 1;
-                        }
-                        else
-                        {
-                            valor = 0;
-                        }
+                        valor = 1;
                     }
                     else
                     {
                         valor = 0;
                     }
-                
+                }
+                else
+                {
+                    valor = 0;
+                }
+
 
             }
-                //    comando = "SELECT Senha FROM Usuario WHERE Usuario = '" + Usuario + "';";
-                //command = new SqlCommand(comando, con);
-                //rdr = command.ExecuteReader();  
+            //    comando = "SELECT Senha FROM Usuario WHERE Usuario = '" + Usuario + "';";
+            //command = new SqlCommand(comando, con);
+            //rdr = command.ExecuteReader();  
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());

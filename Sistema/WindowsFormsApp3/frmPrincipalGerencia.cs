@@ -18,6 +18,17 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
+        private const int CP_NOCLOSE_BUTTON = 0x200;
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams myCp = base.CreateParams;
+                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
+                return myCp;
+            }
+        }
+
         private void btnLogoff_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -39,6 +50,11 @@ namespace WindowsFormsApp3
             string setor = login.RetornaSetor(usuario);
 
             lblSetor.Text = "Setor: " + login.RetornaSetor(usuario);
+        }
+
+        private void btnOrcamentos_Click(object sender, EventArgs e)
+        {
+            new frmAprovaOrcamento { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
     }
 }

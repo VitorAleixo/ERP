@@ -29,14 +29,14 @@ namespace WebServer.AppCode
 
                 rdr = cmd.ExecuteReader();
 
-                    if (rdr.Read())
-                    {
-                        Setor = rdr["Departamento"].ToString();
-                    }
-
-                    return Setor;
+                if (rdr.Read())
+                {
+                    Setor = rdr["Departamento"].ToString();
                 }
-            
+
+                return Setor;
+            }
+
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());

@@ -16,7 +16,8 @@ namespace WebServer.AppCode
         public int GravarPedido(
                     string Solicitante
                   , string Urgencia
-                  , string Motivo)
+                  , string Motivo
+                  , string Tipo)
         {
             try
             {
@@ -24,18 +25,19 @@ namespace WebServer.AppCode
                 int IdPedido = 0;
                 con = ConnectionFactory.getConnection();
                 con.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO Pedido(Solicitante, Urgencia, Motivo, DataCriacao, Status) VALUES " +
-                "(@Solicitante, @Urgencia, @Motivo, GETDATE(), @Status ); SELECT @@IDENTITY;", con);
+                SqlCommand cmd = new SqlCommand("INSERT INTO Pedido(Solicitante, Urgencia, Motivo, DataCriacao, Status, Tipo) VALUES " +
+                "(@Solicitante, @Urgencia, @Motivo, GETDATE(), @Status, @Tipo ); SELECT @@IDENTITY;", con);
 
                 cmd.Parameters.AddWithValue("@Solicitante", Solicitante);
                 cmd.Parameters.AddWithValue("@Urgencia", Urgencia);
                 cmd.Parameters.AddWithValue("@Motivo", Motivo);
                 cmd.Parameters.AddWithValue("@Status", "PENDENTE");
+                cmd.Parameters.AddWithValue("@Tipo", Tipo);
 
                 IdPedido = Convert.ToInt32(cmd.ExecuteScalar());
 
                 return IdPedido;
-            } 
+            }
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());
@@ -68,15 +70,15 @@ namespace WebServer.AppCode
             }
         }
 
-            public void GravarPedidoItens(
-                     string Cod
-                   , string Nome
-                   , double QtdEstoque
-                   , double QtdMaxima
-                   , double QtdMinima
-                   , string UnidadeMedida
-                   , double Solicitar
-                   , int IdPedido)
+        public void GravarPedidoItens(
+                 string Cod
+               , string Nome
+               , double QtdEstoque
+               , double QtdMaxima
+               , double QtdMinima
+               , string UnidadeMedida
+               , double Solicitar
+               , int IdPedido)
         {
             try
             {

@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\BuscarTipo.cs" />
     <Compile Include="AppCode\PreencherLista.cs" />
     <Compile Include="AppCode\SessaoSistema.cs" />
     <Compile Include="Connected Services\WSCorreios\Reference.cs">
@@ -61,6 +62,12 @@
     </Compile>
     <Compile Include="frmAdminRights.Designer.cs">
       <DependentUpon>frmAdminRights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAprovaOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAprovaOrcamento.Designer.cs">
+      <DependentUpon>frmAprovaOrcamento.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCadastroConta.cs">
       <SubType>Form</SubType>
@@ -91,6 +98,12 @@
     </Compile>
     <Compile Include="frmGerenciamentoEstoque.Designer.cs">
       <DependentUpon>frmGerenciamentoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegendaGerencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaGerencia.Designer.cs">
+      <DependentUpon>frmLegendaGerencia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLegendaSolic.cs">
       <SubType>Form</SubType>
@@ -170,6 +183,12 @@
     <Compile Include="frmPrincipalGerencia.Designer.cs">
       <DependentUpon>frmPrincipalGerencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelecionarTipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelecionarTipo.Designer.cs">
+      <DependentUpon>frmSelecionarTipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSolicitacaoCompra.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +223,9 @@
     <EmbeddedResource Include="frmAdminRights.resx">
       <DependentUpon>frmAdminRights.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAprovaOrcamento.resx">
+      <DependentUpon>frmAprovaOrcamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCadastroConta.resx">
       <DependentUpon>frmCadastroConta.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +240,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmGerenciamentoEstoque.resx">
       <DependentUpon>frmGerenciamentoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaGerencia.resx">
+      <DependentUpon>frmLegendaGerencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLegendaSolic.resx">
       <DependentUpon>frmLegendaSolic.cs</DependentUpon>
@@ -257,6 +282,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipalGerencia.resx">
       <DependentUpon>frmPrincipalGerencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelecionarTipo.resx">
+      <DependentUpon>frmSelecionarTipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSolicitacaoCompra.resx">
       <DependentUpon>frmSolicitacaoCompra.cs</DependentUpon>
@@ -428,7 +456,13 @@
     <None Include="Web References\localhost\Fornecedor.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
+    <None Include="Web References\localhost\FornecedorCombo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\localhost\Login.wsdl" />
+    <None Include="Web References\localhost\Orcamento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\localhost\Produto.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -437,6 +471,12 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\Solicitacao.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\SolicitacaoItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhost\TipoCombo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\localhost\Usuario.datasource">

@@ -146,11 +146,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\ArquivarPedido.cs" />
+    <Compile Include="AppCode\AtualizarPedido.cs" />
+    <Compile Include="AppCode\BuscaCombos.cs" />
+    <Compile Include="AppCode\BuscaComboTipo.cs" />
     <Compile Include="AppCode\BuscaEstoque.cs" />
     <Compile Include="AppCode\BuscaFornecedor.cs" />
+    <Compile Include="AppCode\BuscaOrcamentos.cs" />
     <Compile Include="AppCode\BuscaProduto.cs" />
     <Compile Include="AppCode\BuscaSolicitacao.cs" />
+    <Compile Include="AppCode\BuscaSolicitacaoItem.cs" />
     <Compile Include="AppCode\BuscaUsuario.cs" />
+    <Compile Include="AppCode\CadastrarOrcamento.cs" />
     <Compile Include="AppCode\CadastroFornecedor.cs" />
     <Compile Include="AppCode\CadastroGerarPedido.cs" />
     <Compile Include="AppCode\CadastroProduto.cs" />

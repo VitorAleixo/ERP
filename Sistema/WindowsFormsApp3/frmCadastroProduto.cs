@@ -33,10 +33,10 @@ namespace WindowsFormsApp3
             txtCod.Text = "";
             txtId.Text = "";
             txtNome.Text = "";
-            txtPreco.Text = "";
             txtQtdEst.Text = "";
             txtQtdMax.Text = "";
             txtQtdMin.Text = "";
+            txtTipo.Text = "";
             cmbUM.SelectedIndex = -1;
         }
 
@@ -49,7 +49,7 @@ namespace WindowsFormsApp3
         {
             try
             {
-                if (txtCod.Text == "" || txtNome.Text == "" || txtPreco.Text == "" || txtQtdEst.Text == "" || txtQtdMax.Text == "" || txtQtdMin.Text == "")
+                if (txtCod.Text == "" || txtNome.Text == "" ||  txtQtdEst.Text == "" || txtQtdMax.Text == "" || txtQtdMin.Text == "" || txtTipo.Text == "")
                 {
                     MessageBox.Show("OOPS! Tem algum dado faltando!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -59,13 +59,13 @@ namespace WindowsFormsApp3
 
                     string CodigoProduto = txtCod.Text;
                     string Nome = txtNome.Text;
-                    float Preco = float.Parse(txtPreco.Text.ToString().Replace(".", ","));
                     string UnidadeMedida = cmbUM.SelectedItem.ToString();
                     float QtdMinima = float.Parse(txtQtdMin.Text.ToString().Replace(".", ","));
                     float QtdMaxima = float.Parse(txtQtdMax.Text.ToString().Replace(".", ","));
                     float QtdEstoque = float.Parse(txtQtdEst.Text.ToString().Replace(".", ","));
+                    string Tipo = txtTipo.Text;
 
-                    int IdProduto = cadastroProduto.CadastroProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque);
+                    int IdProduto = cadastroProduto.CadastroProduto(CodigoProduto, Nome, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, Tipo);
 
    
                     if (IdProduto > 0)

@@ -15,23 +15,23 @@ namespace WebServer.AppCode
         private SqlCommand cmdo = null;
         private SqlConnection con = null;
         private SqlDataReader rdr = null;
- 
+
 
         public int GravarProduto(
                       string CodigoProduto
                     , string Nome
-                    , float Preco
                     , string UnidadeMedida
                     , float QtdMinima
                     , float QtdMaxima
-                    , float QtdEstoque)
+                    , float QtdEstoque
+                    , string Tipo)
         {
             try
             {
                 con = ConnectionFactory.getConnection();
                 con.Open();
                 int IdProduto = 0;
-                SqlCommand cmd = new SqlCommand("SELECT CodigoProduto FROM Produto WHERE CodigoProduto = @Cod;",con);
+                SqlCommand cmd = new SqlCommand("SELECT CodigoProduto FROM Produto WHERE CodigoProduto = @Cod;", con);
 
                 cmd.Parameters.AddWithValue("@Cod", CodigoProduto);
 
@@ -45,18 +45,17 @@ namespace WebServer.AppCode
                 else
                 {
                     rdr.Close();
-                  
-                    SqlCommand comando = new SqlCommand( "INSERT INTO Produto(CodigoProduto, Nome, Preco, UnidadeMedida)" +
-                        "VALUES (@Cod, @Nome, @Preco , @UnidadeMedida); SELECT @@IDENTITY",con);
+
+                    SqlCommand comando = new SqlCommand("INSERT INTO Produto(CodigoProduto, Nome, UnidadeMedida, Tipo)" +
+                        "VALUES (@Cod, @Nome,  @UnidadeMedida, @Tipo); SELECT @@IDENTITY", con);
 
                     comando.Parameters.AddWithValue("@Cod", CodigoProduto);
                     comando.Parameters.AddWithValue("@Nome", Nome);
-                    comando.Parameters.AddWithValue("@Preco", Preco.ToString().Replace(",", "."));
                     comando.Parameters.AddWithValue("@UnidadeMedida", UnidadeMedida);
+                    comando.Parameters.AddWithValue("@Tipo", Tipo);
 
+                    IdProduto = Convert.ToInt32(comando.ExecuteScalar());
 
-                    IdProduto = Convert.ToInt32(comando.ExecuteScalar());      
-                  
                 }
                 return IdProduto;
             }
@@ -123,7 +122,7 @@ namespace WebServer.AppCode
                     throw new Exception(ex.ToString());
                 }
             }
-          
+
         }
         public void GravarProdutoEstoque(
                    int IdProduto
@@ -138,7 +137,7 @@ namespace WebServer.AppCode
                 SqlCommand cmd = new SqlCommand("INSERT INTO Estoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque) VALUES " +
                 "(@IdProduto, @QtdMinima, @QtdMaxima, @QtdEstoque);", con);
 
-       
+
                 cmd.Parameters.AddWithValue("@IdProduto", IdProduto);
                 cmd.Parameters.AddWithValue("@QtdEstoque", QtdEstoque);
                 cmd.Parameters.AddWithValue("@QtdMaxima", QtdMaxima);

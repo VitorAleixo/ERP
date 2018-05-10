@@ -38,6 +38,7 @@
             this.Urgencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Motivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCriacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +62,8 @@
             this.Solicitante,
             this.Urgencia,
             this.Motivo,
-            this.DataCriacao});
+            this.DataCriacao,
+            this.Tipo});
             this.grdGerenciamento.Location = new System.Drawing.Point(12, 37);
             this.grdGerenciamento.Name = "grdGerenciamento";
             this.grdGerenciamento.ReadOnly = true;
@@ -80,6 +82,7 @@
             this.btnGerarOrcamento.Text = "Gerar Orçamento";
             this.btnGerarOrcamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGerarOrcamento.UseVisualStyleBackColor = true;
+            this.btnGerarOrcamento.Click += new System.EventHandler(this.btnGerarOrcamento_Click);
             // 
             // btnLegendas
             // 
@@ -135,6 +138,13 @@
             this.DataCriacao.Name = "DataCriacao";
             this.DataCriacao.ReadOnly = true;
             // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
             // frmGerarOrcamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -170,5 +180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Urgencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Motivo;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCriacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
     }
 }

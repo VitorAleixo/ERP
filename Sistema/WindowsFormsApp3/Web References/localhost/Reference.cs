@@ -41,9 +41,21 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback CadastroProdutoEstoqueOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GerarPedidoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GerarPedidoItemOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback GravarOrcamentoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AtualizarOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback ArquivarOperationCompleted;
+        
         private System.Threading.SendOrPostCallback RetornaSetorOperationCompleted;
         
         private System.Threading.SendOrPostCallback RetornaProdutoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RetornaOrcamentoOperationCompleted;
         
         private System.Threading.SendOrPostCallback RetornaFornecedorOperationCompleted;
         
@@ -53,9 +65,11 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback RetornarSolicitacaoOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GerarPedidoOperationCompleted;
+        private System.Threading.SendOrPostCallback RetornaComboFornecedorOperationCompleted;
         
-        private System.Threading.SendOrPostCallback GerarPedidoItemOperationCompleted;
+        private System.Threading.SendOrPostCallback RetornaComboTipoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RetornaSolicitacaoItemOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -114,10 +128,28 @@ namespace WindowsFormsApp3.localhost {
         public event CadastroProdutoEstoqueCompletedEventHandler CadastroProdutoEstoqueCompleted;
         
         /// <remarks/>
+        public event GerarPedidoCompletedEventHandler GerarPedidoCompleted;
+        
+        /// <remarks/>
+        public event GerarPedidoItemCompletedEventHandler GerarPedidoItemCompleted;
+        
+        /// <remarks/>
+        public event GravarOrcamentoCompletedEventHandler GravarOrcamentoCompleted;
+        
+        /// <remarks/>
+        public event AtualizarCompletedEventHandler AtualizarCompleted;
+        
+        /// <remarks/>
+        public event ArquivarCompletedEventHandler ArquivarCompleted;
+        
+        /// <remarks/>
         public event RetornaSetorCompletedEventHandler RetornaSetorCompleted;
         
         /// <remarks/>
         public event RetornaProdutoCompletedEventHandler RetornaProdutoCompleted;
+        
+        /// <remarks/>
+        public event RetornaOrcamentoCompletedEventHandler RetornaOrcamentoCompleted;
         
         /// <remarks/>
         public event RetornaFornecedorCompletedEventHandler RetornaFornecedorCompleted;
@@ -132,10 +164,13 @@ namespace WindowsFormsApp3.localhost {
         public event RetornarSolicitacaoCompletedEventHandler RetornarSolicitacaoCompleted;
         
         /// <remarks/>
-        public event GerarPedidoCompletedEventHandler GerarPedidoCompleted;
+        public event RetornaComboFornecedorCompletedEventHandler RetornaComboFornecedorCompleted;
         
         /// <remarks/>
-        public event GerarPedidoItemCompletedEventHandler GerarPedidoItemCompleted;
+        public event RetornaComboTipoCompletedEventHandler RetornaComboTipoCompleted;
+        
+        /// <remarks/>
+        public event RetornaSolicitacaoItemCompletedEventHandler RetornaSolicitacaoItemCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginSistema", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -295,36 +330,36 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CadastroProduto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int CadastroProduto(string CodigoProduto, string Nome, float Preco, string UnidadeMedida, float QtdMinima, float QtdMaxima, float QtdEstoque) {
+        public int CadastroProduto(string CodigoProduto, string Nome, string UnidadeMedida, float QtdMinima, float QtdMaxima, float QtdEstoque, string Tipo) {
             object[] results = this.Invoke("CadastroProduto", new object[] {
                         CodigoProduto,
                         Nome,
-                        Preco,
                         UnidadeMedida,
                         QtdMinima,
                         QtdMaxima,
-                        QtdEstoque});
+                        QtdEstoque,
+                        Tipo});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void CadastroProdutoAsync(string CodigoProduto, string Nome, float Preco, string UnidadeMedida, float QtdMinima, float QtdMaxima, float QtdEstoque) {
-            this.CadastroProdutoAsync(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, null);
+        public void CadastroProdutoAsync(string CodigoProduto, string Nome, string UnidadeMedida, float QtdMinima, float QtdMaxima, float QtdEstoque, string Tipo) {
+            this.CadastroProdutoAsync(CodigoProduto, Nome, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, Tipo, null);
         }
         
         /// <remarks/>
-        public void CadastroProdutoAsync(string CodigoProduto, string Nome, float Preco, string UnidadeMedida, float QtdMinima, float QtdMaxima, float QtdEstoque, object userState) {
+        public void CadastroProdutoAsync(string CodigoProduto, string Nome, string UnidadeMedida, float QtdMinima, float QtdMaxima, float QtdEstoque, string Tipo, object userState) {
             if ((this.CadastroProdutoOperationCompleted == null)) {
                 this.CadastroProdutoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCadastroProdutoOperationCompleted);
             }
             this.InvokeAsync("CadastroProduto", new object[] {
                         CodigoProduto,
                         Nome,
-                        Preco,
                         UnidadeMedida,
                         QtdMinima,
                         QtdMaxima,
-                        QtdEstoque}, this.CadastroProdutoOperationCompleted, userState);
+                        QtdEstoque,
+                        Tipo}, this.CadastroProdutoOperationCompleted, userState);
         }
         
         private void OnCadastroProdutoOperationCompleted(object arg) {
@@ -366,6 +401,187 @@ namespace WindowsFormsApp3.localhost {
             if ((this.CadastroProdutoEstoqueCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.CadastroProdutoEstoqueCompleted(this, new CadastroProdutoEstoqueCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GerarPedido", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int GerarPedido(string Solicitante, string Urgencia, string Motivo, string Tipo) {
+            object[] results = this.Invoke("GerarPedido", new object[] {
+                        Solicitante,
+                        Urgencia,
+                        Motivo,
+                        Tipo});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GerarPedidoAsync(string Solicitante, string Urgencia, string Motivo, string Tipo) {
+            this.GerarPedidoAsync(Solicitante, Urgencia, Motivo, Tipo, null);
+        }
+        
+        /// <remarks/>
+        public void GerarPedidoAsync(string Solicitante, string Urgencia, string Motivo, string Tipo, object userState) {
+            if ((this.GerarPedidoOperationCompleted == null)) {
+                this.GerarPedidoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGerarPedidoOperationCompleted);
+            }
+            this.InvokeAsync("GerarPedido", new object[] {
+                        Solicitante,
+                        Urgencia,
+                        Motivo,
+                        Tipo}, this.GerarPedidoOperationCompleted, userState);
+        }
+        
+        private void OnGerarPedidoOperationCompleted(object arg) {
+            if ((this.GerarPedidoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GerarPedidoCompleted(this, new GerarPedidoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GerarPedidoItem", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool GerarPedidoItem(string Cod, string Nome, double QtdEstoque, double QtdMaxima, double QtdMinima, string UnidadeMedida, double Solicitar, int IdPedido) {
+            object[] results = this.Invoke("GerarPedidoItem", new object[] {
+                        Cod,
+                        Nome,
+                        QtdEstoque,
+                        QtdMaxima,
+                        QtdMinima,
+                        UnidadeMedida,
+                        Solicitar,
+                        IdPedido});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GerarPedidoItemAsync(string Cod, string Nome, double QtdEstoque, double QtdMaxima, double QtdMinima, string UnidadeMedida, double Solicitar, int IdPedido) {
+            this.GerarPedidoItemAsync(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void GerarPedidoItemAsync(string Cod, string Nome, double QtdEstoque, double QtdMaxima, double QtdMinima, string UnidadeMedida, double Solicitar, int IdPedido, object userState) {
+            if ((this.GerarPedidoItemOperationCompleted == null)) {
+                this.GerarPedidoItemOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGerarPedidoItemOperationCompleted);
+            }
+            this.InvokeAsync("GerarPedidoItem", new object[] {
+                        Cod,
+                        Nome,
+                        QtdEstoque,
+                        QtdMaxima,
+                        QtdMinima,
+                        UnidadeMedida,
+                        Solicitar,
+                        IdPedido}, this.GerarPedidoItemOperationCompleted, userState);
+        }
+        
+        private void OnGerarPedidoItemOperationCompleted(object arg) {
+            if ((this.GerarPedidoItemCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GerarPedidoItemCompleted(this, new GerarPedidoItemCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GravarOrcamento", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool GravarOrcamento(int IdPedido, string Tipo, string DataEmissao, string Observacoes, string Vendedor, string PrazoEntrega, string CondicaoPag, double ValorTotal, int QtdItens) {
+            object[] results = this.Invoke("GravarOrcamento", new object[] {
+                        IdPedido,
+                        Tipo,
+                        DataEmissao,
+                        Observacoes,
+                        Vendedor,
+                        PrazoEntrega,
+                        CondicaoPag,
+                        ValorTotal,
+                        QtdItens});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GravarOrcamentoAsync(int IdPedido, string Tipo, string DataEmissao, string Observacoes, string Vendedor, string PrazoEntrega, string CondicaoPag, double ValorTotal, int QtdItens) {
+            this.GravarOrcamentoAsync(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens, null);
+        }
+        
+        /// <remarks/>
+        public void GravarOrcamentoAsync(int IdPedido, string Tipo, string DataEmissao, string Observacoes, string Vendedor, string PrazoEntrega, string CondicaoPag, double ValorTotal, int QtdItens, object userState) {
+            if ((this.GravarOrcamentoOperationCompleted == null)) {
+                this.GravarOrcamentoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGravarOrcamentoOperationCompleted);
+            }
+            this.InvokeAsync("GravarOrcamento", new object[] {
+                        IdPedido,
+                        Tipo,
+                        DataEmissao,
+                        Observacoes,
+                        Vendedor,
+                        PrazoEntrega,
+                        CondicaoPag,
+                        ValorTotal,
+                        QtdItens}, this.GravarOrcamentoOperationCompleted, userState);
+        }
+        
+        private void OnGravarOrcamentoOperationCompleted(object arg) {
+            if ((this.GravarOrcamentoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GravarOrcamentoCompleted(this, new GravarOrcamentoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Atualizar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Atualizar(int IdPedido) {
+            object[] results = this.Invoke("Atualizar", new object[] {
+                        IdPedido});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AtualizarAsync(int IdPedido) {
+            this.AtualizarAsync(IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizarAsync(int IdPedido, object userState) {
+            if ((this.AtualizarOperationCompleted == null)) {
+                this.AtualizarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizarOperationCompleted);
+            }
+            this.InvokeAsync("Atualizar", new object[] {
+                        IdPedido}, this.AtualizarOperationCompleted, userState);
+        }
+        
+        private void OnAtualizarOperationCompleted(object arg) {
+            if ((this.AtualizarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizarCompleted(this, new AtualizarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Arquivar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool Arquivar(int IdPedido) {
+            object[] results = this.Invoke("Arquivar", new object[] {
+                        IdPedido});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void ArquivarAsync(int IdPedido) {
+            this.ArquivarAsync(IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void ArquivarAsync(int IdPedido, object userState) {
+            if ((this.ArquivarOperationCompleted == null)) {
+                this.ArquivarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnArquivarOperationCompleted);
+            }
+            this.InvokeAsync("Arquivar", new object[] {
+                        IdPedido}, this.ArquivarOperationCompleted, userState);
+        }
+        
+        private void OnArquivarOperationCompleted(object arg) {
+            if ((this.ArquivarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.ArquivarCompleted(this, new ArquivarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -428,6 +644,35 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaOrcamento", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaOrcamentos", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("ORCAMENTO", IsNullable=false)]
+        public Orcamento[] RetornaOrcamento() {
+            object[] results = this.Invoke("RetornaOrcamento", new object[0]);
+            return ((Orcamento[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaOrcamentoAsync() {
+            this.RetornaOrcamentoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaOrcamentoAsync(object userState) {
+            if ((this.RetornaOrcamentoOperationCompleted == null)) {
+                this.RetornaOrcamentoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaOrcamentoOperationCompleted);
+            }
+            this.InvokeAsync("RetornaOrcamento", new object[0], this.RetornaOrcamentoOperationCompleted, userState);
+        }
+        
+        private void OnRetornaOrcamentoOperationCompleted(object arg) {
+            if ((this.RetornaOrcamentoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaOrcamentoCompleted(this, new RetornaOrcamentoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaFornecedor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlArrayAttribute("BuscaFornecedor", IsNullable=true)]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("FORNECEDOR", IsNullable=false)]
@@ -460,22 +705,24 @@ namespace WindowsFormsApp3.localhost {
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaEstoque", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlArrayAttribute("BuscaEstoque", IsNullable=true)]
         [return: System.Xml.Serialization.XmlArrayItemAttribute("ESTOQUE", IsNullable=false)]
-        public Estoque[] RetornaEstoque() {
-            object[] results = this.Invoke("RetornaEstoque", new object[0]);
+        public Estoque[] RetornaEstoque(string Tipo) {
+            object[] results = this.Invoke("RetornaEstoque", new object[] {
+                        Tipo});
             return ((Estoque[])(results[0]));
         }
         
         /// <remarks/>
-        public void RetornaEstoqueAsync() {
-            this.RetornaEstoqueAsync(null);
+        public void RetornaEstoqueAsync(string Tipo) {
+            this.RetornaEstoqueAsync(Tipo, null);
         }
         
         /// <remarks/>
-        public void RetornaEstoqueAsync(object userState) {
+        public void RetornaEstoqueAsync(string Tipo, object userState) {
             if ((this.RetornaEstoqueOperationCompleted == null)) {
                 this.RetornaEstoqueOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaEstoqueOperationCompleted);
             }
-            this.InvokeAsync("RetornaEstoque", new object[0], this.RetornaEstoqueOperationCompleted, userState);
+            this.InvokeAsync("RetornaEstoque", new object[] {
+                        Tipo}, this.RetornaEstoqueOperationCompleted, userState);
         }
         
         private void OnRetornaEstoqueOperationCompleted(object arg) {
@@ -544,78 +791,91 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GerarPedido", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int GerarPedido(string Solicitante, string Urgencia, string Motivo) {
-            object[] results = this.Invoke("GerarPedido", new object[] {
-                        Solicitante,
-                        Urgencia,
-                        Motivo});
-            return ((int)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaComboFornecedor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaComboFornecedor", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("FORNECEDOR", IsNullable=false)]
+        public FornecedorCombo[] RetornaComboFornecedor() {
+            object[] results = this.Invoke("RetornaComboFornecedor", new object[0]);
+            return ((FornecedorCombo[])(results[0]));
         }
         
         /// <remarks/>
-        public void GerarPedidoAsync(string Solicitante, string Urgencia, string Motivo) {
-            this.GerarPedidoAsync(Solicitante, Urgencia, Motivo, null);
+        public void RetornaComboFornecedorAsync() {
+            this.RetornaComboFornecedorAsync(null);
         }
         
         /// <remarks/>
-        public void GerarPedidoAsync(string Solicitante, string Urgencia, string Motivo, object userState) {
-            if ((this.GerarPedidoOperationCompleted == null)) {
-                this.GerarPedidoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGerarPedidoOperationCompleted);
+        public void RetornaComboFornecedorAsync(object userState) {
+            if ((this.RetornaComboFornecedorOperationCompleted == null)) {
+                this.RetornaComboFornecedorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaComboFornecedorOperationCompleted);
             }
-            this.InvokeAsync("GerarPedido", new object[] {
-                        Solicitante,
-                        Urgencia,
-                        Motivo}, this.GerarPedidoOperationCompleted, userState);
+            this.InvokeAsync("RetornaComboFornecedor", new object[0], this.RetornaComboFornecedorOperationCompleted, userState);
         }
         
-        private void OnGerarPedidoOperationCompleted(object arg) {
-            if ((this.GerarPedidoCompleted != null)) {
+        private void OnRetornaComboFornecedorOperationCompleted(object arg) {
+            if ((this.RetornaComboFornecedorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GerarPedidoCompleted(this, new GerarPedidoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.RetornaComboFornecedorCompleted(this, new RetornaComboFornecedorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GerarPedidoItem", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool GerarPedidoItem(string Cod, string Nome, double QtdEstoque, double QtdMaxima, double QtdMinima, string UnidadeMedida, double Solicitar, int IdPedido) {
-            object[] results = this.Invoke("GerarPedidoItem", new object[] {
-                        Cod,
-                        Nome,
-                        QtdEstoque,
-                        QtdMaxima,
-                        QtdMinima,
-                        UnidadeMedida,
-                        Solicitar,
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaComboTipo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaComboTipo", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("TIPO", IsNullable=false)]
+        public TipoCombo[] RetornaComboTipo() {
+            object[] results = this.Invoke("RetornaComboTipo", new object[0]);
+            return ((TipoCombo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaComboTipoAsync() {
+            this.RetornaComboTipoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaComboTipoAsync(object userState) {
+            if ((this.RetornaComboTipoOperationCompleted == null)) {
+                this.RetornaComboTipoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaComboTipoOperationCompleted);
+            }
+            this.InvokeAsync("RetornaComboTipo", new object[0], this.RetornaComboTipoOperationCompleted, userState);
+        }
+        
+        private void OnRetornaComboTipoOperationCompleted(object arg) {
+            if ((this.RetornaComboTipoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaComboTipoCompleted(this, new RetornaComboTipoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaSolicitacaoItem", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaSolicitacaoItem", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("ITEMSOLICITACAO", IsNullable=false)]
+        public SolicitacaoItem[] RetornaSolicitacaoItem(int IdPedido) {
+            object[] results = this.Invoke("RetornaSolicitacaoItem", new object[] {
                         IdPedido});
-            return ((bool)(results[0]));
+            return ((SolicitacaoItem[])(results[0]));
         }
         
         /// <remarks/>
-        public void GerarPedidoItemAsync(string Cod, string Nome, double QtdEstoque, double QtdMaxima, double QtdMinima, string UnidadeMedida, double Solicitar, int IdPedido) {
-            this.GerarPedidoItemAsync(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido, null);
+        public void RetornaSolicitacaoItemAsync(int IdPedido) {
+            this.RetornaSolicitacaoItemAsync(IdPedido, null);
         }
         
         /// <remarks/>
-        public void GerarPedidoItemAsync(string Cod, string Nome, double QtdEstoque, double QtdMaxima, double QtdMinima, string UnidadeMedida, double Solicitar, int IdPedido, object userState) {
-            if ((this.GerarPedidoItemOperationCompleted == null)) {
-                this.GerarPedidoItemOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGerarPedidoItemOperationCompleted);
+        public void RetornaSolicitacaoItemAsync(int IdPedido, object userState) {
+            if ((this.RetornaSolicitacaoItemOperationCompleted == null)) {
+                this.RetornaSolicitacaoItemOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaSolicitacaoItemOperationCompleted);
             }
-            this.InvokeAsync("GerarPedidoItem", new object[] {
-                        Cod,
-                        Nome,
-                        QtdEstoque,
-                        QtdMaxima,
-                        QtdMinima,
-                        UnidadeMedida,
-                        Solicitar,
-                        IdPedido}, this.GerarPedidoItemOperationCompleted, userState);
+            this.InvokeAsync("RetornaSolicitacaoItem", new object[] {
+                        IdPedido}, this.RetornaSolicitacaoItemOperationCompleted, userState);
         }
         
-        private void OnGerarPedidoItemOperationCompleted(object arg) {
-            if ((this.GerarPedidoItemCompleted != null)) {
+        private void OnRetornaSolicitacaoItemOperationCompleted(object arg) {
+            if ((this.RetornaSolicitacaoItemCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.GerarPedidoItemCompleted(this, new GerarPedidoItemCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.RetornaSolicitacaoItemCompleted(this, new RetornaSolicitacaoItemCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -701,7 +961,156 @@ namespace WindowsFormsApp3.localhost {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class SolicitacaoItem {
+        
+        private string codField;
+        
+        private string nomeField;
+        
+        private string unidadeMedidaField;
+        
+        private double qtdEstoqueField;
+        
+        private double qtdMinimaField;
+        
+        private double qtdMaximaField;
+        
+        private double solicitarField;
+        
+        /// <remarks/>
+        public string Cod {
+            get {
+                return this.codField;
+            }
+            set {
+                this.codField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string UnidadeMedida {
+            get {
+                return this.unidadeMedidaField;
+            }
+            set {
+                this.unidadeMedidaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double QtdEstoque {
+            get {
+                return this.qtdEstoqueField;
+            }
+            set {
+                this.qtdEstoqueField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double QtdMinima {
+            get {
+                return this.qtdMinimaField;
+            }
+            set {
+                this.qtdMinimaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double QtdMaxima {
+            get {
+                return this.qtdMaximaField;
+            }
+            set {
+                this.qtdMaximaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double Solicitar {
+            get {
+                return this.solicitarField;
+            }
+            set {
+                this.solicitarField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class TipoCombo {
+        
+        private string statusField;
+        
+        /// <remarks/>
+        public string Status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class FornecedorCombo {
+        
+        private int idField;
+        
+        private string nomeField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public partial class Solicitacao {
+        
+        private int idPedidoField;
         
         private string solicitanteField;
         
@@ -710,6 +1119,18 @@ namespace WindowsFormsApp3.localhost {
         private string motivoField;
         
         private string dataCriacaoField;
+        
+        private string tipoField;
+        
+        /// <remarks/>
+        public int IdPedido {
+            get {
+                return this.idPedidoField;
+            }
+            set {
+                this.idPedidoField = value;
+            }
+        }
         
         /// <remarks/>
         public string Solicitante {
@@ -748,6 +1169,16 @@ namespace WindowsFormsApp3.localhost {
             }
             set {
                 this.dataCriacaoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Tipo {
+            get {
+                return this.tipoField;
+            }
+            set {
+                this.tipoField = value;
             }
         }
     }
@@ -984,6 +1415,87 @@ namespace WindowsFormsApp3.localhost {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class Orcamento {
+        
+        private int pedidoField;
+        
+        private string tipoField;
+        
+        private string dataEmissaoField;
+        
+        private string condicaoPagField;
+        
+        private double valorTotalField;
+        
+        private int qtdItensField;
+        
+        /// <remarks/>
+        public int Pedido {
+            get {
+                return this.pedidoField;
+            }
+            set {
+                this.pedidoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Tipo {
+            get {
+                return this.tipoField;
+            }
+            set {
+                this.tipoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string DataEmissao {
+            get {
+                return this.dataEmissaoField;
+            }
+            set {
+                this.dataEmissaoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CondicaoPag {
+            get {
+                return this.condicaoPagField;
+            }
+            set {
+                this.condicaoPagField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public double ValorTotal {
+            get {
+                return this.valorTotalField;
+            }
+            set {
+                this.valorTotalField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int QtdItens {
+            get {
+                return this.qtdItensField;
+            }
+            set {
+                this.qtdItensField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void LoginSistemaCompletedEventHandler(object sender, LoginSistemaCompletedEventArgs e);
     
@@ -1141,6 +1653,136 @@ namespace WindowsFormsApp3.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GerarPedidoCompletedEventHandler(object sender, GerarPedidoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GerarPedidoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GerarPedidoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GerarPedidoItemCompletedEventHandler(object sender, GerarPedidoItemCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GerarPedidoItemCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GerarPedidoItemCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void GravarOrcamentoCompletedEventHandler(object sender, GravarOrcamentoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GravarOrcamentoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GravarOrcamentoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void AtualizarCompletedEventHandler(object sender, AtualizarCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AtualizarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AtualizarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void ArquivarCompletedEventHandler(object sender, ArquivarCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class ArquivarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal ArquivarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void RetornaSetorCompletedEventHandler(object sender, RetornaSetorCompletedEventArgs e);
     
     /// <remarks/>
@@ -1187,6 +1829,32 @@ namespace WindowsFormsApp3.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Produto[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaOrcamentoCompletedEventHandler(object sender, RetornaOrcamentoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaOrcamentoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaOrcamentoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public Orcamento[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((Orcamento[])(this.results[0]));
             }
         }
     }
@@ -1297,52 +1965,78 @@ namespace WindowsFormsApp3.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
-    public delegate void GerarPedidoCompletedEventHandler(object sender, GerarPedidoCompletedEventArgs e);
+    public delegate void RetornaComboFornecedorCompletedEventHandler(object sender, RetornaComboFornecedorCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GerarPedidoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class RetornaComboFornecedorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GerarPedidoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal RetornaComboFornecedorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public int Result {
+        public FornecedorCombo[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
+                return ((FornecedorCombo[])(this.results[0]));
             }
         }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
-    public delegate void GerarPedidoItemCompletedEventHandler(object sender, GerarPedidoItemCompletedEventArgs e);
+    public delegate void RetornaComboTipoCompletedEventHandler(object sender, RetornaComboTipoCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class GerarPedidoItemCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class RetornaComboTipoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal GerarPedidoItemCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal RetornaComboTipoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
         
         /// <remarks/>
-        public bool Result {
+        public TipoCombo[] Result {
             get {
                 this.RaiseExceptionIfNecessary();
-                return ((bool)(this.results[0]));
+                return ((TipoCombo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaSolicitacaoItemCompletedEventHandler(object sender, RetornaSolicitacaoItemCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaSolicitacaoItemCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaSolicitacaoItemCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public SolicitacaoItem[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((SolicitacaoItem[])(this.results[0]));
             }
         }
     }

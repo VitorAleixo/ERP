@@ -52,46 +52,39 @@ namespace WebServer.AppCode
             public static ListaEstoque list { get; set; }
 
 
-            public static ListaEstoque RetornarEstoque()
+            public static ListaEstoque RetornarEstoque(string Tipo)
             {
+                con = ConnectionFactory.getConnection();
+                con.Open();
                 try
                 {
-                    con = ConnectionFactory.getConnection();
-                    con.Open();
-
-                    comando = "SELECT CodigoProduto, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida " +
+                    SqlCommand comando = new SqlCommand("SELECT CodigoProduto, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida,Tipo " +
                         "FROM Produto INNER JOIN Estoque " +
-                        "on Produto.IdProduto = Estoque.IdProduto;";
+                        "on Produto.IdProduto = Estoque.IdProduto WHERE Tipo = @Tipo;", con);
+                    comando.Parameters.AddWithValue("@Tipo", Tipo);
+
 
                     XmlSerializer ser = new XmlSerializer(typeof(ListaEstoque));
                     list = new ListaEstoque();
 
-                    using (var cmd = con.CreateCommand())
+                    using (var rdr = comando.ExecuteReader())
                     {
-
-                        cmd.CommandText = comando.ToString();
-                        using (var rdr = cmd.ExecuteReader())
+                        while (rdr.Read())
                         {
-                            while (rdr.Read())
+                            list.Items.Add(new Estoque
                             {
-                                list.Items.Add(new Estoque
-                                {
 
-                                    Codigo = rdr.GetString(0),
-                                    Nome = rdr.GetString(1),
-                                    QtdEstoque = rdr.GetDouble(2),
-                                    QtdMaxima = rdr.GetDouble(3),
-                                    QtdMinima = rdr.GetDouble(4),
-                                    UM = rdr.GetString(5)
-                                });
-                            }
+                                Codigo = rdr.GetString(0),
+                                Nome = rdr.GetString(1),
+                                QtdEstoque = rdr.GetDouble(2),
+                                QtdMaxima = rdr.GetDouble(3),
+                                QtdMinima = rdr.GetDouble(4),
+                                UM = rdr.GetString(5)
+                            });
                         }
-                        cmd.Dispose();
-
                     }
-
+                    comando.Dispose();
                     return list;
-
                 }
                 catch (Exception ex)
                 {

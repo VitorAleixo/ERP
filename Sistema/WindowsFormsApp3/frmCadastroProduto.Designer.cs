@@ -33,13 +33,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTipo = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtPreco = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCod = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -91,15 +91,6 @@
             this.label4.TabIndex = 21;
             this.label4.Text = "Unidade de Medida";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(532, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Preço (R$)";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -120,20 +111,37 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTipo);
+            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtId);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.txtPreco);
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.txtCod);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Location = new System.Drawing.Point(11, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(641, 77);
+            this.groupBox1.Size = new System.Drawing.Size(641, 80);
             this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Produto";
+            // 
+            // txtTipo
+            // 
+            this.txtTipo.Location = new System.Drawing.Point(485, 41);
+            this.txtTipo.MaxLength = 50;
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.Size = new System.Drawing.Size(150, 20);
+            this.txtTipo.TabIndex = 29;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(482, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(83, 13);
+            this.label10.TabIndex = 28;
+            this.label10.Text = "Tipo do Produto";
             // 
             // txtId
             // 
@@ -152,20 +160,12 @@
             this.label8.TabIndex = 26;
             this.label8.Text = "Identificador";
             // 
-            // txtPreco
-            // 
-            this.txtPreco.Location = new System.Drawing.Point(535, 41);
-            this.txtPreco.MaxLength = 15;
-            this.txtPreco.Name = "txtPreco";
-            this.txtPreco.Size = new System.Drawing.Size(100, 20);
-            this.txtPreco.TabIndex = 4;
-            // 
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(283, 41);
             this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(234, 20);
+            this.txtNome.Size = new System.Drawing.Size(186, 20);
             this.txtNome.TabIndex = 3;
             // 
             // txtCod
@@ -186,7 +186,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Location = new System.Drawing.Point(11, 137);
+            this.groupBox2.Location = new System.Drawing.Point(11, 123);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(641, 76);
             this.groupBox2.TabIndex = 26;
@@ -246,7 +246,7 @@
             // 
             this.btnGravar.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
             this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGravar.Location = new System.Drawing.Point(526, 219);
+            this.btnGravar.Location = new System.Drawing.Point(526, 205);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(64, 23);
             this.btnGravar.TabIndex = 9;
@@ -259,7 +259,7 @@
             // 
             this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(596, 219);
+            this.btnSair.Location = new System.Drawing.Point(596, 205);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(56, 23);
             this.btnSair.TabIndex = 10;
@@ -272,7 +272,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(664, 254);
+            this.ClientSize = new System.Drawing.Size(664, 235);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
@@ -302,13 +302,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtPreco;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtCod;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -317,5 +315,7 @@
         private System.Windows.Forms.TextBox txtQtdMax;
         private System.Windows.Forms.TextBox txtQtdEst;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.Label label10;
     }
 }
