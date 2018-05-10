@@ -33,75 +33,64 @@ namespace WindowsFormsApp3
             this.Close();
         }
 
-        private void btnPesquisaCEP_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var ws = new WSCorreios.AtendeClienteClient();
-                var resposta = ws.consultaCEP(txtCEP.Text);
-                txtCidade.Text = resposta.cidade;
-                txtComplemento.Text = resposta.complemento;
-                txtComplemento2.Text = resposta.complemento2;
-                txtEstado.Text = resposta.uf;
-                txtEndereco.Text = resposta.end;
-                txtBairro.Text = resposta.bairro;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERRO!", MessageBoxButtons.OK);
-            }
-        }
 
         private void frmCadastroConta_Load(object sender, EventArgs e)
         {
-            cmbCPF.SelectedIndex = 0;
+            LimparCampos();
         }
 
-        private void cmbCPF_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cmbCPF.SelectedItem.ToString() == "CPF")
-            {
-                txtCPF.Text = "";
-                txtCPF.Enabled = true;
-                txtCPF.Mask = "000.000.000-00";
-            }
-            else if (cmbCPF.SelectedItem.ToString() == "CNPJ")
-            {
-                txtCPF.Text = "";
-                txtCPF.Enabled = true;
-                txtCPF.Mask = "00.000.000/0000-00";
-            }
-            else if (cmbCPF.SelectedItem.ToString() == "NÃO POSSUI")
-            {
-                txtCPF.Text = "";
-                txtCPF.Enabled = false;
-                txtCPF.Mask = "";
-            }
-
-        }
 
         void LimparCampos()
         {
-            txtNome.Text = "";
-            cmbCPF.SelectedIndex = 0;
-            txtCEP.Text = "";
-            txtEndereco.Text = "";
-            txtBairro.Text = "";
-            txtCidade.Text = "";
-            txtComplemento.Text = "";
-            txtEstado.Text = "";
-            txtComplemento2.Text = "";
-            txtNumero.Text = "";
-            txtTelefone1.Text = "";
-            txtTelefone2.Text = "";
+
+            txtUsuario.Text = "";
+            txtSenha.Text = "";
+            txtSenhaConfirmacao.Text = "";
             txtEmail.Text = "";
         }
 
-        private void txtCEP_KeyDown(object sender, KeyEventArgs e)
+
+        private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            try
             {
-                btnPesquisaCEP.PerformClick();
+                if (txtEmail.Text == "" || txtSenha.Text == "" || txtUsuario.Text == "" || txtSenhaConfirmacao.Text == "")
+                {
+                    MessageBox.Show("OOPS! Tem algum dado faltando!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    localhost.Login cadastroUsuario = new localhost.Login();
+
+                    string Usuario = txtUsuario.Text;
+                    string Senha = txtSenha.Text;
+                    string SenhaConfirmacao = txtSenhaConfirmacao.Text;
+                    string Email = txtEmail.Text;
+                    DateTime DataCriacao = DateTime.Now;
+                    string TipoConta = "Usuario";
+                    int Status = 0;
+
+                    if (Senha == SenhaConfirmacao)
+                    {
+                        if (cadastroUsuario.CadastroUsuario(Usuario, Senha, Email, DataCriacao, TipoConta, Status))
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!", "Usuário", MessageBoxButtons.OK);
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro ao gravar Usuario!!!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("As senhas não coincidem!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

@@ -43,13 +43,13 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCod = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cmbUM = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtQtdMin = new System.Windows.Forms.TextBox();
+            this.txtQtdMax = new System.Windows.Forms.TextBox();
+            this.txtQtdEst = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cmbUM = new System.Windows.Forms.ComboBox();
+            this.btnGravar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +85,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 25);
+            this.label4.Location = new System.Drawing.Point(11, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 13);
             this.label4.TabIndex = 21;
@@ -103,20 +103,20 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(138, 25);
+            this.label6.Location = new System.Drawing.Point(147, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(164, 13);
+            this.label6.Size = new System.Drawing.Size(102, 13);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Quantidade Minima para Estoque";
+            this.label6.Text = "Qtd Minima Estoque";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(319, 25);
+            this.label7.Location = new System.Drawing.Point(310, 25);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(167, 13);
+            this.label7.Size = new System.Drawing.Size(105, 13);
             this.label7.TabIndex = 24;
-            this.label7.Text = "Quantidade Maxima para Estoque";
+            this.label7.Text = "Qtd Maxima Estoque";
             // 
             // groupBox1
             // 
@@ -155,6 +155,7 @@
             // txtPreco
             // 
             this.txtPreco.Location = new System.Drawing.Point(535, 41);
+            this.txtPreco.MaxLength = 15;
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(100, 20);
             this.txtPreco.TabIndex = 4;
@@ -162,6 +163,7 @@
             // txtNome
             // 
             this.txtNome.Location = new System.Drawing.Point(283, 41);
+            this.txtNome.MaxLength = 50;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(234, 20);
             this.txtNome.TabIndex = 3;
@@ -169,15 +171,16 @@
             // txtCod
             // 
             this.txtCod.Location = new System.Drawing.Point(150, 41);
+            this.txtCod.MaxLength = 10;
             this.txtCod.Name = "txtCod";
             this.txtCod.Size = new System.Drawing.Size(115, 20);
             this.txtCod.TabIndex = 2;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtQtdMin);
+            this.groupBox2.Controls.Add(this.txtQtdMax);
+            this.groupBox2.Controls.Add(this.txtQtdEst);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cmbUM);
             this.groupBox2.Controls.Add(this.label7);
@@ -190,6 +193,39 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informações sobre Estoque";
             // 
+            // txtQtdMin
+            // 
+            this.txtQtdMin.Location = new System.Drawing.Point(150, 41);
+            this.txtQtdMin.MaxLength = 15;
+            this.txtQtdMin.Name = "txtQtdMin";
+            this.txtQtdMin.Size = new System.Drawing.Size(118, 20);
+            this.txtQtdMin.TabIndex = 28;
+            // 
+            // txtQtdMax
+            // 
+            this.txtQtdMax.Location = new System.Drawing.Point(313, 41);
+            this.txtQtdMax.MaxLength = 15;
+            this.txtQtdMax.Name = "txtQtdMax";
+            this.txtQtdMax.Size = new System.Drawing.Size(118, 20);
+            this.txtQtdMax.TabIndex = 27;
+            // 
+            // txtQtdEst
+            // 
+            this.txtQtdEst.Location = new System.Drawing.Point(473, 41);
+            this.txtQtdEst.MaxLength = 15;
+            this.txtQtdEst.Name = "txtQtdEst";
+            this.txtQtdEst.Size = new System.Drawing.Size(118, 20);
+            this.txtQtdEst.TabIndex = 25;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(470, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 13);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Qtd em Estoque";
+            // 
             // cmbUM
             // 
             this.cmbUM.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -201,22 +237,23 @@
             "L",
             "ML",
             "UNIDADE"});
-            this.cmbUM.Location = new System.Drawing.Point(9, 40);
+            this.cmbUM.Location = new System.Drawing.Point(14, 41);
             this.cmbUM.Name = "cmbUM";
-            this.cmbUM.Size = new System.Drawing.Size(105, 21);
+            this.cmbUM.Size = new System.Drawing.Size(118, 21);
             this.cmbUM.TabIndex = 5;
             // 
-            // button1
+            // btnGravar
             // 
-            this.button1.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(526, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(64, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Gravar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGravar.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
+            this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGravar.Location = new System.Drawing.Point(526, 219);
+            this.btnGravar.Name = "btnGravar";
+            this.btnGravar.Size = new System.Drawing.Size(64, 23);
+            this.btnGravar.TabIndex = 8;
+            this.btnGravar.Text = "Gravar";
+            this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGravar.UseVisualStyleBackColor = true;
+            this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
             // btnSair
             // 
@@ -231,36 +268,6 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(515, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(118, 20);
-            this.textBox1.TabIndex = 25;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(512, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(121, 13);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Quantidade em Estoque";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(322, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(118, 20);
-            this.textBox2.TabIndex = 27;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(141, 41);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(118, 20);
-            this.textBox3.TabIndex = 28;
-            // 
             // frmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,7 +276,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnGravar);
             this.Controls.Add(this.btnSair);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -290,7 +297,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -306,9 +313,9 @@
         private System.Windows.Forms.TextBox txtCod;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cmbUM;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtQtdMin;
+        private System.Windows.Forms.TextBox txtQtdMax;
+        private System.Windows.Forms.TextBox txtQtdEst;
         private System.Windows.Forms.Label label9;
     }
 }

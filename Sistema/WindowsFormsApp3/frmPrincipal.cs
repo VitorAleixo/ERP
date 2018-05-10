@@ -30,7 +30,7 @@ namespace WindowsFormsApp3
 
         private void btnLogoff_Click(object sender, EventArgs e)
         {
-            this.Close();
+             this.Close();
         }
 
         private void btnCadastroProd_Click(object sender, EventArgs e)

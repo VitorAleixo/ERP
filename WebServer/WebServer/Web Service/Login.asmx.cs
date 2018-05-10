@@ -11,7 +11,7 @@ using MySql.Data.MySqlClient;
 namespace WebServer.Web_Service
 {
 
-    
+
     /// <summary>
     /// Summary description for Login
     /// </summary>
@@ -35,10 +35,12 @@ namespace WebServer.Web_Service
             LoginUsuario login = new LoginUsuario();
 
             login.Logar(Usuario, senhaCriptografada);
-           
+
 
             if (login.valor == 1)
             {
+                login.LimparStatus();
+                login.SetStatus(Usuario);
                 return true;
             }
             else
@@ -49,22 +51,22 @@ namespace WebServer.Web_Service
 
         [WebMethod]
         public bool CadastroFornecedor(
-                  string Nome 
-                , string CPF 
-                , string CEP 
-                , string Endereco 
-                , string Bairro 
-                , string Cidade 
-                , string Complemento 
-                , string Estado 
-                , string Complemento2 
+                  string Nome
+                , string CPF
+                , string CEP
+                , string Endereco
+                , string Bairro
+                , string Cidade
+                , string Complemento
+                , string Estado
+                , string Complemento2
                 , string Numero
                 , string Telefone
-                , string Telefone2 
-                , string EMAIL )
+                , string Telefone2
+                , string EMAIL)
         {
             CadastroFornecedor cadastroForn = new CadastroFornecedor();
-            cadastroForn.GravarFornecedor(Nome,CPF,CEP,Endereco,Bairro,Cidade,Complemento,Estado,Complemento2,Numero,Telefone,Telefone2,EMAIL);
+            cadastroForn.GravarFornecedor(Nome, CPF, CEP, Endereco, Bairro, Cidade, Complemento, Estado, Complemento2, Numero, Telefone, Telefone2, EMAIL);
 
             if (cadastroForn.valor == 1)
             {
@@ -74,8 +76,54 @@ namespace WebServer.Web_Service
             {
                 return false;
             }
+        }
+
+        [WebMethod]
+        public bool CadastroUsuario(
+                    string Usuario
+                  , string Senha 
+                  , string Email 
+                  , DateTime DataCriacao 
+                  , string TipoConta
+                  , int Status)
+        {
+            CadastroUsuario cadastroUser = new CadastroUsuario();
+            cadastroUser.GravarUsuario(Usuario, Senha, Email, DataCriacao, TipoConta, Status);
+
+            if (cadastroUser.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
         }
-    }
 
+        [WebMethod]
+        public bool CadastroProduto(
+                   string CodigoProduto
+                 , string Nome
+                 , float Preco
+                 , string UnidadeMedida
+                 , float QtdMinima
+                 , float QtdMaxima
+                 , float QtdEstoque)
+        {
+            CadastroProduto cadastroProd = new CadastroProduto();
+            cadastroProd.GravarProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque);
+
+            if (cadastroProd.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+    }
 }

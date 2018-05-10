@@ -37,8 +37,57 @@ namespace WebServer.AppCode
                 valor = 0;
                 command.Dispose();
             }
+            rdr.Close();
             connectionString.Close();
         }
-    
+
+        public void SetStatus(string Usuario)
+        {
+            MySqlConnection connectionString = new MySqlConnection("server=localhost;user id=root;password=root;database=SistemaDeEstoque");
+            connectionString.Open();
+            MySqlCommand command = new MySqlCommand("SELECT Id FROM Cliente WHERE Usuario = '" + Usuario + "'", connectionString);
+            MySqlDataReader rdr = command.ExecuteReader();
+
+            if (rdr.Read())
+            {
+                int idUsuario = rdr.GetInt32("Id");
+                command.Dispose();
+
+                command = new MySqlCommand(" UPDATE Cliente SET Status = '1' WHERE Id = '"+ idUsuario + "'", connectionString);
+                command.ExecuteNonQuery();
+                command.Dispose();               
+            }
+            rdr.Close();
+            connectionString.Close();
+        }
+
+        public void SetStatusSair(string Usuario)
+        {
+            MySqlConnection connectionString = new MySqlConnection("server=localhost;user id=root;password=root;database=SistemaDeEstoque");
+            connectionString.Open();
+            MySqlCommand command = new MySqlCommand("SELECT Id FROM Cliente WHERE Status = '1'", connectionString);
+            MySqlDataReader rdr = command.ExecuteReader();
+
+            if (rdr.Read())
+            {
+                int idUsuario = rdr.GetInt32("Id");
+                command.Dispose();
+
+                command = new MySqlCommand(" UPDATE Cliente SET Status = 0 WHERE Id '" + idUsuario + "'", connectionString);
+                command.Dispose();
+            }
+            rdr.Close();
+            connectionString.Close();
+        }
+
+        public void LimparStatus()
+        {
+            MySqlConnection connectionString = new MySqlConnection("server=localhost;user id=root;password=root;database=SistemaDeEstoque");
+            connectionString.Open();
+            MySqlCommand command = new MySqlCommand("UPDATE Cliente SET Status = 0", connectionString);
+            command.ExecuteNonQuery();
+            command.Dispose();
+            connectionString.Close();
+        }
     }
 }

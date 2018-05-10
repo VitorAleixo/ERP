@@ -57,3 +57,20 @@ C:\Users\estagio.ti\Desktop\SistemaAT\Sistema\Sistema\WindowsFormsApp3\obj\Debug
 C:\Users\estagio.ti\Desktop\SistemaAT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.CoreCompileInputs.cache
 C:\Users\estagio.ti\Desktop\SistemaAT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.exe
 C:\Users\estagio.ti\Desktop\SistemaAT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csprojResolveAssemblyReference.cache
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmCadastroConta.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmCadastroFornecedor.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmCadastroProduto.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmGerenciamentoEstoque.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLogin.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipal.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmVisFornecedores.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmVisProdutos.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.Properties.Resources.resources
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.GenerateResource.Cache
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.CoreCompileInputs.cache
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.exe
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.exe.config
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.exe
+C:\Users\Vitor Aleixo\Desktop\Sistema\Sistema\WindowsFormsApp3\bin\Debug\WindowsFormsApp3.pdb

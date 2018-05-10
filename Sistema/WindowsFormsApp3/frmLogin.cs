@@ -48,23 +48,30 @@ namespace WindowsFormsApp3
         {
             try
             {
-                localhost.Login login = new localhost.Login();
-                string usuario = txtUsuario.Text;
-                string senha = txtSenha.Text;
-
-
-                if (login.LoginSistema(usuario, senha))
+                if (txtSenha.Text == "" || txtUsuario.Text == "")
                 {
-                    validar = true;
-                    MessageBox.Show("Autenticado no Sistema!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-
+                    MessageBox.Show("OOPS! Tem algum dado faltando!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    validar = false;
-                    MessageBox.Show("Erro na Autenticação!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    txtSenha.Text = "";
+                    localhost.Login login = new localhost.Login();
+                    string usuario = txtUsuario.Text;
+                    string senha = txtSenha.Text;
+
+
+                    if (login.LoginSistema(usuario, senha))
+                    {
+                        validar = true;
+                        MessageBox.Show("Autenticado no Sistema!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        validar = false;
+                        MessageBox.Show("Usuario ou Senha Incorretos!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txtSenha.Text = "";
+                    }
                 }
             }
             catch (Exception ex)

@@ -28,10 +28,67 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
+        void LimparCampos()
+        {
+            txtCod.Text = "";
+            txtId.Text = "";
+            txtNome.Text = "";
+            txtPreco.Text = "";
+            txtQtdEst.Text = "";
+            txtQtdMax.Text = "";
+            txtQtdMin.Text = "";
+            cmbUM.SelectedIndex = -1;
+        }
+
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtCod.Text == "" || txtNome.Text == "" || txtPreco.Text == "" || txtQtdEst.Text == "" || txtQtdMax.Text == "" || txtQtdMin.Text == "")
+                {
+                    MessageBox.Show("OOPS! Tem algum dado faltando!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    localhost.Login cadastroProduto = new localhost.Login();
+
+                    string CodigoProduto = txtCod.Text;
+                    string Nome = txtNome.Text;
+                    float Preco = float.Parse(txtPreco.Text);
+                    string UnidadeMedida = cmbUM.SelectedItem.ToString();
+                    float QtdMinima = float.Parse(txtQtdMin.Text);
+                    float QtdMaxima = float.Parse(txtQtdMax.Text);
+                    float QtdEstoque = float.Parse(txtQtdEst.Text);
+
+                    if (cadastroProduto.CadastroProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque))
+                    {
+                        DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!\nDeseja continuar cadastrando?", "Usuário", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            LimparCampos();
+                        }
+                        else
+                        {
+                            this.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Erro ao gravar Fornecedor!!!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
