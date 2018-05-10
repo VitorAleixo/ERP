@@ -139,10 +139,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\AtualizarPermissoes.cs" />
+    <Compile Include="AppCode\BuscaComboNome.cs" />
     <Compile Include="AppCode\BuscaUsuario.cs" />
     <Compile Include="AppCode\CadastroUsuario.cs" />
     <Compile Include="AppCode\ConnectionFactory.cs" />
     <Compile Include="AppCode\Criptografia.cs" />
+    <Compile Include="AppCode\VerificarPermissoes.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

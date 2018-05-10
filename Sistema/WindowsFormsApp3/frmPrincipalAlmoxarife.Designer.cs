@@ -39,8 +39,8 @@
             this.btnLogoff = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnVisProduto = new System.Windows.Forms.Button();
-            this.btnGerenciamento = new System.Windows.Forms.Button();
             this.btnCadastroProd = new System.Windows.Forms.Button();
+            this.btnGerenciamento = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -102,13 +102,13 @@
             // 
             // btnLogoff
             // 
-            this.btnLogoff.Image = global::WindowsFormsApp3.Properties.Resources.btnLogoff;
+            this.btnLogoff.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
             this.btnLogoff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogoff.Location = new System.Drawing.Point(489, 238);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(62, 23);
             this.btnLogoff.TabIndex = 18;
-            this.btnLogoff.Text = "Logoff";
+            this.btnLogoff.Text = "Sair";
             this.btnLogoff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
@@ -137,6 +137,19 @@
             this.btnVisProduto.UseVisualStyleBackColor = true;
             this.btnVisProduto.Click += new System.EventHandler(this.btnVisProduto_Click);
             // 
+            // btnCadastroProd
+            // 
+            this.btnCadastroProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCadastroProd.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroProduto;
+            this.btnCadastroProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastroProd.Location = new System.Drawing.Point(6, 19);
+            this.btnCadastroProd.Name = "btnCadastroProd";
+            this.btnCadastroProd.Size = new System.Drawing.Size(216, 57);
+            this.btnCadastroProd.TabIndex = 7;
+            this.btnCadastroProd.Text = "Cadastro de Produtos";
+            this.btnCadastroProd.UseVisualStyleBackColor = true;
+            this.btnCadastroProd.Click += new System.EventHandler(this.btnCadastroProd_Click);
+            // 
             // btnGerenciamento
             // 
             this.btnGerenciamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,19 +163,6 @@
             this.btnGerenciamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGerenciamento.UseVisualStyleBackColor = true;
             this.btnGerenciamento.Click += new System.EventHandler(this.btnGerenciamento_Click);
-            // 
-            // btnCadastroProd
-            // 
-            this.btnCadastroProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnCadastroProd.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroProduto;
-            this.btnCadastroProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastroProd.Location = new System.Drawing.Point(6, 19);
-            this.btnCadastroProd.Name = "btnCadastroProd";
-            this.btnCadastroProd.Size = new System.Drawing.Size(216, 57);
-            this.btnCadastroProd.TabIndex = 7;
-            this.btnCadastroProd.Text = "Cadastro de Produtos";
-            this.btnCadastroProd.UseVisualStyleBackColor = true;
-            this.btnCadastroProd.Click += new System.EventHandler(this.btnCadastroProd_Click);
             // 
             // groupBox2
             // 

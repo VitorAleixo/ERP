@@ -146,6 +146,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\BuscaPermissao.cs" />
     <Compile Include="AppCode\ConnectionFactory.cs" />
     <Compile Include="AppCode\Criptografia.cs" />
     <Compile Include="AppCode\BuscaDepartamento.cs" />

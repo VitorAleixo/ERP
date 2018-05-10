@@ -36,10 +36,10 @@ namespace WebServerAdm.WebServer
         public bool CadastroPermissoesUsuario(
                     string Departamento
                   , int IdUsuario
-                  , string Nome)
+                  , string Usuario)
         {
             CadastroUsuario cadastrouser = new CadastroUsuario();
-            cadastrouser.GravarPermissoes(Departamento, IdUsuario, Nome);
+            cadastrouser.GravarPermissoes(Departamento, IdUsuario, Usuario);
             if (cadastrouser.valor == 1)
             {
                 return true;
@@ -56,6 +56,63 @@ namespace WebServerAdm.WebServer
             BuscaUsuario.Program.RetornarUsuario();
 
             return BuscaUsuario.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaComboNome.ListaNomeCombo RetornaComboNome()
+        {
+            BuscaComboNome.Program.RetornaComboNome();
+            return BuscaComboNome.Program.list;
+        }
+
+        [WebMethod]
+        public bool VerificarPermissao(
+                   string Departamento
+                 , string Usuario)
+        {
+            VerificarPermissoes permissoes = new VerificarPermissoes();
+
+            if (permissoes.PermissoesAdm(Usuario, Departamento) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        [WebMethod]
+        public bool AtualizaPermissoesAdiciona(
+                   string Departamento
+                 , string Usuario)
+        {
+            AtualizarPermissoes atualizarOK = new AtualizarPermissoes();
+            if (atualizarOK.AtualizaPermissoesAdiciona(Usuario, Departamento) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool AtualizaPermissoesRemove(
+                string Departamento
+              , string Usuario)
+        {
+            AtualizarPermissoes atualizarRM = new AtualizarPermissoes();
+            if (atualizarRM.AtualizaPermissoesRemove(Usuario, Departamento) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

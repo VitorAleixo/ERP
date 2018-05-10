@@ -177,13 +177,13 @@
             // 
             // btnLogoff
             // 
-            this.btnLogoff.Image = global::WindowsFormsApp3.Properties.Resources.btnLogoff;
+            this.btnLogoff.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
             this.btnLogoff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogoff.Location = new System.Drawing.Point(489, 239);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(62, 23);
             this.btnLogoff.TabIndex = 13;
-            this.btnLogoff.Text = "Logoff";
+            this.btnLogoff.Text = "Sair";
             this.btnLogoff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);

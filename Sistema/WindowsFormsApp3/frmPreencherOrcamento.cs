@@ -111,7 +111,7 @@ namespace WindowsFormsApp3
 
         private void btnLegendas_Click(object sender, EventArgs e)
         {
-            new frmLegendaEstoque { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+            new frmLegendaGerenciamento { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
         private void frmPreencherOrcamento_Load(object sender, EventArgs e)

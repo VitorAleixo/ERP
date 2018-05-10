@@ -60,16 +60,14 @@ namespace WebServer.Web_Service
             return principal.Setor;
         }
 
-      
-
-
-
-
-        
-
-
-
-
+        [WebMethod]
+        public string VerificaPermissao(
+                    string Usuario
+                  , string Departamento)
+        {
+            BuscaPermissao permissao = new BuscaPermissao();
+            return permissao.BuscaPerm(Usuario,Departamento);
+        }
     }
 }
 

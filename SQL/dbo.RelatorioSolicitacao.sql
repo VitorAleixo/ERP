@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER PROCEDURE [dbo].[RelatorioSolicitacao] @IDPEDIDO INT
+CREATE PROCEDURE [dbo].[RelatorioSolicitacao] @IDPEDIDO INT
 AS
 BEGIN
 SELECT p.Solicitante, p.Urgencia, p.Motivo, p.DataCriacao, p.Tipo, pd.Cod, pd.Nome, pd.Solicitar, pd.UnidadeMedida,pr.Preco, pr.Preco * pd.Solicitar AS PrecoTotal

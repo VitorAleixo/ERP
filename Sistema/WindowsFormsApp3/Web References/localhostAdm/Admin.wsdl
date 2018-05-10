@@ -26,7 +26,7 @@
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
-            <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -61,6 +61,71 @@
           <s:element minOccurs="0" maxOccurs="1" name="DataCriacao" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="RetornaComboNome">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetornaComboNomeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaComboNome" nillable="true" type="tns:ListaNomeCombo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ListaNomeCombo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="NOME" type="tns:NomeCombo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NomeCombo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VerificarPermissao">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerificarPermissaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="VerificarPermissaoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizaPermissoesAdiciona">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizaPermissoesAdicionaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AtualizaPermissoesAdicionaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizaPermissoesRemove">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizaPermissoesRemoveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AtualizaPermissoesRemoveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="CadastroUsuarioSoapIn">
@@ -81,6 +146,30 @@
   <wsdl:message name="RetornaUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="RetornaComboNomeSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaComboNome" />
+  </wsdl:message>
+  <wsdl:message name="RetornaComboNomeSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaComboNomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerificarPermissaoSoapIn">
+    <wsdl:part name="parameters" element="tns:VerificarPermissao" />
+  </wsdl:message>
+  <wsdl:message name="VerificarPermissaoSoapOut">
+    <wsdl:part name="parameters" element="tns:VerificarPermissaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AtualizaPermissoesAdicionaSoapIn">
+    <wsdl:part name="parameters" element="tns:AtualizaPermissoesAdiciona" />
+  </wsdl:message>
+  <wsdl:message name="AtualizaPermissoesAdicionaSoapOut">
+    <wsdl:part name="parameters" element="tns:AtualizaPermissoesAdicionaResponse" />
+  </wsdl:message>
+  <wsdl:message name="AtualizaPermissoesRemoveSoapIn">
+    <wsdl:part name="parameters" element="tns:AtualizaPermissoesRemove" />
+  </wsdl:message>
+  <wsdl:message name="AtualizaPermissoesRemoveSoapOut">
+    <wsdl:part name="parameters" element="tns:AtualizaPermissoesRemoveResponse" />
+  </wsdl:message>
   <wsdl:portType name="AdminSoap">
     <wsdl:operation name="CadastroUsuario">
       <wsdl:input message="tns:CadastroUsuarioSoapIn" />
@@ -93,6 +182,22 @@
     <wsdl:operation name="RetornaUsuario">
       <wsdl:input message="tns:RetornaUsuarioSoapIn" />
       <wsdl:output message="tns:RetornaUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaComboNome">
+      <wsdl:input message="tns:RetornaComboNomeSoapIn" />
+      <wsdl:output message="tns:RetornaComboNomeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerificarPermissao">
+      <wsdl:input message="tns:VerificarPermissaoSoapIn" />
+      <wsdl:output message="tns:VerificarPermissaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizaPermissoesAdiciona">
+      <wsdl:input message="tns:AtualizaPermissoesAdicionaSoapIn" />
+      <wsdl:output message="tns:AtualizaPermissoesAdicionaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizaPermissoesRemove">
+      <wsdl:input message="tns:AtualizaPermissoesRemoveSoapIn" />
+      <wsdl:output message="tns:AtualizaPermissoesRemoveSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AdminSoap" type="tns:AdminSoap">
@@ -124,6 +229,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RetornaComboNome">
+      <soap:operation soapAction="http://tempuri.org/RetornaComboNome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarPermissao">
+      <soap:operation soapAction="http://tempuri.org/VerificarPermissao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizaPermissoesAdiciona">
+      <soap:operation soapAction="http://tempuri.org/AtualizaPermissoesAdiciona" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizaPermissoesRemove">
+      <soap:operation soapAction="http://tempuri.org/AtualizaPermissoesRemove" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AdminSoap12" type="tns:AdminSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -147,6 +288,42 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaUsuario">
       <soap12:operation soapAction="http://tempuri.org/RetornaUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaComboNome">
+      <soap12:operation soapAction="http://tempuri.org/RetornaComboNome" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerificarPermissao">
+      <soap12:operation soapAction="http://tempuri.org/VerificarPermissao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizaPermissoesAdiciona">
+      <soap12:operation soapAction="http://tempuri.org/AtualizaPermissoesAdiciona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizaPermissoesRemove">
+      <soap12:operation soapAction="http://tempuri.org/AtualizaPermissoesRemove" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

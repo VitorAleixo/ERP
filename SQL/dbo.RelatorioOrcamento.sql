@@ -5,7 +5,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER PROCEDURE [dbo].[RelatorioOrcamento] @IDPEDIDO INT
+CREATE PROCEDURE [dbo].[RelatorioOrcamento] @IDPEDIDO INT
 AS
 BEGIN
 SELECT o.Tipo, o.DataEmissao, o.Observacoes, f.Nome as NomeFornecedor,f.CPF,f.CEP,f.Estado,f.Telefone,f.EMAIL, o.PrazoEntrega, o.CondicaoPag, o.ValorAdicional, o.Valor, o.ValorSoma, o.QtdItens, pd.Cod, pd.Nome as NomeProduto, pd.QtdEstoque, pd.QtdMinima, pd.QtdMaxima, pd.Solicitar, pd.UnidadeMedida, p.Preco, p.Preco * pd.Solicitar AS SomaPreco

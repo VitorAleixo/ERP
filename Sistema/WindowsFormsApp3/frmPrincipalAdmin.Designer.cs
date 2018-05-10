@@ -97,6 +97,7 @@
             this.btnEngenharia.TabIndex = 8;
             this.btnEngenharia.Text = "ENGENHARIA";
             this.btnEngenharia.UseVisualStyleBackColor = true;
+            this.btnEngenharia.Click += new System.EventHandler(this.btnEngenharia_Click);
             // 
             // btnTI
             // 
@@ -106,6 +107,7 @@
             this.btnTI.TabIndex = 17;
             this.btnTI.Text = "T.I.";
             this.btnTI.UseVisualStyleBackColor = true;
+            this.btnTI.Click += new System.EventHandler(this.btnTI_Click);
             // 
             // btnSegTrabalho
             // 
@@ -115,6 +117,7 @@
             this.btnSegTrabalho.TabIndex = 16;
             this.btnSegTrabalho.Text = "SEG. DO TRABALHO";
             this.btnSegTrabalho.UseVisualStyleBackColor = true;
+            this.btnSegTrabalho.Click += new System.EventHandler(this.btnSegTrabalho_Click);
             // 
             // btnRH
             // 
@@ -124,6 +127,7 @@
             this.btnRH.TabIndex = 15;
             this.btnRH.Text = "R.H.\r\n";
             this.btnRH.UseVisualStyleBackColor = true;
+            this.btnRH.Click += new System.EventHandler(this.btnRH_Click);
             // 
             // btnQualidade
             // 
@@ -133,6 +137,7 @@
             this.btnQualidade.TabIndex = 14;
             this.btnQualidade.Text = "QUALIDADE";
             this.btnQualidade.UseVisualStyleBackColor = true;
+            this.btnQualidade.Click += new System.EventHandler(this.btnQualidade_Click);
             // 
             // btnProducao
             // 
@@ -142,6 +147,7 @@
             this.btnProducao.TabIndex = 13;
             this.btnProducao.Text = "PRODUÇÃO";
             this.btnProducao.UseVisualStyleBackColor = true;
+            this.btnProducao.Click += new System.EventHandler(this.btnProducao_Click);
             // 
             // btnPCP
             // 
@@ -151,6 +157,7 @@
             this.btnPCP.TabIndex = 12;
             this.btnPCP.Text = "PCP";
             this.btnPCP.UseVisualStyleBackColor = true;
+            this.btnPCP.Click += new System.EventHandler(this.btnPCP_Click);
             // 
             // btnFinanceiro
             // 
@@ -160,6 +167,7 @@
             this.btnFinanceiro.TabIndex = 10;
             this.btnFinanceiro.Text = "FINANCEIRO";
             this.btnFinanceiro.UseVisualStyleBackColor = true;
+            this.btnFinanceiro.Click += new System.EventHandler(this.btnFinanceiro_Click);
             // 
             // btnContabilidade
             // 
@@ -169,6 +177,7 @@
             this.btnContabilidade.TabIndex = 6;
             this.btnContabilidade.Text = "CONTABILIDADE";
             this.btnContabilidade.UseVisualStyleBackColor = true;
+            this.btnContabilidade.Click += new System.EventHandler(this.btnContabilidade_Click);
             // 
             // btnMarketing
             // 
@@ -178,6 +187,7 @@
             this.btnMarketing.TabIndex = 9;
             this.btnMarketing.Text = "MARKETING";
             this.btnMarketing.UseVisualStyleBackColor = true;
+            this.btnMarketing.Click += new System.EventHandler(this.btnMarketing_Click);
             // 
             // btnDiretoria
             // 
@@ -187,6 +197,7 @@
             this.btnDiretoria.TabIndex = 7;
             this.btnDiretoria.Text = "DIRETORIA";
             this.btnDiretoria.UseVisualStyleBackColor = true;
+            this.btnDiretoria.Click += new System.EventHandler(this.btnDiretoria_Click);
             // 
             // btnCusto
             // 
@@ -196,6 +207,7 @@
             this.btnCusto.TabIndex = 5;
             this.btnCusto.Text = "CUSTO";
             this.btnCusto.UseVisualStyleBackColor = true;
+            this.btnCusto.Click += new System.EventHandler(this.btnCusto_Click);
             // 
             // btnComex
             // 
@@ -205,6 +217,7 @@
             this.btnComex.TabIndex = 4;
             this.btnComex.Text = "COMEX";
             this.btnComex.UseVisualStyleBackColor = true;
+            this.btnComex.Click += new System.EventHandler(this.btnComex_Click);
             // 
             // btnComercial
             // 
@@ -214,6 +227,7 @@
             this.btnComercial.TabIndex = 3;
             this.btnComercial.Text = "COMERCIAL";
             this.btnComercial.UseVisualStyleBackColor = true;
+            this.btnComercial.Click += new System.EventHandler(this.btnComercial_Click);
             // 
             // btnCompras
             // 

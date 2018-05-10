@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAprovaOrcamento));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAprovaOrcamento));
             this.txtNumeroOrcamentos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.btnOrcamento = new System.Windows.Forms.Button();
-            this.btnLegendas = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
             this.Pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CondicaoPag = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QtdItens = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnOrcamento = new System.Windows.Forms.Button();
+            this.btnLegendas = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,46 +94,6 @@
             this.grdGerenciamento.TabIndex = 10;
             this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
             // 
-            // btnOrcamento
-            // 
-            this.btnOrcamento.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnOrcamento.Image = ((System.Drawing.Image)(resources.GetObject("btnOrcamento.Image")));
-            this.btnOrcamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrcamento.Location = new System.Drawing.Point(526, 345);
-            this.btnOrcamento.Name = "btnOrcamento";
-            this.btnOrcamento.Size = new System.Drawing.Size(104, 23);
-            this.btnOrcamento.TabIndex = 13;
-            this.btnOrcamento.Text = "Ver Orçamento";
-            this.btnOrcamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOrcamento.UseVisualStyleBackColor = true;
-            this.btnOrcamento.Click += new System.EventHandler(this.btnOrcamento_Click);
-            // 
-            // btnLegendas
-            // 
-            this.btnLegendas.Image = global::WindowsFormsApp3.Properties.Resources.btnLegendas;
-            this.btnLegendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLegendas.Location = new System.Drawing.Point(12, 345);
-            this.btnLegendas.Name = "btnLegendas";
-            this.btnLegendas.Size = new System.Drawing.Size(75, 23);
-            this.btnLegendas.TabIndex = 12;
-            this.btnLegendas.Text = "Legendas";
-            this.btnLegendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLegendas.UseVisualStyleBackColor = true;
-            this.btnLegendas.Click += new System.EventHandler(this.btnLegendas_Click);
-            // 
-            // btnSair
-            // 
-            this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(636, 345);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(56, 23);
-            this.btnSair.TabIndex = 9;
-            this.btnSair.Text = "Sair";
-            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
             // Pedido
             // 
             this.Pedido.DataPropertyName = "Pedido";
@@ -179,6 +139,46 @@
             this.QtdItens.HeaderText = "Qtd Itens";
             this.QtdItens.Name = "QtdItens";
             this.QtdItens.ReadOnly = true;
+            // 
+            // btnOrcamento
+            // 
+            this.btnOrcamento.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOrcamento.Image = ((System.Drawing.Image)(resources.GetObject("btnOrcamento.Image")));
+            this.btnOrcamento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOrcamento.Location = new System.Drawing.Point(526, 345);
+            this.btnOrcamento.Name = "btnOrcamento";
+            this.btnOrcamento.Size = new System.Drawing.Size(104, 23);
+            this.btnOrcamento.TabIndex = 13;
+            this.btnOrcamento.Text = "Ver Orçamento";
+            this.btnOrcamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOrcamento.UseVisualStyleBackColor = true;
+            this.btnOrcamento.Click += new System.EventHandler(this.btnOrcamento_Click);
+            // 
+            // btnLegendas
+            // 
+            this.btnLegendas.Image = global::WindowsFormsApp3.Properties.Resources.btnLegendas;
+            this.btnLegendas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLegendas.Location = new System.Drawing.Point(12, 345);
+            this.btnLegendas.Name = "btnLegendas";
+            this.btnLegendas.Size = new System.Drawing.Size(75, 23);
+            this.btnLegendas.TabIndex = 12;
+            this.btnLegendas.Text = "Legendas";
+            this.btnLegendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLegendas.UseVisualStyleBackColor = true;
+            this.btnLegendas.Click += new System.EventHandler(this.btnLegendas_Click);
+            // 
+            // btnSair
+            // 
+            this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSair.Location = new System.Drawing.Point(636, 345);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(56, 23);
+            this.btnSair.TabIndex = 9;
+            this.btnSair.Text = "Sair";
+            this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // frmAprovaOrcamento
             // 

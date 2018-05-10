@@ -36,17 +36,9 @@ namespace WindowsFormsApp3
                     {
                         Application.Run(new frmPrincipalAdmin());
                     }
-                    else if (login.RetornaSetor(usuario) == "COMPRAS")
+                    else
                     {
-                      Application.Run(new frmPrincipalCompras());
-                    }
-                    else if (login.RetornaSetor(usuario) == "ALMOXARIFADO")
-                    {
-                        Application.Run(new frmPrincipalAlmoxarife());
-                    }
-                    else if (login.RetornaSetor(usuario) == "GERENCIA")
-                    {
-                        Application.Run(new frmPrincipalGerencia());
+                        Application.Run(new frmPrincipalSelecionar());
                     }
 
                 }

@@ -10,22 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
-    public partial class frmLegendaEstoque : Form
+    public partial class frmLegendaGerenciamento : Form
     {
-        public frmLegendaEstoque()
+        public frmLegendaGerenciamento()
         {
             InitializeComponent();
-        }
-
-        private const int CP_NOCLOSE_BUTTON = 0x200;
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams myCp = base.CreateParams;
-                myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
-                return myCp;
-            }
         }
 
         private void btnSair_Click(object sender, EventArgs e)

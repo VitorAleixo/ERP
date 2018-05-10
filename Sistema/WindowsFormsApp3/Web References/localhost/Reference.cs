@@ -33,6 +33,8 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback RetornaSetorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback VerificaPermissaoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +78,9 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         public event RetornaSetorCompletedEventHandler RetornaSetorCompleted;
+        
+        /// <remarks/>
+        public event VerificaPermissaoCompletedEventHandler VerificaPermissaoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginSistema", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -138,6 +143,37 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/VerificaPermissao", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string VerificaPermissao(string Usuario, string Departamento) {
+            object[] results = this.Invoke("VerificaPermissao", new object[] {
+                        Usuario,
+                        Departamento});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void VerificaPermissaoAsync(string Usuario, string Departamento) {
+            this.VerificaPermissaoAsync(Usuario, Departamento, null);
+        }
+        
+        /// <remarks/>
+        public void VerificaPermissaoAsync(string Usuario, string Departamento, object userState) {
+            if ((this.VerificaPermissaoOperationCompleted == null)) {
+                this.VerificaPermissaoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnVerificaPermissaoOperationCompleted);
+            }
+            this.InvokeAsync("VerificaPermissao", new object[] {
+                        Usuario,
+                        Departamento}, this.VerificaPermissaoOperationCompleted, userState);
+        }
+        
+        private void OnVerificaPermissaoOperationCompleted(object arg) {
+            if ((this.VerificaPermissaoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.VerificaPermissaoCompleted(this, new VerificaPermissaoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -195,6 +231,32 @@ namespace WindowsFormsApp3.localhost {
         private object[] results;
         
         internal RetornaSetorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void VerificaPermissaoCompletedEventHandler(object sender, VerificaPermissaoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class VerificaPermissaoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal VerificaPermissaoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

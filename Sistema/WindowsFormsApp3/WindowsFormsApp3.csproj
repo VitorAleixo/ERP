@@ -130,6 +130,12 @@
     <Compile Include="frmLegendaGerencia.Designer.cs">
       <DependentUpon>frmLegendaGerencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLegendaGerenciamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaGerenciamento.Designer.cs">
+      <DependentUpon>frmLegendaGerenciamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLegendaSolic.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,12 +147,6 @@
     </Compile>
     <Compile Include="frmLegendaSolicitacao.Designer.cs">
       <DependentUpon>frmLegendaSolicitacao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frmLegendaEstoque.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmLegendaEstoque.Designer.cs">
-      <DependentUpon>frmLegendaEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLegendaFornecedores.cs">
       <SubType>Form</SubType>
@@ -184,6 +184,12 @@
     <Compile Include="frmOrcamentoRelatorio.Designer.cs">
       <DependentUpon>frmOrcamentoRelatorio.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPermissaoUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPermissaoUsuarios.Designer.cs">
+      <DependentUpon>frmPermissaoUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPreencherOrcamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,6 +219,12 @@
     </Compile>
     <Compile Include="frmPrincipalGerencia.Designer.cs">
       <DependentUpon>frmPrincipalGerencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipalSelecionar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalSelecionar.Designer.cs">
+      <DependentUpon>frmPrincipalSelecionar.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSelecionarTipo.cs">
       <SubType>Form</SubType>
@@ -334,14 +346,14 @@
     <EmbeddedResource Include="frmLegendaGerencia.resx">
       <DependentUpon>frmLegendaGerencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaGerenciamento.resx">
+      <DependentUpon>frmLegendaGerenciamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLegendaSolic.resx">
       <DependentUpon>frmLegendaSolic.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLegendaSolicitacao.resx">
       <DependentUpon>frmLegendaSolicitacao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmLegendaEstoque.resx">
-      <DependentUpon>frmLegendaEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLegendaFornecedores.resx">
       <DependentUpon>frmLegendaFornecedores.cs</DependentUpon>
@@ -361,6 +373,9 @@
     <EmbeddedResource Include="frmOrcamentoRelatorio.resx">
       <DependentUpon>frmOrcamentoRelatorio.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPermissaoUsuarios.resx">
+      <DependentUpon>frmPermissaoUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPreencherOrcamento.resx">
       <DependentUpon>frmPreencherOrcamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -375,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipalGerencia.resx">
       <DependentUpon>frmPrincipalGerencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalSelecionar.resx">
+      <DependentUpon>frmPrincipalSelecionar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSelecionarTipo.resx">
       <DependentUpon>frmSelecionarTipo.cs</DependentUpon>
@@ -601,6 +619,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Web References\localhostAdm\Admin.wsdl" />
+    <None Include="Web References\localhostAdm\NomeCombo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\localhostAdm\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -823,6 +844,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\localhostGrc\Gerencia.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPermissao.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

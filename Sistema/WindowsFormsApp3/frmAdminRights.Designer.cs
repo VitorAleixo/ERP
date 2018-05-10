@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminRights));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnVisUsuarios = new System.Windows.Forms.Button();
-            this.btnCadastroUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.barraStatus = new System.Windows.Forms.StatusStrip();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -41,45 +39,23 @@
             this.lblData = new System.Windows.Forms.Label();
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.btnLogoff = new System.Windows.Forms.Button();
+            this.btnPermissao = new System.Windows.Forms.Button();
+            this.btnVisUsuarios = new System.Windows.Forms.Button();
+            this.btnCadastroUser = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnPermissao);
             this.groupBox1.Controls.Add(this.btnVisUsuarios);
             this.groupBox1.Controls.Add(this.btnCadastroUser);
             this.groupBox1.Location = new System.Drawing.Point(13, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(526, 93);
+            this.groupBox1.Size = new System.Drawing.Size(526, 195);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Usuários";
-            // 
-            // btnVisUsuarios
-            // 
-            this.btnVisUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnVisUsuarios.Image = global::WindowsFormsApp3.Properties.Resources.btnUsuário;
-            this.btnVisUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisUsuarios.Location = new System.Drawing.Point(304, 19);
-            this.btnVisUsuarios.Name = "btnVisUsuarios";
-            this.btnVisUsuarios.Size = new System.Drawing.Size(216, 57);
-            this.btnVisUsuarios.TabIndex = 2;
-            this.btnVisUsuarios.Text = "Visualizar Usuarios";
-            this.btnVisUsuarios.UseVisualStyleBackColor = true;
-            this.btnVisUsuarios.Click += new System.EventHandler(this.btnVisUsuarios_Click);
-            // 
-            // btnCadastroUser
-            // 
-            this.btnCadastroUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnCadastroUser.Image = global::WindowsFormsApp3.Properties.Resources.btnUsuário;
-            this.btnCadastroUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastroUser.Location = new System.Drawing.Point(6, 19);
-            this.btnCadastroUser.Name = "btnCadastroUser";
-            this.btnCadastroUser.Size = new System.Drawing.Size(216, 57);
-            this.btnCadastroUser.TabIndex = 1;
-            this.btnCadastroUser.Text = "Cadastro de Usuários";
-            this.btnCadastroUser.UseVisualStyleBackColor = true;
-            this.btnCadastroUser.Click += new System.EventHandler(this.btnCadastroUser_Click);
             // 
             // label1
             // 
@@ -147,16 +123,55 @@
             // 
             // btnLogoff
             // 
-            this.btnLogoff.Image = global::WindowsFormsApp3.Properties.Resources.btnLogoff;
+            this.btnLogoff.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
             this.btnLogoff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogoff.Location = new System.Drawing.Point(489, 238);
             this.btnLogoff.Name = "btnLogoff";
             this.btnLogoff.Size = new System.Drawing.Size(62, 23);
             this.btnLogoff.TabIndex = 27;
-            this.btnLogoff.Text = "Logoff";
+            this.btnLogoff.Text = "Sair";
             this.btnLogoff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
+            // 
+            // btnPermissao
+            // 
+            this.btnPermissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnPermissao.Image = global::WindowsFormsApp3.Properties.Resources.btnPermissao;
+            this.btnPermissao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPermissao.Location = new System.Drawing.Point(6, 100);
+            this.btnPermissao.Name = "btnPermissao";
+            this.btnPermissao.Size = new System.Drawing.Size(216, 57);
+            this.btnPermissao.TabIndex = 3;
+            this.btnPermissao.Text = "Permissões";
+            this.btnPermissao.UseVisualStyleBackColor = true;
+            this.btnPermissao.Click += new System.EventHandler(this.btnPermissao_Click);
+            // 
+            // btnVisUsuarios
+            // 
+            this.btnVisUsuarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnVisUsuarios.Image = global::WindowsFormsApp3.Properties.Resources.btnUsuário;
+            this.btnVisUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisUsuarios.Location = new System.Drawing.Point(304, 19);
+            this.btnVisUsuarios.Name = "btnVisUsuarios";
+            this.btnVisUsuarios.Size = new System.Drawing.Size(216, 57);
+            this.btnVisUsuarios.TabIndex = 2;
+            this.btnVisUsuarios.Text = "Visualizar Usuarios";
+            this.btnVisUsuarios.UseVisualStyleBackColor = true;
+            this.btnVisUsuarios.Click += new System.EventHandler(this.btnVisUsuarios_Click);
+            // 
+            // btnCadastroUser
+            // 
+            this.btnCadastroUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCadastroUser.Image = global::WindowsFormsApp3.Properties.Resources.btnUsuário;
+            this.btnCadastroUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastroUser.Location = new System.Drawing.Point(6, 19);
+            this.btnCadastroUser.Name = "btnCadastroUser";
+            this.btnCadastroUser.Size = new System.Drawing.Size(216, 57);
+            this.btnCadastroUser.TabIndex = 1;
+            this.btnCadastroUser.Text = "Cadastro de Usuários";
+            this.btnCadastroUser.UseVisualStyleBackColor = true;
+            this.btnCadastroUser.Click += new System.EventHandler(this.btnCadastroUser_Click);
             // 
             // frmAdminRights
             // 
@@ -197,5 +212,6 @@
         private System.Windows.Forms.Label lblData;
         private System.Windows.Forms.Label lblNomeUsuario;
         private System.Windows.Forms.Button btnLogoff;
+        private System.Windows.Forms.Button btnPermissao;
     }
 }

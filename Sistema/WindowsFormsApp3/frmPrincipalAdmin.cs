@@ -31,7 +31,7 @@ namespace WindowsFormsApp3
 
         private void frmPrincipalAdmin_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Bem Vindo: " + SessaoSistema.NomeUsuario + "!", "Confirmacão", MessageBoxButtons.OK);
+
         }
 
         private void btnLogoff_Click(object sender, EventArgs e)
@@ -57,6 +57,76 @@ namespace WindowsFormsApp3
         private void btnGerencia_Click(object sender, EventArgs e)
         {
             new frmPrincipalGerencia { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
+
+        private void btnComercial_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnComex_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnCusto_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnContabilidade_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnDiretoria_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnEngenharia_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnMarketing_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnFinanceiro_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnPCP_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnProducao_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnQualidade_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnRH_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnSegTrabalho_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
+        }
+
+        private void btnTI_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Módulo ainda não desenvolvido!!", "Confirmação", MessageBoxButtons.OK);
         }
     }
 }

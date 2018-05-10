@@ -80,7 +80,7 @@ namespace WindowsFormsApp3
                        int IdUsuario = cadastroUsuario.CadastroUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
                         if (IdUsuario > 0)
                         {
-                            if (cadastroUsuario.CadastroPermissoesUsuario(Departamento, IdUsuario, Nome) == true)
+                            if (cadastroUsuario.CadastroPermissoesUsuario(Departamento, IdUsuario, Usuario) == true)
                             {
                                 DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!", "Usuário", MessageBoxButtons.OK);
                                 this.Close();

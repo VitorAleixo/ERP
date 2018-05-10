@@ -100,7 +100,7 @@ namespace WebServerAdm.AppCode
                 }
             }
         }
-        public void GravarPermissoes(string Departamento, int IdUsuario, string Nome)
+        public void GravarPermissoes(string Departamento, int IdUsuario, string Usuario)
         {
             try
             {
@@ -109,11 +109,11 @@ namespace WebServerAdm.AppCode
                 valor = 0;
                 if (Departamento == "ADMIN")
                 {
-                    cmd = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
+                    cmd = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Usuario, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
                      "VALUES (@IdUsuario,@Nome, 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK'); ", con);
 
                     cmd.Parameters.AddWithValue("@IdUsuario", IdUsuario);
-                    cmd.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@Usuario", Usuario);
 
                     if (cmd.ExecuteNonQuery() == 1)
                     {
@@ -128,10 +128,10 @@ namespace WebServerAdm.AppCode
                 }
                 else
                 {
-                    cmd = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, " + Departamento + ")" +
+                    cmd = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Usuario, " + Departamento + ")" +
                      "VALUES (@IdUsuario,@Nome, 'OK');", con);
 
-                    cmd.Parameters.AddWithValue("@Nome", Nome);
+                    cmd.Parameters.AddWithValue("@Usuario", Usuario);
                     cmd.Parameters.AddWithValue("@IdUsuario", IdUsuario);
 
                     if (cmd.ExecuteNonQuery() == 1)

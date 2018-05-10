@@ -66,5 +66,10 @@ namespace WindowsFormsApp3
 
             lblSetor.Text = "Setor: " + login.RetornaSetor(usuario);
         }
+
+        private void btnPermissao_Click(object sender, EventArgs e)
+        {
+            new frmPermissaoUsuarios { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
     }
 }

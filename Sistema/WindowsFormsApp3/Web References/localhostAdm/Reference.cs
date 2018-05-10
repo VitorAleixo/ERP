@@ -35,6 +35,14 @@ namespace WindowsFormsApp3.localhostAdm {
         
         private System.Threading.SendOrPostCallback RetornaUsuarioOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RetornaComboNomeOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback VerificarPermissaoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AtualizaPermissoesAdicionaOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback AtualizaPermissoesRemoveOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -83,6 +91,18 @@ namespace WindowsFormsApp3.localhostAdm {
         public event RetornaUsuarioCompletedEventHandler RetornaUsuarioCompleted;
         
         /// <remarks/>
+        public event RetornaComboNomeCompletedEventHandler RetornaComboNomeCompleted;
+        
+        /// <remarks/>
+        public event VerificarPermissaoCompletedEventHandler VerificarPermissaoCompleted;
+        
+        /// <remarks/>
+        public event AtualizaPermissoesAdicionaCompletedEventHandler AtualizaPermissoesAdicionaCompleted;
+        
+        /// <remarks/>
+        public event AtualizaPermissoesRemoveCompletedEventHandler AtualizaPermissoesRemoveCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CadastroUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public int CadastroUsuario(string Nome, string Funcao, string Departamento, string Usuario, string Senha, System.DateTime DataCriacao) {
             object[] results = this.Invoke("CadastroUsuario", new object[] {
@@ -123,28 +143,28 @@ namespace WindowsFormsApp3.localhostAdm {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CadastroPermissoesUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool CadastroPermissoesUsuario(string Departamento, int IdUsuario, string Nome) {
+        public bool CadastroPermissoesUsuario(string Departamento, int IdUsuario, string Usuario) {
             object[] results = this.Invoke("CadastroPermissoesUsuario", new object[] {
                         Departamento,
                         IdUsuario,
-                        Nome});
+                        Usuario});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void CadastroPermissoesUsuarioAsync(string Departamento, int IdUsuario, string Nome) {
-            this.CadastroPermissoesUsuarioAsync(Departamento, IdUsuario, Nome, null);
+        public void CadastroPermissoesUsuarioAsync(string Departamento, int IdUsuario, string Usuario) {
+            this.CadastroPermissoesUsuarioAsync(Departamento, IdUsuario, Usuario, null);
         }
         
         /// <remarks/>
-        public void CadastroPermissoesUsuarioAsync(string Departamento, int IdUsuario, string Nome, object userState) {
+        public void CadastroPermissoesUsuarioAsync(string Departamento, int IdUsuario, string Usuario, object userState) {
             if ((this.CadastroPermissoesUsuarioOperationCompleted == null)) {
                 this.CadastroPermissoesUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCadastroPermissoesUsuarioOperationCompleted);
             }
             this.InvokeAsync("CadastroPermissoesUsuario", new object[] {
                         Departamento,
                         IdUsuario,
-                        Nome}, this.CadastroPermissoesUsuarioOperationCompleted, userState);
+                        Usuario}, this.CadastroPermissoesUsuarioOperationCompleted, userState);
         }
         
         private void OnCadastroPermissoesUsuarioOperationCompleted(object arg) {
@@ -180,6 +200,128 @@ namespace WindowsFormsApp3.localhostAdm {
             if ((this.RetornaUsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.RetornaUsuarioCompleted(this, new RetornaUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaComboNome", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlArrayAttribute("BuscaComboNome", IsNullable=true)]
+        [return: System.Xml.Serialization.XmlArrayItemAttribute("NOME", IsNullable=false)]
+        public NomeCombo[] RetornaComboNome() {
+            object[] results = this.Invoke("RetornaComboNome", new object[0]);
+            return ((NomeCombo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaComboNomeAsync() {
+            this.RetornaComboNomeAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaComboNomeAsync(object userState) {
+            if ((this.RetornaComboNomeOperationCompleted == null)) {
+                this.RetornaComboNomeOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaComboNomeOperationCompleted);
+            }
+            this.InvokeAsync("RetornaComboNome", new object[0], this.RetornaComboNomeOperationCompleted, userState);
+        }
+        
+        private void OnRetornaComboNomeOperationCompleted(object arg) {
+            if ((this.RetornaComboNomeCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaComboNomeCompleted(this, new RetornaComboNomeCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/VerificarPermissao", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool VerificarPermissao(string Departamento, string Usuario) {
+            object[] results = this.Invoke("VerificarPermissao", new object[] {
+                        Departamento,
+                        Usuario});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void VerificarPermissaoAsync(string Departamento, string Usuario) {
+            this.VerificarPermissaoAsync(Departamento, Usuario, null);
+        }
+        
+        /// <remarks/>
+        public void VerificarPermissaoAsync(string Departamento, string Usuario, object userState) {
+            if ((this.VerificarPermissaoOperationCompleted == null)) {
+                this.VerificarPermissaoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnVerificarPermissaoOperationCompleted);
+            }
+            this.InvokeAsync("VerificarPermissao", new object[] {
+                        Departamento,
+                        Usuario}, this.VerificarPermissaoOperationCompleted, userState);
+        }
+        
+        private void OnVerificarPermissaoOperationCompleted(object arg) {
+            if ((this.VerificarPermissaoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.VerificarPermissaoCompleted(this, new VerificarPermissaoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AtualizaPermissoesAdiciona", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AtualizaPermissoesAdiciona(string Departamento, string Usuario) {
+            object[] results = this.Invoke("AtualizaPermissoesAdiciona", new object[] {
+                        Departamento,
+                        Usuario});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AtualizaPermissoesAdicionaAsync(string Departamento, string Usuario) {
+            this.AtualizaPermissoesAdicionaAsync(Departamento, Usuario, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizaPermissoesAdicionaAsync(string Departamento, string Usuario, object userState) {
+            if ((this.AtualizaPermissoesAdicionaOperationCompleted == null)) {
+                this.AtualizaPermissoesAdicionaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizaPermissoesAdicionaOperationCompleted);
+            }
+            this.InvokeAsync("AtualizaPermissoesAdiciona", new object[] {
+                        Departamento,
+                        Usuario}, this.AtualizaPermissoesAdicionaOperationCompleted, userState);
+        }
+        
+        private void OnAtualizaPermissoesAdicionaOperationCompleted(object arg) {
+            if ((this.AtualizaPermissoesAdicionaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizaPermissoesAdicionaCompleted(this, new AtualizaPermissoesAdicionaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AtualizaPermissoesRemove", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool AtualizaPermissoesRemove(string Departamento, string Usuario) {
+            object[] results = this.Invoke("AtualizaPermissoesRemove", new object[] {
+                        Departamento,
+                        Usuario});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void AtualizaPermissoesRemoveAsync(string Departamento, string Usuario) {
+            this.AtualizaPermissoesRemoveAsync(Departamento, Usuario, null);
+        }
+        
+        /// <remarks/>
+        public void AtualizaPermissoesRemoveAsync(string Departamento, string Usuario, object userState) {
+            if ((this.AtualizaPermissoesRemoveOperationCompleted == null)) {
+                this.AtualizaPermissoesRemoveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAtualizaPermissoesRemoveOperationCompleted);
+            }
+            this.InvokeAsync("AtualizaPermissoesRemove", new object[] {
+                        Departamento,
+                        Usuario}, this.AtualizaPermissoesRemoveOperationCompleted, userState);
+        }
+        
+        private void OnAtualizaPermissoesRemoveOperationCompleted(object arg) {
+            if ((this.AtualizaPermissoesRemoveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.AtualizaPermissoesRemoveCompleted(this, new AtualizaPermissoesRemoveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -272,6 +414,27 @@ namespace WindowsFormsApp3.localhostAdm {
     }
     
     /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class NomeCombo {
+        
+        private string nomeField;
+        
+        /// <remarks/>
+        public string Nome {
+            get {
+                return this.nomeField;
+            }
+            set {
+                this.nomeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
     public delegate void CadastroUsuarioCompletedEventHandler(object sender, CadastroUsuarioCompletedEventArgs e);
     
@@ -345,6 +508,110 @@ namespace WindowsFormsApp3.localhostAdm {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((Usuario[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaComboNomeCompletedEventHandler(object sender, RetornaComboNomeCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaComboNomeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaComboNomeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public NomeCombo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((NomeCombo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void VerificarPermissaoCompletedEventHandler(object sender, VerificarPermissaoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class VerificarPermissaoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal VerificarPermissaoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void AtualizaPermissoesAdicionaCompletedEventHandler(object sender, AtualizaPermissoesAdicionaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AtualizaPermissoesAdicionaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AtualizaPermissoesAdicionaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void AtualizaPermissoesRemoveCompletedEventHandler(object sender, AtualizaPermissoesRemoveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class AtualizaPermissoesRemoveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal AtualizaPermissoesRemoveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }
