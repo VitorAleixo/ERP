@@ -97,41 +97,49 @@ namespace WindowsFormsApp3
         public ArrayList lista { get; set; }
         private void btnSolicCompra_Click(object sender, EventArgs e)
         {
-            grdGerenciamento.CurrentCell = null;
-            int i = 0;
-            lista = new ArrayList();
-            foreach (DataGridViewRow row in grdGerenciamento.Rows)
+            try
             {
-                if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                grdGerenciamento.CurrentCell = null;
+                int i = 0;
+                lista = new ArrayList();
+                foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
-                    this.grdGerenciamento.Rows[row.Index].Selected = true;
+                    if (Convert.ToBoolean(row.Cells[0].Value) == true)
+                    {
+                        this.grdGerenciamento.Rows[row.Index].Selected = true;
 
-                    var OBJ = (Estoque) row.DataBoundItem;
-                   
-                    lista.Add(OBJ);
-                    i = i + 1;
+                        var OBJ = (Estoque)row.DataBoundItem;
+
+                        lista.Add(OBJ);
+                        i = i + 1;
+                    }
+
+                    else
+                    {
+                        this.grdGerenciamento.Rows[row.Index].Selected = false;
+                    }
+
                 }
+                PreencherLista.Preencher = lista;
 
+                if (i == 0)
+                {
+                    MessageBox.Show("Nenhum item selecionado! \nNão foi possível criar Solicitação de Compra!", "ERRO!", MessageBoxButtons.OK);
+                }
                 else
                 {
-                    this.grdGerenciamento.Rows[row.Index].Selected = false;
+                    if (MessageBox.Show("Confirma os itens selecionados?\n" + i + " Itens selecionados.", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        new frmPedidoCompra { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+                    }
                 }
-                
             }
-            PreencherLista.Preencher = lista;
-
-            if (i == 0)
+            catch (Exception ex)
             {
-                MessageBox.Show("Nenhum item selecionado! \nNão foi possível criar Solicitação de Compra!", "ERRO!", MessageBoxButtons.OK);
-            }
-            else
-            {
-                if (MessageBox.Show("Confirma os itens selecionados?\n" + i + " Itens selecionados.", "Confirmação", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    new frmPedidoCompra { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
-                }
+                MessageBox.Show(ex.Message + " Nenhum Item Selecionado!", "Confirmação", MessageBoxButtons.OK);
             }
         }
+
     }
 }
 

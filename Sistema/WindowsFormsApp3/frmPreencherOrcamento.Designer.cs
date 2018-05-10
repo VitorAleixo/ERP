@@ -52,7 +52,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.txtValorAdicional = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtPrazo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCondicaoPag = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,6 +61,7 @@
             this.btnGerar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.txtPrazo = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -215,13 +215,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtPrazo);
             this.groupBox2.Controls.Add(this.txtValor);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbVendedor);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.txtValorAdicional);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.txtPrazo);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.txtCondicaoPag);
             this.groupBox2.Controls.Add(this.label5);
@@ -282,14 +282,6 @@
             this.label8.Size = new System.Drawing.Size(85, 13);
             this.label8.TabIndex = 20;
             this.label8.Text = "Data de Entrega";
-            // 
-            // txtPrazo
-            // 
-            this.txtPrazo.Location = new System.Drawing.Point(271, 36);
-            this.txtPrazo.MaxLength = 15;
-            this.txtPrazo.Name = "txtPrazo";
-            this.txtPrazo.Size = new System.Drawing.Size(242, 20);
-            this.txtPrazo.TabIndex = 6;
             // 
             // label7
             // 
@@ -387,6 +379,14 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // txtPrazo
+            // 
+            this.txtPrazo.Location = new System.Drawing.Point(271, 35);
+            this.txtPrazo.Mask = "00/00/0000";
+            this.txtPrazo.Name = "txtPrazo";
+            this.txtPrazo.Size = new System.Drawing.Size(242, 20);
+            this.txtPrazo.TabIndex = 28;
+            // 
             // frmPreencherOrcamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,7 +435,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtValorAdicional;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtPrazo;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCondicaoPag;
         private System.Windows.Forms.Label label5;
@@ -455,5 +454,6 @@
         private System.Windows.Forms.TextBox txtQuantidade;
         public System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MaskedTextBox txtPrazo;
     }
 }

@@ -128,45 +128,53 @@ namespace WindowsFormsApp3
 
         private void btnGerar_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Gerar Orçamento deste Pedido?", "Confirmação", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                int IdPedido = Convert.ToInt32(txtIdPedido.Text);
-                string Tipo = txtTipo.Text;
-                string DataEmissao = txtDataEmissao.Text;
-                string Observacoes = txtObservacoes.Text;
-                string Vendedor = cmbVendedor.SelectedValue.ToString();
-                string PrazoEntrega = txtPrazo.Text;
-                string CondicaoPag = txtCondicaoPag.Text;
-                double ValorAdicional = Convert.ToDouble(txtValorAdicional.Text.Replace(",", "").Replace(".", ","));
-                double Valor = Convert.ToDouble(txtValor.Text.Replace(",", "").Replace(".", ","));
-                int QtdItens = Convert.ToInt32(txtQuantidade.Text);
-
-                localhostCmp.Compras gravarOrcamento = new localhostCmp.Compras();
-
-                localhostCmp.Compras Atualiza = new localhostCmp.Compras();
-                if (gravarOrcamento.GravarOrcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorAdicional, Valor, QtdItens) == true)
+                DialogResult dialogResult = MessageBox.Show("Gerar Orçamento deste Pedido?", "Confirmação", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (Atualiza.Atualizar(IdPedido) == true)
+                    int IdPedido = Convert.ToInt32(txtIdPedido.Text);
+                    string Tipo = txtTipo.Text;
+                    string DataEmissao = txtDataEmissao.Text;
+                    string Observacoes = txtObservacoes.Text;
+                    string Vendedor = cmbVendedor.SelectedValue.ToString();
+                    string PrazoEntrega = txtPrazo.Text;
+                    string CondicaoPag = txtCondicaoPag.Text;
+                    double ValorAdicional = Convert.ToDouble(txtValorAdicional.Text.Replace(",", "").Replace(".", ","));
+                    double Valor = Convert.ToDouble(txtValor.Text.Replace(",", "").Replace(".", ","));
+                    int QtdItens = Convert.ToInt32(txtQuantidade.Text);
+
+                    localhostCmp.Compras gravarOrcamento = new localhostCmp.Compras();
+
+                    localhostCmp.Compras Atualiza = new localhostCmp.Compras();
+                    if (gravarOrcamento.GravarOrcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorAdicional, Valor, QtdItens) == true)
                     {
-                        MessageBox.Show("Orçamento Gravado!!", "Confirmação", MessageBoxButtons.OK);
+                        if (Atualiza.Atualizar(IdPedido) == true)
+                        {
+                            MessageBox.Show("Orçamento Gravado!!", "Confirmação", MessageBoxButtons.OK);
 
-                        frmOrcamentoRelatorio relatorioOrcamento = new frmOrcamentoRelatorio();
-                        relatorioOrcamento.Pedido = IdPedido;
-                        relatorioOrcamento.Show();
+                            frmOrcamentoRelatorio relatorioOrcamento = new frmOrcamentoRelatorio();
+                            relatorioOrcamento.Pedido = IdPedido;
+                            relatorioOrcamento.Show();
 
-                        this.Close();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Erro ao atualizar Orçamento!!", "Confirmação", MessageBoxButtons.OK);
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Erro ao atualizar Orçamento!!", "Confirmação", MessageBoxButtons.OK);
+                        MessageBox.Show("Não foi possível gravar Orçamento!!", "Confirmação", MessageBoxButtons.OK);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Não foi possível gravar Orçamento!!", "Confirmação", MessageBoxButtons.OK);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " Nenhum Item Selecionado!", "Confirmação", MessageBoxButtons.OK);
             }
         }
-    }   
-}
+    }
+}   
+

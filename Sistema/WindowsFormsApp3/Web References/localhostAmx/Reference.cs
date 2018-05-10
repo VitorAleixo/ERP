@@ -20,6 +20,7 @@ namespace WindowsFormsApp3.localhostAmx {
     using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Data;
     
     
     /// <remarks/>
@@ -36,6 +37,8 @@ namespace WindowsFormsApp3.localhostAmx {
         private System.Threading.SendOrPostCallback GerarPedidoOperationCompleted;
         
         private System.Threading.SendOrPostCallback GerarPedidoItemOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CompraDataSetOperationCompleted;
         
         private System.Threading.SendOrPostCallback RetornaProdutoOperationCompleted;
         
@@ -92,6 +95,9 @@ namespace WindowsFormsApp3.localhostAmx {
         
         /// <remarks/>
         public event GerarPedidoItemCompletedEventHandler GerarPedidoItemCompleted;
+        
+        /// <remarks/>
+        public event CompraDataSetCompletedEventHandler CompraDataSetCompleted;
         
         /// <remarks/>
         public event RetornaProdutoCompletedEventHandler RetornaProdutoCompleted;
@@ -257,6 +263,35 @@ namespace WindowsFormsApp3.localhostAmx {
             if ((this.GerarPedidoItemCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GerarPedidoItemCompleted(this, new GerarPedidoItemCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CompraDataSet", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet CompraDataSet(int IdPedido) {
+            object[] results = this.Invoke("CompraDataSet", new object[] {
+                        IdPedido});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CompraDataSetAsync(int IdPedido) {
+            this.CompraDataSetAsync(IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void CompraDataSetAsync(int IdPedido, object userState) {
+            if ((this.CompraDataSetOperationCompleted == null)) {
+                this.CompraDataSetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCompraDataSetOperationCompleted);
+            }
+            this.InvokeAsync("CompraDataSet", new object[] {
+                        IdPedido}, this.CompraDataSetOperationCompleted, userState);
+        }
+        
+        private void OnCompraDataSetOperationCompleted(object arg) {
+            if ((this.CompraDataSetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CompraDataSetCompleted(this, new CompraDataSetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -639,6 +674,32 @@ namespace WindowsFormsApp3.localhostAmx {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void CompraDataSetCompletedEventHandler(object sender, CompraDataSetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CompraDataSetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CompraDataSetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

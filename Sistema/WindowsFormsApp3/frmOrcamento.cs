@@ -101,5 +101,51 @@ namespace WindowsFormsApp3
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void grdGerenciamento_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow row in grdGerenciamento.Rows)
+                {
+                    string RowType = row.Cells[2].Value.ToString();
+
+                    if (RowType == "KG")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.LightGreen;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "MG")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "G")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Cyan;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "L")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.NavajoWhite;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "ML")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Orange;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "UNIDADE")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Salmon;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

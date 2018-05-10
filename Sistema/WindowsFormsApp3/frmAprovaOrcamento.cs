@@ -100,20 +100,27 @@ namespace WindowsFormsApp3
 
         private void btnOrcamento_Click(object sender, EventArgs e)
         {
-            var obj = (Orcamento) grdGerenciamento.CurrentRow.DataBoundItem;
+            try
+            {
+                var obj = (Orcamento)grdGerenciamento.CurrentRow.DataBoundItem;
 
-            frmOrcamento orcamento = new frmOrcamento();
-            orcamento.txtIdPedido.Text = obj.Pedido.ToString();
-            orcamento.txtCondicaoPag.Text = obj.CondicaoPag.ToString();
-            orcamento.txtDataEmissao.Text = obj.DataEmissao.ToString();
-            orcamento.txtValorTotal.Text = obj.ValorTotal.ToString("C2");
-            orcamento.txtTipo.Text = obj.Tipo.ToString();
-            orcamento.txtObservacoes.Text = obj.Observacoes.ToString();
-            orcamento.txtPrazoEntrega.Text = obj.PrazoEntrega.ToString();
-            orcamento.txtVendedor.Text = obj.Vendedor.ToString();
+                frmOrcamento orcamento = new frmOrcamento();
+                orcamento.txtIdPedido.Text = obj.Pedido.ToString();
+                orcamento.txtCondicaoPag.Text = obj.CondicaoPag.ToString();
+                orcamento.txtDataEmissao.Text = obj.DataEmissao.ToString();
+                orcamento.txtValorTotal.Text = obj.ValorTotal.ToString("C2");
+                orcamento.txtTipo.Text = obj.Tipo.ToString();
+                orcamento.txtObservacoes.Text = obj.Observacoes.ToString();
+                orcamento.txtPrazoEntrega.Text = obj.PrazoEntrega.ToString();
+                orcamento.txtVendedor.Text = obj.Vendedor.ToString();
 
-            orcamento.ShowDialog();
-            CarregarGrid();
+                orcamento.ShowDialog();
+                CarregarGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " Nenhum item foi Selecionado!", "Confirmação", MessageBoxButtons.OK);
+            }
         }
     }
 }

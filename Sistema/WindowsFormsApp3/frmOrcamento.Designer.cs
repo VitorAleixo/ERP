@@ -73,6 +73,7 @@
             this.grdGerenciamento.ReadOnly = true;
             this.grdGerenciamento.Size = new System.Drawing.Size(705, 200);
             this.grdGerenciamento.TabIndex = 3;
+            this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
             // 
             // Cod
             // 

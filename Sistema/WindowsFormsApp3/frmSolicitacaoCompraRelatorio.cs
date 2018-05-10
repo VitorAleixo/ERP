@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
@@ -22,56 +23,14 @@ namespace WindowsFormsApp3
 
         void CarregarRelatorio()
         {
-            ConfiguraParametros();
-            ConfiguraBD();
+             report.Load("relSolicitacaoCompra.rpt");
 
+            report.SetDataSource(Relatorio.Compra(Pedido));
 
             crvReport2.ReportSource = report;
             crvReport2.Show();
         }
         public int Pedido { get; set; }
-
-        void ConfiguraParametros()
-        {
-            report.Load("relSolicitacaoCompra.rpt");
-
-            ParameterFieldDefinitions par = report.DataDefinition.ParameterFields;
-
-            par["@IDPEDIDO"].CurrentValues.AddValue(Pedido);
-
-            par["@IDPEDIDO"].ApplyCurrentValues(par["@IDPEDIDO"].CurrentValues);
-
-        }
-
-        void ConfiguraBD()
-        {
-
-            if (report == null)
-            {
-                return;
-            }
-
-            ConnectionInfo crConnectionInfo = new ConnectionInfo();
-            crConnectionInfo.ServerName = "SERVER05";
-            crConnectionInfo.DatabaseName = "Estoque";
-            crConnectionInfo.UserID = "ENTERPRISING";
-            crConnectionInfo.Password = "ENTERPRISING";
-
-            TableLogOnInfos crTableLogonInfos = new TableLogOnInfos();
-            TableLogOnInfo crTableLogonInfo = new TableLogOnInfo();
-            Tables crTables;
-
-            // Each table in report needs to have logoninfo setup:
-            crTables = report.Database.Tables;
-            foreach (CrystalDecisions.CrystalReports.Engine.Table crTable in crTables)
-            {
-                crTableLogonInfo = crTable.LogOnInfo;
-                crTableLogonInfo.ConnectionInfo = crConnectionInfo;
-                crTable.ApplyLogOnInfo(crTableLogonInfo);
-            }
-
-
-        }
 
         private void frmSolicitacaoCompraRelatorio_Load(object sender, EventArgs e)
         {

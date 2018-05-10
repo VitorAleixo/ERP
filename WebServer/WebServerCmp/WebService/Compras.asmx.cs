@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -121,6 +122,20 @@ namespace WebServerCmp.WebService
             {
                 return false;
             }
+        }
+
+        [WebMethod]
+        public DataSet OrcamentoDataSet(int IdPedido)
+        {
+            DataSetOrcamento dsOrcamento = new DataSetOrcamento();
+            return dsOrcamento.RetornarDataSet(IdPedido);
+        }
+
+        [WebMethod]
+        public DataSet CompraCompletaDataSet(int IdPedido)
+        {
+            DataSetCompraCompleta dsCompraCompleta = new DataSetCompraCompleta();
+            return dsCompraCompleta.RetornarDataSet(IdPedido);
         }
 
         [WebMethod]

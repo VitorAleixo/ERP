@@ -149,6 +149,9 @@
     <Compile Include="AppCode\CadastrarOrcamento.cs" />
     <Compile Include="AppCode\CadastroFornecedor.cs" />
     <Compile Include="AppCode\ConnectionFactory.cs" />
+    <Compile Include="AppCode\DataSetCompraCompleta.cs" />
+    <Compile Include="AppCode\DataSetOrcamento.cs" />
+    <Compile Include="AppCode\Relatorio.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

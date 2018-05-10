@@ -99,7 +99,7 @@ namespace WindowsFormsApp3
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nenhum Item Selecionado!", "Confirmação", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message + "Nenhum Item Selecionado!", "Confirmação", MessageBoxButtons.OK);
             }
         }
     }

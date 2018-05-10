@@ -57,11 +57,30 @@
   <ItemGroup>
     <Compile Include="AppCode\BuscarTipo.cs" />
     <Compile Include="AppCode\PreencherLista.cs" />
+    <Compile Include="AppCode\Relatorio.cs" />
     <Compile Include="AppCode\SessaoSistema.cs" />
     <Compile Include="Connected Services\WSCorreios\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DS\dsOrcamento.cs">
+      <DependentUpon>dsOrcamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\dsOrcamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOrcamento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\dsSolicitacaoCompra.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSolicitacaoCompra.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DS\dsSolicitacaoCompraCompleta.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsSolicitacaoCompraCompleta.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmAdminRights.cs">
       <SubType>Form</SubType>
@@ -538,6 +557,39 @@
     </None>
     <None Include="Connected Services\WSCorreios\WindowsFormsApp3.WSCorreios.VerificaSeTodosObjetosCanceladosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="DS\dsOrcamento.xsc">
+      <DependentUpon>dsOrcamento.xsd</DependentUpon>
+    </None>
+    <None Include="DS\dsOrcamento.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOrcamento.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DS\dsOrcamento.xss">
+      <DependentUpon>dsOrcamento.xsd</DependentUpon>
+    </None>
+    <None Include="DS\dsSolicitacaoCompra.xsc">
+      <DependentUpon>dsSolicitacaoCompra.xsd</DependentUpon>
+    </None>
+    <None Include="DS\dsSolicitacaoCompra.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSolicitacaoCompra.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DS\dsSolicitacaoCompra.xss">
+      <DependentUpon>dsSolicitacaoCompra.xsd</DependentUpon>
+    </None>
+    <None Include="DS\dsSolicitacaoCompraCompleta.xsc">
+      <DependentUpon>dsSolicitacaoCompraCompleta.xsd</DependentUpon>
+    </None>
+    <None Include="DS\dsSolicitacaoCompraCompleta.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsSolicitacaoCompraCompleta.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DS\dsSolicitacaoCompraCompleta.xss">
+      <DependentUpon>dsSolicitacaoCompraCompleta.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

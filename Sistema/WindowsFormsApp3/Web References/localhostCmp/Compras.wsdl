@@ -93,6 +93,48 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="OrcamentoDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrcamentoDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrcamentoDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompraCompletaDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompraCompletaDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompraCompletaDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="RetornarSolicitacao">
         <s:complexType />
       </s:element>
@@ -252,6 +294,18 @@
   <wsdl:message name="AtualizarGerarSoapOut">
     <wsdl:part name="parameters" element="tns:AtualizarGerarResponse" />
   </wsdl:message>
+  <wsdl:message name="OrcamentoDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:OrcamentoDataSet" />
+  </wsdl:message>
+  <wsdl:message name="OrcamentoDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:OrcamentoDataSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="CompraCompletaDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:CompraCompletaDataSet" />
+  </wsdl:message>
+  <wsdl:message name="CompraCompletaDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:CompraCompletaDataSetResponse" />
+  </wsdl:message>
   <wsdl:message name="RetornarSolicitacaoSoapIn">
     <wsdl:part name="parameters" element="tns:RetornarSolicitacao" />
   </wsdl:message>
@@ -302,6 +356,14 @@
     <wsdl:operation name="AtualizarGerar">
       <wsdl:input message="tns:AtualizarGerarSoapIn" />
       <wsdl:output message="tns:AtualizarGerarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrcamentoDataSet">
+      <wsdl:input message="tns:OrcamentoDataSetSoapIn" />
+      <wsdl:output message="tns:OrcamentoDataSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompraCompletaDataSet">
+      <wsdl:input message="tns:CompraCompletaDataSetSoapIn" />
+      <wsdl:output message="tns:CompraCompletaDataSetSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetornarSolicitacao">
       <wsdl:input message="tns:RetornarSolicitacaoSoapIn" />
@@ -364,6 +426,24 @@
     </wsdl:operation>
     <wsdl:operation name="AtualizarGerar">
       <soap:operation soapAction="http://tempuri.org/AtualizarGerar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrcamentoDataSet">
+      <soap:operation soapAction="http://tempuri.org/OrcamentoDataSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraCompletaDataSet">
+      <soap:operation soapAction="http://tempuri.org/CompraCompletaDataSet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -457,6 +537,24 @@
     </wsdl:operation>
     <wsdl:operation name="AtualizarGerar">
       <soap12:operation soapAction="http://tempuri.org/AtualizarGerar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrcamentoDataSet">
+      <soap12:operation soapAction="http://tempuri.org/OrcamentoDataSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraCompletaDataSet">
+      <soap12:operation soapAction="http://tempuri.org/CompraCompletaDataSet" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

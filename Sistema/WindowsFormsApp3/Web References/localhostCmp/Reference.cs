@@ -20,6 +20,7 @@ namespace WindowsFormsApp3.localhostCmp {
     using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Data;
     
     
     /// <remarks/>
@@ -38,6 +39,10 @@ namespace WindowsFormsApp3.localhostCmp {
         private System.Threading.SendOrPostCallback AtualizarOperationCompleted;
         
         private System.Threading.SendOrPostCallback AtualizarGerarOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback OrcamentoDataSetOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CompraCompletaDataSetOperationCompleted;
         
         private System.Threading.SendOrPostCallback RetornarSolicitacaoOperationCompleted;
         
@@ -101,6 +106,12 @@ namespace WindowsFormsApp3.localhostCmp {
         
         /// <remarks/>
         public event AtualizarGerarCompletedEventHandler AtualizarGerarCompleted;
+        
+        /// <remarks/>
+        public event OrcamentoDataSetCompletedEventHandler OrcamentoDataSetCompleted;
+        
+        /// <remarks/>
+        public event CompraCompletaDataSetCompletedEventHandler CompraCompletaDataSetCompleted;
         
         /// <remarks/>
         public event RetornarSolicitacaoCompletedEventHandler RetornarSolicitacaoCompleted;
@@ -301,6 +312,64 @@ namespace WindowsFormsApp3.localhostCmp {
             if ((this.AtualizarGerarCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AtualizarGerarCompleted(this, new AtualizarGerarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/OrcamentoDataSet", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet OrcamentoDataSet(int IdPedido) {
+            object[] results = this.Invoke("OrcamentoDataSet", new object[] {
+                        IdPedido});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void OrcamentoDataSetAsync(int IdPedido) {
+            this.OrcamentoDataSetAsync(IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void OrcamentoDataSetAsync(int IdPedido, object userState) {
+            if ((this.OrcamentoDataSetOperationCompleted == null)) {
+                this.OrcamentoDataSetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnOrcamentoDataSetOperationCompleted);
+            }
+            this.InvokeAsync("OrcamentoDataSet", new object[] {
+                        IdPedido}, this.OrcamentoDataSetOperationCompleted, userState);
+        }
+        
+        private void OnOrcamentoDataSetOperationCompleted(object arg) {
+            if ((this.OrcamentoDataSetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.OrcamentoDataSetCompleted(this, new OrcamentoDataSetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CompraCompletaDataSet", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet CompraCompletaDataSet(int IdPedido) {
+            object[] results = this.Invoke("CompraCompletaDataSet", new object[] {
+                        IdPedido});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CompraCompletaDataSetAsync(int IdPedido) {
+            this.CompraCompletaDataSetAsync(IdPedido, null);
+        }
+        
+        /// <remarks/>
+        public void CompraCompletaDataSetAsync(int IdPedido, object userState) {
+            if ((this.CompraCompletaDataSetOperationCompleted == null)) {
+                this.CompraCompletaDataSetOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCompraCompletaDataSetOperationCompleted);
+            }
+            this.InvokeAsync("CompraCompletaDataSet", new object[] {
+                        IdPedido}, this.CompraCompletaDataSetOperationCompleted, userState);
+        }
+        
+        private void OnCompraCompletaDataSetOperationCompleted(object arg) {
+            if ((this.CompraCompletaDataSetCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CompraCompletaDataSetCompleted(this, new CompraCompletaDataSetCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -977,6 +1046,58 @@ namespace WindowsFormsApp3.localhostCmp {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void OrcamentoDataSetCompletedEventHandler(object sender, OrcamentoDataSetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class OrcamentoDataSetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal OrcamentoDataSetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void CompraCompletaDataSetCompletedEventHandler(object sender, CompraCompletaDataSetCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CompraCompletaDataSetCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CompraCompletaDataSetCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

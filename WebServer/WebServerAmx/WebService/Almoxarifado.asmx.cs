@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -90,6 +91,13 @@ namespace WebServerAmx.WebService
             {
                 return false;
             }
+        }
+
+        [WebMethod]
+        public DataSet CompraDataSet(int IdPedido)
+        {
+            DataSetCompra dsCompra = new DataSetCompra();
+            return dsCompra.RetornarDataSet(IdPedido);
         }
 
         [WebMethod]

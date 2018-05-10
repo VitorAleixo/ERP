@@ -79,6 +79,27 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="CompraDataSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CompraDataSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CompraDataSetResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="RetornaProduto">
         <s:complexType />
       </s:element>
@@ -178,6 +199,12 @@
   <wsdl:message name="GerarPedidoItemSoapOut">
     <wsdl:part name="parameters" element="tns:GerarPedidoItemResponse" />
   </wsdl:message>
+  <wsdl:message name="CompraDataSetSoapIn">
+    <wsdl:part name="parameters" element="tns:CompraDataSet" />
+  </wsdl:message>
+  <wsdl:message name="CompraDataSetSoapOut">
+    <wsdl:part name="parameters" element="tns:CompraDataSetResponse" />
+  </wsdl:message>
   <wsdl:message name="RetornaProdutoSoapIn">
     <wsdl:part name="parameters" element="tns:RetornaProduto" />
   </wsdl:message>
@@ -212,6 +239,10 @@
     <wsdl:operation name="GerarPedidoItem">
       <wsdl:input message="tns:GerarPedidoItemSoapIn" />
       <wsdl:output message="tns:GerarPedidoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CompraDataSet">
+      <wsdl:input message="tns:CompraDataSetSoapIn" />
+      <wsdl:output message="tns:CompraDataSetSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetornaProduto">
       <wsdl:input message="tns:RetornaProdutoSoapIn" />
@@ -257,6 +288,15 @@
     </wsdl:operation>
     <wsdl:operation name="GerarPedidoItem">
       <soap:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraDataSet">
+      <soap:operation soapAction="http://tempuri.org/CompraDataSet" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -323,6 +363,15 @@
     </wsdl:operation>
     <wsdl:operation name="GerarPedidoItem">
       <soap12:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompraDataSet">
+      <soap12:operation soapAction="http://tempuri.org/CompraDataSet" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
