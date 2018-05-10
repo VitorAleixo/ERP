@@ -10,17 +10,14 @@ namespace WebServer.AppCode
     public class CadastroProduto
     {
         public int valor { get; set; } = 0;
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
-        private string comando = null;
         private SqlCommand command = null;
-        private string comando2 = null;
         private SqlCommand command2 = null;
-        private string cmd = null;
         private SqlCommand cmdo = null;
         private SqlConnection con = null;
         private SqlDataReader rdr = null;
+ 
 
-        public void GravarProduto(
+        public int GravarProduto(
                       string CodigoProduto
                     , string Nome
                     , float Preco
@@ -31,13 +28,14 @@ namespace WebServer.AppCode
         {
             try
             {
-                con = new SqlConnection(connectionString);
+                con = ConnectionFactory.getConnection();
                 con.Open();
+                int IdProduto = 0;
+                SqlCommand cmd = new SqlCommand("SELECT CodigoProduto FROM Produto WHERE CodigoProduto = @Cod;",con);
 
-                cmd = "SELECT * FROM Produto WHERE CodigoProduto = '" + CodigoProduto + "';";
-                cmdo = new SqlCommand(cmd, con);
+                cmd.Parameters.AddWithValue("@Cod", CodigoProduto);
 
-                rdr = cmdo.ExecuteReader();
+                rdr = cmd.ExecuteReader();
 
                 if (rdr.Read())
                 {
@@ -47,24 +45,113 @@ namespace WebServer.AppCode
                 else
                 {
                     rdr.Close();
-                    comando = "INSERT INTO Produto(CodigoProduto, Nome, Preco, UnidadeMedida)" +
-                        "VALUES ('" + CodigoProduto + "', '" + Nome + "', '" + Preco.ToString().Replace(",", ".") + "', '" + UnidadeMedida + "');";
+                  
+                    SqlCommand comando = new SqlCommand( "INSERT INTO Produto(CodigoProduto, Nome, Preco, UnidadeMedida)" +
+                        "VALUES (@Cod, @Nome, @Preco , @UnidadeMedida); SELECT @@IDENTITY",con);
 
-                    command = new SqlCommand(comando, con);
+                    comando.Parameters.AddWithValue("@Cod", CodigoProduto);
+                    comando.Parameters.AddWithValue("@Nome", Nome);
+                    comando.Parameters.AddWithValue("@Preco", Preco.ToString().Replace(",", "."));
+                    comando.Parameters.AddWithValue("@UnidadeMedida", UnidadeMedida);
 
-                    comando2 = "INSERT INTO Estoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque)" +
-                            "VALUES ((SELECT MAX(IdProduto) FROM Produto), '" + QtdMinima + "', '" + QtdMaxima + "', '" + QtdEstoque + "');";
 
-                    command2 = new SqlCommand(comando2, con);
-
-                    if (command.ExecuteNonQuery() == 1 && command2.ExecuteNonQuery() == 1)
+                    IdProduto = Convert.ToInt32(comando.ExecuteScalar());      
+                  
+                }
+                return IdProduto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                try
+                {
+                    if (con != null)
                     {
-                        valor = 1;
+                        con.Close();
                     }
-                    else
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+
+                try
+                {
+                    if (command != null)
                     {
-                        valor = 0;
+                        command.Dispose();
                     }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                try
+                {
+                    if (command2 != null)
+                    {
+                        command2.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                try
+                {
+                    if (cmdo != null)
+                    {
+                        cmdo.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                try
+                {
+                    if (rdr != null)
+                    {
+                        rdr.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+            }
+          
+        }
+        public void GravarProdutoEstoque(
+                   int IdProduto
+                 , float QtdMinima
+                 , float QtdMaxima
+                 , float QtdEstoque)
+        {
+            try
+            {
+                con = ConnectionFactory.getConnection();
+                con.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO Estoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque) VALUES " +
+                "(@IdProduto, @QtdMinima, @QtdMaxima, @QtdEstoque);", con);
+
+       
+                cmd.Parameters.AddWithValue("@IdProduto", IdProduto);
+                cmd.Parameters.AddWithValue("@QtdEstoque", QtdEstoque);
+                cmd.Parameters.AddWithValue("@QtdMaxima", QtdMaxima);
+                cmd.Parameters.AddWithValue("@QtdMinima", QtdMinima);
+
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    valor = 1;
+
+                }
+                else
+                {
+                    valor = 0;
                 }
             }
             catch (Exception ex)

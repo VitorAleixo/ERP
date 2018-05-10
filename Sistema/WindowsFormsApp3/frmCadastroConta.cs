@@ -77,10 +77,18 @@ namespace WindowsFormsApp3
 
                     if (Senha == SenhaConfirmacao)
                     {
-                        if (cadastroUsuario.CadastroUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao))
+                       int IdUsuario = cadastroUsuario.CadastroUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
+                        if (IdUsuario > 0)
                         {
-                            DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!", "Usuário", MessageBoxButtons.OK);
-                            this.Close();
+                            if (cadastroUsuario.CadastroPermissoesUsuario(Departamento, IdUsuario, Nome) == true)
+                            {
+                                DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!", "Usuário", MessageBoxButtons.OK);
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Erro ao gravar a Permissão do Usuário!!!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
                         }
                         else
                         {

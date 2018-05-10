@@ -38,6 +38,7 @@
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGerarOrc = new System.Windows.Forms.Button();
             this.btnSolicCompras = new System.Windows.Forms.Button();
             this.btnLogoff = new System.Windows.Forms.Button();
             this.btnVisForn = new System.Windows.Forms.Button();
@@ -113,6 +114,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGerarOrc);
             this.groupBox2.Controls.Add(this.btnSolicCompras);
             this.groupBox2.Location = new System.Drawing.Point(13, 129);
             this.groupBox2.Name = "groupBox2";
@@ -121,15 +123,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Solicitações";
             // 
+            // btnGerarOrc
+            // 
+            this.btnGerarOrc.Image = global::WindowsFormsApp3.Properties.Resources.btnGerarOrcamento;
+            this.btnGerarOrc.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGerarOrc.Location = new System.Drawing.Point(6, 19);
+            this.btnGerarOrc.Name = "btnGerarOrc";
+            this.btnGerarOrc.Size = new System.Drawing.Size(216, 57);
+            this.btnGerarOrc.TabIndex = 1;
+            this.btnGerarOrc.Text = "Gerar Orçamento";
+            this.btnGerarOrc.UseVisualStyleBackColor = true;
+            this.btnGerarOrc.Click += new System.EventHandler(this.btnGerarOrc_Click);
+            // 
             // btnSolicCompras
             // 
             this.btnSolicCompras.Image = global::WindowsFormsApp3.Properties.Resources.btnSolCompra;
             this.btnSolicCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSolicCompras.Location = new System.Drawing.Point(6, 19);
+            this.btnSolicCompras.Location = new System.Drawing.Point(304, 19);
             this.btnSolicCompras.Name = "btnSolicCompras";
             this.btnSolicCompras.Size = new System.Drawing.Size(216, 57);
             this.btnSolicCompras.TabIndex = 0;
-            this.btnSolicCompras.Text = "Solicitação de Compras";
+            this.btnSolicCompras.Text = "Gerar Solicitação";
             this.btnSolicCompras.UseVisualStyleBackColor = true;
             // 
             // btnLogoff
@@ -215,5 +229,6 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSolicCompras;
+        private System.Windows.Forms.Button btnGerarOrc;
     }
 }

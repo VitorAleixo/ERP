@@ -10,10 +10,10 @@ namespace WebServer.AppCode
     public class CadastroFornecedor
     {
         public int valor { get; set; } = 0;
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
         private string comando = null;
         private SqlCommand command = null;
         private SqlConnection con = null;
+        private SqlParameter param = null;
 
         public void GravarFornecedor(
                   string Nome
@@ -32,15 +32,28 @@ namespace WebServer.AppCode
         {
             try
             {
-                con = new SqlConnection(connectionString);
+                con = ConnectionFactory.getConnection();
                 con.Open();
 
-                comando = "INSERT INTO Fornecedor(Nome, CPF, CEP, Endereco, Bairro, Cidade, Complemento, Estado, Complemento2, Numero, Telefone, Telefone2, EMAIL)" +
-                        "VALUES ('" + Nome + "', '" + CPF + "', '" + CEP + "', '" + Endereco + "', '" + Bairro + "', '" + Cidade + "', '" + Complemento + "', '" + Estado + "', '" + Complemento2 + "', '" + Numero + "', '" + Telefone + "', '" + Telefone2 + "', '" + EMAIL + "');";
+                SqlCommand cmd = new SqlCommand("INSERT INTO Fornecedor(Nome, CPF, CEP, Endereco, Bairro, Cidade, Complemento, Estado, Complemento2, Numero, Telefone, Telefone2, EMAIL) VALUES " +
+                    "(@Nome, @CPF, @CEP, @Endereco, @Bairro, @Cidade, @Complemento, @Estado, @Complemento2, @Numero, @Telefone, @Telefone2, @EMAIL );", con);
 
-                command = new SqlCommand(comando, con);
+                cmd.Parameters.AddWithValue("@Nome", Nome);
+                cmd.Parameters.AddWithValue("@CPF", CPF);
+                cmd.Parameters.AddWithValue("@CEP", CEP);
+                cmd.Parameters.AddWithValue("@Endereco", Endereco);
+                cmd.Parameters.AddWithValue("@Bairro", Bairro);
+                cmd.Parameters.AddWithValue("@Cidade", Cidade);
+                cmd.Parameters.AddWithValue("@Complemento", Complemento);
+                cmd.Parameters.AddWithValue("@Estado", Estado);
+                cmd.Parameters.AddWithValue("@Complemento2", Complemento2);
+                cmd.Parameters.AddWithValue("@Numero", Numero);
+                cmd.Parameters.AddWithValue("@Telefone", Telefone);
+                cmd.Parameters.AddWithValue("@Telefone2", Telefone2);
+                cmd.Parameters.AddWithValue("@EMAIL", EMAIL);
+                
 
-                if (command.ExecuteNonQuery() == 1)
+                if (cmd.ExecuteNonQuery() == 1)
                 {
                     valor = 1;
                 }

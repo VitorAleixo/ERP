@@ -6,6 +6,8 @@ using System.Web;
 using MySql.Data.MySqlClient;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
+
 
 namespace WebServer.AppCode
 {
@@ -13,39 +15,44 @@ namespace WebServer.AppCode
     {
         public int valor { get; set; } = 0;
 
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
         private SqlConnection con = null;
         private SqlDataReader rdr = null;
-        private string comando = null;
         private SqlCommand command = null;
 
         public void Logar(string Usuario, string Senha)
         {
             try
             {
-                con = new SqlConnection(connectionString);
+                con = ConnectionFactory.getConnection();
                 con.Open();
 
-                comando = "SELECT Senha FROM Usuario WHERE Usuario = '" + Usuario + "';";
-                command = new SqlCommand(comando, con);
-                rdr = command.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("SELECT Senha FROM Usuario WHERE Usuario = @Usuario;", con);
 
-                if (rdr.Read())
-                {
-                    if (Senha == rdr["Senha"].ToString())
+                cmd.Parameters.AddWithValue("@Usuario", Usuario);
+
+                rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
                     {
-                        valor = 1;
+                        if (Senha == rdr["Senha"].ToString())
+                        {
+                            valor = 1;
+                        }
+                        else
+                        {
+                            valor = 0;
+                        }
                     }
                     else
                     {
                         valor = 0;
                     }
-                }
-                else
-                {
-                    valor = 0;
-                }
+                
+
             }
+                //    comando = "SELECT Senha FROM Usuario WHERE Usuario = '" + Usuario + "';";
+                //command = new SqlCommand(comando, con);
+                //rdr = command.ExecuteReader();  
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());

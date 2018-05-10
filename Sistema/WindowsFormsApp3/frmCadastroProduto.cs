@@ -65,8 +65,12 @@ namespace WindowsFormsApp3
                     float QtdMaxima = float.Parse(txtQtdMax.Text.ToString().Replace(".", ","));
                     float QtdEstoque = float.Parse(txtQtdEst.Text.ToString().Replace(".", ","));
 
-                    if (cadastroProduto.CadastroProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque))
+                    int IdProduto = cadastroProduto.CadastroProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque);
+
+   
+                    if (IdProduto > 0)
                     {
+                        cadastroProduto.CadastroProdutoEstoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque);
                         DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!\nDeseja continuar cadastrando?", "Usuário", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                         if (dialogResult == DialogResult.Yes)
                         {

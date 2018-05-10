@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipalGerencia));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPedCompra = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.barraStatus = new System.Windows.Forms.StatusStrip();
             this.lblSetor = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.lblData = new System.Windows.Forms.Label();
             this.lblNomeUsuario = new System.Windows.Forms.Label();
             this.btnLogoff = new System.Windows.Forms.Button();
-            this.btnPedCompra = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pedidos";
+            // 
+            // btnPedCompra
+            // 
+            this.btnPedCompra.Image = global::WindowsFormsApp3.Properties.Resources.btnPedidoCompra;
+            this.btnPedCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPedCompra.Location = new System.Drawing.Point(6, 19);
+            this.btnPedCompra.Name = "btnPedCompra";
+            this.btnPedCompra.Size = new System.Drawing.Size(216, 57);
+            this.btnPedCompra.TabIndex = 1;
+            this.btnPedCompra.Text = "Orçamentos";
+            this.btnPedCompra.UseVisualStyleBackColor = true;
             // 
             // timer1
             // 
@@ -118,17 +129,6 @@
             this.btnLogoff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
-            // 
-            // btnPedCompra
-            // 
-            this.btnPedCompra.Image = global::WindowsFormsApp3.Properties.Resources.btnPedidoCompra;
-            this.btnPedCompra.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPedCompra.Location = new System.Drawing.Point(6, 19);
-            this.btnPedCompra.Name = "btnPedCompra";
-            this.btnPedCompra.Size = new System.Drawing.Size(216, 57);
-            this.btnPedCompra.TabIndex = 1;
-            this.btnPedCompra.Text = "Pedido de Compra";
-            this.btnPedCompra.UseVisualStyleBackColor = true;
             // 
             // frmPrincipalGerencia
             // 

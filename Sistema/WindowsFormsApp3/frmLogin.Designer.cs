@@ -82,11 +82,11 @@
             // 
             this.btnLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
+            this.btnLogin.Image = global::WindowsFormsApp3.Properties.Resources.btnAceitar32;
             this.btnLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnLogin.Location = new System.Drawing.Point(17, 192);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(82, 41);
+            this.btnLogin.Size = new System.Drawing.Size(97, 41);
             this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "Login";
             this.btnLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -97,11 +97,11 @@
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
+            this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair32;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(135, 192);
+            this.btnSair.Location = new System.Drawing.Point(120, 191);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(82, 41);
+            this.btnSair.Size = new System.Drawing.Size(97, 41);
             this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

@@ -10,19 +10,15 @@ namespace WebServer.AppCode
     public class CadastroUsuario
     {
         private string senhaCriptografada = null;
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
         private SqlConnection con = null;
-        private string comando = null;
         private SqlCommand command = null;
-        private string comando2 = null;
-        private SqlCommand command2 = null;
         private SqlDataReader rdr = null;
-        private string cmd = null;
         private SqlCommand cmdo = null;
-
         public int valor { get; set; } = 0;
+        SqlCommand comando2 = null;
+        SqlCommand comando3 = null;
 
-        public void GravarUsuario(
+        public int GravarUsuario(
                   string Nome
                 , string Funcao
                 , string Departamento
@@ -35,14 +31,15 @@ namespace WebServer.AppCode
             {
                 Criptografia c = new Criptografia();
                 senhaCriptografada = c.SHA256(Senha);
-
-                con = new SqlConnection(connectionString);
+                int IdUsuario = 0;
+                con = ConnectionFactory.getConnection();
                 con.Open();
 
-                cmd = "SELECT * FROM Usuario WHERE Usuario = '" + Usuario + "';";
-                cmdo = new SqlCommand(cmd, con);
+                SqlCommand cmd = new SqlCommand("SELECT Usuario FROM Usuario WHERE Usuario = @Usuario ;", con);
 
-                rdr = cmdo.ExecuteReader();
+                cmd.Parameters.AddWithValue("@Usuario", Usuario);
+
+                rdr = cmd.ExecuteReader();
 
                 if (rdr.Read())
                 {
@@ -52,31 +49,18 @@ namespace WebServer.AppCode
                 else
                 {
                     rdr.Close();
-                    comando = "INSERT INTO Usuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao)" +
-                    "VALUES ('" + Nome + "','" + Funcao + "','" + Departamento + "', '" + Usuario + "', '" + senhaCriptografada + "', GETDATE());";
+                    SqlCommand comando = new SqlCommand("INSERT INTO Usuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao)" +
+                    "VALUES (@Nome,@Funcao,@Departamento,@Usuario,@Senha, GETDATE()); SELECT @@IDENTITY", con);
+                    comando.Parameters.AddWithValue("@Nome", Nome);
+                    comando.Parameters.AddWithValue("@Funcao", Funcao);
+                    comando.Parameters.AddWithValue("@Departamento", Departamento);
+                    comando.Parameters.AddWithValue("@Usuario", Usuario);
+                    comando.Parameters.AddWithValue("@Senha", senhaCriptografada);
 
-                    command = new SqlCommand(comando, con);
+                    IdUsuario = Convert.ToInt32(comando.ExecuteScalar());
 
-                    if (Departamento == "ADMIN")
-                    {
-                        comando2 = "INSERT INTO Permissoes(IdUsuario, Nome, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
-                         "VALUES ((SELECT MAX(IdUsuario) FROM Usuario),'" + Nome + "', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK');";
-                    }
-                    else
-                    { 
-                          comando2 = "INSERT INTO Permissoes(IdUsuario, Nome, " + Departamento + ")" +
-                         "VALUES ((SELECT MAX(IdUsuario) FROM Usuario),'" + Nome+ "', 'OK');";
-                    }
-                    command2 = new SqlCommand(comando2, con);
-                    if (command.ExecuteNonQuery() == 1 && command2.ExecuteNonQuery() == 1)
-                    {
-                        valor = 1;
-                    }
-                    else
-                    {
-                        valor = 0;
-                    }
                 }
+                return IdUsuario;
             }
             catch (Exception ex)
             {
@@ -129,6 +113,92 @@ namespace WebServer.AppCode
                 {
                     throw new Exception(ex.ToString());
                 }
+            }
+        }
+        public void GravarPermissoes(string Departamento, int IdUsuario, string Nome)
+        {
+            try
+            {
+                con = ConnectionFactory.getConnection();
+                con.Open();
+                valor = 0;
+                if (Departamento == "ADMIN")
+                {
+                    SqlCommand comando2 = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
+                     "VALUES (@IdUsuario,@Nome, 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK'); ", con);
+
+                    comando2.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+                    comando2.Parameters.AddWithValue("@Nome", Nome);
+
+                    if (comando2.ExecuteNonQuery() == 1)
+                    {
+                        valor = 1;
+                    }
+                    else
+                    {
+                        valor = 0;
+                    }
+
+
+                }
+                else
+                {
+                    SqlCommand comando3 = new SqlCommand("INSERT INTO Permissoes(IdUsuario, Nome, " + Departamento + ")" +
+                     "VALUES (@IdUsuario,@Nome, 'OK');", con);
+
+                    comando3.Parameters.AddWithValue("@Nome", Nome);
+                    comando3.Parameters.AddWithValue("@IdUsuario", IdUsuario);
+
+                    if (comando3.ExecuteNonQuery() == 1)
+                    {
+                        valor = 1;
+                    }
+                    else
+                    {
+                        valor = 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                try
+                {
+                    if (con != null)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+
+                try
+                {
+                    if (comando2 != null)
+                    {
+                        comando2.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                try
+                {
+                    if (comando3 != null)
+                    {
+                        cmdo.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }        
             }
         }
     }

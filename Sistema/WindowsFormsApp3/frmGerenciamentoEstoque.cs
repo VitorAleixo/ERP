@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
+using WindowsFormsApp3.localhost;
 
 namespace WindowsFormsApp3
 {
@@ -57,9 +60,9 @@ namespace WindowsFormsApp3
             {
                 foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
-                    var QtdEstoque = Convert.ToInt32(row.Cells[3].Value);
-                    var QtdMaxima = Convert.ToInt32(row.Cells[4].Value);
-                    var QtdMinima = Convert.ToInt32(row.Cells[5].Value);
+                    var QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
+                    var QtdMaxima = Convert.ToDouble(row.Cells[4].Value);
+                    var QtdMinima = Convert.ToDouble(row.Cells[5].Value);
 
 
                     if (QtdEstoque < QtdMinima)
@@ -90,25 +93,32 @@ namespace WindowsFormsApp3
             new frmLegendaEstoque { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
 
+        public ArrayList lista { get; set; }
         private void btnSolicCompra_Click(object sender, EventArgs e)
         {
             grdGerenciamento.CurrentCell = null;
             int i = 0;
-            foreach (DataGridViewRow dr in grdGerenciamento.Rows)
+            lista = new ArrayList();
+            foreach (DataGridViewRow row in grdGerenciamento.Rows)
             {
-                if (dr.Cells[0].Value != null)
+                if (Convert.ToBoolean(row.Cells[0].Value) == true)
                 {
-                    if ((bool)(dr.Cells[0].Value) == true)
-                    {
-                        this.grdGerenciamento.Rows[dr.Index].Selected = true;
-                        i = i + 1;
-                    }
-                    else
-                    {
-                        this.grdGerenciamento.Rows[dr.Index].Selected = false;
-                    }
+                    this.grdGerenciamento.Rows[row.Index].Selected = true;
+
+                    var OBJ = (Estoque) row.DataBoundItem;
+
+                    lista.Add(OBJ);
+                    i = i + 1;
                 }
+
+                else
+                {
+                    this.grdGerenciamento.Rows[row.Index].Selected = false;
+                }
+                
             }
+            PreencherLista.Preencher = lista;
+
             if (i == 0)
             {
                 MessageBox.Show("Nenhum item selecionado! \nNão foi possível criar Solicitação de Compra!", "ERRO!", MessageBoxButtons.OK);

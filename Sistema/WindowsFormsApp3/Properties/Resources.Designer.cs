@@ -63,6 +63,26 @@ namespace WindowsFormsApp3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnAceitar {
+            get {
+                object obj = ResourceManager.GetObject("btnAceitar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnAceitar32 {
+            get {
+                object obj = ResourceManager.GetObject("btnAceitar32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnAdmin {
             get {
                 object obj = ResourceManager.GetObject("btnAdmin", resourceCulture);
@@ -76,6 +96,16 @@ namespace WindowsFormsApp3.Properties {
         internal static System.Drawing.Bitmap btnAplicar {
             get {
                 object obj = ResourceManager.GetObject("btnAplicar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnAprovar {
+            get {
+                object obj = ResourceManager.GetObject("btnAprovar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +136,36 @@ namespace WindowsFormsApp3.Properties {
         internal static System.Drawing.Bitmap btnCadastroProduto {
             get {
                 object obj = ResourceManager.GetObject("btnCadastroProduto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnExcluir {
+            get {
+                object obj = ResourceManager.GetObject("btnExcluir", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnGerarOrcamento {
+            get {
+                object obj = ResourceManager.GetObject("btnGerarOrcamento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnGerarOrcamento16 {
+            get {
+                object obj = ResourceManager.GetObject("btnGerarOrcamento16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +213,29 @@ namespace WindowsFormsApp3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnReprovar {
+            get {
+                object obj = ResourceManager.GetObject("btnReprovar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnSair {
             get {
                 object obj = ResourceManager.GetObject("btnSair", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnSair32 {
+            get {
+                object obj = ResourceManager.GetObject("btnSair32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

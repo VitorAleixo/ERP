@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\PreencherLista.cs" />
     <Compile Include="AppCode\SessaoSistema.cs" />
     <Compile Include="Connected Services\WSCorreios\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -79,11 +80,29 @@
     <Compile Include="frmCadastroProduto.Designer.cs">
       <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGerarOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGerarOrcamento.Designer.cs">
+      <DependentUpon>frmGerarOrcamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmGerenciamentoEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmGerenciamentoEstoque.Designer.cs">
       <DependentUpon>frmGerenciamentoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegendaSolic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaSolic.Designer.cs">
+      <DependentUpon>frmLegendaSolic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLegendaSolicitacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLegendaSolicitacao.Designer.cs">
+      <DependentUpon>frmLegendaSolicitacao.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLegendaEstoque.cs">
       <SubType>Form</SubType>
@@ -114,6 +133,12 @@
     </Compile>
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPreencherOrcamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPreencherOrcamento.Designer.cs">
+      <DependentUpon>frmPreencherOrcamento.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
@@ -188,8 +213,17 @@
     <EmbeddedResource Include="frmCadastroProduto.resx">
       <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmGerarOrcamento.resx">
+      <DependentUpon>frmGerarOrcamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmGerenciamentoEstoque.resx">
       <DependentUpon>frmGerenciamentoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaSolic.resx">
+      <DependentUpon>frmLegendaSolic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLegendaSolicitacao.resx">
+      <DependentUpon>frmLegendaSolicitacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLegendaEstoque.resx">
       <DependentUpon>frmLegendaEstoque.cs</DependentUpon>
@@ -205,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPreencherOrcamento.resx">
+      <DependentUpon>frmPreencherOrcamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
@@ -399,6 +436,9 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\localhost\Solicitacao.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\localhost\Usuario.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
@@ -481,6 +521,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnSolCompra16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGerarOrcamento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnGerarOrcamento16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAprovar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnReprovar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnExcluir.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAceitar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnAceitar32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSair32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,8 +42,6 @@ namespace WebServer.AppCode
 
         public static class Program
         {
-
-            private static string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
             private static SqlConnection con = null;
             private static SqlDataReader rdr = null;
             private static string comando = null;
@@ -55,7 +53,7 @@ namespace WebServer.AppCode
             {
                 try
                 {
-                    con = new SqlConnection(connectionString);
+                    con = ConnectionFactory.getConnection();
                     con.Open();
 
                     comando = "SELECT CodigoProduto, Nome, UnidadeMedida, Preco FROM Produto ORDER BY UnidadeMedida;";

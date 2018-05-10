@@ -120,3 +120,6 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\Window
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipalAlmoxarife.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmPrincipalGerencia.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmSolicitacaoCompra.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLegendaSolicitacao.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmGerarOrcamento.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLegendaSolic.resources

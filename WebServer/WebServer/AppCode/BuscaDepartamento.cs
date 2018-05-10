@@ -9,32 +9,34 @@ namespace WebServer.AppCode
     public class BuscaDepartamento
     {
 
-        private string comando = null;
         private SqlCommand command = null;
         private SqlDataReader rdr = null;
         private SqlConnection con = null;
 
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
         public string Setor { get; set; }
 
         public string BuscaSetor(string Usuario)
         {
             try
             {
-                con = new SqlConnection(connectionString);
+                con = ConnectionFactory.getConnection();
                 con.Open();
 
-                comando = "SELECT Departamento FROM Usuario WHERE Usuario = '" + Usuario + "';";
-                command = new SqlCommand(comando, con);
-                rdr = command.ExecuteReader();
+                SqlCommand cmd = new SqlCommand("SELECT Departamento FROM Usuario WHERE Usuario = @Usuario;", con);
 
-                if (rdr.Read())
-                {
-                    Setor = rdr["Departamento"].ToString();
+                cmd.Parameters.AddWithValue("@Usuario", Usuario);
+
+
+                rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
+                    {
+                        Setor = rdr["Departamento"].ToString();
+                    }
+
+                    return Setor;
                 }
-
-                return Setor;
-            }
+            
             catch (Exception ex)
             {
                 throw new Exception(ex.ToString());

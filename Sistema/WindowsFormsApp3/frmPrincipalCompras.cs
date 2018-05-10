@@ -61,5 +61,10 @@ namespace WindowsFormsApp3
         {
             this.Close();
         }
+
+        private void btnGerarOrc_Click(object sender, EventArgs e)
+        {
+            new frmGerarOrcamento { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
     }
 }

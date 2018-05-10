@@ -58,7 +58,23 @@
       <s:element name="CadastroUsuarioResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CadastroUsuarioResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CadastroUsuarioResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CadastroPermissoesUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdUsuario" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CadastroPermissoesUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CadastroPermissoesUsuarioResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -78,7 +94,24 @@
       <s:element name="CadastroProdutoResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="CadastroProdutoResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="CadastroProdutoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CadastroProdutoEstoque">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdProduto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CadastroProdutoEstoqueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CadastroProdutoEstoqueResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -193,6 +226,66 @@
           <s:element minOccurs="0" maxOccurs="1" name="DataCriacao" type="s:string" />
         </s:sequence>
       </s:complexType>
+      <s:element name="RetornarSolicitacao">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetornarSolicitacaoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaSolicitacao" nillable="true" type="tns:ListaSolicitacao" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ListaSolicitacao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SOLICITACAO" type="tns:Solicitacao" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Solicitacao">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Solicitante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Urgencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataCriacao" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GerarPedido">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Solicitante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Urgencia" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Motivo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedidoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GerarPedidoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedidoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Cod" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdEstoque" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdMaxima" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="QtdMinima" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="UnidadeMedida" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Solicitar" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GerarPedidoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GerarPedidoItemResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="LoginSistemaSoapIn">
@@ -213,11 +306,23 @@
   <wsdl:message name="CadastroUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:CadastroUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="CadastroPermissoesUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:CadastroPermissoesUsuario" />
+  </wsdl:message>
+  <wsdl:message name="CadastroPermissoesUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:CadastroPermissoesUsuarioResponse" />
+  </wsdl:message>
   <wsdl:message name="CadastroProdutoSoapIn">
     <wsdl:part name="parameters" element="tns:CadastroProduto" />
   </wsdl:message>
   <wsdl:message name="CadastroProdutoSoapOut">
     <wsdl:part name="parameters" element="tns:CadastroProdutoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CadastroProdutoEstoqueSoapIn">
+    <wsdl:part name="parameters" element="tns:CadastroProdutoEstoque" />
+  </wsdl:message>
+  <wsdl:message name="CadastroProdutoEstoqueSoapOut">
+    <wsdl:part name="parameters" element="tns:CadastroProdutoEstoqueResponse" />
   </wsdl:message>
   <wsdl:message name="RetornaSetorSoapIn">
     <wsdl:part name="parameters" element="tns:RetornaSetor" />
@@ -249,6 +354,24 @@
   <wsdl:message name="RetornaUsuarioSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="RetornarSolicitacaoSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornarSolicitacao" />
+  </wsdl:message>
+  <wsdl:message name="RetornarSolicitacaoSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornarSolicitacaoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoSoapIn">
+    <wsdl:part name="parameters" element="tns:GerarPedido" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoSoapOut">
+    <wsdl:part name="parameters" element="tns:GerarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GerarPedidoItem" />
+  </wsdl:message>
+  <wsdl:message name="GerarPedidoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GerarPedidoItemResponse" />
+  </wsdl:message>
   <wsdl:portType name="LoginSoap">
     <wsdl:operation name="LoginSistema">
       <wsdl:input message="tns:LoginSistemaSoapIn" />
@@ -262,9 +385,17 @@
       <wsdl:input message="tns:CadastroUsuarioSoapIn" />
       <wsdl:output message="tns:CadastroUsuarioSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="CadastroPermissoesUsuario">
+      <wsdl:input message="tns:CadastroPermissoesUsuarioSoapIn" />
+      <wsdl:output message="tns:CadastroPermissoesUsuarioSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="CadastroProduto">
       <wsdl:input message="tns:CadastroProdutoSoapIn" />
       <wsdl:output message="tns:CadastroProdutoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CadastroProdutoEstoque">
+      <wsdl:input message="tns:CadastroProdutoEstoqueSoapIn" />
+      <wsdl:output message="tns:CadastroProdutoEstoqueSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetornaSetor">
       <wsdl:input message="tns:RetornaSetorSoapIn" />
@@ -285,6 +416,18 @@
     <wsdl:operation name="RetornaUsuario">
       <wsdl:input message="tns:RetornaUsuarioSoapIn" />
       <wsdl:output message="tns:RetornaUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornarSolicitacao">
+      <wsdl:input message="tns:RetornarSolicitacaoSoapIn" />
+      <wsdl:output message="tns:RetornarSolicitacaoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedido">
+      <wsdl:input message="tns:GerarPedidoSoapIn" />
+      <wsdl:output message="tns:GerarPedidoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedidoItem">
+      <wsdl:input message="tns:GerarPedidoItemSoapIn" />
+      <wsdl:output message="tns:GerarPedidoItemSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="LoginSoap" type="tns:LoginSoap">
@@ -316,8 +459,26 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CadastroPermissoesUsuario">
+      <soap:operation soapAction="http://tempuri.org/CadastroPermissoesUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CadastroProduto">
       <soap:operation soapAction="http://tempuri.org/CadastroProduto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastroProdutoEstoque">
+      <soap:operation soapAction="http://tempuri.org/CadastroProdutoEstoque" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -370,6 +531,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="RetornarSolicitacao">
+      <soap:operation soapAction="http://tempuri.org/RetornarSolicitacao" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedido">
+      <soap:operation soapAction="http://tempuri.org/GerarPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedidoItem">
+      <soap:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="LoginSoap12" type="tns:LoginSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -400,8 +588,26 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CadastroPermissoesUsuario">
+      <soap12:operation soapAction="http://tempuri.org/CadastroPermissoesUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CadastroProduto">
       <soap12:operation soapAction="http://tempuri.org/CadastroProduto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CadastroProdutoEstoque">
+      <soap12:operation soapAction="http://tempuri.org/CadastroProdutoEstoque" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -447,6 +653,33 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaUsuario">
       <soap12:operation soapAction="http://tempuri.org/RetornaUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornarSolicitacao">
+      <soap12:operation soapAction="http://tempuri.org/RetornarSolicitacao" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedido">
+      <soap12:operation soapAction="http://tempuri.org/GerarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GerarPedidoItem">
+      <soap12:operation soapAction="http://tempuri.org/GerarPedidoItem" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

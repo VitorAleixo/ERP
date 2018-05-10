@@ -81,7 +81,7 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
-        public bool CadastroUsuario(
+        public int CadastroUsuario(
                      string Nome
                 , string Funcao
                 , string Departamento
@@ -90,9 +90,20 @@ namespace WebServer.Web_Service
                 , DateTime DataCriacao)
         {
             CadastroUsuario cadastroUser = new CadastroUsuario();
-            cadastroUser.GravarUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
+           return cadastroUser.GravarUsuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao);
 
-            if (cadastroUser.valor == 1)
+        }
+
+        [WebMethod]
+
+        public bool CadastroPermissoesUsuario(
+                    string Departamento
+                  , int IdUsuario
+                  , string Nome)
+        {
+            CadastroUsuario cadastrouser = new CadastroUsuario();
+            cadastrouser.GravarPermissoes(Departamento, IdUsuario, Nome);
+            if (cadastrouser.valor == 1)
             {
                 return true;
             }
@@ -100,11 +111,10 @@ namespace WebServer.Web_Service
             {
                 return false;
             }
-
         }
 
         [WebMethod]
-        public bool CadastroProduto(
+        public int CadastroProduto(
                    string CodigoProduto
                  , string Nome
                  , float Preco
@@ -112,9 +122,23 @@ namespace WebServer.Web_Service
                  , float QtdMinima
                  , float QtdMaxima
                  , float QtdEstoque)
+
         {
             CadastroProduto cadastroProd = new CadastroProduto();
-            cadastroProd.GravarProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque);
+            return cadastroProd.GravarProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque);
+
+        }
+
+        [WebMethod]
+        public bool CadastroProdutoEstoque(
+                  int IdProduto
+                , float QtdMinima
+                , float QtdMaxima
+                , float QtdEstoque)
+
+        {
+            CadastroProduto cadastroProd = new CadastroProduto();
+            cadastroProd.GravarProdutoEstoque(IdProduto, QtdMinima, QtdMaxima, QtdEstoque);
 
             if (cadastroProd.valor == 1)
             {
@@ -126,7 +150,6 @@ namespace WebServer.Web_Service
             }
 
         }
-
 
         [WebMethod]
         public string RetornaSetor(
@@ -141,8 +164,6 @@ namespace WebServer.Web_Service
         [WebMethod]
         public BuscaProduto.ListaProduto RetornaProduto()
         {
-            BuscaProduto produto = new BuscaProduto();
-
             BuscaProduto.Program.RetornarProduto();
 
             return BuscaProduto.Program.list;
@@ -152,18 +173,14 @@ namespace WebServer.Web_Service
         [WebMethod]
         public BuscaFornecedor.ListaFornecedor RetornaFornecedor()
         {
-            BuscaFornecedor fornecedor = new BuscaFornecedor();
-
             BuscaFornecedor.Program.RetornarFornecedor();
 
-            return BuscaFornecedor.Program.list; 
+            return BuscaFornecedor.Program.list;
         }
 
         [WebMethod]
         public BuscaEstoque.ListaEstoque RetornaEstoque()
         {
-            BuscaEstoque estoque = new BuscaEstoque();
-
             BuscaEstoque.Program.RetornarEstoque();
 
             return BuscaEstoque.Program.list;
@@ -172,11 +189,50 @@ namespace WebServer.Web_Service
         [WebMethod]
         public BuscaUsuario.ListaUsuario RetornaUsuario()
         {
-            BuscaUsuario Usuario = new BuscaUsuario();
-
             BuscaUsuario.Program.RetornarUsuario();
 
             return BuscaUsuario.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaSolicitacao.ListaSolicitacao RetornarSolicitacao()
+        {
+            BuscaSolicitacao.Program.RetornaSolicitacao();
+
+            return BuscaSolicitacao.Program.list;
+        }
+
+        [WebMethod]
+        public int GerarPedido(
+                   string Solicitante
+                 , string Urgencia
+                 , string Motivo)
+        {
+            CadastroGerarPedido gerarpedido = new CadastroGerarPedido();
+            return gerarpedido.GravarPedido(Solicitante, Urgencia, Motivo);
+        }
+
+        [WebMethod]
+        public bool GerarPedidoItem(
+                  string Cod
+                , string Nome
+                , double QtdEstoque
+                , double QtdMaxima
+                , double QtdMinima
+                , string UnidadeMedida
+                , double Solicitar
+                , int IdPedido)
+        {
+            CadastroGerarPedido gerarpedido = new CadastroGerarPedido();
+            gerarpedido.GravarPedidoItens(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido);
+            if (gerarpedido.valorItem == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
