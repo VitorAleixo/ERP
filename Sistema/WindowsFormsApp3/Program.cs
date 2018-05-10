@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
@@ -25,7 +26,29 @@ namespace WindowsFormsApp3
 
                 if (f.validar)
                 {
-                    Application.Run(new frmPrincipal());
+                    localhost.Login login = new localhost.Login();
+                    string usuario = SessaoSistema.NomeUsuario;
+                    string setor = login.RetornaSetor(usuario);
+
+                    login.RetornaSetor(usuario);
+
+                    if (login.RetornaSetor(usuario) == "ADMIN")
+                    {
+                        Application.Run(new frmPrincipalAdmin());
+                    }
+                    else if (login.RetornaSetor(usuario) == "COMPRAS")
+                    {
+                      Application.Run(new frmPrincipalCompras());
+                    }
+                    else if (login.RetornaSetor(usuario) == "ALMOXARIFADO")
+                    {
+                        Application.Run(new frmPrincipalAlmoxarife());
+                    }
+                    else if (login.RetornaSetor(usuario) == "GERENCIA")
+                    {
+                        Application.Run(new frmPrincipalGerencia());
+                    }
+
                 }
 
                 f.LimparCampos();

@@ -30,6 +30,16 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
+        private void CarregarGrid()
+        {
+            localhost.Login buscaProduto = new localhost.Login();
+
+            grdGerenciamento.AutoGenerateColumns = false;
+            grdGerenciamento.DataSource = null;
+            grdGerenciamento.DataSource = buscaProduto.RetornaProduto();
+            grdGerenciamento.Show();
+        }
+
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -93,12 +103,7 @@ namespace WindowsFormsApp3
 
         private void frmVisProdutos_Load(object sender, EventArgs e)
         {
-            localhost.Login buscaProduto = new localhost.Login();
-
-            grdGerenciamento.AutoGenerateColumns = false;
-            grdGerenciamento.DataSource = null;
-            grdGerenciamento.DataSource =  buscaProduto.RetornaProduto(); 
-            grdGerenciamento.Show();
+            CarregarGrid();
         }
 
         private void btnLegendas_Click(object sender, EventArgs e)

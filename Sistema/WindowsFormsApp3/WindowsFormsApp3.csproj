@@ -121,6 +121,36 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPrincipalAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalAdmin.Designer.cs">
+      <DependentUpon>frmPrincipalAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipalAlmoxarife.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalAlmoxarife.Designer.cs">
+      <DependentUpon>frmPrincipalAlmoxarife.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipalCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalCompras.Designer.cs">
+      <DependentUpon>frmPrincipalCompras.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrincipalGerencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipalGerencia.Designer.cs">
+      <DependentUpon>frmPrincipalGerencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolicitacaoCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitacaoCompra.Designer.cs">
+      <DependentUpon>frmSolicitacaoCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVisFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +208,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalAdmin.resx">
+      <DependentUpon>frmPrincipalAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalAlmoxarife.resx">
+      <DependentUpon>frmPrincipalAlmoxarife.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalCompras.resx">
+      <DependentUpon>frmPrincipalCompras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrincipalGerencia.resx">
+      <DependentUpon>frmPrincipalGerencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitacaoCompra.resx">
+      <DependentUpon>frmSolicitacaoCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVisFornecedores.resx">
       <DependentUpon>frmVisFornecedores.cs</DependentUpon>
@@ -427,6 +472,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnLegendas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnPedidoCompra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSolCompra.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnSolCompra16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

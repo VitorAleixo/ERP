@@ -44,18 +44,16 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtFuncao = new System.Windows.Forms.TextBox();
-            this.txtDepartamento = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnGravar
             // 
             this.btnGravar.Image = global::WindowsFormsApp3.Properties.Resources.btnAplicar;
             this.btnGravar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGravar.Location = new System.Drawing.Point(325, 172);
+            this.btnGravar.Location = new System.Drawing.Point(325, 156);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(64, 23);
-            this.btnGravar.TabIndex = 8;
+            this.btnGravar.TabIndex = 7;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -65,10 +63,10 @@
             // 
             this.btnSair.Image = global::WindowsFormsApp3.Properties.Resources.btnSair;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSair.Location = new System.Drawing.Point(395, 172);
+            this.btnSair.Location = new System.Drawing.Point(395, 156);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(64, 23);
-            this.btnSair.TabIndex = 9;
+            this.btnSair.TabIndex = 8;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -90,7 +88,7 @@
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(192, 20);
-            this.txtUsuario.TabIndex = 5;
+            this.txtUsuario.TabIndex = 4;
             // 
             // txtSenha
             // 
@@ -98,7 +96,7 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(192, 20);
-            this.txtSenha.TabIndex = 6;
+            this.txtSenha.TabIndex = 5;
             // 
             // txtSenhaConfirmacao
             // 
@@ -106,7 +104,7 @@
             this.txtSenhaConfirmacao.Name = "txtSenhaConfirmacao";
             this.txtSenhaConfirmacao.PasswordChar = '*';
             this.txtSenhaConfirmacao.Size = new System.Drawing.Size(192, 20);
-            this.txtSenhaConfirmacao.TabIndex = 7;
+            this.txtSenhaConfirmacao.TabIndex = 6;
             // 
             // label2
             // 
@@ -140,11 +138,12 @@
             this.cmbDepartamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDepartamento.FormattingEnabled = true;
             this.cmbDepartamento.Items.AddRange(new object[] {
-            "ADMINISTRATIVO",
+            "ADMIN",
             "ALMOXARIFADO",
             "COMPRAS",
             "COMERCIAL",
             "COMEX",
+            "CONTABILIDADE",
             "CUSTO",
             "DIRETORIA",
             "ENGENHARIA",
@@ -155,13 +154,11 @@
             "QUALIDADE",
             "R.H.",
             "SEG. DO TRABALHO",
-            "T.I.",
-            "OUTROS"});
+            "T.I."});
             this.cmbDepartamento.Location = new System.Drawing.Point(17, 130);
             this.cmbDepartamento.Name = "cmbDepartamento";
             this.cmbDepartamento.Size = new System.Drawing.Size(192, 21);
             this.cmbDepartamento.TabIndex = 3;
-            this.cmbDepartamento.SelectedValueChanged += new System.EventHandler(this.cmbDepartamento_SelectedValueChanged);
             // 
             // label5
             // 
@@ -201,35 +198,16 @@
             // txtFuncao
             // 
             this.txtFuncao.Location = new System.Drawing.Point(17, 91);
-            this.txtFuncao.MaxLength = 20;
+            this.txtFuncao.MaxLength = 50;
             this.txtFuncao.Name = "txtFuncao";
             this.txtFuncao.Size = new System.Drawing.Size(192, 20);
             this.txtFuncao.TabIndex = 2;
-            // 
-            // txtDepartamento
-            // 
-            this.txtDepartamento.Enabled = false;
-            this.txtDepartamento.Location = new System.Drawing.Point(17, 172);
-            this.txtDepartamento.Name = "txtDepartamento";
-            this.txtDepartamento.Size = new System.Drawing.Size(192, 20);
-            this.txtDepartamento.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 156);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(121, 13);
-            this.label8.TabIndex = 41;
-            this.label8.Text = "Informe o Departamento";
             // 
             // frmCadastroConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(472, 207);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtDepartamento);
+            this.ClientSize = new System.Drawing.Size(472, 186);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtFuncao);
             this.Controls.Add(this.label6);
@@ -275,7 +253,5 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtFuncao;
-        private System.Windows.Forms.TextBox txtDepartamento;
-        private System.Windows.Forms.Label label8;
     }
 }

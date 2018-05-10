@@ -14,6 +14,11 @@ namespace WebServer.AppCode
         private SqlConnection con = null;
         private string comando = null;
         private SqlCommand command = null;
+        private string comando2 = null;
+        private SqlCommand command2 = null;
+        private SqlDataReader rdr = null;
+        private string cmd = null;
+        private SqlCommand cmdo = null;
 
         public int valor { get; set; } = 0;
 
@@ -33,18 +38,44 @@ namespace WebServer.AppCode
 
                 con = new SqlConnection(connectionString);
                 con.Open();
-                comando = "INSERT INTO Cliente(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao)" +
-                    "VALUES ('" + Nome + "','" + Funcao + "','" + Departamento + "', '" + Nome + "', '" + senhaCriptografada + "', GETDATE());";
 
-                command = new SqlCommand(comando, con);
+                cmd = "SELECT * FROM Usuario WHERE Usuario = '" + Usuario + "';";
+                cmdo = new SqlCommand(cmd, con);
 
-                if (command.ExecuteNonQuery() == 1)
+                rdr = cmdo.ExecuteReader();
+
+                if (rdr.Read())
                 {
-                    valor = 1;
+                    valor = 0;
+                    rdr.Close();
                 }
                 else
                 {
-                    valor = 0;
+                    rdr.Close();
+                    comando = "INSERT INTO Usuario(Nome, Funcao, Departamento, Usuario, Senha, DataCriacao)" +
+                    "VALUES ('" + Nome + "','" + Funcao + "','" + Departamento + "', '" + Usuario + "', '" + senhaCriptografada + "', GETDATE());";
+
+                    command = new SqlCommand(comando, con);
+
+                    if (Departamento == "ADMIN")
+                    {
+                        comando2 = "INSERT INTO Permissoes(IdUsuario, Nome, ADMIN,CONTABILIDADE,ALMOXARIFADO,COMPRAS,COMERCIAL,COMEX,CUSTO,DIRETORIA,ENGENHARIA,MARKETING,FINANCEIRO,GERENCIA,PCP,PRODUÇÃO,QUALIDADE,RH,SEG_DO_TRABALHO,TI)" +
+                         "VALUES ((SELECT MAX(IdUsuario) FROM Usuario),'" + Nome + "', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK', 'OK');";
+                    }
+                    else
+                    { 
+                          comando2 = "INSERT INTO Permissoes(IdUsuario, Nome, " + Departamento + ")" +
+                         "VALUES ((SELECT MAX(IdUsuario) FROM Usuario),'" + Nome+ "', 'OK');";
+                    }
+                    command2 = new SqlCommand(comando2, con);
+                    if (command.ExecuteNonQuery() == 1 && command2.ExecuteNonQuery() == 1)
+                    {
+                        valor = 1;
+                    }
+                    else
+                    {
+                        valor = 0;
+                    }
                 }
             }
             catch (Exception ex)
@@ -70,6 +101,28 @@ namespace WebServer.AppCode
                     if (command != null)
                     {
                         command.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                try
+                {
+                    if (cmdo != null)
+                    {
+                        cmdo.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+                try
+                {
+                    if (rdr != null)
+                    {
+                        rdr.Close();
                     }
                 }
                 catch (Exception ex)

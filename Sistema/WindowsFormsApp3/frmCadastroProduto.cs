@@ -59,11 +59,11 @@ namespace WindowsFormsApp3
 
                     string CodigoProduto = txtCod.Text;
                     string Nome = txtNome.Text;
-                    float Preco = float.Parse(txtPreco.Text);
+                    float Preco = float.Parse(txtPreco.Text.ToString().Replace(".", ","));
                     string UnidadeMedida = cmbUM.SelectedItem.ToString();
-                    float QtdMinima = float.Parse(txtQtdMin.Text);
-                    float QtdMaxima = float.Parse(txtQtdMax.Text);
-                    float QtdEstoque = float.Parse(txtQtdEst.Text);
+                    float QtdMinima = float.Parse(txtQtdMin.Text.ToString().Replace(".", ","));
+                    float QtdMaxima = float.Parse(txtQtdMax.Text.ToString().Replace(".", ","));
+                    float QtdEstoque = float.Parse(txtQtdEst.Text.ToString().Replace(".", ","));
 
                     if (cadastroProduto.CadastroProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque))
                     {
@@ -80,7 +80,7 @@ namespace WindowsFormsApp3
                     }
                     else
                     {
-                        MessageBox.Show("Erro ao gravar Fornecedor!!!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Erro ao gravar Produto!!!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }

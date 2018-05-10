@@ -29,6 +29,15 @@ namespace WindowsFormsApp3
             InitializeComponent();
         }
 
+        private void CarregarGrid()
+        {
+            localhost.Login buscaFornecedor = new localhost.Login();
+
+            grdGerenciamento.AutoGenerateColumns = false;
+            grdGerenciamento.DataSource = null;
+            grdGerenciamento.DataSource = buscaFornecedor.RetornaFornecedor();
+            grdGerenciamento.Show();
+        }
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -78,12 +87,7 @@ namespace WindowsFormsApp3
 
         private void frmVisFornecedores_Load(object sender, EventArgs e)
         {
-            localhost.Login buscaFornecedor = new localhost.Login();
-
-            grdGerenciamento.AutoGenerateColumns = false;
-            grdGerenciamento.DataSource = null;
-            grdGerenciamento.DataSource = buscaFornecedor.RetornaFornecedor();
-            grdGerenciamento.Show();
+            CarregarGrid();
         }
 
         private void btnLegendas_Click(object sender, EventArgs e)

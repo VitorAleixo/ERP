@@ -61,7 +61,9 @@ namespace WebServer.AppCode
                     con = new SqlConnection(connectionString);
                     con.Open();
 
-                    comando = "SELECT CodigoProduto, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida FROM Produto ORDER BY QtdEstoque;";
+                    comando = "SELECT CodigoProduto, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida " +
+                        "FROM Produto INNER JOIN Estoque " +
+                        "on Produto.IdProduto = Estoque.IdProduto;";
 
                     XmlSerializer ser = new XmlSerializer(typeof(ListaEstoque));
                     list = new ListaEstoque();

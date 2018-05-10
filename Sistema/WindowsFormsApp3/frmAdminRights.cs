@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.AppCode;
 
 namespace WindowsFormsApp3
 {
@@ -41,6 +42,29 @@ namespace WindowsFormsApp3
         private void btnVisUsuarios_Click(object sender, EventArgs e)
         {
             new frmVisUsuarios { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
+
+        private void btnLogoff_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblData.Text = "Data: " + DateTime.Now.ToString("dd/MM/yyyy");
+            lblHora.Text = "Hora: " + DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void frmAdminRights_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show("Bem Vindo: " + SessaoSistema.NomeUsuario + "!", "Confirmacão", MessageBoxButtons.OK);
+            lblNomeUsuario.Text = "Usuário: " + SessaoSistema.NomeUsuario;
+
+            localhost.Login login = new localhost.Login();
+            string usuario = SessaoSistema.NomeUsuario;
+            string setor = login.RetornaSetor(usuario);
+
+            lblSetor.Text = "Setor: " + login.RetornaSetor(usuario);
         }
     }
 }

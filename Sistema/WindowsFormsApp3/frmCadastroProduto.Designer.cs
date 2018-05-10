@@ -199,7 +199,7 @@
             this.txtQtdMin.MaxLength = 15;
             this.txtQtdMin.Name = "txtQtdMin";
             this.txtQtdMin.Size = new System.Drawing.Size(118, 20);
-            this.txtQtdMin.TabIndex = 28;
+            this.txtQtdMin.TabIndex = 6;
             // 
             // txtQtdMax
             // 
@@ -207,7 +207,7 @@
             this.txtQtdMax.MaxLength = 15;
             this.txtQtdMax.Name = "txtQtdMax";
             this.txtQtdMax.Size = new System.Drawing.Size(118, 20);
-            this.txtQtdMax.TabIndex = 27;
+            this.txtQtdMax.TabIndex = 7;
             // 
             // txtQtdEst
             // 
@@ -215,7 +215,7 @@
             this.txtQtdEst.MaxLength = 15;
             this.txtQtdEst.Name = "txtQtdEst";
             this.txtQtdEst.Size = new System.Drawing.Size(118, 20);
-            this.txtQtdEst.TabIndex = 25;
+            this.txtQtdEst.TabIndex = 8;
             // 
             // label9
             // 
@@ -249,7 +249,7 @@
             this.btnGravar.Location = new System.Drawing.Point(526, 219);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(64, 23);
-            this.btnGravar.TabIndex = 8;
+            this.btnGravar.TabIndex = 9;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -262,7 +262,7 @@
             this.btnSair.Location = new System.Drawing.Point(596, 219);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(56, 23);
-            this.btnSair.TabIndex = 9;
+            this.btnSair.TabIndex = 10;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;

@@ -22,7 +22,7 @@ namespace WindowsFormsApp3
             this.Close();
         }
 
-        private void frmVisUsuarios_Load(object sender, EventArgs e)
+        private void CarregarGrid()
         {
             localhost.Login buscaUsuario = new localhost.Login();
 
@@ -30,6 +30,11 @@ namespace WindowsFormsApp3
             grdGerenciamento.DataSource = null;
             grdGerenciamento.DataSource = buscaUsuario.RetornaUsuario();
             grdGerenciamento.Show();
+        }
+
+        private void frmVisUsuarios_Load(object sender, EventArgs e)
+        {
+            CarregarGrid();
         }
 
         private void grdGerenciamento_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -40,7 +45,7 @@ namespace WindowsFormsApp3
                 {
                     string RowType = row.Cells[2].Value.ToString();
 
-                    if (RowType == "ADMINISTRATIVO")
+                    if (RowType == "ALMOXARIFADO")
                     {
                         row.DefaultCellStyle.BackColor = Color.LightGreen;
                         row.DefaultCellStyle.ForeColor = Color.Black;
@@ -48,11 +53,6 @@ namespace WindowsFormsApp3
                     else if (RowType == "ADMIN")
                     {
                         row.DefaultCellStyle.BackColor = Color.Red;
-                        row.DefaultCellStyle.ForeColor = Color.Black;
-                    }
-                    else if (RowType == "ALMOXARIFADO")
-                    {
-                        row.DefaultCellStyle.BackColor = Color.Yellow;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
                     else if (RowType == "COMPRAS")
@@ -68,6 +68,11 @@ namespace WindowsFormsApp3
                     else if (RowType == "COMEX")
                     {
                         row.DefaultCellStyle.BackColor = Color.Orange;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "CONTABILIDADE")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.Yellow;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
                     else if (RowType == "CUSTO")
@@ -95,6 +100,11 @@ namespace WindowsFormsApp3
                         row.DefaultCellStyle.BackColor = Color.Gold;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
+                    else if (RowType == "GERENCIA")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.CadetBlue;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
                     else if (RowType == "PCP")
                     {
                         row.DefaultCellStyle.BackColor = Color.Lavender;
@@ -112,7 +122,7 @@ namespace WindowsFormsApp3
                     }
                     else if (RowType == "R.H.")
                     {
-                        row.DefaultCellStyle.BackColor = Color.Turquoise ;
+                        row.DefaultCellStyle.BackColor = Color.BlueViolet ;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
                     else if (RowType == "SEG. DO TRABALHO")
@@ -123,6 +133,11 @@ namespace WindowsFormsApp3
                     else if (RowType == "T.I.")
                     {
                         row.DefaultCellStyle.BackColor = Color.Plum;
+                        row.DefaultCellStyle.ForeColor = Color.Black;
+                    }
+                    else if (RowType == "OUTROS")
+                    {
+                        row.DefaultCellStyle.BackColor = Color.White;
                         row.DefaultCellStyle.ForeColor = Color.Black;
                     }
                 }

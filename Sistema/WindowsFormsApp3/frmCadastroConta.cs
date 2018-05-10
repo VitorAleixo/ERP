@@ -44,7 +44,6 @@ namespace WindowsFormsApp3
         {
             txtNome.Text = "";
             txtFuncao.Text = "";
-            txtDepartamento.Text = "";
             cmbDepartamento.SelectedIndex = -1;
             txtUsuario.Text = "";
             txtSenha.Text = "";
@@ -73,10 +72,7 @@ namespace WindowsFormsApp3
                     string Senha = txtSenha.Text;
                     string SenhaConfirmacao = txtSenhaConfirmacao.Text;
 
-                    if (cmbDepartamento.SelectedItem.ToString() == "OUTROS")
-                    {
-                        Departamento = txtDepartamento.Text;
-                    }
+                  
                     DateTime DataCriacao = DateTime.Now;
 
                     if (Senha == SenhaConfirmacao)
@@ -100,20 +96,6 @@ namespace WindowsFormsApp3
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void cmbDepartamento_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cmbDepartamento.SelectedItem.ToString() == "OUTROS")
-            {
-                txtDepartamento.Text = "";
-                txtDepartamento.Enabled = true;
-            }
-            else
-            {
-                txtDepartamento.Text = "";
-                txtDepartamento.Enabled = false;
             }
         }
     }
