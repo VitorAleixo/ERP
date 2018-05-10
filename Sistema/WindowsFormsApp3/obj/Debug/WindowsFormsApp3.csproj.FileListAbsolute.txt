@@ -91,3 +91,4 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\Sistema\WindowsFormsApp3\obj\Debu
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.csproj.CoreCompileInputs.cache
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.exe
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.pdb
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmAdminRights.resources

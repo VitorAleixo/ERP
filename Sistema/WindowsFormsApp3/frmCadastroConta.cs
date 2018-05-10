@@ -49,7 +49,7 @@ namespace WindowsFormsApp3
             txtUsuario.Text = "";
             txtSenha.Text = "";
             txtSenhaConfirmacao.Text = "";
-          
+
         }
 
 
@@ -65,7 +65,7 @@ namespace WindowsFormsApp3
                 {
                     localhost.Login cadastroUsuario = new localhost.Login();
 
-                   
+
                     string Nome = txtNome.Text;
                     string Funcao = txtFuncao.Text;
                     string Departamento = cmbDepartamento.SelectedItem.ToString();
@@ -75,7 +75,7 @@ namespace WindowsFormsApp3
 
                     if (cmbDepartamento.SelectedItem.ToString() == "OUTROS")
                     {
-                          Departamento = txtDepartamento.Text;
+                        Departamento = txtDepartamento.Text;
                     }
                     DateTime DataCriacao = DateTime.Now;
 
@@ -109,6 +109,11 @@ namespace WindowsFormsApp3
             {
                 txtDepartamento.Text = "";
                 txtDepartamento.Enabled = true;
+            }
+            else
+            {
+                txtDepartamento.Text = "";
+                txtDepartamento.Enabled = false;
             }
         }
     }

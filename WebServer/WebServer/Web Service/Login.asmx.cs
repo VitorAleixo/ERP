@@ -7,6 +7,8 @@ using System.Web.Services;
 using WebServer.AppCode;
 using MySql;
 using MySql.Data.MySqlClient;
+using System.Collections;
+using System.Xml.Serialization;
 
 namespace WebServer.Web_Service
 {
@@ -128,10 +130,42 @@ namespace WebServer.Web_Service
         public string RetornaSetor(
                   string Usuario)
         {
-            frmPrincipal principal = new frmPrincipal();
+            BuscaDepartamento principal = new BuscaDepartamento();
             principal.BuscaSetor(Usuario);
 
             return principal.Setor;
+        }
+
+        [WebMethod]
+        public List<BuscaProduto> RetornaProduto()
+        {
+            var lst = BuscaProduto.RetornarProduto();
+            // List<BuscaProduto> lista = new List<BuscaProduto>();   
+
+            //  foreach (var item in lst)
+            // {
+            //     lista.Add(item);
+            //  }
+           
+            return lst;
+        }
+
+        [WebMethod]
+        public string RetornaFornecedor()
+        {
+            return "";
+        }
+
+        [WebMethod]
+        public string RetornaEstoque()
+        {
+            return "";
+        }
+
+        [WebMethod]
+        public List<BuscaCliente> RetornaCliente()
+        {
+            return BuscaCliente.lista;
         }
     }
 }

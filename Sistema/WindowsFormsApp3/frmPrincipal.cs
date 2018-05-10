@@ -31,13 +31,13 @@ namespace WindowsFormsApp3
 
         private void btnLogoff_Click(object sender, EventArgs e)
         {
-             this.Close();
+            this.Close();
         }
 
         private void btnCadastroProd_Click(object sender, EventArgs e)
         {
             new frmCadastroProduto { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
-          
+
         }
 
         private void btnCadastroForn_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace WindowsFormsApp3
             if (lblSetor.Text == "Setor: ADMIN")
             {
                 MessageBox.Show("Olá Administrador!", "Confirmação", MessageBoxButtons.OK);
-                new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+                new frmAdminRights { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
             }
             else
             {
@@ -81,7 +81,7 @@ namespace WindowsFormsApp3
             string usuario = SessaoSistema.NomeUsuario;
             string setor = login.RetornaSetor(usuario);
 
-            lblSetor.Text = "Setor: " + login.RetornaSetor(usuario) ;
+            lblSetor.Text = "Setor: " + login.RetornaSetor(usuario);
 
             if (lblSetor.Text == "Setor: ADMIN")
             {
@@ -96,6 +96,6 @@ namespace WindowsFormsApp3
             lblHora.Text = "Hora: " + DateTime.Now.ToString("HH:mm:ss");
         }
 
-       
+
     }
 }

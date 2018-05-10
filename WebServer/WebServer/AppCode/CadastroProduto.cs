@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -8,9 +9,13 @@ namespace WebServer.AppCode
 {
     public class CadastroProduto
     {
-            public int valor { get; set; } = 0;
+        public int valor { get; set; } = 0;
+        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
+        private string comando = null;
+        private SqlCommand command = null;
+        private SqlConnection con = null;
 
-            public void GravarProduto(
+        public void GravarProduto(
                       string CodigoProduto
                     , string Nome
                     , float Preco
@@ -19,19 +24,16 @@ namespace WebServer.AppCode
                     , float QtdMaxima
                     , float QtdEstoque)
         {
-                int IdUser = 0;
-                MySqlConnection connectionString = new MySqlConnection("server=localhost;user id=root;password=root;database=SistemaDeEstoque");
-                connectionString.Open();
-                MySqlCommand command = new MySqlCommand("SELECT Id FROM Cliente WHERE Status = 1", connectionString);
-                MySqlDataReader rdr = command.ExecuteReader();
-                if (rdr.Read())
-                {
-                    IdUser = rdr.GetInt32("Id");
-                }
-                rdr.Close();
+            try
+            {
+                con = new SqlConnection(connectionString);
+                con.Open();
 
-                command = new MySqlCommand("INSERT INTO CadastroProduto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, IdUser)" +
-                    "VALUES ('" + CodigoProduto + "', '" + Nome + "', '" + Preco.ToString().Replace(",",".") + "', '" + UnidadeMedida + "', '" + QtdMinima + "', '" + QtdMaxima + "', '" + QtdEstoque + "', '" + IdUser + "');", connectionString);
+                comando = "INSERT INTO Produto(CodigoProduto, Nome, Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque)" +
+                        "VALUES ('" + CodigoProduto + "', '" + Nome + "', '" + Preco.ToString().Replace(",", ".") + "', '" + UnidadeMedida + "', '" + QtdMinima + "', '" + QtdMaxima + "', '" + QtdEstoque + "');";
+
+                command = new SqlCommand(comando, con);
+
                 if (command.ExecuteNonQuery() == 1)
                 {
                     valor = 1;
@@ -40,9 +42,37 @@ namespace WebServer.AppCode
                 {
                     valor = 0;
                 }
-                command.Dispose();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                try
+                {
+                    if (con != null)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
 
-                connectionString.Close();
+                try
+                {
+                    if (command != null)
+                    {
+                        command.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
             }
         }
+    }
 }

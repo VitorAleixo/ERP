@@ -1,50 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using MySql;
-using System.Web;
-using MySql.Data.MySqlClient;
-using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 
 namespace WebServer.AppCode
 {
-    public class LoginUsuario
+    public class BuscaCliente
     {
-        public int valor { get; set; } = 0;
+        private static string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
+        private static SqlConnection con = null;
+        private static SqlDataReader rdr = null;
+        private static string comando = null;
+        private static SqlCommand command = null;
 
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
-        private SqlConnection con = null;
-        private SqlDataReader rdr = null;
-        private string comando = null;
-        private SqlCommand command = null;
+        private string Nome;
+        private string Funcao;
+        private string Departamento;
+        private string Usuario;
+        private string DataCriacao;
 
-        public void Logar(string Usuario, string Senha)
+        public static List<BuscaCliente> lista { get; set; }
+
+        public static List<BuscaCliente> RetornarCliente()
         {
             try
             {
                 con = new SqlConnection(connectionString);
                 con.Open();
 
-                comando = "SELECT Senha FROM Cliente WHERE Usuario = '" + Usuario + "';";
+                comando = "SELECT Nome, Funcao, Departamento, Usuario, DataCriacao FROM Cliente;";
+
                 command = new SqlCommand(comando, con);
                 rdr = command.ExecuteReader();
 
-                if (rdr.Read())
+                while (rdr.Read())
                 {
-                    if (Senha == rdr["Senha"].ToString())
+                    lista.Add(new BuscaCliente
                     {
-                        valor = 1;
-                    }
-                    else
-                    {
-                        valor = 0;
-                    }
+                        Nome = rdr.GetString(0),
+                        Funcao = rdr.GetString(1),
+                        Departamento = rdr.GetString(2),
+                        Usuario = rdr.GetString(3),
+                        DataCriacao = rdr.GetDateTime(4).ToString("dd/MM/yyyy")
+
+                    });
                 }
-                else
-                {
-                    valor = 0;
-                }
+                return lista;
             }
             catch (Exception ex)
             {
@@ -63,6 +65,7 @@ namespace WebServer.AppCode
                 {
                     throw new Exception(ex.ToString());
                 }
+
                 try
                 {
                     if (rdr != null)

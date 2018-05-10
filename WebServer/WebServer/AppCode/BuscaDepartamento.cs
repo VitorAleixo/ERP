@@ -1,50 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using MySql;
-using System.Web;
-using MySql.Data.MySqlClient;
-using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
 
 namespace WebServer.AppCode
 {
-    public class LoginUsuario
+    public class BuscaDepartamento
     {
-        public int valor { get; set; } = 0;
 
-        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
-        private SqlConnection con = null;
-        private SqlDataReader rdr = null;
         private string comando = null;
         private SqlCommand command = null;
+        private SqlDataReader rdr = null;
+        private SqlConnection con = null;
 
-        public void Logar(string Usuario, string Senha)
+        private string connectionString = "Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING";
+        public string Setor { get; set; }
+
+        public string BuscaSetor(string Usuario)
         {
             try
             {
                 con = new SqlConnection(connectionString);
                 con.Open();
 
-                comando = "SELECT Senha FROM Cliente WHERE Usuario = '" + Usuario + "';";
+                comando = "SELECT Departamento FROM Cliente WHERE Usuario = '" + Usuario + "';";
                 command = new SqlCommand(comando, con);
                 rdr = command.ExecuteReader();
 
                 if (rdr.Read())
                 {
-                    if (Senha == rdr["Senha"].ToString())
-                    {
-                        valor = 1;
-                    }
-                    else
-                    {
-                        valor = 0;
-                    }
+                    Setor = rdr["Departamento"].ToString();
                 }
-                else
-                {
-                    valor = 0;
-                }
+
+                return Setor;
             }
             catch (Exception ex)
             {
@@ -63,6 +52,7 @@ namespace WebServer.AppCode
                 {
                     throw new Exception(ex.ToString());
                 }
+
                 try
                 {
                     if (rdr != null)

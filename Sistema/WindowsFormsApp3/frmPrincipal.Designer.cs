@@ -116,7 +116,7 @@
             // 
             this.btnAdministrador.Enabled = false;
             this.btnAdministrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnAdministrador.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroProduto;
+            this.btnAdministrador.Image = global::WindowsFormsApp3.Properties.Resources.btnAdmin;
             this.btnAdministrador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAdministrador.Location = new System.Drawing.Point(394, 8);
             this.btnAdministrador.Name = "btnAdministrador";

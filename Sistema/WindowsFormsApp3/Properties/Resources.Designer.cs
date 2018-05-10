@@ -63,6 +63,16 @@ namespace WindowsFormsApp3.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnAdmin {
+            get {
+                object obj = ResourceManager.GetObject("btnAdmin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap btnAplicar {
             get {
                 object obj = ResourceManager.GetObject("btnAplicar", resourceCulture);
@@ -126,6 +136,16 @@ namespace WindowsFormsApp3.Properties {
         internal static System.Drawing.Bitmap btnSair {
             get {
                 object obj = ResourceManager.GetObject("btnSair", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnUsuário {
+            get {
+                object obj = ResourceManager.GetObject("btnUsuário", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

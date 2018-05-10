@@ -125,6 +125,7 @@
             this.Name = "frmVisProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Gerenciamento";
+            this.Load += new System.EventHandler(this.frmVisProdutos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

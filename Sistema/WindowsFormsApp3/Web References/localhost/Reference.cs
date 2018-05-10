@@ -39,6 +39,14 @@ namespace WindowsFormsApp3.localhost {
         
         private System.Threading.SendOrPostCallback RetornaSetorOperationCompleted;
         
+        private System.Threading.SendOrPostCallback RetornaProdutoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RetornaFornecedorOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RetornaEstoqueOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback RetornaClienteOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -91,6 +99,18 @@ namespace WindowsFormsApp3.localhost {
         
         /// <remarks/>
         public event RetornaSetorCompletedEventHandler RetornaSetorCompleted;
+        
+        /// <remarks/>
+        public event RetornaProdutoCompletedEventHandler RetornaProdutoCompleted;
+        
+        /// <remarks/>
+        public event RetornaFornecedorCompletedEventHandler RetornaFornecedorCompleted;
+        
+        /// <remarks/>
+        public event RetornaEstoqueCompletedEventHandler RetornaEstoqueCompleted;
+        
+        /// <remarks/>
+        public event RetornaClienteCompletedEventHandler RetornaClienteCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/LoginSistema", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -286,6 +306,114 @@ namespace WindowsFormsApp3.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaProduto", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public BuscaProduto[] RetornaProduto() {
+            object[] results = this.Invoke("RetornaProduto", new object[0]);
+            return ((BuscaProduto[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaProdutoAsync() {
+            this.RetornaProdutoAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaProdutoAsync(object userState) {
+            if ((this.RetornaProdutoOperationCompleted == null)) {
+                this.RetornaProdutoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaProdutoOperationCompleted);
+            }
+            this.InvokeAsync("RetornaProduto", new object[0], this.RetornaProdutoOperationCompleted, userState);
+        }
+        
+        private void OnRetornaProdutoOperationCompleted(object arg) {
+            if ((this.RetornaProdutoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaProdutoCompleted(this, new RetornaProdutoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaFornecedor", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string RetornaFornecedor() {
+            object[] results = this.Invoke("RetornaFornecedor", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaFornecedorAsync() {
+            this.RetornaFornecedorAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaFornecedorAsync(object userState) {
+            if ((this.RetornaFornecedorOperationCompleted == null)) {
+                this.RetornaFornecedorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaFornecedorOperationCompleted);
+            }
+            this.InvokeAsync("RetornaFornecedor", new object[0], this.RetornaFornecedorOperationCompleted, userState);
+        }
+        
+        private void OnRetornaFornecedorOperationCompleted(object arg) {
+            if ((this.RetornaFornecedorCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaFornecedorCompleted(this, new RetornaFornecedorCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaEstoque", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string RetornaEstoque() {
+            object[] results = this.Invoke("RetornaEstoque", new object[0]);
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaEstoqueAsync() {
+            this.RetornaEstoqueAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaEstoqueAsync(object userState) {
+            if ((this.RetornaEstoqueOperationCompleted == null)) {
+                this.RetornaEstoqueOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaEstoqueOperationCompleted);
+            }
+            this.InvokeAsync("RetornaEstoque", new object[0], this.RetornaEstoqueOperationCompleted, userState);
+        }
+        
+        private void OnRetornaEstoqueOperationCompleted(object arg) {
+            if ((this.RetornaEstoqueCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaEstoqueCompleted(this, new RetornaEstoqueCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RetornaCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public BuscaCliente[] RetornaCliente() {
+            object[] results = this.Invoke("RetornaCliente", new object[0]);
+            return ((BuscaCliente[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void RetornaClienteAsync() {
+            this.RetornaClienteAsync(null);
+        }
+        
+        /// <remarks/>
+        public void RetornaClienteAsync(object userState) {
+            if ((this.RetornaClienteOperationCompleted == null)) {
+                this.RetornaClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRetornaClienteOperationCompleted);
+            }
+            this.InvokeAsync("RetornaCliente", new object[0], this.RetornaClienteOperationCompleted, userState);
+        }
+        
+        private void OnRetornaClienteOperationCompleted(object arg) {
+            if ((this.RetornaClienteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.RetornaClienteCompleted(this, new RetornaClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -302,6 +430,24 @@ namespace WindowsFormsApp3.localhost {
             }
             return false;
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class BuscaProduto {
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class BuscaCliente {
     }
     
     /// <remarks/>
@@ -430,6 +576,110 @@ namespace WindowsFormsApp3.localhost {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaProdutoCompletedEventHandler(object sender, RetornaProdutoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaProdutoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaProdutoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public BuscaProduto[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((BuscaProduto[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaFornecedorCompletedEventHandler(object sender, RetornaFornecedorCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaFornecedorCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaFornecedorCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaEstoqueCompletedEventHandler(object sender, RetornaEstoqueCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaEstoqueCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaEstoqueCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    public delegate void RetornaClienteCompletedEventHandler(object sender, RetornaClienteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2558.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class RetornaClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal RetornaClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public BuscaCliente[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((BuscaCliente[])(this.results[0]));
             }
         }
     }

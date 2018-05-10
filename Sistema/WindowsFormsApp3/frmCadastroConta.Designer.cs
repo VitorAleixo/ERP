@@ -78,7 +78,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(140, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 25);
             this.label1.TabIndex = 24;
@@ -211,7 +211,6 @@
             this.txtDepartamento.Enabled = false;
             this.txtDepartamento.Location = new System.Drawing.Point(17, 172);
             this.txtDepartamento.Name = "txtDepartamento";
-            this.txtDepartamento.PasswordChar = '*';
             this.txtDepartamento.Size = new System.Drawing.Size(192, 20);
             this.txtDepartamento.TabIndex = 40;
             // 

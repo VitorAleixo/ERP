@@ -146,11 +146,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCode\BuscaCliente.cs" />
+    <Compile Include="AppCode\BuscaEstoque.cs" />
+    <Compile Include="AppCode\BuscaFornecedor.cs" />
+    <Compile Include="AppCode\BuscaProduto.cs" />
     <Compile Include="AppCode\CadastroFornecedor.cs" />
     <Compile Include="AppCode\CadastroProduto.cs" />
     <Compile Include="AppCode\CadastroUsuario.cs" />
     <Compile Include="AppCode\Criptografia.cs" />
-    <Compile Include="AppCode\frmPrincipal.cs" />
+    <Compile Include="AppCode\BuscaDepartamento.cs" />
     <Compile Include="AppCode\LoginUsuario.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
