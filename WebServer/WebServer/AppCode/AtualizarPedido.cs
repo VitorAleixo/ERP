@@ -63,5 +63,107 @@ namespace WebServer.AppCode
                 }
             }
         }
+
+        public void Aprovar(int IdPedido)
+        {
+            try
+            {
+                con = ConnectionFactory.getConnection();
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE Pedido SET Status = 'APROVADO' WHERE IdPedido = @IdPedido ", con);
+
+                cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    valor = 1;
+                }
+                else
+                {
+                    valor = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                try
+                {
+                    if (con != null)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+
+                try
+                {
+                    if (command != null)
+                    {
+                        command.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+            }
+        }
+
+        public void Reprovar(int IdPedido)
+        {
+            try
+            {
+                con = ConnectionFactory.getConnection();
+                con.Open();
+
+                SqlCommand cmd = new SqlCommand("UPDATE Pedido SET Status = 'REPROVADO' WHERE IdPedido = @IdPedido ", con);
+
+                cmd.Parameters.AddWithValue("@IdPedido", IdPedido);
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    valor = 1;
+                }
+                else
+                {
+                    valor = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally
+            {
+                try
+                {
+                    if (con != null)
+                    {
+                        con.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+
+                try
+                {
+                    if (command != null)
+                    {
+                        command.Dispose();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.ToString());
+                }
+            }
+        }
     }
 }

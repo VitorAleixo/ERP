@@ -31,6 +31,15 @@ namespace WebServer.AppCode
             [XmlElement("DataEmissao")]
             public String DataEmissao { get; set; }
 
+            [XmlElement("Observacoes")]
+            public String Observacoes { get; set; }
+
+            [XmlElement("Vendedor")]
+            public String Vendedor { get; set; }
+
+            [XmlElement("PrazoEntrega")]
+            public String PrazoEntrega { get; set; }
+
             [XmlElement("CondicaoPag")]
             public String CondicaoPag { get; set; }
 
@@ -61,7 +70,7 @@ namespace WebServer.AppCode
                     con = ConnectionFactory.getConnection();
                     con.Open();
 
-                    comando = "SELECT IdPedido, Tipo, DataEmissao, CondicaoPag, ValorTotal, QtdItens FROM Orcamento ORDER BY DataEmissao;";
+                    comando = "SELECT Orcamento.IdPedido, Orcamento.Tipo, DataEmissao,Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens FROM Orcamento INNER JOIN Pedido on Pedido.IdPedido = Orcamento.IdPedido WHERE Pedido.Status = 'ORCAMENTO' ORDER BY DataEmissao;";
 
                     XmlSerializer ser = new XmlSerializer(typeof(ListaOrcamento));
                     list = new ListaOrcamento();
@@ -79,9 +88,12 @@ namespace WebServer.AppCode
                                     Pedido = rdr.GetInt32(0),
                                     Tipo = rdr.GetString(1),
                                     DataEmissao = rdr.GetDateTime(2).ToString("dd/MM/yyyy"),
-                                    CondicaoPag = rdr.GetString(3),
-                                    ValorTotal = rdr.GetDouble(4),
-                                    QtdItens = rdr.GetInt32(5)
+                                    Observacoes = rdr.GetString(3),
+                                    Vendedor = rdr.GetString(4),
+                                    PrazoEntrega = rdr.GetString(5),
+                                    CondicaoPag = rdr.GetString(6),
+                                    ValorTotal = rdr.GetDouble(7),
+                                    QtdItens = rdr.GetInt32(8)
 
                                 });
                             }

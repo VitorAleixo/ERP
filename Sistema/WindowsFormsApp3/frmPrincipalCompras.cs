@@ -66,5 +66,10 @@ namespace WindowsFormsApp3
         {
             new frmGerarOrcamento { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
+
+        private void btnSolicCompras_Click(object sender, EventArgs e)
+        {
+            new frmGerarSolicitacao { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
+        }
     }
 }

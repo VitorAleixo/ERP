@@ -227,6 +227,40 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
+        public bool Aprovar(
+                  int IdPedido
+                  )
+        {
+            AtualizarPedido atualizar = new AtualizarPedido();
+            atualizar.Aprovar(IdPedido);
+            if (atualizar.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
+        public bool Reprovar(
+                  int IdPedido
+                  )
+        {
+            AtualizarPedido atualizar = new AtualizarPedido();
+            atualizar.Reprovar(IdPedido);
+            if (atualizar.valor == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        [WebMethod]
         public bool Arquivar(
                     int IdPedido
                     )
@@ -254,6 +288,16 @@ namespace WebServer.Web_Service
         }
 
         [WebMethod]
+        public string RetornaVendedor(
+                 int IdVendedor)
+        {
+            BuscaVendedor vendedor = new BuscaVendedor();
+            vendedor.Vendedor(IdVendedor);
+
+            return vendedor.VendedorStr;
+        }
+
+        [WebMethod]
         public BuscaProduto.ListaProduto RetornaProduto()
         {
             BuscaProduto.Program.RetornarProduto();
@@ -277,6 +321,14 @@ namespace WebServer.Web_Service
             BuscaFornecedor.Program.RetornarFornecedor();
 
             return BuscaFornecedor.Program.list;
+        }
+
+        [WebMethod]
+        public BuscaOrcamentoDados.ListaOrcamentoDados RetornaDadosOrcamento(int IdPedido)
+        {
+            BuscaOrcamentoDados.Program.RetornaOrcamentoDados(IdPedido);
+
+            return BuscaOrcamentoDados.Program.list;
         }
 
         [WebMethod]

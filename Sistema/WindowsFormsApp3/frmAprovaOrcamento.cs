@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.localhost;
 
 namespace WindowsFormsApp3
 {
@@ -94,6 +95,24 @@ namespace WindowsFormsApp3
             {
                 MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnOrcamento_Click(object sender, EventArgs e)
+        {
+            var obj = (Orcamento) grdGerenciamento.CurrentRow.DataBoundItem;
+
+            frmOrcamento orcamento = new frmOrcamento();
+            orcamento.txtIdPedido.Text = obj.Pedido.ToString();
+            orcamento.txtCondicaoPag.Text = obj.CondicaoPag.ToString();
+            orcamento.txtDataEmissao.Text = obj.DataEmissao.ToString();
+            orcamento.txtValorTotal.Text = obj.ValorTotal.ToString("C2");
+            orcamento.txtTipo.Text = obj.Tipo.ToString();
+            orcamento.txtObservacoes.Text = obj.Observacoes.ToString();
+            orcamento.txtPrazoEntrega.Text = obj.PrazoEntrega.ToString();
+            orcamento.txtVendedor.Text = obj.Vendedor.ToString();
+
+            orcamento.ShowDialog();
+            CarregarGrid();
         }
     }
 }

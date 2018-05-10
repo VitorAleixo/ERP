@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmGerarOrcamento));
             this.label1 = new System.Windows.Forms.Label();
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.btnGerarOrcamento = new System.Windows.Forms.Button();
-            this.btnLegendas = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
             this.Solicitante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Urgencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Motivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCriacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGerarOrcamento = new System.Windows.Forms.Button();
+            this.btnLegendas = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,11 +46,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(256, 9);
+            this.label1.Location = new System.Drawing.Point(296, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 25);
+            this.label1.Size = new System.Drawing.Size(201, 25);
             this.label1.TabIndex = 19;
-            this.label1.Text = "Solicitações de Compra";
+            this.label1.Text = "Pedidos de Compra";
             // 
             // grdGerenciamento
             // 
@@ -70,6 +70,41 @@
             this.grdGerenciamento.Size = new System.Drawing.Size(737, 341);
             this.grdGerenciamento.TabIndex = 20;
             this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
+            // 
+            // Solicitante
+            // 
+            this.Solicitante.DataPropertyName = "Solicitante";
+            this.Solicitante.HeaderText = "Solicitante";
+            this.Solicitante.Name = "Solicitante";
+            this.Solicitante.ReadOnly = true;
+            // 
+            // Urgencia
+            // 
+            this.Urgencia.DataPropertyName = "Urgencia";
+            this.Urgencia.HeaderText = "Urgencia";
+            this.Urgencia.Name = "Urgencia";
+            this.Urgencia.ReadOnly = true;
+            // 
+            // Motivo
+            // 
+            this.Motivo.DataPropertyName = "Motivo";
+            this.Motivo.HeaderText = "Motivo";
+            this.Motivo.Name = "Motivo";
+            this.Motivo.ReadOnly = true;
+            // 
+            // DataCriacao
+            // 
+            this.DataCriacao.DataPropertyName = "DataCriacao";
+            this.DataCriacao.HeaderText = "Data";
+            this.DataCriacao.Name = "DataCriacao";
+            this.DataCriacao.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
             // 
             // btnGerarOrcamento
             // 
@@ -109,41 +144,6 @@
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
-            // Solicitante
-            // 
-            this.Solicitante.DataPropertyName = "Solicitante";
-            this.Solicitante.HeaderText = "Solicitante";
-            this.Solicitante.Name = "Solicitante";
-            this.Solicitante.ReadOnly = true;
-            // 
-            // Urgencia
-            // 
-            this.Urgencia.DataPropertyName = "Urgencia";
-            this.Urgencia.HeaderText = "Urgencia";
-            this.Urgencia.Name = "Urgencia";
-            this.Urgencia.ReadOnly = true;
-            // 
-            // Motivo
-            // 
-            this.Motivo.DataPropertyName = "Motivo";
-            this.Motivo.HeaderText = "Motivo";
-            this.Motivo.Name = "Motivo";
-            this.Motivo.ReadOnly = true;
-            // 
-            // DataCriacao
-            // 
-            this.DataCriacao.DataPropertyName = "DataCriacao";
-            this.DataCriacao.HeaderText = "Data";
-            this.DataCriacao.Name = "DataCriacao";
-            this.DataCriacao.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
             // 
             // frmGerarOrcamento
             // 

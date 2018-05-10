@@ -137,7 +137,7 @@ namespace WindowsFormsApp3
                 string Vendedor = cmbVendedor.SelectedValue.ToString();
                 string PrazoEntrega = txtPrazo.Text;
                 string CondicaoPag = txtCondicaoPag.Text;
-                double ValorTotal = Convert.ToDouble(txtValorTotal.Text);
+                double ValorTotal = Convert.ToDouble(txtValorTotal.Text.ToString().Replace(",","."));
                 int QtdItens = Convert.ToInt32(txtQuantidade.Text);
 
                 localhost.Login gravarOrcamento = new localhost.Login();

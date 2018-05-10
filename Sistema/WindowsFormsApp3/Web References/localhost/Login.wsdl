@@ -189,6 +189,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Aprovar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AprovarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AprovarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Reprovar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReprovarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ReprovarResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="Arquivar">
         <s:complexType>
           <s:sequence>
@@ -214,6 +242,20 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="RetornaSetorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaVendedor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdVendedor" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaVendedorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetornaVendedorResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -260,6 +302,9 @@
           <s:element minOccurs="1" maxOccurs="1" name="Pedido" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="DataEmissao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observacoes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vendedor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrazoEntrega" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="CondicaoPag" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="ValorTotal" type="s:double" />
           <s:element minOccurs="1" maxOccurs="1" name="QtdItens" type="s:int" />
@@ -288,6 +333,33 @@
           <s:element minOccurs="0" maxOccurs="1" name="CEP" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Telefone" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RetornaDadosOrcamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdPedido" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetornaDadosOrcamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BuscaOrcamentoDados" nillable="true" type="tns:ListaOrcamentoDados" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ListaOrcamentoDados">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ORCAMENTODADOS" type="tns:OrcamentoDados" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrcamentoDados">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Cod" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UnidadeMedida" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Solicitar" type="s:double" />
         </s:sequence>
       </s:complexType>
       <s:element name="RetornaEstoque">
@@ -501,6 +573,18 @@
   <wsdl:message name="AtualizarSoapOut">
     <wsdl:part name="parameters" element="tns:AtualizarResponse" />
   </wsdl:message>
+  <wsdl:message name="AprovarSoapIn">
+    <wsdl:part name="parameters" element="tns:Aprovar" />
+  </wsdl:message>
+  <wsdl:message name="AprovarSoapOut">
+    <wsdl:part name="parameters" element="tns:AprovarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReprovarSoapIn">
+    <wsdl:part name="parameters" element="tns:Reprovar" />
+  </wsdl:message>
+  <wsdl:message name="ReprovarSoapOut">
+    <wsdl:part name="parameters" element="tns:ReprovarResponse" />
+  </wsdl:message>
   <wsdl:message name="ArquivarSoapIn">
     <wsdl:part name="parameters" element="tns:Arquivar" />
   </wsdl:message>
@@ -512,6 +596,12 @@
   </wsdl:message>
   <wsdl:message name="RetornaSetorSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaSetorResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaVendedorSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaVendedor" />
+  </wsdl:message>
+  <wsdl:message name="RetornaVendedorSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaVendedorResponse" />
   </wsdl:message>
   <wsdl:message name="RetornaProdutoSoapIn">
     <wsdl:part name="parameters" element="tns:RetornaProduto" />
@@ -530,6 +620,12 @@
   </wsdl:message>
   <wsdl:message name="RetornaFornecedorSoapOut">
     <wsdl:part name="parameters" element="tns:RetornaFornecedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetornaDadosOrcamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:RetornaDadosOrcamento" />
+  </wsdl:message>
+  <wsdl:message name="RetornaDadosOrcamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:RetornaDadosOrcamentoResponse" />
   </wsdl:message>
   <wsdl:message name="RetornaEstoqueSoapIn">
     <wsdl:part name="parameters" element="tns:RetornaEstoque" />
@@ -608,6 +704,14 @@
       <wsdl:input message="tns:AtualizarSoapIn" />
       <wsdl:output message="tns:AtualizarSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="Aprovar">
+      <wsdl:input message="tns:AprovarSoapIn" />
+      <wsdl:output message="tns:AprovarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Reprovar">
+      <wsdl:input message="tns:ReprovarSoapIn" />
+      <wsdl:output message="tns:ReprovarSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="Arquivar">
       <wsdl:input message="tns:ArquivarSoapIn" />
       <wsdl:output message="tns:ArquivarSoapOut" />
@@ -615,6 +719,10 @@
     <wsdl:operation name="RetornaSetor">
       <wsdl:input message="tns:RetornaSetorSoapIn" />
       <wsdl:output message="tns:RetornaSetorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaVendedor">
+      <wsdl:input message="tns:RetornaVendedorSoapIn" />
+      <wsdl:output message="tns:RetornaVendedorSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetornaProduto">
       <wsdl:input message="tns:RetornaProdutoSoapIn" />
@@ -627,6 +735,10 @@
     <wsdl:operation name="RetornaFornecedor">
       <wsdl:input message="tns:RetornaFornecedorSoapIn" />
       <wsdl:output message="tns:RetornaFornecedorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetornaDadosOrcamento">
+      <wsdl:input message="tns:RetornaDadosOrcamentoSoapIn" />
+      <wsdl:output message="tns:RetornaDadosOrcamentoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="RetornaEstoque">
       <wsdl:input message="tns:RetornaEstoqueSoapIn" />
@@ -745,6 +857,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Aprovar">
+      <soap:operation soapAction="http://tempuri.org/Aprovar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reprovar">
+      <soap:operation soapAction="http://tempuri.org/Reprovar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Arquivar">
       <soap:operation soapAction="http://tempuri.org/Arquivar" style="document" />
       <wsdl:input>
@@ -756,6 +886,15 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaSetor">
       <soap:operation soapAction="http://tempuri.org/RetornaSetor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaVendedor">
+      <soap:operation soapAction="http://tempuri.org/RetornaVendedor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -783,6 +922,15 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaFornecedor">
       <soap:operation soapAction="http://tempuri.org/RetornaFornecedor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaDadosOrcamento">
+      <soap:operation soapAction="http://tempuri.org/RetornaDadosOrcamento" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -937,6 +1085,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Aprovar">
+      <soap12:operation soapAction="http://tempuri.org/Aprovar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reprovar">
+      <soap12:operation soapAction="http://tempuri.org/Reprovar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="Arquivar">
       <soap12:operation soapAction="http://tempuri.org/Arquivar" style="document" />
       <wsdl:input>
@@ -948,6 +1114,15 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaSetor">
       <soap12:operation soapAction="http://tempuri.org/RetornaSetor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaVendedor">
+      <soap12:operation soapAction="http://tempuri.org/RetornaVendedor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -975,6 +1150,15 @@
     </wsdl:operation>
     <wsdl:operation name="RetornaFornecedor">
       <soap12:operation soapAction="http://tempuri.org/RetornaFornecedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetornaDadosOrcamento">
+      <soap12:operation soapAction="http://tempuri.org/RetornaDadosOrcamento" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

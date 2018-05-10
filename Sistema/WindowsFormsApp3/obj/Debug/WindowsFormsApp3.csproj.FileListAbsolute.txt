@@ -127,3 +127,4 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\Window
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmSelecionarTipo.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmAprovaOrcamento.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmLegendaGerencia.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmOrcamento.resources

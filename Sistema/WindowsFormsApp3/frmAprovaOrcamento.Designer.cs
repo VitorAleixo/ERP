@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAprovaOrcamento));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtNumeroOrcamentos = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -105,6 +106,7 @@
             this.btnOrcamento.Text = "Ver Orçamento";
             this.btnOrcamento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOrcamento.UseVisualStyleBackColor = true;
+            this.btnOrcamento.Click += new System.EventHandler(this.btnOrcamento_Click);
             // 
             // btnLegendas
             // 
@@ -138,6 +140,7 @@
             this.Pedido.HeaderText = "Pedido";
             this.Pedido.Name = "Pedido";
             this.Pedido.ReadOnly = true;
+            this.Pedido.Visible = false;
             // 
             // Tipo
             // 
@@ -163,6 +166,9 @@
             // ValorTotal
             // 
             this.ValorTotal.DataPropertyName = "ValorTotal";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ValorTotal.DefaultCellStyle = dataGridViewCellStyle1;
             this.ValorTotal.HeaderText = "Valor Total";
             this.ValorTotal.Name = "ValorTotal";
             this.ValorTotal.ReadOnly = true;

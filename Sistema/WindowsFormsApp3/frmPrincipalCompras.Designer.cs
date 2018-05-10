@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipalCompras));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnVisForn = new System.Windows.Forms.Button();
+            this.btnCadastroForn = new System.Windows.Forms.Button();
             this.barraStatus = new System.Windows.Forms.StatusStrip();
             this.lblSetor = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.btnGerarOrc = new System.Windows.Forms.Button();
             this.btnSolicCompras = new System.Windows.Forms.Button();
             this.btnLogoff = new System.Windows.Forms.Button();
-            this.btnVisForn = new System.Windows.Forms.Button();
-            this.btnCadastroForn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,34 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Fornecedores";
+            // 
+            // btnVisForn
+            // 
+            this.btnVisForn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnVisForn.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroFornecedor;
+            this.btnVisForn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisForn.Location = new System.Drawing.Point(304, 19);
+            this.btnVisForn.Name = "btnVisForn";
+            this.btnVisForn.Size = new System.Drawing.Size(216, 57);
+            this.btnVisForn.TabIndex = 7;
+            this.btnVisForn.Text = "Visualizar Fornecedores";
+            this.btnVisForn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVisForn.UseVisualStyleBackColor = true;
+            this.btnVisForn.Click += new System.EventHandler(this.btnVisForn_Click);
+            // 
+            // btnCadastroForn
+            // 
+            this.btnCadastroForn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.btnCadastroForn.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroFornecedor;
+            this.btnCadastroForn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCadastroForn.Location = new System.Drawing.Point(6, 19);
+            this.btnCadastroForn.Name = "btnCadastroForn";
+            this.btnCadastroForn.Size = new System.Drawing.Size(216, 57);
+            this.btnCadastroForn.TabIndex = 6;
+            this.btnCadastroForn.Text = "Cadastro de Fornecedores";
+            this.btnCadastroForn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCadastroForn.UseVisualStyleBackColor = true;
+            this.btnCadastroForn.Click += new System.EventHandler(this.btnCadastroForn_Click);
             // 
             // barraStatus
             // 
@@ -145,6 +173,7 @@
             this.btnSolicCompras.TabIndex = 0;
             this.btnSolicCompras.Text = "Gerar Solicitação";
             this.btnSolicCompras.UseVisualStyleBackColor = true;
+            this.btnSolicCompras.Click += new System.EventHandler(this.btnSolicCompras_Click);
             // 
             // btnLogoff
             // 
@@ -158,34 +187,6 @@
             this.btnLogoff.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnLogoff.UseVisualStyleBackColor = true;
             this.btnLogoff.Click += new System.EventHandler(this.btnLogoff_Click);
-            // 
-            // btnVisForn
-            // 
-            this.btnVisForn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnVisForn.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroFornecedor;
-            this.btnVisForn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisForn.Location = new System.Drawing.Point(304, 19);
-            this.btnVisForn.Name = "btnVisForn";
-            this.btnVisForn.Size = new System.Drawing.Size(216, 57);
-            this.btnVisForn.TabIndex = 7;
-            this.btnVisForn.Text = "Visualizar Fornecedores";
-            this.btnVisForn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVisForn.UseVisualStyleBackColor = true;
-            this.btnVisForn.Click += new System.EventHandler(this.btnVisForn_Click);
-            // 
-            // btnCadastroForn
-            // 
-            this.btnCadastroForn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.btnCadastroForn.Image = global::WindowsFormsApp3.Properties.Resources.btnCadastroFornecedor;
-            this.btnCadastroForn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCadastroForn.Location = new System.Drawing.Point(6, 19);
-            this.btnCadastroForn.Name = "btnCadastroForn";
-            this.btnCadastroForn.Size = new System.Drawing.Size(216, 57);
-            this.btnCadastroForn.TabIndex = 6;
-            this.btnCadastroForn.Text = "Cadastro de Fornecedores";
-            this.btnCadastroForn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCadastroForn.UseVisualStyleBackColor = true;
-            this.btnCadastroForn.Click += new System.EventHandler(this.btnCadastroForn_Click);
             // 
             // frmPrincipalCompras
             // 
