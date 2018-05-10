@@ -12,7 +12,7 @@ namespace WebServerAdm.AppCode
         {
             try
             {
-                return new SqlConnection("Data Source=SERVER05;Initial Catalog=Estoque;User ID=ENTERPRISING;Password=ENTERPRISING");
+                return new SqlConnection("Data Source=VAIO;Initial Catalog=Estoque;User ID=sa;Password=sa");
 
             }
             catch (Exception ex)

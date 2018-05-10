@@ -60,11 +60,11 @@ namespace WindowsFormsApp3
                     localhostAmx.Almoxarifado cadastroProduto = new localhostAmx.Almoxarifado();
                     string CodigoProduto = txtCod.Text;
                     string Nome = txtNome.Text;
-                    double Preco = Convert.ToDouble(txtPreco.Text.Replace(",", ".").Replace(".", ","));
+                    double Preco = Convert.ToDouble(txtPreco.Text.Replace(".", "").Replace(",", "."));
                     string UnidadeMedida = cmbUM.SelectedItem.ToString();
-                    float QtdMinima = float.Parse(txtQtdMin.Text.Replace(",", ".").Replace(".", ","));
-                    float QtdMaxima = float.Parse(txtQtdMax.Text.Replace(",", ".").Replace(".", ","));
-                    float QtdEstoque = float.Parse(txtQtdEst.Text.Replace(",", ".").Replace(".", ","));
+                    float QtdMinima = float.Parse(txtQtdMin.Text.Replace(".", "").Replace(",", "."));
+                    float QtdMaxima = float.Parse(txtQtdMax.Text.Replace(".", "").Replace(",", "."));
+                    float QtdEstoque = float.Parse(txtQtdEst.Text.Replace(".", "").Replace(",", "."));
                     string Tipo = txtTipo.Text;
 
                     int IdProduto = cadastroProduto.CadastroProduto(CodigoProduto, Nome,Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, Tipo);

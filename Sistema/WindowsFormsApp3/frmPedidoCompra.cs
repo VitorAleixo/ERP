@@ -74,7 +74,6 @@ namespace WindowsFormsApp3
                     string Urgencia = cmbUrgencia.SelectedItem.ToString();
                     string Motivo = txtMotivo.Text;
                     string Tipo = BuscarTipo.BuscaTipo;
-                    ValorTotal = Double.Parse(txtValor.Text.Replace(",","").Replace(".",","));
                     bool Gravar = false;
                     bool GravarItem = false;
 
