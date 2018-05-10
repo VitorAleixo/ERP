@@ -24,7 +24,7 @@ namespace WindowsFormsApp3
 
         private void CarregarGrid()
         {
-            localhost.Login buscaUsuario = new localhost.Login();
+            localhostAdm.Admin buscaUsuario = new localhostAdm.Admin();
 
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;

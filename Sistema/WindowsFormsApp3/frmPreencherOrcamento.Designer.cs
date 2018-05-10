@@ -46,16 +46,18 @@
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.txtDataEmissao = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cmbVendedor = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.txtValorAdicional = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtPrazo = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCondicaoPag = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.btnLegendas = new System.Windows.Forms.Button();
             this.btnGerar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -213,11 +215,11 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.txtQuantidade);
+            this.groupBox2.Controls.Add(this.txtValor);
+            this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cmbVendedor);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.txtValorTotal);
+            this.groupBox2.Controls.Add(this.txtValorAdicional);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.txtPrazo);
             this.groupBox2.Controls.Add(this.label7);
@@ -230,23 +232,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados da Compra";
             // 
-            // label10
+            // txtValor
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 98);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 13);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Quantidade Itens";
+            this.txtValor.Enabled = false;
+            this.txtValor.Location = new System.Drawing.Point(271, 75);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(242, 20);
+            this.txtValor.TabIndex = 27;
             // 
-            // txtQuantidade
+            // label1
             // 
-            this.txtQuantidade.Enabled = false;
-            this.txtQuantidade.Location = new System.Drawing.Point(9, 114);
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(85, 20);
-            this.txtQuantidade.TabIndex = 9;
-            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(268, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Valor (R$)";
             // 
             // cmbVendedor
             // 
@@ -254,33 +255,33 @@
             this.cmbVendedor.FormattingEnabled = true;
             this.cmbVendedor.Location = new System.Drawing.Point(9, 34);
             this.cmbVendedor.Name = "cmbVendedor";
-            this.cmbVendedor.Size = new System.Drawing.Size(249, 21);
+            this.cmbVendedor.Size = new System.Drawing.Size(242, 21);
             this.cmbVendedor.TabIndex = 5;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(268, 62);
+            this.label9.Location = new System.Drawing.Point(6, 98);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 13);
+            this.label9.Size = new System.Drawing.Size(100, 13);
             this.label9.TabIndex = 22;
-            this.label9.Text = "Valor Total (R$)";
+            this.label9.Text = "Valor Adicional (R$)";
             // 
-            // txtValorTotal
+            // txtValorAdicional
             // 
-            this.txtValorTotal.Location = new System.Drawing.Point(271, 75);
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Size = new System.Drawing.Size(242, 20);
-            this.txtValorTotal.TabIndex = 8;
+            this.txtValorAdicional.Location = new System.Drawing.Point(9, 111);
+            this.txtValorAdicional.Name = "txtValorAdicional";
+            this.txtValorAdicional.Size = new System.Drawing.Size(242, 20);
+            this.txtValorAdicional.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(268, 23);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 13);
+            this.label8.Size = new System.Drawing.Size(85, 13);
             this.label8.TabIndex = 20;
-            this.label8.Text = "Prazo de Entrega";
+            this.label8.Text = "Data de Entrega";
             // 
             // txtPrazo
             // 
@@ -304,7 +305,7 @@
             this.txtCondicaoPag.Location = new System.Drawing.Point(9, 75);
             this.txtCondicaoPag.MaxLength = 30;
             this.txtCondicaoPag.Name = "txtCondicaoPag";
-            this.txtCondicaoPag.Size = new System.Drawing.Size(249, 20);
+            this.txtCondicaoPag.Size = new System.Drawing.Size(242, 20);
             this.txtCondicaoPag.TabIndex = 7;
             // 
             // label5
@@ -315,6 +316,24 @@
             this.label5.Size = new System.Drawing.Size(53, 13);
             this.label5.TabIndex = 14;
             this.label5.Text = "Vendedor";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(308, 438);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(103, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Quantidade de Itens";
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Enabled = false;
+            this.txtQuantidade.Location = new System.Drawing.Point(411, 435);
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(60, 20);
+            this.txtQuantidade.TabIndex = 9;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnLegendas
             // 
@@ -375,6 +394,8 @@
             this.ClientSize = new System.Drawing.Size(882, 471);
             this.Controls.Add(this.btnLegendas);
             this.Controls.Add(this.btnGerar);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox2);
@@ -412,7 +433,7 @@
         private System.Windows.Forms.TextBox txtDataEmissao;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtValorTotal;
+        private System.Windows.Forms.TextBox txtValorAdicional;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtPrazo;
         private System.Windows.Forms.Label label7;
@@ -432,5 +453,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Solicitar;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtQuantidade;
+        public System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -31,7 +31,7 @@ namespace WindowsFormsApp3
 
         private void CarregarGrid()
         {
-            localhost.Login buscaFornecedor = new localhost.Login();
+            localhostCmp.Compras buscaFornecedor = new localhostCmp.Compras();
 
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;

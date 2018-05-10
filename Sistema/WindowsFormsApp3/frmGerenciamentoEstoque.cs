@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp3.AppCode;
 using WindowsFormsApp3.localhost;
+using WindowsFormsApp3.localhostAmx;
 
 namespace WindowsFormsApp3
 {
@@ -38,7 +39,7 @@ namespace WindowsFormsApp3
 
         private void CarregarGrid()
         {
-            localhost.Login buscaEstoque = new localhost.Login();
+            localhostAmx.Almoxarifado buscaEstoque = new localhostAmx.Almoxarifado();
 
             string Tipo = BuscarTipo.BuscaTipo.ToString();
             grdGerenciamento.AutoGenerateColumns = false;
@@ -60,9 +61,9 @@ namespace WindowsFormsApp3
             {
                 foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
-                    var QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
-                    var QtdMaxima = Convert.ToDouble(row.Cells[4].Value);
-                    var QtdMinima = Convert.ToDouble(row.Cells[5].Value);
+                    var QtdEstoque = Convert.ToDouble(row.Cells[4].Value);
+                    var QtdMaxima = Convert.ToDouble(row.Cells[5].Value);
+                    var QtdMinima = Convert.ToDouble(row.Cells[6].Value);
 
 
                     if (QtdEstoque < QtdMinima)
@@ -106,7 +107,7 @@ namespace WindowsFormsApp3
                     this.grdGerenciamento.Rows[row.Index].Selected = true;
 
                     var OBJ = (Estoque) row.DataBoundItem;
-
+                   
                     lista.Add(OBJ);
                     i = i + 1;
                 }

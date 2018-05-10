@@ -5,5 +5,17 @@
     <Setting Name="WindowsFormsApp3_localhost_Login" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:63452/Web%20Service/Login.asmx</Value>
     </Setting>
+    <Setting Name="WindowsFormsApp3_localhostCmp_Compras" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:53551/WebService/Compras.asmx</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp3_localhostAmx_Almoxarifado" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:54048/WebService/Almoxarifado.asmx</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp3_localhostAdm_Admin" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:57423/WebServer/Admin.asmx</Value>
+    </Setting>
+    <Setting Name="WindowsFormsApp3_localhostGrc_Gerencia" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:57612/WebService/Gerencia.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

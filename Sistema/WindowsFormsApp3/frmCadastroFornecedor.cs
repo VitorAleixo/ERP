@@ -105,7 +105,7 @@ namespace WindowsFormsApp3
                 }
                 else
                 {
-                    localhost.Login cadastroFornecedor = new localhost.Login();
+                    localhostCmp.Compras cadastroFornecedor = new localhostCmp.Compras();
 
                     string Nome = txtNome.Text;
                     string CPF = txtCPF.Text;

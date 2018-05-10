@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,6 +38,7 @@ namespace WindowsFormsApp3
             txtQtdMax.Text = "";
             txtQtdMin.Text = "";
             txtTipo.Text = "";
+            txtPreco.Text = "";
             cmbUM.SelectedIndex = -1;
         }
 
@@ -55,17 +57,17 @@ namespace WindowsFormsApp3
                 }
                 else
                 {
-                    localhost.Login cadastroProduto = new localhost.Login();
-
+                    localhostAmx.Almoxarifado cadastroProduto = new localhostAmx.Almoxarifado();
                     string CodigoProduto = txtCod.Text;
                     string Nome = txtNome.Text;
+                    double Preco = Convert.ToDouble(txtPreco.Text.Replace(",", ".").Replace(".", ","));
                     string UnidadeMedida = cmbUM.SelectedItem.ToString();
-                    float QtdMinima = float.Parse(txtQtdMin.Text.ToString().Replace(".", ","));
-                    float QtdMaxima = float.Parse(txtQtdMax.Text.ToString().Replace(".", ","));
-                    float QtdEstoque = float.Parse(txtQtdEst.Text.ToString().Replace(".", ","));
+                    float QtdMinima = float.Parse(txtQtdMin.Text.Replace(",", ".").Replace(".", ","));
+                    float QtdMaxima = float.Parse(txtQtdMax.Text.Replace(",", ".").Replace(".", ","));
+                    float QtdEstoque = float.Parse(txtQtdEst.Text.Replace(",", ".").Replace(".", ","));
                     string Tipo = txtTipo.Text;
 
-                    int IdProduto = cadastroProduto.CadastroProduto(CodigoProduto, Nome, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, Tipo);
+                    int IdProduto = cadastroProduto.CadastroProduto(CodigoProduto, Nome,Preco, UnidadeMedida, QtdMinima, QtdMaxima, QtdEstoque, Tipo);
 
    
                     if (IdProduto > 0)

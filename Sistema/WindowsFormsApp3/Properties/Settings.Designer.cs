@@ -32,5 +32,45 @@ namespace WindowsFormsApp3.Properties {
                 return ((string)(this["WindowsFormsApp3_localhost_Login"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:53551/WebService/Compras.asmx")]
+        public string WindowsFormsApp3_localhostCmp_Compras {
+            get {
+                return ((string)(this["WindowsFormsApp3_localhostCmp_Compras"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:54048/WebService/Almoxarifado.asmx")]
+        public string WindowsFormsApp3_localhostAmx_Almoxarifado {
+            get {
+                return ((string)(this["WindowsFormsApp3_localhostAmx_Almoxarifado"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:57423/WebServer/Admin.asmx")]
+        public string WindowsFormsApp3_localhostAdm_Admin {
+            get {
+                return ((string)(this["WindowsFormsApp3_localhostAdm_Admin"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:57612/WebService/Gerencia.asmx")]
+        public string WindowsFormsApp3_localhostGrc_Gerencia {
+            get {
+                return ((string)(this["WindowsFormsApp3_localhostGrc_Gerencia"]));
+            }
+        }
     }
 }

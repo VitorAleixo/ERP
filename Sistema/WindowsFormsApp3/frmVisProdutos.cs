@@ -32,7 +32,7 @@ namespace WindowsFormsApp3
 
         private void CarregarGrid()
         {
-            localhost.Login buscaProduto = new localhost.Login();
+            localhostAmx.Almoxarifado buscaProduto = new localhostAmx.Almoxarifado();
 
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;

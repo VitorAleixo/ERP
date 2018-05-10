@@ -19,7 +19,7 @@ namespace WindowsFormsApp3
         
         void CarregarGrid()
         {
-            localhost.Login buscaSolicitacaoCompras = new localhost.Login();
+            localhostCmp.Compras buscaSolicitacaoCompras = new localhostCmp.Compras();
 
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;
@@ -83,9 +83,9 @@ namespace WindowsFormsApp3
         {
             try
             {
-                var obj = (localhost.Solicitacoes)grdGerenciamento.CurrentRow.DataBoundItem;
-                localhost.Login pedido = new localhost.Login();
-
+                var obj = (localhostCmp.Solicitacoes)grdGerenciamento.CurrentRow.DataBoundItem;
+                localhostCmp.Compras pedido = new localhostCmp.Compras();
+              
                 frmSolicitacaoRelatorio relatorioSolicitacao = new frmSolicitacaoRelatorio();
                 relatorioSolicitacao.Pedido = obj.IdPedido;
                 if (obj.Status == "GERADO")

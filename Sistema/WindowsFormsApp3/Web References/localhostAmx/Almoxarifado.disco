@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://localhost:54048/WebService/Almoxarifado.asmx?wsdl" docRef="http://localhost:54048/WebService/Almoxarifado.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://localhost:54048/WebService/Almoxarifado.asmx" xmlns:q1="http://tempuri.org/" binding="q1:AlmoxarifadoSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://localhost:54048/WebService/Almoxarifado.asmx" xmlns:q2="http://tempuri.org/" binding="q2:AlmoxarifadoSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

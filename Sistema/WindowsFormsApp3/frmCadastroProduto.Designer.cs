@@ -36,11 +36,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtPreco = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtId = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtCod = new System.Windows.Forms.TextBox();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtQtdMin = new System.Windows.Forms.TextBox();
             this.txtQtdMax = new System.Windows.Forms.TextBox();
@@ -110,6 +112,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtPreco);
+            this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtTipo);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtNome);
@@ -123,13 +127,29 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Dados do Produto";
             // 
+            // txtPreco
+            // 
+            this.txtPreco.Location = new System.Drawing.Point(379, 32);
+            this.txtPreco.Name = "txtPreco";
+            this.txtPreco.Size = new System.Drawing.Size(100, 20);
+            this.txtPreco.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(376, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 30;
+            this.label5.Text = "Preco";
+            // 
             // txtTipo
             // 
             this.txtTipo.Location = new System.Drawing.Point(483, 32);
             this.txtTipo.MaxLength = 50;
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(150, 20);
-            this.txtTipo.TabIndex = 29;
+            this.txtTipo.TabIndex = 5;
             // 
             // label10
             // 
@@ -140,6 +160,22 @@
             this.label10.TabIndex = 28;
             this.label10.Text = "Tipo do Produto";
             // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(149, 32);
+            this.txtNome.MaxLength = 50;
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(224, 20);
+            this.txtNome.TabIndex = 3;
+            // 
+            // txtCod
+            // 
+            this.txtCod.Location = new System.Drawing.Point(16, 32);
+            this.txtCod.MaxLength = 10;
+            this.txtCod.Name = "txtCod";
+            this.txtCod.Size = new System.Drawing.Size(127, 20);
+            this.txtCod.TabIndex = 2;
+            // 
             // txtId
             // 
             this.txtId.Enabled = false;
@@ -148,22 +184,6 @@
             this.txtId.Size = new System.Drawing.Size(31, 20);
             this.txtId.TabIndex = 1;
             this.txtId.Visible = false;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(149, 32);
-            this.txtNome.MaxLength = 50;
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(328, 20);
-            this.txtNome.TabIndex = 3;
-            // 
-            // txtCod
-            // 
-            this.txtCod.Location = new System.Drawing.Point(16, 32);
-            this.txtCod.MaxLength = 10;
-            this.txtCod.Name = "txtCod";
-            this.txtCod.Size = new System.Drawing.Size(115, 20);
-            this.txtCod.TabIndex = 2;
             // 
             // groupBox2
             // 
@@ -188,7 +208,7 @@
             this.txtQtdMin.MaxLength = 15;
             this.txtQtdMin.Name = "txtQtdMin";
             this.txtQtdMin.Size = new System.Drawing.Size(118, 20);
-            this.txtQtdMin.TabIndex = 6;
+            this.txtQtdMin.TabIndex = 7;
             // 
             // txtQtdMax
             // 
@@ -196,7 +216,7 @@
             this.txtQtdMax.MaxLength = 15;
             this.txtQtdMax.Name = "txtQtdMax";
             this.txtQtdMax.Size = new System.Drawing.Size(118, 20);
-            this.txtQtdMax.TabIndex = 7;
+            this.txtQtdMax.TabIndex = 8;
             // 
             // txtQtdEst
             // 
@@ -204,7 +224,7 @@
             this.txtQtdEst.MaxLength = 15;
             this.txtQtdEst.Name = "txtQtdEst";
             this.txtQtdEst.Size = new System.Drawing.Size(118, 20);
-            this.txtQtdEst.TabIndex = 8;
+            this.txtQtdEst.TabIndex = 9;
             // 
             // label9
             // 
@@ -229,7 +249,7 @@
             this.cmbUM.Location = new System.Drawing.Point(14, 41);
             this.cmbUM.Name = "cmbUM";
             this.cmbUM.Size = new System.Drawing.Size(118, 21);
-            this.cmbUM.TabIndex = 5;
+            this.cmbUM.TabIndex = 6;
             // 
             // btnGravar
             // 
@@ -238,7 +258,7 @@
             this.btnGravar.Location = new System.Drawing.Point(526, 205);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(64, 23);
-            this.btnGravar.TabIndex = 9;
+            this.btnGravar.TabIndex = 10;
             this.btnGravar.Text = "Gravar";
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGravar.UseVisualStyleBackColor = true;
@@ -251,7 +271,7 @@
             this.btnSair.Location = new System.Drawing.Point(596, 205);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(56, 23);
-            this.btnSair.TabIndex = 10;
+            this.btnSair.TabIndex = 11;
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.UseVisualStyleBackColor = true;
@@ -306,5 +326,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPreco;
     }
 }

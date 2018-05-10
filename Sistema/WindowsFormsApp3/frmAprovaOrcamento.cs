@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp3.localhost;
+using WindowsFormsApp3.localhostGrc;
 
 namespace WindowsFormsApp3
 {
@@ -36,7 +37,7 @@ namespace WindowsFormsApp3
 
         void CarregarGrid()
         {
-            localhost.Login buscarOrcamentos = new localhost.Login();
+            localhostGrc.Gerencia buscarOrcamentos = new localhostGrc.Gerencia();
 
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;

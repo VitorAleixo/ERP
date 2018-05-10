@@ -150,3 +150,9 @@ C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\stdole
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmSolicitacaoRelatorio.resources
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\relPedidorpt.rpt
 C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\relPedidorpt.cs
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmSolicitacaoCompraRelatorio.resources
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\relSolicitacaoCompra.rpt
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\relSolicitacaoCompra.cs
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\relOrcamento.rpt
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\bin\Debug\relOrcamento.cs
+C:\Users\estagio.ti\Desktop\Sistema AT\Sistema\WindowsFormsApp3\obj\Debug\WindowsFormsApp3.frmOrcamentoRelatorio.resources

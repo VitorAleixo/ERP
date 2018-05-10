@@ -28,15 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPedidoCompra));
             this.grdGerenciamento = new System.Windows.Forms.DataGridView();
-            this.CodigoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QtdMaxima = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Solicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSolicitante = new System.Windows.Forms.TextBox();
             this.txtMotivo = new System.Windows.Forms.TextBox();
@@ -46,6 +40,16 @@
             this.btnLegendas = new System.Windows.Forms.Button();
             this.btnGrSolic = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CodigoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QtdMaxima = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Solicitar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdGerenciamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +63,7 @@
             this.CodigoProduto,
             this.Nome,
             this.UM,
+            this.Preco,
             this.QtdEstoque,
             this.QtdMinima,
             this.QtdMaxima,
@@ -68,54 +73,6 @@
             this.grdGerenciamento.Size = new System.Drawing.Size(705, 246);
             this.grdGerenciamento.TabIndex = 2;
             this.grdGerenciamento.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.grdGerenciamento_CellFormatting);
-            // 
-            // CodigoProduto
-            // 
-            this.CodigoProduto.DataPropertyName = "CodigoProduto";
-            this.CodigoProduto.HeaderText = "Código do Produto";
-            this.CodigoProduto.Name = "CodigoProduto";
-            this.CodigoProduto.ReadOnly = true;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome do Produto";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            // 
-            // UM
-            // 
-            this.UM.DataPropertyName = "UM";
-            this.UM.HeaderText = "Unidade de Medida";
-            this.UM.Name = "UM";
-            this.UM.ReadOnly = true;
-            // 
-            // QtdEstoque
-            // 
-            this.QtdEstoque.DataPropertyName = "QtdEstoque";
-            this.QtdEstoque.HeaderText = "QtdEstoque";
-            this.QtdEstoque.Name = "QtdEstoque";
-            this.QtdEstoque.ReadOnly = true;
-            // 
-            // QtdMinima
-            // 
-            this.QtdMinima.DataPropertyName = "QtdMinima";
-            this.QtdMinima.HeaderText = "QtdMinima";
-            this.QtdMinima.Name = "QtdMinima";
-            this.QtdMinima.ReadOnly = true;
-            // 
-            // QtdMaxima
-            // 
-            this.QtdMaxima.DataPropertyName = "QtdMaxima";
-            this.QtdMaxima.HeaderText = "QtdMaxima";
-            this.QtdMaxima.Name = "QtdMaxima";
-            this.QtdMaxima.ReadOnly = true;
-            // 
-            // Solicitar
-            // 
-            this.Solicitar.DataPropertyName = "Solicitar";
-            this.Solicitar.HeaderText = "A Solicitar";
-            this.Solicitar.Name = "Solicitar";
             // 
             // label1
             // 
@@ -156,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 99);
+            this.label3.Location = new System.Drawing.Point(9, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 13);
             this.label3.TabIndex = 8;
@@ -170,7 +127,7 @@
             "Nivel 1 - Normal",
             "Nivel 2 - Mediana",
             "Nivel 3 - Urgente"});
-            this.cmbUrgencia.Location = new System.Drawing.Point(77, 94);
+            this.cmbUrgencia.Location = new System.Drawing.Point(77, 56);
             this.cmbUrgencia.Name = "cmbUrgencia";
             this.cmbUrgencia.Size = new System.Drawing.Size(274, 21);
             this.cmbUrgencia.TabIndex = 9;
@@ -214,11 +171,89 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // txtValor
+            // 
+            this.txtValor.Enabled = false;
+            this.txtValor.Location = new System.Drawing.Point(77, 90);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(274, 20);
+            this.txtValor.TabIndex = 12;
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Valor Total";
+            // 
+            // CodigoProduto
+            // 
+            this.CodigoProduto.DataPropertyName = "CodigoProduto";
+            this.CodigoProduto.HeaderText = "Código do Produto";
+            this.CodigoProduto.Name = "CodigoProduto";
+            this.CodigoProduto.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome do Produto";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // UM
+            // 
+            this.UM.DataPropertyName = "UM";
+            this.UM.HeaderText = "Unidade de Medida";
+            this.UM.Name = "UM";
+            this.UM.ReadOnly = true;
+            // 
+            // Preco
+            // 
+            this.Preco.DataPropertyName = "Preco";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Preco.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Preco.HeaderText = "Preco Unitário";
+            this.Preco.Name = "Preco";
+            this.Preco.ReadOnly = true;
+            // 
+            // QtdEstoque
+            // 
+            this.QtdEstoque.DataPropertyName = "QtdEstoque";
+            this.QtdEstoque.HeaderText = "QtdEstoque";
+            this.QtdEstoque.Name = "QtdEstoque";
+            this.QtdEstoque.ReadOnly = true;
+            // 
+            // QtdMinima
+            // 
+            this.QtdMinima.DataPropertyName = "QtdMinima";
+            this.QtdMinima.HeaderText = "QtdMinima";
+            this.QtdMinima.Name = "QtdMinima";
+            this.QtdMinima.ReadOnly = true;
+            // 
+            // QtdMaxima
+            // 
+            this.QtdMaxima.DataPropertyName = "QtdMaxima";
+            this.QtdMaxima.HeaderText = "QtdMaxima";
+            this.QtdMaxima.Name = "QtdMaxima";
+            this.QtdMaxima.ReadOnly = true;
+            // 
+            // Solicitar
+            // 
+            this.Solicitar.DataPropertyName = "Solicitar";
+            this.Solicitar.HeaderText = "A Solicitar";
+            this.Solicitar.Name = "Solicitar";
+            // 
             // frmPedidoCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(729, 409);
+            this.Controls.Add(this.txtValor);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnLegendas);
             this.Controls.Add(this.cmbUrgencia);
             this.Controls.Add(this.label3);
@@ -247,13 +282,6 @@
 
         private System.Windows.Forms.Button btnSair;
         public System.Windows.Forms.DataGridView grdGerenciamento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdEstoque;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdMinima;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QtdMaxima;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Solicitar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSolicitante;
         private System.Windows.Forms.TextBox txtMotivo;
@@ -262,5 +290,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbUrgencia;
         private System.Windows.Forms.Button btnLegendas;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdEstoque;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdMinima;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QtdMaxima;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Solicitar;
     }
 }

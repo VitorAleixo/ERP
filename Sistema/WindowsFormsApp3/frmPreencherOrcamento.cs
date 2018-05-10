@@ -77,7 +77,7 @@ namespace WindowsFormsApp3
 
         private void CarregarGrid()
         {
-            localhost.Login buscaSolicitacaoItem = new localhost.Login();
+            localhostCmp.Compras buscaSolicitacaoItem = new localhostCmp.Compras();
 
             int IdPedido = Convert.ToInt32(txtIdPedido.Text);
 
@@ -92,7 +92,7 @@ namespace WindowsFormsApp3
             DialogResult dialogResult = MessageBox.Show("Você tem certeza que quer excluir esta Solicitação de Compra?", "Confirmação", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-                localhost.Login deletarSolicitacao = new localhost.Login();
+                localhostCmp.Compras deletarSolicitacao = new localhostCmp.Compras();
 
                 int IdPedido = Convert.ToInt32(txtIdPedido.Text);
 
@@ -118,7 +118,8 @@ namespace WindowsFormsApp3
         {
             txtDataEmissao.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
-            localhost.Login buscaFornecedor = new localhost.Login();
+            localhostCmp.Compras buscaFornecedor = new localhostCmp.Compras();
+
             cmbVendedor.DisplayMember = "Nome";
             cmbVendedor.ValueMember = "Id";
             cmbVendedor.DataSource = buscaFornecedor.RetornaComboFornecedor();
@@ -137,16 +138,23 @@ namespace WindowsFormsApp3
                 string Vendedor = cmbVendedor.SelectedValue.ToString();
                 string PrazoEntrega = txtPrazo.Text;
                 string CondicaoPag = txtCondicaoPag.Text;
-                double ValorTotal = Convert.ToDouble(txtValorTotal.Text.ToString().Replace(",","."));
+                double ValorAdicional = Convert.ToDouble(txtValorAdicional.Text.Replace(",", "").Replace(".", ","));
+                double Valor = Convert.ToDouble(txtValor.Text.Replace(",", "").Replace(".", ","));
                 int QtdItens = Convert.ToInt32(txtQuantidade.Text);
 
-                localhost.Login gravarOrcamento = new localhost.Login();
+                localhostCmp.Compras gravarOrcamento = new localhostCmp.Compras();
 
-                if (gravarOrcamento.GravarOrcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorTotal, QtdItens) == true)
+                localhostCmp.Compras Atualiza = new localhostCmp.Compras();
+                if (gravarOrcamento.GravarOrcamento(IdPedido, Tipo, DataEmissao, Observacoes, Vendedor, PrazoEntrega, CondicaoPag, ValorAdicional, Valor, QtdItens) == true)
                 {
-                    if (gravarOrcamento.Atualizar(IdPedido) == true)
+                    if (Atualiza.Atualizar(IdPedido) == true)
                     {
                         MessageBox.Show("Orçamento Gravado!!", "Confirmação", MessageBoxButtons.OK);
+
+                        frmOrcamentoRelatorio relatorioOrcamento = new frmOrcamentoRelatorio();
+                        relatorioOrcamento.Pedido = IdPedido;
+                        relatorioOrcamento.Show();
+
                         this.Close();
                     }
                     else

@@ -36,7 +36,7 @@ namespace WindowsFormsApp3
 
         private void frmSelecionarTipo_Load(object sender, EventArgs e)
         {
-            localhost.Login buscaTipo = new localhost.Login();
+            localhostAmx.Almoxarifado buscaTipo = new localhostAmx.Almoxarifado();
 
             cmbTipo.DisplayMember = "Status";
             cmbTipo.ValueMember = "Status";

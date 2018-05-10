@@ -50,59 +50,87 @@ namespace WindowsFormsApp3
 
         private void btnGrSolic_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Gerar uma Solicitação de Compra?", "Confirmação", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            try
             {
-                localhost.Login solicitacao = new localhost.Login();
-                string Solicitante = txtSolicitante.Text;
-                string Urgencia = cmbUrgencia.SelectedItem.ToString();
-                string Motivo = txtMotivo.Text;
-                string Tipo = BuscarTipo.BuscaTipo;
-                bool Gravar = false;
-                bool GravarItem = false;
+                localhostAmx.Almoxarifado solicitacao = new localhostAmx.Almoxarifado();
+                double Valor = 0;
+                double ValorTotal = 0;
+                double valor1 = 0;
+                double valor2 = 0;
 
-                if (Urgencia == "" || Urgencia == null || Motivo == "" || Motivo == null || Solicitante == "" || Solicitante == null)
+                foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
-                    MessageBox.Show("Algum dado está faltando!", "Confirmação", MessageBoxButtons.OK);
+                        valor1 = Double.Parse(row.Cells[3].Value.ToString());
+                        valor2 = Double.Parse(row.Cells[7].Value.ToString());
+                        Valor = valor1 * valor2;
+                        ValorTotal = ValorTotal + Valor;
                 }
-                else
+                txtValor.Text = ValorTotal.ToString("N2");
+                DialogResult dialogResult = MessageBox.Show("Gerar uma Solicitação de Compra?", "Confirmação", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
 
-                    int IdPedido = solicitacao.GerarPedido(Solicitante, Urgencia, Motivo, Tipo);
+                    string Solicitante = txtSolicitante.Text;
+                    string Urgencia = cmbUrgencia.SelectedItem.ToString();
+                    string Motivo = txtMotivo.Text;
+                    string Tipo = BuscarTipo.BuscaTipo;
+                    ValorTotal = Double.Parse(txtValor.Text.Replace(",","").Replace(".",","));
+                    bool Gravar = false;
+                    bool GravarItem = false;
 
-                    if (IdPedido > 0)
+                    if (Urgencia == "" || Urgencia == null || Motivo == "" || Motivo == null || Solicitante == "" || Solicitante == null)
                     {
-                        Gravar = true;
-
-                        foreach (DataGridViewRow row in grdGerenciamento.Rows)
-                        {
-                            string Cod = row.Cells[0].Value.ToString();
-                            string Nome = row.Cells[1].Value.ToString();
-                            string UnidadeMedida = row.Cells[2].Value.ToString();
-                            double QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
-                            double QtdMinima = Convert.ToDouble(row.Cells[4].Value);
-                            double QtdMaxima = Convert.ToDouble(row.Cells[5].Value);
-                            double Solicitar = Convert.ToDouble(row.Cells[6].Value);
-
-                            if (solicitacao.GerarPedidoItem(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido))
-                            {
-                                GravarItem = true;
-                            }
-                        }
-                    }
-
-                    if (Gravar == true && GravarItem == true)
-                    {
-                        MessageBox.Show("Pedido de Compra realizado com Sucesso!", "Confirmação", MessageBoxButtons.OK);
-                        this.Close();
+                        MessageBox.Show("Algum dado está faltando!", "Confirmação", MessageBoxButtons.OK);
                     }
                     else
                     {
-                        MessageBox.Show("Ocorreu um Erro!", "Confirmação", MessageBoxButtons.OK);
+
+                        int IdPedido = solicitacao.GerarPedido(Solicitante, Urgencia, Motivo, Tipo, ValorTotal);
+
+                        if (IdPedido > 0)
+                        {
+                            Gravar = true;
+
+                            foreach (DataGridViewRow row in grdGerenciamento.Rows)
+                            {
+                                var obj = (localhostAmx.Estoque)grdGerenciamento.CurrentRow.DataBoundItem;
+                                string Cod = row.Cells[0].Value.ToString();
+                                string Nome = row.Cells[1].Value.ToString();
+                                string UnidadeMedida = row.Cells[2].Value.ToString();
+                                double Preco = Convert.ToDouble(row.Cells[3].Value);
+                                double QtdEstoque = Convert.ToDouble(row.Cells[4].Value);
+                                double QtdMinima = Convert.ToDouble(row.Cells[5].Value);
+                                double QtdMaxima = Convert.ToDouble(row.Cells[6].Value);
+                                double Solicitar = Convert.ToDouble(row.Cells[7].Value);
+
+                                if (solicitacao.GerarPedidoItem(Cod, Nome, QtdEstoque, QtdMaxima, QtdMinima, UnidadeMedida, Solicitar, IdPedido))
+                                {
+                                    GravarItem = true;
+                                }
+                            }
+                        }
+
+                        if (Gravar == true && GravarItem == true)
+                        {
+
+                            MessageBox.Show("Pedido de Compra realizado com Sucesso!", "Confirmação", MessageBoxButtons.OK);
+                            frmSolicitacaoCompraRelatorio relatorioCompra = new frmSolicitacaoCompraRelatorio();
+                            relatorioCompra.Pedido = IdPedido;
+                            relatorioCompra.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocorreu um Erro ao gravar o Pedido de Compra!", "Confirmação", MessageBoxButtons.OK);
+                        }
                     }
                 }
             }
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um Erro! \nDados do Erro:\n   " + ex.ToString(), "Confirmação", MessageBoxButtons.OK);
+            }
+            }
 
         private void grdGerenciamento_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -111,10 +139,10 @@ namespace WindowsFormsApp3
                 foreach (DataGridViewRow row in grdGerenciamento.Rows)
                 {
            
-                    var QtdEstoque = Convert.ToDouble(row.Cells[3].Value);
-                    var QtdMinima = Convert.ToDouble(row.Cells[4].Value);
-                    var QtdMaxima = Convert.ToDouble(row.Cells[5].Value);
-                    var Solicitar = Convert.ToDouble(row.Cells[6].Value);
+                    var QtdEstoque = Convert.ToDouble(row.Cells[4].Value);
+                    var QtdMinima = Convert.ToDouble(row.Cells[5].Value);
+                    var QtdMaxima = Convert.ToDouble(row.Cells[6].Value);
+                    var Solicitar = Convert.ToDouble(row.Cells[7].Value);
 
                     if (Solicitar == 0)
                     {

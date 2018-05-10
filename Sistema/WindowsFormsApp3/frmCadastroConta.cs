@@ -62,7 +62,7 @@ namespace WindowsFormsApp3
                 }
                 else
                 {
-                    localhost.Login cadastroUsuario = new localhost.Login();
+                    localhostAdm.Admin cadastroUsuario = new localhostAdm.Admin();
 
 
                     string Nome = txtNome.Text;

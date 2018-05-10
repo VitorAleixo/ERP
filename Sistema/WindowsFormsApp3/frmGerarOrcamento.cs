@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp3.localhostCmp;
 
 namespace WindowsFormsApp3
 {
@@ -40,7 +41,7 @@ namespace WindowsFormsApp3
 
         public void CarregarGrid()
         {
-            localhost.Login buscaSolicitacao = new localhost.Login();
+            localhostCmp.Compras buscaSolicitacao = new localhostCmp.Compras();
 
             grdGerenciamento.AutoGenerateColumns = false;
             grdGerenciamento.DataSource = null;
@@ -86,13 +87,20 @@ namespace WindowsFormsApp3
 
         private void btnGerarOrcamento_Click(object sender, EventArgs e)
         {
-            var obj = (localhost.Solicitacao)grdGerenciamento.CurrentRow.DataBoundItem;
-
-            frmPreencherOrcamento frmPreencher = new frmPreencherOrcamento();
-            frmPreencher.txtIdPedido.Text = obj.IdPedido.ToString();
-            frmPreencher.txtTipo.Text = obj.Tipo.ToString();
-            frmPreencher.ShowDialog();
-            CarregarGrid();
+            try
+            {
+                var obj = (Solicitacao)grdGerenciamento.CurrentRow.DataBoundItem;
+                frmPreencherOrcamento frmPreencher = new frmPreencherOrcamento();
+                frmPreencher.txtIdPedido.Text = obj.IdPedido.ToString();
+                frmPreencher.txtTipo.Text = obj.Tipo.ToString();
+                frmPreencher.txtValor.Text = obj.Valor.ToString("N2");
+                frmPreencher.ShowDialog();
+                CarregarGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item Selecionado!", "Confirmação", MessageBoxButtons.OK);
+            }
         }
     }
 }

@@ -31,7 +31,7 @@ namespace WindowsFormsApp3
 
         private void CarregarGrid()
         {
-            localhost.Login buscaDadosOrcamento = new localhost.Login();
+            localhostGrc.Gerencia buscaDadosOrcamento = new localhostGrc.Gerencia();
 
             int IdPedido = Convert.ToInt32(txtIdPedido.Text);
             int IdVendedor = Convert.ToInt32(txtVendedor.Text);
@@ -58,7 +58,7 @@ namespace WindowsFormsApp3
         {
             try
             {
-                localhost.Login aprovacao = new localhost.Login();
+                localhostGrc.Gerencia aprovacao = new localhostGrc.Gerencia();
 
                 if (aprovacao.Aprovar(Convert.ToInt32(txtIdPedido.Text)) == true)
                 {
@@ -80,7 +80,7 @@ namespace WindowsFormsApp3
         {
             try
             {
-                localhost.Login aprovacao = new localhost.Login();
+                localhostGrc.Gerencia aprovacao = new localhostGrc.Gerencia();
 
                 if (aprovacao.Reprovar(Convert.ToInt32(txtIdPedido.Text)) == true)
                 {

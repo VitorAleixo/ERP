@@ -159,6 +159,12 @@
     <Compile Include="frmOrcamento.Designer.cs">
       <DependentUpon>frmOrcamento.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOrcamentoRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOrcamentoRelatorio.Designer.cs">
+      <DependentUpon>frmOrcamentoRelatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPreencherOrcamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +207,12 @@
     <Compile Include="frmPedidoCompra.Designer.cs">
       <DependentUpon>frmPedidoCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSolicitacaoCompraRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolicitacaoCompraRelatorio.Designer.cs">
+      <DependentUpon>frmSolicitacaoCompraRelatorio.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSolicitacaoRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,12 +245,46 @@
     <Compile Include="frmGerarSolicitacao.Designer.cs">
       <DependentUpon>frmGerarSolicitacao.cs</DependentUpon>
     </Compile>
+    <Compile Include="relOrcamento.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relOrcamento.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="relPedidorpt.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>relPedidorpt.rpt</DependentUpon>
       <SubType>Component</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="relSolicitacaoCompra.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relSolicitacaoCompra.rpt</DependentUpon>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Web References\localhostAdm\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\localhostAmx\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\localhostCmp\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\localhostGrc\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -293,6 +339,9 @@
     <EmbeddedResource Include="frmOrcamento.resx">
       <DependentUpon>frmOrcamento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmOrcamentoRelatorio.resx">
+      <DependentUpon>frmOrcamentoRelatorio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPreencherOrcamento.resx">
       <DependentUpon>frmPreencherOrcamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +362,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPedidoCompra.resx">
       <DependentUpon>frmPedidoCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolicitacaoCompraRelatorio.resx">
+      <DependentUpon>frmSolicitacaoCompraRelatorio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSolicitacaoRelatorio.resx">
       <DependentUpon>frmSolicitacaoRelatorio.cs</DependentUpon>
@@ -339,9 +391,19 @@
     <EmbeddedResource Include="frmGerarSolicitacao.resx">
       <DependentUpon>frmGerarSolicitacao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="relOrcamento.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>relOrcamento.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="relPedidorpt.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>relPedidorpt.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="relSolicitacaoCompra.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>relSolicitacaoCompra.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="Connected Services\WSCorreios\AtendeClienteService.wsdl" />
@@ -486,43 +548,63 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\localhost\Estoque.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\Fornecedor.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\FornecedorCombo.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\Login.wsdl" />
-    <None Include="Web References\localhost\Orcamento.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\OrcamentoDados.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\Produto.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </None>
-    <None Include="Web References\localhost\Reference.map">
+    <None Include="Web References\localhostAdm\Admin.wsdl" />
+    <None Include="Web References\localhostAdm\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\localhost\Solicitacao.datasource">
+    <None Include="Web References\localhostAdm\Usuario.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\localhost\SolicitacaoItem.datasource">
+    <None Include="Web References\localhostAmx\Almoxarifado.wsdl" />
+    <None Include="Web References\localhostAmx\Estoque.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\localhost\Solicitacoes.datasource">
+    <None Include="Web References\localhostAmx\Produto.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\localhost\TipoCombo.datasource">
+    <None Include="Web References\localhostAmx\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhostAmx\TipoCombo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-    <None Include="Web References\localhost\Usuario.datasource">
+    <None Include="Web References\localhostCmp\Compras.wsdl" />
+    <None Include="Web References\localhostCmp\Fornecedor.datasource">
       <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostCmp\FornecedorCombo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostCmp\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhostCmp\Solicitacao.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostCmp\SolicitacaoItem.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostCmp\Solicitacoes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostGrc\Gerencia.wsdl" />
+    <None Include="Web References\localhostGrc\Orcamento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostGrc\OrcamentoDados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\localhostGrc\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\localhost\Login.wsdl" />
+    <None Include="Web References\localhost\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -535,6 +617,50 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:53551/WebService/Compras.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhostCmp\</RelPath>
+      <UpdateFromURL>http://localhost:53551/WebService/Compras.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WindowsFormsApp3_localhostCmp_Compras</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:54048/WebService/Almoxarifado.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhostAmx\</RelPath>
+      <UpdateFromURL>http://localhost:54048/WebService/Almoxarifado.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WindowsFormsApp3_localhostAmx_Almoxarifado</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:57423/WebServer/Admin.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhostAdm\</RelPath>
+      <UpdateFromURL>http://localhost:57423/WebServer/Admin.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WindowsFormsApp3_localhostAdm_Admin</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:57612/WebService/Gerencia.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\localhostGrc\</RelPath>
+      <UpdateFromURL>http://localhost:57612/WebService/Gerencia.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>WindowsFormsApp3_localhostGrc_Gerencia</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost:63452/Web%2520Service/Login.asmx%3fop=LoginSistema">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
@@ -633,6 +759,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhostCmp\Compras.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhostAmx\Almoxarifado.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhostAdm\Admin.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\localhostGrc\Gerencia.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
