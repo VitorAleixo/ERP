@@ -46,23 +46,30 @@ namespace WindowsFormsApp3
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            localhost.Login login = new localhost.Login();
-            string usuario = txtUsuario.Text;
-            string senha = txtSenha.Text;
-
- 
-            if (login.LoginSistema(usuario, senha))
+            try
             {
-                validar = true;
-                MessageBox.Show("Autenticado no Sistema!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);              
-                this.Close();
+                localhost.Login login = new localhost.Login();
+                string usuario = txtUsuario.Text;
+                string senha = txtSenha.Text;
 
+
+                if (login.LoginSistema(usuario, senha))
+                {
+                    validar = true;
+                    MessageBox.Show("Autenticado no Sistema!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+
+                }
+                else
+                {
+                    validar = false;
+                    MessageBox.Show("Erro na Autenticação!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtSenha.Text = "";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                validar = false;
-                MessageBox.Show("Erro na Autenticação!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtSenha.Text = "";                   
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -80,6 +87,11 @@ namespace WindowsFormsApp3
             {
                 btnLogin.PerformClick();
             }
+        }
+
+        private void lblNovaConta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new frmCadastroConta { StartPosition = FormStartPosition.CenterScreen }.ShowDialog();
         }
     }
 }

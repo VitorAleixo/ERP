@@ -10,8 +10,13 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp3
 {
-    public partial class frmCadastroFornecedor : Form
+    public partial class frmCadastroConta : Form
     {
+        public frmCadastroConta()
+        {
+            InitializeComponent();
+        }
+
         private const int CP_NOCLOSE_BUTTON = 0x200;
         protected override CreateParams CreateParams
         {
@@ -21,11 +26,6 @@ namespace WindowsFormsApp3
                 myCp.ClassStyle = myCp.ClassStyle | CP_NOCLOSE_BUTTON;
                 return myCp;
             }
-        }
-
-        public frmCadastroFornecedor()
-        {
-            InitializeComponent();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -52,7 +52,7 @@ namespace WindowsFormsApp3
             }
         }
 
-        private void frmCadastroFornecedor_Load(object sender, EventArgs e)
+        private void frmCadastroConta_Load(object sender, EventArgs e)
         {
             cmbCPF.SelectedIndex = 0;
         }
@@ -77,7 +77,9 @@ namespace WindowsFormsApp3
                 txtCPF.Enabled = false;
                 txtCPF.Mask = "";
             }
+
         }
+
         void LimparCampos()
         {
             txtNome.Text = "";
@@ -93,52 +95,6 @@ namespace WindowsFormsApp3
             txtTelefone1.Text = "";
             txtTelefone2.Text = "";
             txtEmail.Text = "";
-        }
-
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                localhost.Login cadastroFornecedor = new localhost.Login();
-
-                string Nome = txtNome.Text;
-                string CPF = txtCPF.Text;
-                string CEP = txtCEP.Text;
-                string Endereco = txtEndereco.Text;
-                string Bairro = txtBairro.Text;
-                string Cidade = txtCidade.Text;
-                string Complemento = txtComplemento.Text;
-                string Estado = txtEstado.Text;
-                string Complemento2 = txtComplemento2.Text;
-                string Numero = txtNumero.Text;
-                string Telefone = txtTelefone1.Text;
-                string Telefone2 = txtTelefone2.Text;
-                string EMAIL = txtEmail.Text;
-
-
-
-                if (cadastroFornecedor.CadastroFornecedor(Nome, CPF, CEP, Endereco, Bairro, Cidade, Complemento, Estado, Complemento2, Numero, Telefone, Telefone2, EMAIL))
-                {
-                    DialogResult dialogResult = MessageBox.Show("Cadastrado com Sucesso!\nDeseja continuar cadastrando?", "Usuário", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        LimparCampos();
-                    }
-                    else
-                    {
-                        this.Close();
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show("Erro ao gravar Fornecedor!!!", "Usuário", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private void txtCEP_KeyDown(object sender, KeyEventArgs e)

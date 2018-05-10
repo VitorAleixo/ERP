@@ -332,6 +332,7 @@
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(67, 20);
             this.txtCEP.TabIndex = 4;
+            this.txtCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCEP_KeyDown);
             // 
             // btnPesquisaCEP
             // 
